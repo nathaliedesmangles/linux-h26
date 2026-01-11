@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="fr-ca" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.152.2">
+    <meta name="generator" content="Relearn 8.3.0+187e41ae8f27979cda87bfe489e34e07e5b6cbcd">
+    <meta name="description" content="Objectif de la semaine Écrire son premier programme (script) pour automatiser une séquence de commandes et interagir avec l’utilisateur. Plan de la séance #1 Qu’est-ce qu’un Script Shell ? (30 min) Les Variables : Des boîtes à mémoire (45 min) Exécution et Permissions (30 min) Interaction : Parler à l’humain (15 min) 🛑**Exercice (en classe) : “Le compilateur humain” (10 min) Plan de la séance #2 Laboratoire : THÉORIE « La vertu principale de l’informaticien, c’est la paresse. Si vous devez taper la même chose deux fois, faites-le. Si vous devez le faire trois fois, écrivez un script. »">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Introduction au Scripting Bash :: ZG4-Linux">
+    <meta name="twitter:description" content="Objectif de la semaine Écrire son premier programme (script) pour automatiser une séquence de commandes et interagir avec l’utilisateur. Plan de la séance #1 Qu’est-ce qu’un Script Shell ? (30 min) Les Variables : Des boîtes à mémoire (45 min) Exécution et Permissions (30 min) Interaction : Parler à l’humain (15 min) 🛑**Exercice (en classe) : “Le compilateur humain” (10 min) Plan de la séance #2 Laboratoire : THÉORIE « La vertu principale de l’informaticien, c’est la paresse. Si vous devez taper la même chose deux fois, faites-le. Si vous devez le faire trois fois, écrivez un script. »">
+    <meta property="og:url" content="http://localhost:1313/bloc-4/semaine-11/index.html">
+    <meta property="og:site_name" content="ZG4-Linux">
+    <meta property="og:title" content="Introduction au Scripting Bash :: ZG4-Linux">
+    <meta property="og:description" content="Objectif de la semaine Écrire son premier programme (script) pour automatiser une séquence de commandes et interagir avec l’utilisateur. Plan de la séance #1 Qu’est-ce qu’un Script Shell ? (30 min) Les Variables : Des boîtes à mémoire (45 min) Exécution et Permissions (30 min) Interaction : Parler à l’humain (15 min) 🛑**Exercice (en classe) : “Le compilateur humain” (10 min) Plan de la séance #2 Laboratoire : THÉORIE « La vertu principale de l’informaticien, c’est la paresse. Si vous devez taper la même chose deux fois, faites-le. Si vous devez le faire trois fois, écrivez un script. »">
+    <meta property="og:locale" content="fr_ca">
+    <meta property="og:type" content="article">
+    <meta property="article:section" content="Automatisation & scripting">
+    <meta itemprop="name" content="Introduction au Scripting Bash :: ZG4-Linux">
+    <meta itemprop="description" content="Objectif de la semaine Écrire son premier programme (script) pour automatiser une séquence de commandes et interagir avec l’utilisateur. Plan de la séance #1 Qu’est-ce qu’un Script Shell ? (30 min) Les Variables : Des boîtes à mémoire (45 min) Exécution et Permissions (30 min) Interaction : Parler à l’humain (15 min) 🛑**Exercice (en classe) : “Le compilateur humain” (10 min) Plan de la séance #2 Laboratoire : THÉORIE « La vertu principale de l’informaticien, c’est la paresse. Si vous devez taper la même chose deux fois, faites-le. Si vous devez le faire trois fois, écrivez un script. »">
+    <meta itemprop="wordCount" content="833">
+    <title>Introduction au Scripting Bash :: ZG4-Linux</title>
+    <link href="/images/logo.png?1766890542" rel="icon" type="image/png">
+    <link href="/css/auto-complete/auto-complete.min.css?1766890542" rel="stylesheet">
+    <script src="/js/auto-complete/auto-complete.min.js?1766890542" defer></script>
+    <script src="/js/search-lunr.js?1766890542" defer></script>
+    <script src="/js/search.js?1766890542" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="/searchindex.en.js?1766890542";
+    </script>
+    <script src="/js/lunr/lunr.min.js?1766890542" defer></script>
+    <script src="/js/lunr/lunr.stemmer.support.min.js?1766890542" defer></script>
+    <script src="/js/lunr/lunr.multi.min.js?1766890542" defer></script>
+    <script src="/js/lunr/lunr.fr.min.js?1766890542" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['fr'];
+    </script>
+    <link href="/fonts/fontawesome/css/fontawesome-all.min.css?1766890542" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/fontawesome-all.min.css?1766890542" rel="stylesheet"></noscript>
+    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1766890542" rel="stylesheet">
+    <link href="/css/theme.css?1766890542" rel="stylesheet">
+    <link href="/css/format-html.css?1766890542" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = ``;
+      window.relearn.path='\/bloc-4\/semaine-11\/index.html';
+      window.relearn.relBasePath='..\/..';
+      window.relearn.relBaseUri='..\/..';
+      window.relearn.absBaseUri='http:\/\/localhost:1313';
+      window.relearn.disableInlineCopyToClipboard=false;
+      window.relearn.enableBlockCodeWrap=true;
+      // legal
+      window.relearn.getItem = (s,n) => {return s.getItem(n)};
+      window.relearn.setItem = (s,n,v) => {return s.setItem(n,v)};
+      window.relearn.removeItem = (s,n) => {return s.removeItem(n)};
+      // translations
+      window.T_Copy_to_clipboard = `Copy text to clipboard`;
+      window.T_Copied_to_clipboard = `Text copied to clipboard!`;
+      window.T_Link_copied_to_clipboard = `Link copied to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+      window.T_Browser_unsupported_feature = `This browser doesn't support this feature`;
+      // variant stuff
+      window.relearn.themevariants = [ 'auto' ];
+      window.relearn.customvariantprefix = "my-custom-";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant") ?? "";
+        if( !variant ||
+            (!variant.startsWith(window.relearn.customvariantprefix) && !window.relearn.themevariants.includes(variant)) ||
+            (variant.startsWith(window.relearn.customvariantprefix) && !window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variantstylesheet-" + variant)) ){
+          variant = window.relearn.themevariants[0];
+          window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script>
+    <link href="/css/custom.css?1766890542" rel="stylesheet">
+  </head>
+  <body class="mobile-support html" data-url="/bloc-4/semaine-11/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar" class="default-animation">
+        <div class="topbar-wrapper default-animation">
+          <div class="topbar-sidebar-divider default-animation"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar default-animation" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
+            </div>
+            <div class="topbar-button topbar-button-toc default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#objectif-de-la-semaine">Objectif de la semaine</a></li>
+        <li><a href="#plan-de-la-séance-1">Plan de la séance #1</a></li>
+        <li><a href="#plan-de-la-séance-2">Plan de la séance #2</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#111-quest-ce-quun-script-shell-">11.1 Qu&rsquo;est-ce qu&rsquo;un Script Shell ?</a></li>
+        <li><a href="#112-les-variables--des-boîtes-à-mémoire">11.2 Les Variables : Des boîtes à mémoire</a></li>
+        <li><a href="#113-exécution-et-permissions">11.3 Exécution et Permissions</a></li>
+        <li><a href="#114-interaction--parler-à-lhumain">11.4 Interaction : Parler à l&rsquo;humain</a></li>
+        <li><a href="#-exercice-en-classe--le-compilateur-humain-10-min">🛑 Exercice (en classe) : &ldquo;Le compilateur humain&rdquo; (10 min)</a></li>
+        <li><a href="#-astuces-de-la-semaine">💡 Astuces de la semaine</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#étape-0--environnement-de-travail-15-min">Étape 0 : Environnement de travail (15 min)</a></li>
+        <li><a href="#étape-1--le-hello-world-30-min">Étape 1 : Le &ldquo;Hello World&rdquo; (30 min)</a></li>
+        <li><a href="#étape-2--le-script-interactif-calculatrice-dâge-45-min">Étape 2 : Le script interactif (Calculatrice d&rsquo;âge) (45 min)</a></li>
+        <li><a href="#étape-3--automatisation-utile-backup-simple-30-min">Étape 3 : Automatisation utile (Backup simple) (30 min)</a></li>
+        <li><a href="#étape-4--les-alias-30-min">Étape 4 : Les alias (30 min)</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/index.html"><span itemprop="name">Accueil du cours</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/bloc-4/index.html"><span itemprop="name">Automatisation &amp; scripting</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Introduction au Scripting Bash</span><meta itemprop="position" content="3"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-prev default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/bloc-4/index.html" title="Automatisation & scripting (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-next default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/bloc-4/semaine-13/index.html" title="Logique, conditions et arguments (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-more default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable bloc-4" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="introduction-au-scripting-bash">Introduction au Scripting Bash</h1>
+
+<h3 id="objectif-de-la-semaine">Objectif de la semaine<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ul>
+<li>Écrire son premier programme (script) pour automatiser une séquence de commandes et interagir avec l&rsquo;utilisateur.</li>
+</ul>
+<h3 id="plan-de-la-séance-1">Plan de la séance #1<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ol>
+<li>Qu&rsquo;est-ce qu&rsquo;un Script Shell ? (30 min)</li>
+<li>Les Variables : Des boîtes à mémoire (45 min)</li>
+<li>Exécution et Permissions (30 min)</li>
+<li>Interaction : Parler à l&rsquo;humain (15 min)
+🛑**Exercice (en classe) : &ldquo;Le compilateur humain&rdquo; (10 min)</li>
+</ol>
+<h3 id="plan-de-la-séance-2">Plan de la séance #2<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ul>
+<li><strong>Laboratoire</strong> :</li>
+</ul>
+<hr>
+<h1 id="théorie">THÉORIE<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h1>
+<p><em>« La vertu principale de l&rsquo;informaticien, c&rsquo;est la paresse. Si vous devez taper la même chose deux fois, faites-le. Si vous devez le faire trois fois, écrivez un script. »</em></p>
+<h3 id="111-quest-ce-quun-script-shell-">11.1 Qu&rsquo;est-ce qu&rsquo;un Script Shell ?<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Un script n&rsquo;est rien de magique. C&rsquo;est simplement <strong>un fichier texte</strong> qui contient une liste de commandes que vous auriez tapées à la main, l&rsquo;une après l&rsquo;autre.</p>
+<ul>
+<li><strong>L&rsquo;extension <code>.sh</code> :</strong> Ce n&rsquo;est pas obligatoire pour Linux, mais c&rsquo;est une convention pour les humains (ex: <code>backup.sh</code>).</li>
+<li></li>
+</ul>
+<p><strong>Le Shebang (<code>#!</code>) :</strong> La ligne la plus importante.</p>
+<ul>
+<li>Elle doit être sur la <strong>ligne 1</strong>, colonne 1.</li>
+<li>Elle dit au système <em>qui</em> doit lire ce fichier.</li>
+<li>Standard : <code>#!/bin/bash</code></li>
+</ul>
+<h3 id="112-les-variables--des-boîtes-à-mémoire">11.2 Les Variables : Des boîtes à mémoire<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>En programmation, on stocke l&rsquo;information dans des variables.</p>
+<ul>
+<li>
+<p><strong>Déclaration (Remplir la boîte) :</strong></p>
+</li>
+<li>
+<p>Syntaxe : <code>NOM=&quot;Valeur&quot;</code></p>
+</li>
+<li>
+<p><strong>⚠️ Règle d&rsquo;or du Bash :</strong> JAMAIS d&rsquo;espaces autour du égal (<code>=</code>).</p>
+</li>
+<li>
+<p><em>Mauvais :</em> <code>NOM = Toto</code> (Plante).</p>
+</li>
+<li>
+<p><em>Bon :</em> <code>NOM=&quot;Toto&quot;</code>.</p>
+</li>
+<li>
+<p><strong>Utilisation (Lire la boîte) :</strong></p>
+</li>
+<li>
+<p>On utilise le signe <code>$</code>.</p>
+</li>
+<li>
+<p><code>echo $NOM</code> affiche <em>Toto</em>.</p>
+</li>
+<li>
+<p><strong>Variables d&rsquo;environnement (Déjà là) :</strong></p>
+</li>
+<li>
+<p><code>$USER</code> (Votre nom), <code>$HOME</code> (Votre dossier), <code>$PWD</code> (Ici).</p>
+</li>
+</ul>
+<h3 id="113-exécution-et-permissions">11.3 Exécution et Permissions<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Pourquoi, quand je crée <code>test.sh</code>, il refuse de se lancer ?</p>
+<ol>
+<li><strong>La Permission :</strong> Par sécurité, un fichier texte n&rsquo;est pas exécutable.</li>
+</ol>
+<ul>
+<li>Solution : <code>chmod +x mon_script.sh</code> (Rendre e<strong>X</strong>écutable).</li>
+</ul>
+<ol start="2">
+<li><strong>Le Chemin (PATH) :</strong></li>
+</ol>
+<ul>
+<li>Si vous tapez <code>ls</code>, Linux cherche dans <code>/bin</code>.</li>
+<li>Si vous tapez <code>mon_script.sh</code>, Linux cherche dans <code>/bin</code> (et ne le trouve pas).</li>
+<li>Solution : Dites-lui &ldquo;Cherche <strong>ICI</strong>&rdquo; avec <code>./</code> -&gt; <code>./mon_script.sh</code>.</li>
+</ul>
+<h3 id="114-interaction--parler-à-lhumain">11.4 Interaction : Parler à l&rsquo;humain<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ul>
+<li><strong>Sortie :</strong> <code>echo &quot;Message&quot;</code> (Affiche à l&rsquo;écran).</li>
+<li></li>
+</ul>
+<p><strong>Entrée :</strong> <code>read</code> (Attend que l&rsquo;utilisateur tape quelque chose).</p>
+<ul>
+<li><code>read -p &quot;Votre âge ? &quot; AGE</code></li>
+<li>(Affiche la question, attend la réponse, et la met dans la variable <code>$AGE</code>).</li>
+</ul>
+<hr>
+<h3 id="-exercice-en-classe--le-compilateur-humain-10-min">🛑 Exercice (en classe) : &ldquo;Le compilateur humain&rdquo; (10 min)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><em>Au tableau, écrivez ce script buggé :</em></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>PRENOM <span style="color:#f92672">=</span> Jean
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;Bonjour PRENOM&#34;</span></span></span></code></pre></div>
+<p><strong>Demandez aux étudiants de trouver les 2 erreurs fatales.</strong></p>
+<ol>
+<li>Espace autour du <code>=</code> (Ligne 2).</li>
+<li>Manque le <code>$</code> devant PRENOM (Ligne 3) -&gt; Ça afficherait &ldquo;Bonjour PRENOM&rdquo; au lieu de &ldquo;Bonjour Jean&rdquo;.</li>
+</ol>
+<h3 id="-astuces-de-la-semaine">💡 Astuces de la semaine<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><em>C&rsquo;est la base de la programmation. Si cette page est mal comprise, les 4 prochaines semaines seront un enfer.</em></p>
+<blockquote>
+<p><strong>BASH SCRIPTING : LES 3 COMMANDEMENTS</strong></p>
+<ol>
+<li><strong>Tu ne mettras point d&rsquo;espaces</strong> autour du signe égal.</li>
+</ol>
+<ul>
+<li>✅ <code>A=&quot;Toto&quot;</code></li>
+<li>❌ <code>A = &quot;Toto&quot;</code></li>
+</ul>
+<ol start="2">
+<li><strong>Tu n&rsquo;oublieras point le Dollar</strong> pour appeler une variable.</li>
+</ol>
+<ul>
+<li>Pour créer : <code>NOM=&quot;Guy&quot;</code></li>
+<li>Pour utiliser : <code>echo $NOM</code></li>
+</ul>
+<ol start="3">
+<li><strong>Tu rendras ton fichier exécutable</strong> avant de pleurer que ça ne marche pas.</li>
+</ol>
+<ul>
+<li><code>chmod +x script.sh</code></li>
+<li>Et tu le lanceras avec <code>./script.sh</code></li>
+</ul>
+</blockquote>
+<hr>
+<h1 id="laboratoire">LABORATOIRE<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h1>
+<p><strong>Objectif :</strong> Créer 3 scripts fonctionnels et configurer un alias permanent.</p>
+<h3 id="étape-0--environnement-de-travail-15-min">Étape 0 : Environnement de travail (15 min)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ol>
+<li>Ouvrez votre terminal.</li>
+<li>Créez un dossier propre pour ne pas mélanger vos scripts : <code>mkdir ~/Scripts</code>.</li>
+<li>Entrez dedans : <code>cd ~/Scripts</code>.</li>
+</ol>
+<h3 id="étape-1--le-hello-world-30-min">Étape 1 : Le &ldquo;Hello World&rdquo; (30 min)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><em>Apprendre le cycle : Écrire -&gt; Droit d&rsquo;exécution -&gt; Lancer.</em></p>
+<ol>
+<li>Créez le fichier : <code>nano bonjour.sh</code>.</li>
+<li>Le contenu :</li>
+</ol>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>echo <span style="color:#e6db74">&#34;Initialisation du programme...&#34;</span>
+</span></span><span style="display:flex;"><span>sleep <span style="color:#ae81ff">2</span>  <span style="color:#75715e"># Pause de 2 secondes pour faire &#34;style&#34;</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;Bonjour, je suis votre premier script !&#34;</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;Je tourne sous l&#39;utilisateur : </span>$USER<span style="color:#e6db74">&#34;</span></span></span></code></pre></div>
+<ol start="3">
+<li>Sauvegardez (<code>Ctrl+X</code>, <code>Y</code>).</li>
+<li>Tentez de le lancer : <code>./bonjour.sh</code>. (Erreur : Permission non accordée).</li>
+<li>Fixez le problème : <code>chmod +x bonjour.sh</code>.</li>
+<li>Relancez : <code>./bonjour.sh</code>. Succès !</li>
+</ol>
+<h3 id="étape-2--le-script-interactif-calculatrice-dâge-45-min">Étape 2 : Le script interactif (Calculatrice d&rsquo;âge) (45 min)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><em>Manipuler <code>read</code> et les calculs mathématiques simples <code>$(())</code>.</em></p>
+<ol>
+<li>Créez <code>age.sh</code>.</li>
+<li>Le scénario :</li>
+</ol>
+<ul>
+<li>Demander l&rsquo;année de naissance.</li>
+<li>Calculer l&rsquo;âge (2026 - Année).</li>
+<li>Afficher le résultat.</li>
+</ul>
+<ol start="3">
+<li>Aide syntaxe mathématique : <code>AGE=$((2026 - ANNEE))</code></li>
+<li><strong>Défi :</strong> Faites en sorte que le script dise &ldquo;Wow, tu es vieux !&rdquo; à la fin. (Juste un <code>echo</code>, pas de condition <code>if</code> pour l&rsquo;instant).</li>
+</ol>
+<h3 id="étape-3--automatisation-utile-backup-simple-30-min">Étape 3 : Automatisation utile (Backup simple) (30 min)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><em>Un script qui fait quelque chose de &ldquo;vrai&rdquo;.</em></p>
+<ol>
+<li>Créez <code>mon_backup.sh</code>.</li>
+<li>Le script doit :</li>
+</ol>
+<ul>
+<li>Créer un dossier <code>~/Backup_Du_Jour</code>.</li>
+<li>Copier tout le contenu de <code>~/Documents</code> dedans.</li>
+<li>Afficher &ldquo;Sauvegarde terminée dans : $HOME/Backup_Du_Jour&rdquo;.</li>
+</ul>
+<ol start="3">
+<li>Testez-le. Vérifiez que les fichiers sont bien copiés.</li>
+</ol>
+<h3 id="étape-4--les-alias-30-min">Étape 4 : Les alias (30 min)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Un alias est un surnom pour une commande.</p>
+<ol>
+<li>Dans le terminal, tapez : <code>alias c='clear'</code>.</li>
+<li>Tapez plein de choses (<code>ls -R /etc</code>), puis tapez juste <code>c</code>. L&rsquo;écran se nettoie.</li>
+<li><strong>Problème :</strong> Fermez le terminal et rouvrez-le. L&rsquo;alias <code>c</code> a disparu !</li>
+<li><strong>Solution (Permanence) :</strong></li>
+</ol>
+<ul>
+<li>Ouvrez le fichier caché de configuration : <code>nano ~/.bashrc</code>.</li>
+<li>Allez tout à la fin.</li>
+<li>Ajoutez une ligne : <code>alias maj='sudo apt update &amp;&amp; sudo apt upgrade -y'</code>.</li>
+<li>Sauvegardez.</li>
+<li>Pour recharger sans redémarrer : <code>source ~/.bashrc</code>.</li>
+<li>Testez votre nouvelle commande <code>maj</code>.</li>
+</ul>
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+        <a id="R-logo" class="R-default direction-row" href="/index.html">
+          <span class="logo-title default-animation">ZG4-Linux</span>
+        </a>
+        <search><form action="/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks default-animation">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-url="/index.html"><a class="padding" href="/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols default-animation">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-main default-animation">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-url="/regles/index.html"><a class="padding" href="/regles/index.html">Règles de survie au cours<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-1/index.html"><input type="checkbox" id="R-section-0b942f9b9b2d065455b2a863f4d7995c" aria-controls="R-subsections-0b942f9b9b2d065455b2a863f4d7995c"><label for="R-section-0b942f9b9b2d065455b2a863f4d7995c"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Introduction &amp; Installation</span></label><a class="padding default-animation" href="/bloc-1/index.html">BLOC 1 : Introduction &amp; Installation<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-0b942f9b9b2d065455b2a863f4d7995c" class="collapsible-menu">
+            <li class="" data-nav-url="/bloc-1/semaine-1/index.html"><a class="padding" href="/bloc-1/semaine-1/index.html">Semaine 1 : Introduction &amp; installation<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-1/semaine-2/index.html"><a class="padding" href="/bloc-1/semaine-2/index.html">Semaine 2 : Arborescence &amp; navigation<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-1/semaine-3/index.html"><a class="padding" href="/bloc-1/semaine-3/index.html">Semaine 3 : Gestion de paquets &amp; édition de texte<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-1/semaine-4/index.html"><a class="padding" href="/bloc-1/semaine-4/index.html">Semaine 4 : Révision &amp; Test #1<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
+            <li class="" data-nav-url="/bloc-2/index.html"><input type="checkbox" id="R-section-bc3591f00126f0242dfd3ada90ba9fa8" aria-controls="R-subsections-bc3591f00126f0242dfd3ada90ba9fa8"><label for="R-section-bc3591f00126f0242dfd3ada90ba9fa8"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Administration système et sécurité</span></label><a class="padding default-animation" href="/bloc-2/index.html">BLOC 2 : Administration système et sécurité<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-bc3591f00126f0242dfd3ada90ba9fa8" class="collapsible-menu">
+            <li class="" data-nav-url="/bloc-2/semaine-5/index.html"><a class="padding" href="/bloc-2/semaine-5/index.html">Semaine 5 : Gestion des utilisateurs<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-2/semaine-6/index.html"><a class="padding" href="/bloc-2/semaine-6/index.html">Semaine 6 : Permissions &amp; droits d&#39;accès<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-2/semaine-7/index.html"><a class="padding" href="/bloc-2/semaine-7/index.html">Semaine 7 : Gestion des processus<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-2/semaine-8/index.html"><a class="padding" href="/bloc-2/semaine-8/index.html">Semaine 8 : Révision &amp; Test #2<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
+            <li class="" data-nav-url="/bloc-3/index.html"><input type="checkbox" id="R-section-d0f965f65b76b5a918fb9cc7fc20ea39" aria-controls="R-subsections-d0f965f65b76b5a918fb9cc7fc20ea39"><label for="R-section-d0f965f65b76b5a918fb9cc7fc20ea39"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Redirections &amp; filtres, disques et réseau</span></label><a class="padding default-animation" href="/bloc-3/index.html">BLOC 3 : Redirections &amp; filtres, disques et réseau<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-d0f965f65b76b5a918fb9cc7fc20ea39" class="collapsible-menu">
+            <li class="" data-nav-url="/bloc-3/semaine-9/index.html"><a class="padding" href="/bloc-3/semaine-9/index.html">Semaine 9 : Redirections, Pipes et filtres<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-3/semaine-10/index.html"><a class="padding" href="/bloc-3/semaine-10/index.html">Semaine 10 : Gestion de disques<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-3/semaine-11/index.html"><a class="padding" href="/bloc-3/semaine-11/index.html">Semaine 11 : Réseau et services<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
+            <li class="parent " data-nav-url="/bloc-4/index.html"><input type="checkbox" id="R-section-c1ebb4b1b8b7a51069075ff54026c0de" aria-controls="R-subsections-c1ebb4b1b8b7a51069075ff54026c0de" checked><label for="R-section-c1ebb4b1b8b7a51069075ff54026c0de"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Automatisation &amp; scripting</span></label><a class="padding default-animation" href="/bloc-4/index.html">BLOC 4 : Automatisation &amp; scripting<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-c1ebb4b1b8b7a51069075ff54026c0de" class="collapsible-menu">
+            <li class="active " data-nav-url="/bloc-4/semaine-11/index.html"><a class="padding" href="/bloc-4/semaine-11/index.html">Semaine 11 : Introduction au Scripting Bash<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-4/semaine-13/index.html"><a class="padding" href="/bloc-4/semaine-13/index.html">Semaine 12 : Logique, conditions et arguments<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-4/semaine-14/index.html"><a class="padding" href="/bloc-4/semaine-14/index.html">Semaine 13 : Boucles et planification (Cron)<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-4/semaine-00/index.html"><a class="padding" href="/bloc-4/semaine-00/index.html">Semaine 14 : Archivage &amp; compression<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-4/semaine-15/index.html"><a class="padding" href="/bloc-4/semaine-15/index.html">Semaine 15 : Révision &amp; Examen Final<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts default-animation">
+          <ul class="space collapsible-menu">
+          </ul>
+        </div>
+        <div id="R-footer-margin" class="default-animation"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols default-animation">
+          <ul class="">
+            <li class="R-historyclearer">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-history"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <button>Clear History</button>
+                </div>
+                <div class="clear"></div>
+              </div>
+            </li>
+          </ul>
+        </div>
+<div id="R-footer" class="default-animation"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
+      </div>
+    </aside>
+    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1766890542" defer></script>
+    <script src="/js/theme.js?1766890542" defer></script>
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+  </body>
+</html>

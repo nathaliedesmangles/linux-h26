@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="fr-ca" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.152.2">
+    <meta name="generator" content="Relearn 8.3.0+187e41ae8f27979cda87bfe489e34e07e5b6cbcd">
+    <meta name="description" content="Objectif de la semaine Connaitre et comprendre la structure des fichiers sous Linux Se déplacer dans le système et manipuler des fichiers sans souris. Warning C’est le cours le plus important pour arriver à s’orienter dans l’architecture de Linux.
+Fichier pour les exercices (en classe)
+Utiliser le fichier exo-semaine2.docx pour y mettre vos réponses et captures d’écran.
+Télécharger le fichier docx">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Arborescence et navigation :: ZG4-Linux">
+    <meta name="twitter:description" content="Objectif de la semaine Connaitre et comprendre la structure des fichiers sous Linux Se déplacer dans le système et manipuler des fichiers sans souris. Warning C’est le cours le plus important pour arriver à s’orienter dans l’architecture de Linux.
+Fichier pour les exercices (en classe)
+Utiliser le fichier exo-semaine2.docx pour y mettre vos réponses et captures d’écran.
+Télécharger le fichier docx">
+    <meta property="og:url" content="https://example.org/bloc-1/semaine-2/index.html">
+    <meta property="og:site_name" content="ZG4-Linux">
+    <meta property="og:title" content="Arborescence et navigation :: ZG4-Linux">
+    <meta property="og:description" content="Objectif de la semaine Connaitre et comprendre la structure des fichiers sous Linux Se déplacer dans le système et manipuler des fichiers sans souris. Warning C’est le cours le plus important pour arriver à s’orienter dans l’architecture de Linux.
+Fichier pour les exercices (en classe)
+Utiliser le fichier exo-semaine2.docx pour y mettre vos réponses et captures d’écran.
+Télécharger le fichier docx">
+    <meta property="og:locale" content="fr_ca">
+    <meta property="og:type" content="article">
+    <meta property="article:section" content="Fondations & installation">
+    <meta itemprop="name" content="Arborescence et navigation :: ZG4-Linux">
+    <meta itemprop="description" content="Objectif de la semaine Connaitre et comprendre la structure des fichiers sous Linux Se déplacer dans le système et manipuler des fichiers sans souris. Warning C’est le cours le plus important pour arriver à s’orienter dans l’architecture de Linux.
+Fichier pour les exercices (en classe)
+Utiliser le fichier exo-semaine2.docx pour y mettre vos réponses et captures d’écran.
+Télécharger le fichier docx">
+    <meta itemprop="wordCount" content="1342">
+    <title>Arborescence et navigation :: ZG4-Linux</title>
+    <link href="/images/logo.png?1768146506" rel="icon" type="image/png">
+    <link href="/css/auto-complete/auto-complete.min.css?1768146506" rel="stylesheet">
+    <script src="/js/auto-complete/auto-complete.min.js?1768146506" defer></script>
+    <script src="/js/search-lunr.min.js?1768146506" defer></script>
+    <script src="/js/search.min.js?1768146506" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="/searchindex.en.js?1768146506";
+    </script>
+    <script src="/js/lunr/lunr.min.js?1768146506" defer></script>
+    <script src="/js/lunr/lunr.stemmer.support.min.js?1768146506" defer></script>
+    <script src="/js/lunr/lunr.multi.min.js?1768146506" defer></script>
+    <script src="/js/lunr/lunr.fr.min.js?1768146506" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['fr'];
+    </script>
+    <link href="/fonts/fontawesome/css/fontawesome-all.min.css?1768146506" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/fontawesome-all.min.css?1768146506" rel="stylesheet"></noscript>
+    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1768146506" rel="stylesheet">
+    <link href="/css/theme.min.css?1768146506" rel="stylesheet">
+    <link href="/css/format-html.min.css?1768146506" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = `.min`;
+      window.relearn.path='\/bloc-1\/semaine-2\/index.html';
+      window.relearn.relBasePath='..\/..';
+      window.relearn.relBaseUri='..\/..';
+      window.relearn.absBaseUri='https:\/\/example.org';
+      window.relearn.disableInlineCopyToClipboard=false;
+      window.relearn.enableBlockCodeWrap=true;
+      // legal
+      window.relearn.getItem = (s,n) => {return s.getItem(n)};
+      window.relearn.setItem = (s,n,v) => {return s.setItem(n,v)};
+      window.relearn.removeItem = (s,n) => {return s.removeItem(n)};
+      // translations
+      window.T_Copy_to_clipboard = `Copy text to clipboard`;
+      window.T_Copied_to_clipboard = `Text copied to clipboard!`;
+      window.T_Link_copied_to_clipboard = `Link copied to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+      window.T_Browser_unsupported_feature = `This browser doesn't support this feature`;
+      // variant stuff
+      window.relearn.themevariants = [ 'auto' ];
+      window.relearn.customvariantprefix = "my-custom-";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant") ?? "";
+        if( !variant ||
+            (!variant.startsWith(window.relearn.customvariantprefix) && !window.relearn.themevariants.includes(variant)) ||
+            (variant.startsWith(window.relearn.customvariantprefix) && !window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variantstylesheet-" + variant)) ){
+          variant = window.relearn.themevariants[0];
+          window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script>
+    <link href="/css/custom.css?1768146506" rel="stylesheet">
+  </head>
+  <body class="mobile-support html" data-url="/bloc-1/semaine-2/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar" class="default-animation">
+        <div class="topbar-wrapper default-animation">
+          <div class="topbar-sidebar-divider default-animation"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar default-animation" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
+            </div>
+            <div class="topbar-button topbar-button-toc default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#objectif-de-la-semaine">Objectif de la semaine</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#windows-vs-linux">Windows vs Linux</a></li>
+    <li><a href="#les-incontournables-du-système-de-fichiers">Les incontournables du système de fichiers</a></li>
+    <li><a href="#chemins-absolus-vs-relatifs">Chemins absolus vs relatifs</a></li>
+    <li><a href="#lanatomie-dun-prompt-typique">L&rsquo;anatomie d&rsquo;un prompt typique</a></li>
+    <li><a href="#la-syntaxe-dune-commande">La syntaxe d&rsquo;une commande</a>
+      <ul>
+        <li><a href="#-exercice-1-en-classe">🟢 Exercice 1 (en classe)</a></li>
+      </ul>
+    </li>
+    <li><a href="#aide-intégrée">Aide intégrée</a>
+      <ul>
+        <li><a href="#-exercice-2-en-classe">🟢 Exercice 2 (en classe)</a></li>
+      </ul>
+    </li>
+    <li><a href="#-astuces-de-la-semaine">💡 Astuces de la semaine</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#objectif">Objectif</a>
+      <ul>
+        <li><a href="#exercice-1--trouver-la-bonne-commande">Exercice #1 : Trouver la bonne commande</a></li>
+        <li><a href="#exercice-2--lire-un-manuel">Exercice #2 : Lire un manuel</a></li>
+        <li><a href="#exercice-3--exploration-et-manipulation">Exercice #3 : Exploration et manipulation</a></li>
+      </ul>
+    </li>
+    <li><a href="#corrigé-du-laboratoire">Corrigé du laboratoire</a></li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/index.html"><span itemprop="name">Accueil du cours</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/bloc-1/index.html"><span itemprop="name">Fondations &amp; installation</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Arborescence et navigation</span><meta itemprop="position" content="3"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-prev default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/bloc-1/semaine-1/index.html" title="Introduction et installation (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-next default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/bloc-1/semaine-3/index.html" title="Gestion de paquets et édition de texte (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-more default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable bloc-1" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="arborescence-et-navigation">Arborescence et navigation</h1>
+
+<h2 id="objectif-de-la-semaine">Objectif de la semaine<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<ul>
+<li>Connaitre et comprendre la structure des fichiers sous Linux</li>
+<li>Se déplacer dans le système et manipuler des fichiers sans souris.</li>
+</ul>
+
+<details open class="box cstyle notices warning">
+  <summary class="box-label" tabindex="-1">
+    <i class="fa-fw fas fa-exclamation-triangle"></i> 
+    Warning
+  </summary>
+</details>
+<blockquote>
+<p>C&rsquo;est le cours le plus important pour arriver à s&rsquo;orienter dans l&rsquo;architecture de Linux.</p>
+</blockquote>
+<p><strong>Fichier pour les exercices (en classe)</strong></p>
+<p>Utiliser le fichier <strong>exo-semaine2.docx</strong> pour y mettre vos réponses et captures d&rsquo;écran.<br>
+<span class="btn cstyle button transparent interactive"><a href="/docs/Exercices/exo-semaine2.docx"><i class="fa-fw fas fa-download"></i> <span class="title">Télécharger le fichier docx</span></a></span></p>
+<hr>
+<h1 id="théorie">Théorie<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h1>
+<h2 id="windows-vs-linux">Windows vs Linux<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Sous Windows, vous avez des lecteurs physiques : <code>C:\</code> (Disque système), <code>D:\</code> (USB), <code>Z:\</code> (Réseau).
+Sous Linux, <strong>tout est un fichier</strong> et tout commence au même endroit .</p>
+<p><a href="#R-image-51b5a969a708bed18f4ca061d563d693" class="lightbox-link"><img alt="Arborescence" class="lazy lightbox figure-image" loading="lazy" src="../arborescence.png?width=50vw" style="height: auto;width: 50vw;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-51b5a969a708bed18f4ca061d563d693"><img alt="Arborescence" class="lazy lightbox lightbox-image" loading="lazy" src="../arborescence.png?width=50vw"></a></p>
+<ul>
+<li><strong>La Racine (<code>/</code>) :</strong> C&rsquo;est le point de départ unique. Il n&rsquo;y a pas de &ldquo;C:&rdquo;. Tout ce qui est branché à l&rsquo;ordinateur (disque dur, clé USB, DVD) apparaît comme un dossier quelque part sous la racine.</li>
+<li><strong>La distinction majuscule/minuscule (Case Sensitivity) :</strong></li>
+<li>Windows : <code>Dossier</code> = <code>dossier</code>.</li>
+<li>Linux : <code>Dossier</code>, <code>dossier</code> et <code>DOSSIER</code> sont trois dossiers différents.</li>
+</ul>
+<h2 id="les-incontournables-du-système-de-fichiers">Les incontournables du système de fichiers<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Pas besoin de tout connaître, mais vous devez reconnaître ceux-ci :</p>
+<ul>
+<li><code>/</code> (Slash) : La Racine (The Root). Le début de tout.</li>
+<li><code>/home</code> : Vos documents. C&rsquo;est l&rsquo;équivalent de <code>C:\Users</code>. C&rsquo;est le <em>seul</em> endroit où vous avez le droit d&rsquo;écrire par défaut.</li>
+<li><code>/root</code> : Le dossier personnel de l&rsquo;administrateur suprême. (Ne pas confondre avec <code>/</code>).</li>
+<li><code>/etc</code> : <strong>Etc</strong>etera. Contient les fichiers de configuration système.</li>
+<li><code>/bin</code> &amp; <code>/usr/bin</code> : <strong>Bin</strong>aries. Contient les programmes (les commandes comme <code>ls</code>, <code>cp</code>).</li>
+<li><code>/var</code> : <strong>Var</strong>iable. Ce qui change souvent (Logs, site web, bases de données).</li>
+</ul>
+<h2 id="chemins-absolus-vs-relatifs">Chemins absolus vs relatifs<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+
+<details open class="box cstyle notices warning">
+  <summary class="box-label" tabindex="-1">
+    <i class="fa-fw fas fa-exclamation-triangle"></i> 
+    Warning
+  </summary>
+</details>
+<blockquote>
+<p>C&rsquo;est la cause #1 des erreurs au début <strong>ET AUSSI</strong> aussi dans les cours de programmation.</p>
+</blockquote>
+<ul>
+<li>
+<p><strong>Chemin absolu (L&rsquo;adresse postale complète) :</strong></p>
+<ul>
+<li>Commence <strong>toujours</strong> par <code>/</code>.</li>
+<li>Fonctionne peu importe où vous êtes.</li>
+<li><em>Ex:</em> <code>/home/etudiant/Documents/devoir.txt</code></li>
+</ul>
+</li>
+<li>
+<p><strong>Chemin relatif (Les indications locales) :</strong></p>
+<ul>
+<li>Ne commence <strong>jamais</strong> par <code>/</code>.</li>
+<li>Dépend de votre position actuelle.</li>
+<li><em>Ex:</em> Si je suis déjà dans <code>/home/etudiant</code>, je tape juste <code>Documents/devoir.txt</code>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Les raccourcis magiques :</strong></p>
+<ul>
+<li><code>.</code> (Un point) = Ici (Dossier courant).</li>
+<li><code>..</code> (Deux points) = Le dossier parent (Remonter d&rsquo;un cran).</li>
+<li><code>~</code> (Tilde) = Ma maison (<code>/home/etudiant</code>).</li>
+</ul>
+</li>
+</ul>
+<h2 id="lanatomie-dun-prompt-typique">L&rsquo;anatomie d&rsquo;un prompt typique<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p><code>etudiant@linux-mint:~/Documents$</code></p>
+<ol>
+<li><code>etudiant</code> : <strong>QUI</strong> je suis ? (Mon identité).</li>
+<li><code>@linux-mint</code> : <strong>OÙ</strong> je suis ? (Sur quelle machine ? Important quand on fera du SSH).</li>
+<li><code>~/Documents</code> : <strong>DANS QUEL DOSSIER</strong> je suis ? (Mon emplacement).</li>
+<li><code>$</code> : <strong>QUEL POUVOIR</strong> j&rsquo;ai ?
+<ul>
+<li><code>$</code> = Utilisateur normal (Pistolet à eau).</li>
+<li><code>#</code> = Root / Superutilisateur (Bazooka). <span style="color:red;"><b>Si vous voyez ça, faites gaffe</b></span>.</li>
+</ul>
+</li>
+</ol>
+<h2 id="la-syntaxe-dune-commande">La syntaxe d&rsquo;une commande<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Une commande suit presque toujours cette logique :</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0"><code>COMMANDE + OPTIONS + CIBLE</code></pre></div>
+<p>Exemple : <code>ls -l /etc</code></p>
+<ul>
+<li><strong>Quoi faire ?</strong> <code>ls</code> (Lister).</li>
+<li><strong>Comment ?</strong> <code>-l</code> (Format long/détails).</li>
+<li><strong>Où ?</strong> <code>/etc</code> (Dans le dossier de config).</li>
+</ul>
+<h3 id="-exercice-1-en-classe">🟢 Exercice 1 (en classe)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><em>À réaliser individuellement. Vous devez trouver les réponses en explorant.</em></p>
+<ol>
+<li>Allez dans le dossier <code>/etc</code>. Combien y a-t-il de fichiers (approximativement) ? (<code>ls</code> est votre ami).</li>
+<li>Trouvez le fichier nommé <code>passwd</code> dans <code>/etc</code>. Copiez-le dans votre dossier personnel (<code>~</code>).</li>
+<li>Renommez votre copie <code>utilisateurs_backup.txt</code>.</li>
+<li>Créez un dossier <code>Confidentiel</code> dans votre home.</li>
+<li>Déplacez <code>utilisateurs_backup.txt</code> à l&rsquo;intérieur de <code>Confidentiel</code>.</li>
+<li>Revenez à votre point de départ (<code>~</code>) et supprimez le dossier <code>Confidentiel</code> et son contenu en une seule commande.</li>
+</ol>
+<h2 id="aide-intégrée">Aide intégrée<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p><strong>Commandes</strong> : <code>man</code>, <code>apropos</code>, <code>history</code></p>
+<table>
+  <thead>
+      <tr>
+          <th>Besoin</th>
+          <th>Commande</th>
+          <th>Explication</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Lire la documentation</td>
+          <td><code>man commande</code></td>
+          <td>Manuel officiel</td>
+      </tr>
+      <tr>
+          <td>Quitter</td>
+          <td><code>q</code></td>
+          <td>Très important</td>
+      </tr>
+      <tr>
+          <td>Chercher une commande</td>
+          <td><code>apropos mot</code></td>
+          <td>Recherche par mot-clé</td>
+      </tr>
+      <tr>
+          <td>Voir l’historique</td>
+          <td><code>history</code></td>
+          <td>Toutes les commandes récentes</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Commande <code>man</code></strong></p>
+<ul>
+<li>La commande <code>man</code> affiche les pages de manuel des commandes.</li>
+<li>On l&rsquo;utilise pour comprendre comment une commande fonctionne grâce à son <strong>manuel</strong>.</li>
+</ul>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>man ls
+</span></span><span style="display:flex;"><span>man cp
+</span></span><span style="display:flex;"><span>man chmod</span></span></code></pre></div>
+<p>Les sections importantes :</p>
+<table>
+  <thead>
+      <tr>
+          <th>Section</th>
+          <th>Ce qu’elle contient</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>NAME</strong></td>
+          <td>Nom + courte description</td>
+      </tr>
+      <tr>
+          <td><strong>SYNOPSIS</strong></td>
+          <td>Format général de la commande (arguments, options)</td>
+      </tr>
+      <tr>
+          <td><strong>DESCRIPTION</strong></td>
+          <td>Détails sur le fonctionnement</td>
+      </tr>
+      <tr>
+          <td><strong>OPTIONS</strong></td>
+          <td>Toutes les options disponibles</td>
+      </tr>
+      <tr>
+          <td><strong>EXAMPLES</strong></td>
+          <td>Exemples (si la page en contient)</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Commande <code>apropos</code></strong></p>
+<ul>
+<li>On l&rsquo;utilise quand on <strong>ne connaît pas</strong> la commande mais qu’on connaît l’action souhaitée.</li>
+<li>Elle permet de trouver la bonne commande quand on <strong>ne la connaît pas</strong>.</li>
+<li>Elle renvoie une liste de commandes dont la description contient le mot recherché.</li>
+</ul>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>apropos directory
+</span></span><span style="display:flex;"><span>apropos remove
+</span></span><span style="display:flex;"><span>apropos copy</span></span></code></pre></div>
+<h3 id="-exercice-2-en-classe">🟢 Exercice 2 (en classe)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ol>
+<li>Quelle est la différence entre <code>man</code> et <code>apropos</code> ?</li>
+<li>Que représente la section <strong>SYNOPSIS</strong> dans une page <code>man</code> ?</li>
+<li>Comment chercher une chaîne de texte <strong>à l’intérieur d’un manuel</strong> ?
+<em>(indice : <code>/texte</code>)</em></li>
+<li>Quelle touche du clavier permet de <strong>quitter</strong> le manuel ?</li>
+<li>Quel symbole indique qu’un argument est <strong>optionnel</strong> dans le SYNOPSIS ?
+<em>(réponse : <code>[ ]</code>)</em></li>
+</ol>
+<h2 id="-astuces-de-la-semaine">💡 Astuces de la semaine<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<blockquote>
+<p><strong>L&rsquo;autocomplétion (Tab)</strong>
+Ne tapez jamais les noms de fichiers en entier !
+Tapez les 3 premières lettres (ex: <code>cd Doc</code>) et appuyez sur la touche <strong>TAB</strong>.
+Linux finira le mot pour vous (<code>cd Documents/</code>).
+<em>Si ça ne marche pas, appuyez 2 fois sur TAB : Linux vous montrera les choix possibles.</em></p>
+</blockquote>
+<blockquote>
+<p><strong>Historique (Flèches)</strong>
+Vous avez fait une faute de frappe dans une longue commande ?
+Appuyez sur la <strong>Flèche du Haut</strong> pour rappeler la dernière commande et corrigez-la.</p>
+</blockquote>
+<hr>
+<h1 id="laboratoire">LABORATOIRE<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h1>
+<h2 id="objectif">Objectif<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<ul>
+<li>Développer la &ldquo;mémoire musculaire&rdquo; des commandes de base.</li>
+</ul>
+<p>Utiliser le fichier <strong>labo2.docx</strong> pour y mettre vos réponses et captures d&rsquo;écran.<br>
+<span class="btn cstyle button transparent interactive"><a href="/docs/Labos/labo2.docx"><i class="fa-fw fas fa-download"></i> <span class="title">Télécharger le fichier docx</span></a></span></p>
+<h3 id="exercice-1--trouver-la-bonne-commande">Exercice #1 : Trouver la bonne commande<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>À l’aide de <strong><code>apropos</code></strong>, trouve une commande qui permet :</p>
+<ol>
+<li>D’afficher l’heure.</li>
+<li>De changer les permissions.</li>
+<li>D’arrêter le système.</li>
+<li>De rechercher du texte dans un fichier.</li>
+<li>De compter les lignes d’un fichier.</li>
+</ol>
+<blockquote>
+<p><strong>Écris la commande trouvée + sa courte description.</strong></p>
+</blockquote>
+<h3 id="exercice-2--lire-un-manuel">Exercice #2 : Lire un manuel<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Avec <strong><code>man</code></strong>, trouve dans la commande :</p>
+<ol>
+<li>
+<p>Dans <code>man ls</code> :</p>
+<ul>
+<li>Quelle option permet <strong>d’afficher les fichiers cachés</strong> ?</li>
+<li>Quelle option donne un <strong>listing détaillé</strong> ?</li>
+</ul>
+</li>
+<li>
+<p>Dans <code>man cp</code> :</p>
+<ul>
+<li>Quelle est la syntaxe (ligne complète du SYNOPSIS) ?</li>
+<li>Quelle option permet de demander une <strong>confirmation avant d’écraser</strong> un fichier ?</li>
+</ul>
+</li>
+<li>
+<p>Dans <code>man rm</code> :</p>
+<ul>
+<li>Quelle option permet une suppression <strong>interactive</strong> ?</li>
+<li>Quelle option force la suppression sans confirmation ?</li>
+</ul>
+</li>
+<li>
+<p>Dans <code>man mkdir</code> :</p>
+<ul>
+<li>Le SYNOPSIS indique <code>mkdir [OPTION]... DIRECTORY...</code>.
+* Que signifie <code>...</code> ?
+* Peut-on créer plusieurs répertoires à la fois ?</li>
+<li>Trouve comment créer un répertoire <strong>avec ses sous-répertoires automatiquement</strong> (option recursive).</li>
+</ul>
+</li>
+</ol>
+<p>Avec <strong>uniquement</strong> <strong><code>apropos</code></strong>, trouve dans la commande qui permet de trouver :</p>
+<ul>
+<li>L’espace disque libre.</li>
+<li>L’utilisation du CPU.</li>
+<li>L&rsquo;informations sur les partitions.</li>
+</ul>
+<blockquote>
+<p>Puis utilise <code>man</code> pour trouver <strong>une option utile</strong> pour chacune des commandes trouvées.</p>
+</blockquote>
+<h3 id="exercice-3--exploration-et-manipulation">Exercice #3 : Exploration et manipulation<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<h4 id="étape-0--ouvrir-le-terminal-10-min">Étape 0 : Ouvrir le Terminal (10 min)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<ul>
+<li>Raccourci clavier (souvent <code>Ctrl+Alt+T</code>) ou via le menu.</li>
+<li>Analyser le prompt : <code>etudiant@station-linux:~$</code></li>
+<li>Qui ? <code>etudiant</code></li>
+<li>Où ? <code>~</code> (Dans mon home).</li>
+</ul>
+<h4 id="étape-1--exploration-30-min">Étape 1 : Exploration (30 min)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p><strong>Commandes</strong> : <code>pwd</code>, <code>ls</code>, <code>cd</code></p>
+<ol>
+<li><strong>Où suis-je ?</strong> Tapez <code>pwd</code> (Print Working Directory). Confirmez que vous êtes dans <code>/home/etudiant</code>.</li>
+<li><strong>Qu&rsquo;est-ce qu&rsquo;il y a ici ?</strong> Tapez <code>ls</code>.</li>
+<li><strong>Voir l&rsquo;invisible :</strong> Tapez <code>ls -a</code>. Remarquez les fichiers commençant par un point (ex: <code>.bashrc</code>). Ce sont les fichiers cachés.</li>
+<li><strong>Aller ailleurs :</strong>
+<ul>
+<li>Allez à la racine : <code>cd /</code></li>
+<li>Vérifiez avec <code>pwd</code>.</li>
+<li>Listez le contenu : <code>ls</code>. Voyez-vous les dossiers <code>bin</code>, <code>etc</code>, <code>home</code> ?</li>
+</ul>
+</li>
+<li><strong>Le ping-pong :</strong>
+<ul>
+<li>Revenez chez vous avec le raccourci rapide : <code>cd</code> (sans argument) ou <code>cd ~</code>.</li>
+<li>Remontez d&rsquo;un niveau : <code>cd ..</code> (Vous êtes maintenant dans <code>/home</code>).</li>
+</ul>
+</li>
+</ol>
+<h4 id="étape-2--manipulation-45-min">Étape 2 : Manipulation (45 min)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p><strong>Commandes</strong> : <code>mkdir</code>, <code>touch</code>, <code>cp</code>, <code>mv</code>, <code>rm*</code></p>
+<ol>
+<li>
+<p><strong>Créer une structure :</strong></p>
+<ul>
+<li>Créez un dossier <code>Labo2</code> : <code>mkdir Labo2</code></li>
+<li>Entrez dedans : <code>cd Labo2</code></li>
+<li>Créez une structure complexe en une ligne : <code>mkdir -p Projet/Images/Icones</code></li>
+</ul>
+</li>
+<li>
+<p><strong>Créer des fichiers :</strong></p>
+<ul>
+<li>Créez un fichier vide : <code>touch mon_fichier.txt</code></li>
+</ul>
+</li>
+<li>
+<p><strong>Copier (<code>cp</code>) :</strong></p>
+<ul>
+<li>Copiez le fichier dans le dossier Projet : <code>cp mon_fichier.txt Projet/</code></li>
+<li>Vérifiez : <code>ls Projet/</code></li>
+</ul>
+</li>
+<li>
+<p><strong>Déplacer et Renommer (<code>mv</code>) :</strong></p>
+<ul>
+<li><em>Note : Linux n&rsquo;a pas de commande &ldquo;renommer&rdquo;. On &ldquo;déplace&rdquo; un fichier vers un nouveau nom.</em></li>
+<li>Renommez le fichier original : <code>mv mon_fichier.txt fichier_final.txt</code></li>
+<li>Déplacez-le dans Images : <code>mv fichier_final.txt Projet/Images/</code></li>
+</ul>
+</li>
+<li>
+<p><strong>Supprimer (<code>rm</code>) - ATTENTION :</strong></p>
+<ul>
+<li>Essayez de supprimer le dossier Projet : <code>rm Projet</code> -&gt; <em>Erreur ! C&rsquo;est un dossier.</em></li>
+<li>Supprimez le dossier et tout son contenu : <code>rm -r Projet</code> (Recursive).</li>
+<li><em>Rappel : Il n&rsquo;y a pas de corbeille en ligne de commande. C&rsquo;est définitif.</em></li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="corrigé-du-laboratoire">Corrigé du laboratoire<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<blockquote>
+<p>À venir (samedi ou dimanche)</p>
+</blockquote>
+<!--
+
+=======================================================
+## Exercice 1
+
+1. `date` — print or set the system date and time
+2. `chmod` — change file mode bits
+3. `shutdown` — bring the system down
+4. `grep` — print lines matching a pattern
+5. `wc` — print newline, word, and byte counts
+
+---
+
+## Exercice 2
+
+**1 — ls**
+
+* Fichiers cachés : `-a`
+* Listing détaillé : `-l`
+
+**2 — cp**
+
+* SYNOPSIS : `cp [OPTION]... SOURCE... DIRECTORY`
+* Confirmation : `-i`
+
+**3 — rm**
+
+* Suppression interactive : `-i`
+* Suppression forcée : `-f`
+
+---
+
+## Exercice 3
+
+* Répertoire courant : `pwd`
+* Créer un répertoire : `mkdir`
+* Compresser un fichier : `gzip` / `zip`
+* Décompresser `.gz` : `gunzip`
+* Comparer deux fichiers texte : `diff`
+
+---
+
+## Exercice 4
+
+1. `...` signifie **répétable plusieurs fois** → oui, on peut créer plusieurs dossiers.
+2. Option recursive : `mkdir -p a/b/c`
+
+
+### Exercice 2 : L'architecte (Création)
+
+* **Concept clé :** L'option `-p` (Parents).
+* Demandez-leur de créer `mkdir projet/site/images`.
+    * *Erreur attendue :* "No such file or directory". (Car `projet` n'existe pas encore).
+    * *Solution :* `mkdir -p projet/site/images`. Le `-p` force la création de tous les dossiers intermédiaires. C'est magique.
+* Vérifiez votre travail avec la commande `tree` (s'ils l'ont) ou `ls -R`.
+
+
+### Exercice 3 : Le piège du "Dossier Parent"
+
+* Allez dans `/var/log`.
+* Essayez de remonter dans `/var`.
+    * Commande : `cd ..`
+* Essayez de remonter à la racine `/`.
+    * Commande : `cd ..`
+* Essayez de remonter plus haut que la racine.
+    * Commande : `cd ..`
+    * *Observation :* On reste à la racine. On ne peut pas monter plus haut que le toit.
+---
+
+
+### Exercice 1 : La chasse au trésor (Navigation)
+
+* Ouvrez le terminal.
+* **Défi 1 :** Qui êtes-vous ? Où êtes-vous ? (Utilisez `pwd`).
+* **Défi 2 :** Allez voir ce qu'il y a dans le dossier de configuration système.
+    * `cd /etc`
+    * `ls` (Regardez la quantité de fichiers ! C'est impressionnant).
+* **Défi 3 :** Essayez de rentrer dans le dossier du chef.
+    * `cd /root` -> **BOOM** : "Permission denied". (C'est normal, expliquez pourquoi).
+* **Défi 4 :** Rentrez à la maison en 2 touches maximum.
+    * Solution : `cd` (tout seul) ou `cd ~`.
+
+
+
+### Le "Boss Fight" (Défi de fin de cours)
+
+Écrivez ceci au tableau. Le premier qui réussit peut partir 5 minutes avant.
+1.  Allez dans votre dossier `Documents`.
+2.  Créez un dossier `Secret`.
+3.  Entrez dedans.
+4.  Affichez le chemin complet (GPS) pour prouver que vous y êtes.
+5.  Revenez à la racine `/` en une seule commande.
+
+-->
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+
+<a id="logo" href="https://example.org/">
+  <img src="/images/logo.png" alt="Logo du site" style="height: 100px; width: auto;">
+</a>
+
+
+        <search><form action="/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks default-animation">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-url="/index.html"><a class="padding" href="/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols default-animation">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-main default-animation">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-url="/remises/index.html"><a class="padding" href="/remises/index.html">Protocole de remise des exos et labos<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/regles/index.html"><a class="padding" href="/regles/index.html">Règles de survie au cours<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="parent " data-nav-url="/bloc-1/index.html"><input type="checkbox" id="R-section-0b942f9b9b2d065455b2a863f4d7995c" aria-controls="R-subsections-0b942f9b9b2d065455b2a863f4d7995c" checked><label for="R-section-0b942f9b9b2d065455b2a863f4d7995c"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Fondations &amp; installation</span></label><a class="padding default-animation" href="/bloc-1/index.html">BLOC 1 : Fondations &amp; installation<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-0b942f9b9b2d065455b2a863f4d7995c" class="collapsible-menu">
+            <li class="" data-nav-url="/bloc-1/semaine-1/index.html"><a class="padding" href="/bloc-1/semaine-1/index.html">Semaine 1 : Introduction et installation<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="active " data-nav-url="/bloc-1/semaine-2/index.html"><a class="padding" href="/bloc-1/semaine-2/index.html">Semaine 2 : Arborescence et navigation<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-1/semaine-3/index.html"><a class="padding" href="/bloc-1/semaine-3/index.html">Semaine 3 : Gestion de paquets et édition de texte<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-1/semaine-4/index.html"><a class="padding" href="/bloc-1/semaine-4/index.html">Semaine 4 : L&#39;expansion d&#39;accolades et Examen 1<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
+            <li class="" data-nav-url="/bloc-2/index.html"><input type="checkbox" id="R-section-bc3591f00126f0242dfd3ada90ba9fa8" aria-controls="R-subsections-bc3591f00126f0242dfd3ada90ba9fa8"><label for="R-section-bc3591f00126f0242dfd3ada90ba9fa8"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Administration système &amp; sécurité</span></label><a class="padding default-animation" href="/bloc-2/index.html">BLOC 2 : Administration système &amp; sécurité<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-bc3591f00126f0242dfd3ada90ba9fa8" class="collapsible-menu">
+            <li class="" data-nav-url="/bloc-2/semaine-5/index.html"><a class="padding" href="/bloc-2/semaine-5/index.html">Semaine 5 : Gestion des Utilisateurs<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-2/semaine-6/index.html"><a class="padding" href="/bloc-2/semaine-6/index.html">Semaine 6 : Permissions &amp; droits d&#39;accès<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-2/semaine-7/index.html"><a class="padding" href="/bloc-2/semaine-7/index.html">Semaine 7 : Gestion des processus<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-2/semaine-8/index.html"><a class="padding" href="/bloc-2/semaine-8/index.html">Semaine 8 : Révision? &amp; Examen #2<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
+            <li class="" data-nav-url="/bloc-3/index.html"><input type="checkbox" id="R-section-d0f965f65b76b5a918fb9cc7fc20ea39" aria-controls="R-subsections-d0f965f65b76b5a918fb9cc7fc20ea39"><label for="R-section-d0f965f65b76b5a918fb9cc7fc20ea39"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Redirections &amp; filtres, disques et réseau</span></label><a class="padding default-animation" href="/bloc-3/index.html">BLOC 3 : Redirections &amp; filtres, disques et réseau<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-d0f965f65b76b5a918fb9cc7fc20ea39" class="collapsible-menu">
+            <li class="" data-nav-url="/bloc-3/semaine-9/index.html"><a class="padding" href="/bloc-3/semaine-9/index.html">Semaine 9 : Redirections, Pipes et filtres<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-3/semaine-10/index.html"><a class="padding" href="/bloc-3/semaine-10/index.html">Semaine 10 : Gestion de disques<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-3/semaine-11/index.html"><a class="padding" href="/bloc-3/semaine-11/index.html">Semaine 11 : Réseau et services &amp; Examen #3<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
+            <li class="" data-nav-url="/bloc-4/index.html"><input type="checkbox" id="R-section-c1ebb4b1b8b7a51069075ff54026c0de" aria-controls="R-subsections-c1ebb4b1b8b7a51069075ff54026c0de"><label for="R-section-c1ebb4b1b8b7a51069075ff54026c0de"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Automatisation &amp; scripting</span></label><a class="padding default-animation" href="/bloc-4/index.html">BLOC 4 : Automatisation &amp; scripting<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-c1ebb4b1b8b7a51069075ff54026c0de" class="collapsible-menu">
+            <li class="" data-nav-url="/bloc-4/semaine-12/index.html"><a class="padding" href="/bloc-4/semaine-12/index.html">Semaine 12 : Introduction au Scripting Bash<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-4/semaine-13/index.html"><a class="padding" href="/bloc-4/semaine-13/index.html">Semaine 13 : Logique conditionnelle &amp; tests sur fichiers<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-4/semaine-14/index.html"><a class="padding" href="/bloc-4/semaine-14/index.html">Semaine 14 : Boucles &amp; planification (Cron)<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-4/semaine-15/index.html"><a class="padding" href="/bloc-4/semaine-15/index.html">Semaine 15 : Révision &amp; Examen Final<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts default-animation">
+          <ul class="space collapsible-menu">
+          </ul>
+        </div>
+        <div id="R-footer-margin" class="default-animation"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols default-animation">
+          <ul class="">
+            <li class="R-historyclearer">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-history"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <button>Clear History</button>
+                </div>
+                <div class="clear"></div>
+              </div>
+            </li>
+          </ul>
+        </div>
+<div id="R-footer" class="default-animation"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
+      </div>
+    </aside>
+    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1768146506" defer></script>
+    <script src="/js/theme.min.js?1768146506" defer></script>
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+  </body>
+</html>

@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="fr-ca" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.152.2">
+    <meta name="generator" content="Relearn 8.3.0+187e41ae8f27979cda87bfe489e34e07e5b6cbcd">
+    <meta name="description" content="Objectif de la semaine Avoir une machine Linux fonctionnelle et comprendre pourquoi on l’utilise. Théorie Qu’est-ce que Linux ? Ce n’est pas juste “un autre Windows”. C’est l’OS qui fait tourner Internet, le Cloud, Android et les supercalculateurs. Votre routeur Wi-Fi, c’est Linux. Si vous voulez travailler en TI, vous ne pouvez pas éviter ce pingouin.">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Introduction et installation :: ZG4-Linux">
+    <meta name="twitter:description" content="Objectif de la semaine Avoir une machine Linux fonctionnelle et comprendre pourquoi on l’utilise. Théorie Qu’est-ce que Linux ? Ce n’est pas juste “un autre Windows”. C’est l’OS qui fait tourner Internet, le Cloud, Android et les supercalculateurs. Votre routeur Wi-Fi, c’est Linux. Si vous voulez travailler en TI, vous ne pouvez pas éviter ce pingouin.">
+    <meta property="og:url" content="https://example.org/bloc-1/semaine-1/index.html">
+    <meta property="og:site_name" content="ZG4-Linux">
+    <meta property="og:title" content="Introduction et installation :: ZG4-Linux">
+    <meta property="og:description" content="Objectif de la semaine Avoir une machine Linux fonctionnelle et comprendre pourquoi on l’utilise. Théorie Qu’est-ce que Linux ? Ce n’est pas juste “un autre Windows”. C’est l’OS qui fait tourner Internet, le Cloud, Android et les supercalculateurs. Votre routeur Wi-Fi, c’est Linux. Si vous voulez travailler en TI, vous ne pouvez pas éviter ce pingouin.">
+    <meta property="og:locale" content="fr_ca">
+    <meta property="og:type" content="article">
+    <meta property="article:section" content="Fondations & installation">
+    <meta itemprop="name" content="Introduction et installation :: ZG4-Linux">
+    <meta itemprop="description" content="Objectif de la semaine Avoir une machine Linux fonctionnelle et comprendre pourquoi on l’utilise. Théorie Qu’est-ce que Linux ? Ce n’est pas juste “un autre Windows”. C’est l’OS qui fait tourner Internet, le Cloud, Android et les supercalculateurs. Votre routeur Wi-Fi, c’est Linux. Si vous voulez travailler en TI, vous ne pouvez pas éviter ce pingouin.">
+    <meta itemprop="wordCount" content="1248">
+    <title>Introduction et installation :: ZG4-Linux</title>
+    <link href="/images/logo.png?1768146506" rel="icon" type="image/png">
+    <link href="/css/auto-complete/auto-complete.min.css?1768146506" rel="stylesheet">
+    <script src="/js/auto-complete/auto-complete.min.js?1768146506" defer></script>
+    <script src="/js/search-lunr.min.js?1768146506" defer></script>
+    <script src="/js/search.min.js?1768146506" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="/searchindex.en.js?1768146506";
+    </script>
+    <script src="/js/lunr/lunr.min.js?1768146506" defer></script>
+    <script src="/js/lunr/lunr.stemmer.support.min.js?1768146506" defer></script>
+    <script src="/js/lunr/lunr.multi.min.js?1768146506" defer></script>
+    <script src="/js/lunr/lunr.fr.min.js?1768146506" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['fr'];
+    </script>
+    <link href="/fonts/fontawesome/css/fontawesome-all.min.css?1768146506" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/fontawesome-all.min.css?1768146506" rel="stylesheet"></noscript>
+    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1768146506" rel="stylesheet">
+    <link href="/css/theme.min.css?1768146506" rel="stylesheet">
+    <link href="/css/format-html.min.css?1768146506" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = `.min`;
+      window.relearn.path='\/bloc-1\/semaine-1\/index.html';
+      window.relearn.relBasePath='..\/..';
+      window.relearn.relBaseUri='..\/..';
+      window.relearn.absBaseUri='https:\/\/example.org';
+      window.relearn.disableInlineCopyToClipboard=false;
+      window.relearn.enableBlockCodeWrap=true;
+      // legal
+      window.relearn.getItem = (s,n) => {return s.getItem(n)};
+      window.relearn.setItem = (s,n,v) => {return s.setItem(n,v)};
+      window.relearn.removeItem = (s,n) => {return s.removeItem(n)};
+      // translations
+      window.T_Copy_to_clipboard = `Copy text to clipboard`;
+      window.T_Copied_to_clipboard = `Text copied to clipboard!`;
+      window.T_Link_copied_to_clipboard = `Link copied to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+      window.T_Browser_unsupported_feature = `This browser doesn't support this feature`;
+      // variant stuff
+      window.relearn.themevariants = [ 'auto' ];
+      window.relearn.customvariantprefix = "my-custom-";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant") ?? "";
+        if( !variant ||
+            (!variant.startsWith(window.relearn.customvariantprefix) && !window.relearn.themevariants.includes(variant)) ||
+            (variant.startsWith(window.relearn.customvariantprefix) && !window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variantstylesheet-" + variant)) ){
+          variant = window.relearn.themevariants[0];
+          window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script>
+    <link href="/css/custom.css?1768146506" rel="stylesheet">
+  </head>
+  <body class="mobile-support html" data-url="/bloc-1/semaine-1/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar" class="default-animation">
+        <div class="topbar-wrapper default-animation">
+          <div class="topbar-sidebar-divider default-animation"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar default-animation" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
+            </div>
+            <div class="topbar-button topbar-button-toc default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#objectif-de-la-semaine">Objectif de la semaine</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#quest-ce-que-linux-">Qu&rsquo;est-ce que Linux ?</a></li>
+    <li><a href="#architecture--le-moteur-et-la-carrosserie">Architecture : Le moteur et la carrosserie</a></li>
+    <li><a href="#la-virtualisation-cours-420-ze5-mo">La virtualisation (cours 420-ZE5-MO)</a></li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#exercice-1">Exercice 1</a></li>
+        <li><a href="#préparation-au-laboratoire-30-min">Préparation au laboratoire (30 min)</a></li>
+        <li><a href="#-astuces-de-la-semaine">💡 Astuces de la semaine</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#objectif">Objectif</a></li>
+        <li><a href="#étape-1--installer-linux-mint-sur-votre-ssd-30-min">Étape 1 : Installer Linux Mint sur votre SSD (30 min)</a></li>
+        <li><a href="#étape-2--construction-de-la-machine-30-min">Étape 2 : Construction de la machine (30 min)</a></li>
+        <li><a href="#étape-3--installation-de-los-45-min">Étape 3 : Installation de l&rsquo;OS (45 min)</a></li>
+        <li><a href="#étape-4--post-installation--guest-additions-15-min">Étape 4 : Post-installation &amp; &ldquo;Guest Additions&rdquo; (15 min)</a></li>
+        <li><a href="#checklist-de-fin-de-cours-pour-pouvoir-partir">Checklist de fin de cours (Pour pouvoir partir)</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/index.html"><span itemprop="name">Accueil du cours</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/bloc-1/index.html"><span itemprop="name">Fondations &amp; installation</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Introduction et installation</span><meta itemprop="position" content="3"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-prev default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/bloc-1/index.html" title="Fondations & installation (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-next default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/bloc-1/semaine-2/index.html" title="Arborescence et navigation (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-more default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable bloc-1" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="introduction-et-installation">Introduction et installation</h1>
+
+<h3 id="objectif-de-la-semaine">Objectif de la semaine<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ul>
+<li>Avoir une machine Linux fonctionnelle et comprendre pourquoi on l&rsquo;utilise.</li>
+</ul>
+<hr>
+<h1 id="théorie">Théorie<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h1>
+<h2 id="quest-ce-que-linux-">Qu&rsquo;est-ce que Linux ?<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Ce n&rsquo;est pas juste &ldquo;un autre Windows&rdquo;. C&rsquo;est l&rsquo;OS qui fait tourner Internet, le Cloud, Android et les supercalculateurs. Votre routeur Wi-Fi, c&rsquo;est Linux. Si vous voulez travailler en TI, vous ne pouvez pas éviter ce pingouin.</p>
+<blockquote>
+<p>En date de décembre 2025, <strong>&ldquo;96,3 %</strong> du top 1 million des serveurs web tournent sous Linux.</p>
+</blockquote>
+<ul>
+<li><strong>Philosophie Open Source :</strong></li>
+<li><strong>Windows/macOS :</strong> Code fermé (propriétaire). Vous louez le logiciel, vous ne pouvez pas voir comment il est fait.</li>
+<li><strong>Linux :</strong> Code ouvert. C&rsquo;est comme une recette de cuisine publique : tout le monde peut la copier, la modifier et la redistribuer .</li>
+<li><strong>Analogie :</strong> Windows, c&rsquo;est un restaurant (on mange, on paie, on ne va pas en cuisine). Linux, c&rsquo;est un &ldquo;Potluck&rdquo; communautaire (on apporte, on modifie, on partage).</li>
+</ul>
+<h2 id="architecture--le-moteur-et-la-carrosserie">Architecture : Le moteur et la carrosserie<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Il faut distinguer le <strong>Noyau</strong> du <strong>Système d&rsquo;exploitation</strong> .</p>
+<ul>
+<li><strong>Le Kernel (Noyau) :</strong> C&rsquo;est le chef d&rsquo;orchestre. Il parle directement au matériel (CPU, RAM, Disque). C&rsquo;est le &ldquo;moteur&rdquo;.</li>
+<li><strong>Le Shell (Coquille) :</strong> L&rsquo;interface textuelle qui permet à l&rsquo;humain de parler au Noyau. C&rsquo;est le &ldquo;volant&rdquo;.</li>
+<li><strong>La Distribution (Distro) :</strong> C&rsquo;est le package complet (Moteur + Volant + Sièges en cuir + Climatisation).
+<ul>
+<li><strong>Ubuntu</strong> (Grand public),</li>
+<li><strong>RedHat</strong> (Entreprise),</li>
+<li><strong>Kali</strong> (Sécurité),</li>
+<li><strong>Mint</strong> (<span style="color:blue;"><b>Notre choix</b></span>: stable avec une interface proche de Windows pour débuter).</li>
+</ul>
+</li>
+</ul>
+<h2 id="la-virtualisation-cours-420-ze5-mo">La virtualisation (cours 420-ZE5-MO)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Pourquoi on n&rsquo;installe pas Linux directement sur vos portables aujourd&rsquo;hui ? Pour éviter la catastrophe.</p>
+<ul>
+<li><strong>Concept :</strong> Un ordinateur &ldquo;fantôme&rdquo; qui tourne à l&rsquo;intérieur de votre vrai ordinateur .</li>
+<li><strong>Vocabulaire technique :</strong>
+<ul>
+<li><strong>Hôte (Host) :</strong> Votre machine physique (Windows/Mac).</li>
+<li><strong>Invité (Guest) :</strong> La machine virtuelle (Linux Mint).</li>
+<li><strong>Hyperviseur :</strong> Le logiciel qui fait le pont (VirtualBox).</li>
+</ul>
+</li>
+<li><strong>Avantage majeur :</strong> Le &ldquo;Sandbox&rdquo; (Bac à sable). Si vous brisez Linux, vous supprimez juste un fichier. Votre Windows reste intact.</li>
+</ul>
+<hr>
+<h1 id="exercice-en-classe">Exercice (en classe)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h1>
+<h3 id="exercice-1">Exercice 1<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Utiliser le fichier <strong>exo-semaine1.docx</strong> pour y mettre vos réponses et captures d&rsquo;écran.<br>
+<span class="btn cstyle button transparent interactive"><a href="/docs/Exercices/exo-semaine1.docx"><i class="fa-fw fas fa-download"></i> <span class="title">Télécharger le fichier docx</span></a></span></p>
+<ul>
+<li><strong>Audit RAM</strong> : Avant de créer la VM, on doit savoir ce qu&rsquo;on peut se permettre.</li>
+</ul>
+<p><strong>Consignes</strong> :</p>
+<ol>
+<li>Ouvrez votre <strong>Gestionnaire des tâches</strong> (Ctrl+Shift+Esc) ou <strong>Moniteur d&rsquo;activité</strong> (Mac).</li>
+<li>Onglet <strong>Performance</strong> &gt; <strong>Mémoire</strong>.</li>
+<li>Répondez à ces 2 questions sur une feuille/Note :
+<ul>
+<li>Combien de RAM <strong>Totale</strong> avez-vous ? (ex: 16 Go)</li>
+<li>Combien de RAM est <strong>Disponible</strong> maintenant ? (ex: 9 Go)</li>
+</ul>
+</li>
+<li><strong>Décision :</strong>
+<ul>
+<li>Si vous avez &gt; 8 Go de libre : Donnez <strong>4096 Mo (4 Go)</strong> à la VM.</li>
+<li>Si vous avez &lt; 4 Go de libre : Donnez <strong>2048 Mo (2 Go)</strong> à la VM (Minimum vital).</li>
+</ul>
+</li>
+</ol>
+<h3 id="préparation-au-laboratoire-30-min">Préparation au laboratoire (30 min)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<blockquote>
+
+<details open class="box cstyle notices warning">
+  <summary class="box-label" tabindex="-1">
+    <i class="fa-fw fas fa-exclamation-triangle"></i> 
+    Warning
+  </summary>
+</details>
+<ul>
+<li>Vous devez avoir terminé cette étape <strong>avant de quitter</strong>.</li>
+<li>Si ce n&rsquo;est pas fait, vous n&rsquo;aurez pas le temps de terminer le laboratoire (séance #2).</li>
+</ul>
+</blockquote>
+<ol>
+<li>
+<p>Télécharger le fichier ISO de Linux Mint (Édition Cinnamon)</p>
+<ul>
+<li><a href="https://www.linuxmint.com/edition.php?id=322" rel="external"><strong>Lien &gt; Édition Cinnamon</strong></a></li>
+<li>Choisir un <em>Miroir</em> canadien de préférence. Vous obtiendrez le fichier <code>linuxmint-22.2-cinnamon-64bit.iso</code>.</li>
+</ul>
+</li>
+<li>
+<p>Création d&rsquo;une clé bootable Linux Mint <strong>(À FAIRE)</strong></p>
+</li>
+</ol>
+<p>Utiliser le fichier <strong>Creation-cle-bootable.pdf</strong> <span class="btn cstyle button transparent interactive"><a href="/docs/Guides/Creation-cle-bootable.pdf"><i class="fa-fw fas fa-download"></i> <span class="title">Télécharger le fichier pdf</span></a></span></p>
+<ul>
+<li>Créer la clé USB bootable avec Rufus en sélectionnant l&rsquo;ISO de Mint et votre clé USB (attention, toutes les données seront effacées).</li>
+<li>Débrancher tous les autres disques durs internes (Windows inclus) pour ne laisser que le SSD externe branché à l&rsquo;ordinateur.</li>
+</ul>
+<blockquote>
+<p>Cette vidéo vous montre comment créer une clé USB bootable avec Rufus :
+<a href="https://youtu.be/XynoQjL2QWo?si=Yni_7dDvSYCpicjy" rel="external">Vidéo: Installation de Linux Mint 22</a></p>
+</blockquote>
+<!--
+> [!IMPORTANT]
+> Si vous n'êtes pas inscrit.e.s au cours **420-ZE5-MO**: *Environnements virtuels et réseau* et que vous avez déjà installé Linux (*Mint Cinnamon*) et VirtualBox sur votre SSD, avant de quitter, vous devrez montrer le bon fonctionnement de votre système (Linux + VirtualBox)
+
+**AVANT** la séance de laboratoire.
+
+
+### Guide d'installation (format PDF)
+
+Pour installer Linux Mint sur un SSD externe, vous devez créer une **clé USB d'installation bootable**, démarrer votre PC sur cette clé, puis, lors de l'installation, sélectionner le **SSD externe** comme cible, en veillant à bien déconnecter tout autre disque dur (surtout Windows) pour éviter les erreurs, et en faisant attention au choix du disque pour le chargeur d'amorçage (bootloader), souvent en utilisant l'option avancée pour le placer sur le SSD externe. 
+-->
+<p><strong>Installation</strong></p>
+<ol>
+<li><strong>Démarrer sur la clé USB</strong> en utilisant le menu de démarrage (touche F12, F10, DEL, ou ESC au démarrage) et choisir la clé d&rsquo;installation.</li>
+<li><strong>Lancer l&rsquo;installateur</strong> depuis le bureau de Linux Mint.</li>
+<li><strong>Choisir le type d&rsquo;installation</strong> : Pour un contrôle total, optez pour l&rsquo;installation personnalisée (&ldquo;Something Else&rdquo;).</li>
+<li><strong>Partitionner le SSD externe</strong> : Créez au moins une partition racine (/) sur le SSD.</li>
+<li><strong>Installer le chargeur d&rsquo;amorçage (GRUB)</strong> : C&rsquo;est crucial : dans la section &ldquo;Périphérique où installer le programme de démarrage&rdquo;, sélectionnez votre SSD externe (ex: /dev/sda, pas une partition comme /dev/sda1) et non votre disque interne.</li>
+<li><strong>Suivre les étapes</strong> (fuseau horaire, utilisateur, mot de passe).</li>
+</ol>
+<blockquote>
+<p>Voici une démonstration de l&rsquo;installation de Linux Mint sur un disque externe :
+<a href="https://youtu.be/rqQMQAbD3i4?si=rIhM84fi3VA1r2Pw" rel="external">Video: Comment installer facilement Linux Mint</a></p>
+</blockquote>
+<p><strong>Premier démarrage</strong></p>
+<ol>
+<li><strong>Redémarrer le PC</strong> et retirer la clé USB d&rsquo;installation.</li>
+<li><strong>Accéder au menu de démarrage</strong> (F12, etc.) et sélectionner le SSD externe pour démarrer sur votre nouvelle installation de Linux Mint.</li>
+</ol>
+<blockquote>
+<p>Cette vidéo explique comment démarrer votre ordinateur sur le disque dur externe :
+<a href="https://youtu.be/0KdD081LN0I?si=-ADQmgUtrhzw4kmY" rel="external">Video: Installer Linux sur disque dur externe</a></p>
+</blockquote>
+<p><strong>Références ZE5 et Mint</strong></p>
+<p>Utiliser le fichier <strong>ZE5: Procédure-installation-Linux-Mint.pdf</strong> <span class="btn cstyle button transparent interactive"><a href="/docs/Guides/Procédure-installation-Linux-Mint.pdf"><i class="fa-fw fas fa-download"></i> <span class="title">Télécharger le fichier pdf</span></a></span></p>
+<p><a href="https://linuxmint-installation-guide.readthedocs.io/en/latest/install.html" rel="external">Mint: Guide d&rsquo;installation</a></p>
+<!--
+1. **VirtualBox** : Télécharger la version la plus récente et stable (en ce moment c'est la v. 7.2.4)
+   * [**Lien vers la page de téléchargement**](https://www.virtualbox.org/wiki/Downloads)
+   * Choisir la plateforme pour Windows.
+   * Vous devriez obtenir le fichier `VirtualBox-7.2.4-170995-Win.exe`.
+2. L'**Extension Pack**: Télécharger en cliquant sur *Accept and download*. vous devriez obtenir ce fichier `Oracle_VirtualBox_Extension_Pack-7.2.4.vbox-extpack`.
+2. 
+-->
+<h3 id="-astuces-de-la-semaine">💡 Astuces de la semaine<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<blockquote>
+<p><strong>Le piège classique :</strong>
+Si votre souris reste &ldquo;capturée&rdquo; à l&rsquo;intérieur de la fenêtre virtuelle et que vous ne pouvez plus cliquer sur votre Windows, ne paniquez pas !
+Appuyez sur la touche <strong>CTRL de DROITE</strong> de votre clavier. C&rsquo;est la touche de libération (Host Key).</p>
+</blockquote>
+<hr>
+<h1 id="laboratoire">LABORATOIRE<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h1>
+<h3 id="objectif">Objectif<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ul>
+<li>Installation de Linux sur votre SSD.
+<ul>
+<li>Assurez-vous d&rsquo;avoir installer les &ldquo;Guest Additions&rdquo;</li>
+</ul>
+</li>
+<li>Installation d&rsquo;un hyperviseur (VirtualBox) sur votre SSD.</li>
+<li>Création d&rsquo;une VM Linux (<em>Mint</em>).</li>
+</ul>
+<p>Utiliser le fichier <strong>labo1.docx</strong> pour y mettre vos réponses et captures d&rsquo;écran.<br>
+<span class="btn cstyle button transparent interactive"><a href="/docs/Labos/labo1.docx"><i class="fa-fw fas fa-download"></i> <span class="title">Télécharger le fichier docx</span></a></span></p>
+<h3 id="étape-1--installer-linux-mint-sur-votre-ssd-30-min">Étape 1 : Installer Linux Mint sur votre SSD (30 min)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ol>
+<li><strong>Installer VirtualBox :</strong> Installation standard (&ldquo;Suivant, Suivant, Terminer&rdquo;).</li>
+</ol>
+<ul>
+<li><strong>Problème fréquent :</strong> Si VirtualBox refuse de se lancer ou affiche une erreur VTX/AMD-V, vous devez redémarrer et activer la <strong>Virtualisation</strong> dans son BIOS.</li>
+</ul>
+<h3 id="étape-2--construction-de-la-machine-30-min">Étape 2 : Construction de la machine (30 min)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Dans VirtualBox, cliquez sur <strong>Nouvelle</strong> :</p>
+<ul>
+<li><strong>Nom :</strong> <code>NomPrenom_Linux</code></li>
+<li><strong>Type :</strong> Linux</li>
+<li><strong>Version :</strong> Ubuntu (64-bit) <em>(Mint est basé sur Ubuntu)</em>.</li>
+<li><strong>RAM :</strong> Selon le Micro-Exo (2048 Mo ou 4096 Mo).</li>
+<li><strong>Disque Dur :</strong> Créer un disque virtuel maintenant -&gt; VDI -&gt; Dynamiquement alloué -&gt; <strong>30 Go</strong> (Important : Ne mettez pas 10 Go, c&rsquo;est trop peu pour la session).</li>
+</ul>
+<h3 id="étape-3--installation-de-los-45-min">Étape 3 : Installation de l&rsquo;OS (45 min)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ol>
+<li><strong>Montage de l&rsquo;ISO :</strong> Paramètres de la VM -&gt; Stockage -&gt; Vide (sous Contrôleur IDE) -&gt; Petit disque bleu à droite -&gt; Choisir le fichier de disque -&gt; Sélectionner l&rsquo;ISO de Mint.</li>
+<li><strong>Démarrage :</strong> Cliquez sur <strong>Démarrer</strong>.</li>
+<li><strong>Lancer l&rsquo;installateur :</strong> Double-cliquez sur &ldquo;Install Linux Mint&rdquo; sur le bureau virtuel.</li>
+<li><strong>La frayeur du débutant :</strong></li>
+</ol>
+<ul>
+<li>À l&rsquo;étape &ldquo;Type d&rsquo;installation&rdquo;, choisir : <strong>Effacer le disque et installer Linux Mint</strong>.</li>
+<li><em>Rassurer la classe :</em> &ldquo;Ceci efface le disque VIRTUEL de 30 Go créé tantôt. Ça ne touche PAS à votre Windows.&rdquo;</li>
+</ul>
+<ol start="5">
+<li><strong>Création compte :</strong></li>
+</ol>
+<ul>
+<li>Nom : <code>etudiant</code> (pour faciliter la correction).</li>
+<li>Mot de passe : <code>420</code> ou <code>cmomo</code> (standardiser pour le labo).</li>
+<li>Nom de l&rsquo;ordinateur : <code>station-linux</code>.</li>
+</ul>
+<h3 id="étape-4--post-installation--guest-additions-15-min">Étape 4 : Post-installation &amp; &ldquo;Guest Additions&rdquo; (15 min)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><em>Une fois l&rsquo;installation finie et redémarrée :</em></p>
+<ol>
+<li><strong>Problème :</strong> L&rsquo;écran est tout petit (800x600).</li>
+<li><strong>Solution :</strong> Dans le menu de la fenêtre VirtualBox (en haut) -&gt; <strong>Périphériques</strong> -&gt; <strong>Insérer l&rsquo;image CD des additions invité</strong>.</li>
+<li>Linux va demander de lancer le logiciel -&gt; &ldquo;Lancer&rdquo; -&gt; Mot de passe -&gt; Entrée.</li>
+<li>Une fois fini, <strong>Redémarrer la VM</strong>.</li>
+<li>Test final : Agrandissez la fenêtre, Linux doit s&rsquo;adapter en plein écran.</li>
+</ol>
+<hr>
+<h3 id="checklist-de-fin-de-cours-pour-pouvoir-partir">Checklist de fin de cours (Pour pouvoir partir)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+
+<details open class="box cstyle notices primary">
+  <summary class="box-label a11y-only" tabindex="-1">
+    <span class="a11y-only">Details</span>
+  </summary>
+  <div class="box-content">
+<p>Vous devez <strong>montrer votre écran</strong> pour savoir si vous pouvez partir :</p>
+  </div>
+</details>
+<ol>
+<li>VM démarrée.</li>
+<li>Session ouverte (Login réussi).</li>
+<li>Résolution d&rsquo;écran dynamique (Plein écran fonctionnel).</li>
+<li>Connexion Internet fonctionnelle (Ouvrir Firefox dans la VM et aller sur Google).</li>
+</ol>
+<p><strong>Livrable (Preuve de travail à déposer sur Moodle) :</strong></p>
+<ul>
+<li>Une capture d&rsquo;écran de votre Linux Mint en <strong>plein écran</strong>,</li>
+<li>Avec le terminal ouvert montrant votre nom d&rsquo;utilisateur, la date (commande <code>date</code>), et</li>
+<li>Le gestionnaire de mises à jour vert (à jour).</li>
+</ul>
+<!--
+
+## 1.2 Laboratoire / Pratique : "On touche au métal"
+
+
+
+<details open class="box cstyle notices red expand" name="notice-toggle">
+  <summary class="box-label">
+    <i class="expander-icon fa-fw fas fa-chevron-right"></i> 
+    Prérequis (à faire pendant la séance théorique)
+  </summary>
+  <div class="box-content">
+<ul>
+<li><strong>VirtualBox</strong> doit être déjà téléchargé et installé.
+<ul>
+<li><strong>NB</strong> : La VM sera créée pendant la séance de pratique.</li>
+</ul>
+</li>
+<li><strong>L&rsquo;ISO de Linux Mint</strong> doit être déjà téléchargé (clé USB, OneDrive, etc.).</li>
+</ul>
+  </div>
+</details>
+
+### Mission 1 : La Matrice (Configuration de la VM)
+On utilise VirtualBox. C'est le moment de comprendre que l'on crée un "ordi dans l'ordi".
+* **RAM :** Ne soyez pas radins. Mettez 4 Go si possible
+* **Disque :** 20-30 Go.
+* **L'erreur classique :** Oublier de "monter" l'ISO dans le lecteur CD virtuel.
+
+### Mission 2 : L'Installation (Le moment critique)
+Lancer la VM. Montrer que Linux peut tourner en "Live" (sans installer).
+* Lancer l'installateur.
+* **Le moment effrayant :** "Effacer le disque et installer Linux Mint".
+    * *Rappel rassurant :* "C'est le disque *virtuel* qu'on efface, pas le disque dur du collège !"
+* **Partitionnement :** Cocher **LVM** (Gestion par volumes logiques).
+    * *L'explication simple :* "C'est une option magique qui permettra d'agrandir votre disque dur plus tard sans tout casser."
+
+
+### Mission 3 : "Guest Additions" (Le test de QI)
+Une fois installé, l'écran sera tout petit (800x600). C'est moche et inutilisable.
+* **Le défi :** "Celui qui reste avec un petit écran a échoué son labo."
+* **L'action :** Menu Périphériques -> Insérer l'image CD des Additions Invité.
+* Lancer le script d'installation (nécessite le mot de passe root -> première utilisation de `sudo` sans le savoir !).
+* Redémarrer.
+* *Résultat :* Le plein écran fonctionne, le copier-coller entre Windows et Linux aussi.
+
+### Mission 4 : Appropriation (Le "Hook" final)
+1.  **Mise à jour :** Lancer le "bouclier" (Update Manager) en bas à droite.
+2.  **Look :** Changer le fond d'écran (Clic droit -> Fond d'écran). Mettre une image de chien 🐶 ou de chat 🐱, peu importe.
+3.  **Exploration :** Ouvrir le terminal (le carré noir). Taper `matrix` (si installé) ou juste `echo "Je suis un chat"`.
+
+
+-->
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+
+<a id="logo" href="https://example.org/">
+  <img src="/images/logo.png" alt="Logo du site" style="height: 100px; width: auto;">
+</a>
+
+
+        <search><form action="/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks default-animation">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-url="/index.html"><a class="padding" href="/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols default-animation">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-main default-animation">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-url="/remises/index.html"><a class="padding" href="/remises/index.html">Protocole de remise des exos et labos<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/regles/index.html"><a class="padding" href="/regles/index.html">Règles de survie au cours<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="parent " data-nav-url="/bloc-1/index.html"><input type="checkbox" id="R-section-0b942f9b9b2d065455b2a863f4d7995c" aria-controls="R-subsections-0b942f9b9b2d065455b2a863f4d7995c" checked><label for="R-section-0b942f9b9b2d065455b2a863f4d7995c"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Fondations &amp; installation</span></label><a class="padding default-animation" href="/bloc-1/index.html">BLOC 1 : Fondations &amp; installation<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-0b942f9b9b2d065455b2a863f4d7995c" class="collapsible-menu">
+            <li class="active " data-nav-url="/bloc-1/semaine-1/index.html"><a class="padding" href="/bloc-1/semaine-1/index.html">Semaine 1 : Introduction et installation<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-1/semaine-2/index.html"><a class="padding" href="/bloc-1/semaine-2/index.html">Semaine 2 : Arborescence et navigation<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-1/semaine-3/index.html"><a class="padding" href="/bloc-1/semaine-3/index.html">Semaine 3 : Gestion de paquets et édition de texte<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-1/semaine-4/index.html"><a class="padding" href="/bloc-1/semaine-4/index.html">Semaine 4 : L&#39;expansion d&#39;accolades et Examen 1<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
+            <li class="" data-nav-url="/bloc-2/index.html"><input type="checkbox" id="R-section-bc3591f00126f0242dfd3ada90ba9fa8" aria-controls="R-subsections-bc3591f00126f0242dfd3ada90ba9fa8"><label for="R-section-bc3591f00126f0242dfd3ada90ba9fa8"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Administration système &amp; sécurité</span></label><a class="padding default-animation" href="/bloc-2/index.html">BLOC 2 : Administration système &amp; sécurité<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-bc3591f00126f0242dfd3ada90ba9fa8" class="collapsible-menu">
+            <li class="" data-nav-url="/bloc-2/semaine-5/index.html"><a class="padding" href="/bloc-2/semaine-5/index.html">Semaine 5 : Gestion des Utilisateurs<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-2/semaine-6/index.html"><a class="padding" href="/bloc-2/semaine-6/index.html">Semaine 6 : Permissions &amp; droits d&#39;accès<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-2/semaine-7/index.html"><a class="padding" href="/bloc-2/semaine-7/index.html">Semaine 7 : Gestion des processus<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-2/semaine-8/index.html"><a class="padding" href="/bloc-2/semaine-8/index.html">Semaine 8 : Révision? &amp; Examen #2<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
+            <li class="" data-nav-url="/bloc-3/index.html"><input type="checkbox" id="R-section-d0f965f65b76b5a918fb9cc7fc20ea39" aria-controls="R-subsections-d0f965f65b76b5a918fb9cc7fc20ea39"><label for="R-section-d0f965f65b76b5a918fb9cc7fc20ea39"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Redirections &amp; filtres, disques et réseau</span></label><a class="padding default-animation" href="/bloc-3/index.html">BLOC 3 : Redirections &amp; filtres, disques et réseau<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-d0f965f65b76b5a918fb9cc7fc20ea39" class="collapsible-menu">
+            <li class="" data-nav-url="/bloc-3/semaine-9/index.html"><a class="padding" href="/bloc-3/semaine-9/index.html">Semaine 9 : Redirections, Pipes et filtres<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-3/semaine-10/index.html"><a class="padding" href="/bloc-3/semaine-10/index.html">Semaine 10 : Gestion de disques<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-3/semaine-11/index.html"><a class="padding" href="/bloc-3/semaine-11/index.html">Semaine 11 : Réseau et services &amp; Examen #3<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
+            <li class="" data-nav-url="/bloc-4/index.html"><input type="checkbox" id="R-section-c1ebb4b1b8b7a51069075ff54026c0de" aria-controls="R-subsections-c1ebb4b1b8b7a51069075ff54026c0de"><label for="R-section-c1ebb4b1b8b7a51069075ff54026c0de"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Automatisation &amp; scripting</span></label><a class="padding default-animation" href="/bloc-4/index.html">BLOC 4 : Automatisation &amp; scripting<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-c1ebb4b1b8b7a51069075ff54026c0de" class="collapsible-menu">
+            <li class="" data-nav-url="/bloc-4/semaine-12/index.html"><a class="padding" href="/bloc-4/semaine-12/index.html">Semaine 12 : Introduction au Scripting Bash<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-4/semaine-13/index.html"><a class="padding" href="/bloc-4/semaine-13/index.html">Semaine 13 : Logique conditionnelle &amp; tests sur fichiers<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-4/semaine-14/index.html"><a class="padding" href="/bloc-4/semaine-14/index.html">Semaine 14 : Boucles &amp; planification (Cron)<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-4/semaine-15/index.html"><a class="padding" href="/bloc-4/semaine-15/index.html">Semaine 15 : Révision &amp; Examen Final<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts default-animation">
+          <ul class="space collapsible-menu">
+          </ul>
+        </div>
+        <div id="R-footer-margin" class="default-animation"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols default-animation">
+          <ul class="">
+            <li class="R-historyclearer">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-history"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <button>Clear History</button>
+                </div>
+                <div class="clear"></div>
+              </div>
+            </li>
+          </ul>
+        </div>
+<div id="R-footer" class="default-animation"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
+      </div>
+    </aside>
+    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1768146506" defer></script>
+    <script src="/js/theme.min.js?1768146506" defer></script>
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+  </body>
+</html>

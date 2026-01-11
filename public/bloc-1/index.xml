@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Fondations &amp; installation :: ZG4-Linux</title>
+    <link>https://example.org/bloc-1/index.html</link>
+    <description>Objectif global À la fin de ce bloc, vous devez avoir un environnement Linux fonctionnel, comprendre où il se trouve dans le système et savoir éditer des fichiers de configuration. Contenu des semaines 1 à 4 Semaine 1 : Introduction et installation Semaine 2 : Arborescence du système (/, /home) et navigation (cd, ls). Semaine 3 : Gestion des paquets (apt) et édition de texte (VI/VIM). Semaine 4 : Expansion d’accolades et Examen #1 (20%)</description>
+    <generator>Hugo</generator>
+    <language>fr-ca</language>
+    <atom:link href="https://example.org/bloc-1/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Introduction et installation</title>
+      <link>https://example.org/bloc-1/semaine-1/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://example.org/bloc-1/semaine-1/index.html</guid>
+      <description>Objectif de la semaine Avoir une machine Linux fonctionnelle et comprendre pourquoi on l’utilise. Théorie Qu’est-ce que Linux ? Ce n’est pas juste “un autre Windows”. C’est l’OS qui fait tourner Internet, le Cloud, Android et les supercalculateurs. Votre routeur Wi-Fi, c’est Linux. Si vous voulez travailler en TI, vous ne pouvez pas éviter ce pingouin.</description>
+    </item>
+    <item>
+      <title>Arborescence et navigation</title>
+      <link>https://example.org/bloc-1/semaine-2/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://example.org/bloc-1/semaine-2/index.html</guid>
+      <description>Objectif de la semaine Connaitre et comprendre la structure des fichiers sous Linux Se déplacer dans le système et manipuler des fichiers sans souris. Warning C’est le cours le plus important pour arriver à s’orienter dans l’architecture de Linux.&#xA;Fichier pour les exercices (en classe)&#xA;Utiliser le fichier exo-semaine2.docx pour y mettre vos réponses et captures d’écran.&#xA;Télécharger le fichier docx</description>
+    </item>
+    <item>
+      <title>Gestion de paquets et édition de texte</title>
+      <link>https://example.org/bloc-1/semaine-3/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://example.org/bloc-1/semaine-3/index.html</guid>
+      <description>Objectif de la semaine Comprendre les dépôts, mises à jour (apt update/upgrade) et installation (apt install vim/htop). Être capable de modifier un fichier de configuration sur un serveur distant sans souris. Utiliser le fichier exo-semaine3.docx pour y mettre vos réponses et captures d’écran.&#xA;Télécharger le fichier docx&#xA;Théorie Gestion des paquets 1. La fin des fichiers .exe (Les dépôts) Sous Windows, quand vous voulez un logiciel, vous ouvrez le navigateur, vous cherchez un site (parfois douteux), vous téléchargez un .exe et vous cliquez sur “Suivant, Suivant, Suivant”.</description>
+    </item>
+    <item>
+      <title>L&#39;expansion d&#39;accolades et Examen 1</title>
+      <link>https://example.org/bloc-1/semaine-4/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://example.org/bloc-1/semaine-4/index.html</guid>
+      <description>Objectif de la semaine Passer de la “manipulation fichier par fichier” à la “génération massive d’arguments”. Fichier pour les exercices (en classe)&#xA;Utiliser le fichier exo-semaine4.docx pour y mettre vos réponses et captures d’écran.&#xA;Télécharger le fichier docx&#xA;Pourquoi taper quand on peut générer ? “Jusqu’à présent, si je vous demandais de créer 3 dossiers pour vos projets (projet_A, projet_B, projet_C), vous feriez 3 commandes ou vous taperiez les 3 noms. C’est lent et sujet aux fautes de frappe. Aujourd’hui, on va apprendre à faire travailler le Shell pour nous. On ne va plus écrire les noms de fichiers, on va écrire une règle pour les générer.”</description>
+    </item>
+  </channel>
+</rss>

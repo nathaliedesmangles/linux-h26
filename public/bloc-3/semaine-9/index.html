@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="fr-ca" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.152.2">
+    <meta name="generator" content="Relearn 8.3.0+187e41ae8f27979cda87bfe489e34e07e5b6cbcd">
+    <meta name="description" content="Objectif de la semaine Comprendre comment manipuler les flux de données pour combiner des commandes simples et réaliser des tâches complexes. Fichier pour les exercices (en classe) Utiliser le fichier exo-semaine9.docx pour y mettre vos réponses et captures d’écran.
+Télécharger le fichier docx
+Théorie Imaginez qu’une commande Linux est une machine industrielle. Elle a besoin de matières premières pour fonctionner et elle produit quelque chose en sortie.">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Redirections, Pipes et filtres :: ZG4-Linux">
+    <meta name="twitter:description" content="Objectif de la semaine Comprendre comment manipuler les flux de données pour combiner des commandes simples et réaliser des tâches complexes. Fichier pour les exercices (en classe) Utiliser le fichier exo-semaine9.docx pour y mettre vos réponses et captures d’écran.
+Télécharger le fichier docx
+Théorie Imaginez qu’une commande Linux est une machine industrielle. Elle a besoin de matières premières pour fonctionner et elle produit quelque chose en sortie.">
+    <meta property="og:url" content="https://example.org/bloc-3/semaine-9/index.html">
+    <meta property="og:site_name" content="ZG4-Linux">
+    <meta property="og:title" content="Redirections, Pipes et filtres :: ZG4-Linux">
+    <meta property="og:description" content="Objectif de la semaine Comprendre comment manipuler les flux de données pour combiner des commandes simples et réaliser des tâches complexes. Fichier pour les exercices (en classe) Utiliser le fichier exo-semaine9.docx pour y mettre vos réponses et captures d’écran.
+Télécharger le fichier docx
+Théorie Imaginez qu’une commande Linux est une machine industrielle. Elle a besoin de matières premières pour fonctionner et elle produit quelque chose en sortie.">
+    <meta property="og:locale" content="fr_ca">
+    <meta property="og:type" content="article">
+    <meta property="article:section" content="Redirections & filtres, disques et réseau">
+    <meta itemprop="name" content="Redirections, Pipes et filtres :: ZG4-Linux">
+    <meta itemprop="description" content="Objectif de la semaine Comprendre comment manipuler les flux de données pour combiner des commandes simples et réaliser des tâches complexes. Fichier pour les exercices (en classe) Utiliser le fichier exo-semaine9.docx pour y mettre vos réponses et captures d’écran.
+Télécharger le fichier docx
+Théorie Imaginez qu’une commande Linux est une machine industrielle. Elle a besoin de matières premières pour fonctionner et elle produit quelque chose en sortie.">
+    <meta itemprop="wordCount" content="1139">
+    <title>Redirections, Pipes et filtres :: ZG4-Linux</title>
+    <link href="/images/logo.png?1768146506" rel="icon" type="image/png">
+    <link href="/css/auto-complete/auto-complete.min.css?1768146506" rel="stylesheet">
+    <script src="/js/auto-complete/auto-complete.min.js?1768146506" defer></script>
+    <script src="/js/search-lunr.min.js?1768146506" defer></script>
+    <script src="/js/search.min.js?1768146506" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="/searchindex.en.js?1768146506";
+    </script>
+    <script src="/js/lunr/lunr.min.js?1768146506" defer></script>
+    <script src="/js/lunr/lunr.stemmer.support.min.js?1768146506" defer></script>
+    <script src="/js/lunr/lunr.multi.min.js?1768146506" defer></script>
+    <script src="/js/lunr/lunr.fr.min.js?1768146506" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['fr'];
+    </script>
+    <link href="/fonts/fontawesome/css/fontawesome-all.min.css?1768146506" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/fontawesome-all.min.css?1768146506" rel="stylesheet"></noscript>
+    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1768146506" rel="stylesheet">
+    <link href="/css/theme.min.css?1768146506" rel="stylesheet">
+    <link href="/css/format-html.min.css?1768146506" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = `.min`;
+      window.relearn.path='\/bloc-3\/semaine-9\/index.html';
+      window.relearn.relBasePath='..\/..';
+      window.relearn.relBaseUri='..\/..';
+      window.relearn.absBaseUri='https:\/\/example.org';
+      window.relearn.disableInlineCopyToClipboard=false;
+      window.relearn.enableBlockCodeWrap=true;
+      // legal
+      window.relearn.getItem = (s,n) => {return s.getItem(n)};
+      window.relearn.setItem = (s,n,v) => {return s.setItem(n,v)};
+      window.relearn.removeItem = (s,n) => {return s.removeItem(n)};
+      // translations
+      window.T_Copy_to_clipboard = `Copy text to clipboard`;
+      window.T_Copied_to_clipboard = `Text copied to clipboard!`;
+      window.T_Link_copied_to_clipboard = `Link copied to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+      window.T_Browser_unsupported_feature = `This browser doesn't support this feature`;
+      // variant stuff
+      window.relearn.themevariants = [ 'auto' ];
+      window.relearn.customvariantprefix = "my-custom-";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant") ?? "";
+        if( !variant ||
+            (!variant.startsWith(window.relearn.customvariantprefix) && !window.relearn.themevariants.includes(variant)) ||
+            (variant.startsWith(window.relearn.customvariantprefix) && !window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variantstylesheet-" + variant)) ){
+          variant = window.relearn.themevariants[0];
+          window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script>
+    <link href="/css/custom.css?1768146506" rel="stylesheet">
+  </head>
+  <body class="mobile-support html" data-url="/bloc-3/semaine-9/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar" class="default-animation">
+        <div class="topbar-wrapper default-animation">
+          <div class="topbar-sidebar-divider default-animation"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar default-animation" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
+            </div>
+            <div class="topbar-button topbar-button-toc default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#objectif-de-la-semaine">Objectif de la semaine</a></li>
+    <li><a href="#théorie">Théorie</a></li>
+    <li><a href="#les-redirections">Les redirections</a>
+      <ul>
+        <li><a href="#1-le-destructeur-">1. Le destructeur (<code>&gt;</code>)</a></li>
+        <li><a href="#2-le-constructeur-">2. Le constructeur (<code>&gt;&gt;</code>)</a></li>
+        <li><a href="#-exercice-1-en-classe">🟢 Exercice #1 (En classe)</a></li>
+      </ul>
+    </li>
+    <li><a href="#le-tube-pipe---lassemblage">Le Tube (Pipe <code>|</code>) : L’Assemblage</a>
+      <ul>
+        <li><a href="#1-les-filtres-indispensables">1. Les filtres indispensables</a></li>
+        <li><a href="#-exercice-2-en-classe">🟢 Exercice #2 (En classe)</a></li>
+        <li><a href="#-exercice-3-en-classe">🟢 Exercice #3 (En classe)</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#étape-1--création-des-données-setup">Étape 1 : Création des données (Setup)</a></li>
+        <li><a href="#étape-2--le-nettoyage-sort--uniq">Étape 2 : Le nettoyage (Sort &amp; Uniq)</a></li>
+        <li><a href="#étape-3--lenquête-grep--wc">Étape 3 : L&rsquo;enquête (Grep &amp; Wc)</a></li>
+        <li><a href="#étape-4--le-grand-final-history">Étape 4 : Le grand final (History)</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#étape-1--dompter-les-fichiers-redirections">Étape 1 : Dompter les fichiers (Redirections)</a></li>
+    <li><a href="#étape-2--laiguille-dans-la-botte-de-foin-grep">Étape 2 : L’aiguille dans la botte de foin (<code>grep</code>)</a></li>
+    <li><a href="#étape-3--le-détective-find">Étape 3 : Le détective (<code>find</code>)</a></li>
+    <li><a href="#étape-4--le-csi-linux-problème-complexe-15-min">Étape 4 : Le &ldquo;CSI Linux&rdquo; (Problème complexe) (15 min)</a>
+      <ul>
+        <li><a href="#-astuces-de-la-semaine">💡 Astuces de la semaine</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/index.html"><span itemprop="name">Accueil du cours</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/bloc-3/index.html"><span itemprop="name">Redirections &amp; filtres, disques et réseau</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Redirections, Pipes et filtres</span><meta itemprop="position" content="3"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-prev default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/bloc-3/index.html" title="Redirections & filtres, disques et réseau (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-next default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/bloc-3/semaine-10/index.html" title="Gestion de disques (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-more default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable bloc-3" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="redirections-pipes-et-filtres">Redirections, Pipes et filtres</h1>
+
+<h2 id="objectif-de-la-semaine">Objectif de la semaine<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<ul>
+<li>Comprendre comment manipuler les flux de données pour combiner des commandes simples et réaliser des tâches complexes.</li>
+</ul>
+<p><strong>Fichier pour les exercices (en classe)</strong>
+Utiliser le fichier <strong>exo-semaine9.docx</strong> pour y mettre vos réponses et captures d&rsquo;écran.<br>
+<span class="btn cstyle button transparent interactive"><a href="/docs/Exercices/exo-semaine9.docx"><i class="fa-fw fas fa-download"></i> <span class="title">Télécharger le fichier docx</span></a></span></p>
+<hr>
+<h2 id="théorie">Théorie<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Imaginez qu&rsquo;une commande Linux est une <strong>machine industrielle</strong>. Elle a besoin de matières premières pour fonctionner et elle produit quelque chose en sortie.</p>
+<p>Il existe trois &ldquo;tuyaux&rdquo; connectés par défaut à chaque commande :</p>
+<table>
+  <thead>
+      <tr>
+          <th>Canal</th>
+          <th>Nom technique</th>
+          <th>ID</th>
+          <th>Description</th>
+          <th>Direction par défaut</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Entrée</strong></td>
+          <td><code>stdin</code></td>
+          <td>0</td>
+          <td>Les données brutes</td>
+          <td>Votre <strong>Clavier</strong></td>
+      </tr>
+      <tr>
+          <td><strong>Sortie</strong></td>
+          <td><code>stdout</code></td>
+          <td>1</td>
+          <td>Le bon résultat</td>
+          <td>Votre <strong>Écran</strong></td>
+      </tr>
+      <tr>
+          <td><strong>Erreur</strong></td>
+          <td><code>stderr</code></td>
+          <td>2</td>
+          <td>Les messages de panne</td>
+          <td>Votre <strong>Écran</strong></td>
+      </tr>
+  </tbody>
+</table>
+<blockquote>
+<p><strong>Analogie :</strong> C&rsquo;est comme une créature qui <strong>mange</strong> (stdin), <strong>parle</strong> (stdout) et parfois <strong>crie</strong> quand elle a mal (stderr).</p>
+</blockquote>
+<h2 id="les-redirections">Les redirections<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Par défaut, la &ldquo;rivière&rdquo; de données coule vers l&rsquo;écran. Nous pouvons utiliser des chevrons pour détourner ce flux vers un <strong>fichier</strong>.</p>
+<h3 id="1-le-destructeur-">1. Le destructeur (<code>&gt;</code>)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Le chevron simple redirige la sortie vers un fichier.</p>
+<ul>
+<li><strong>Attention :</strong> Si le fichier existe, il est <strong>écrasé</strong> (vidé et remplacé).</li>
+<li><strong>Moyen mnémotechnique :</strong> Le fichier est remis à zéro.</li>
+</ul>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;Liste de courses&#34;</span> &gt; courses.txt
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Le fichier courses.txt contient maintenant uniquement : Liste de courses</span></span></span></code></pre></div>
+<h3 id="2-le-constructeur-">2. Le constructeur (<code>&gt;&gt;</code>)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Le double chevron ajoute les données à la <strong>fin</strong> du fichier existant.</p>
+<ul>
+<li><strong>Sécurité :</strong> Il ne détruit pas l&rsquo;ancien contenu.</li>
+</ul>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;- Pommes&#34;</span> &gt;&gt; courses.txt
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;- Bananes&#34;</span> &gt;&gt; courses.txt
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Le fichier contient maintenant le titre ET les fruits.</span></span></span></code></pre></div>
+<h3 id="-exercice-1-en-classe">🟢 Exercice #1 (En classe)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Objectif :</strong> Visualiser la différence entre écraser et ajouter.</p>
+<ol>
+<li>Demandez aux étudiants de taper : <code>echo &quot;Bonjour&quot; &gt; test.txt</code></li>
+<li>Puis : <code>echo &quot;Monde&quot; &gt; test.txt</code></li>
+<li>Vérifiez le contenu (<code>cat test.txt</code>). Que s&rsquo;est-il passé ? (Réponse : &ldquo;Bonjour&rdquo; a disparu).</li>
+<li>Corrigez le tir : <code>echo &quot;Bonjour&quot; &gt;&gt; test.txt</code> (Pour avoir Monde et Bonjour).</li>
+</ol>
+<h2 id="le-tube-pipe---lassemblage">Le Tube (Pipe <code>|</code>) : L&rsquo;Assemblage<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>C&rsquo;est le super-pouvoir de Linux. Le caractère <code>|</code> (Alt Gr + 6) connecte la sortie de la commande de gauche à l&rsquo;entrée de la commande de droite.</p>
+<p><strong>La règle d&rsquo;or :</strong> Pas de fichier intermédiaire. Tout se passe en mémoire vive (RAM).</p>
+<blockquote>
+<p><strong>Analogie de l&rsquo;usine :</strong>
+<code>Machine A (Fabrique le biscuit)</code> <strong>|</strong> <code>Machine B (Met le chocolat)</code> <strong>|</strong> <code>Machine C (Emballe)</code></p>
+</blockquote>
+<h3 id="1-les-filtres-indispensables">1. Les filtres indispensables<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Le Pipe sert à envoyer des données vers des filtres. Voici les plus utilisés :</p>
+<ul>
+<li><strong><code>sort</code></strong> : Trie les lignes par ordre alphabétique ou numérique.</li>
+<li><strong><code>uniq</code></strong> : Supprime les doublons <strong>adjacents</strong> (il faut souvent trier avant !).</li>
+<li><strong><code>grep &quot;mot&quot;</code></strong> : Ne garde que les lignes contenant &ldquo;mot&rdquo;.</li>
+<li><strong><code>wc -l</code></strong> : Compte le nombre de lignes (<em>Word Count -lines</em>).</li>
+<li>**<code>head</code> / <code>tail**</code> : Affiche les premières ou dernières lignes.</li>
+</ul>
+<h3 id="-exercice-2-en-classe">🟢 Exercice #2 (En classe)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ul>
+<li>Le dossier <code>/etc</code> contient des centaines de fichiers de configuration.</li>
+<li>Afficher uniquement les fichiers contenant &ldquo;conf&rdquo; dans leur nom, et les trier à l&rsquo;envers.</li>
+</ul>
+<!--
+**Reponse**
+```bash
+ls /etc | grep "conf" | sort -r
+```
+-->
+<p><em>Discussion : Que se passe si on enlève le <code>grep</code>?</em></p>
+<h3 id="-exercice-3-en-classe">🟢 Exercice #3 (En classe)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ul>
+<li>On veut savoir combien d&rsquo;objets se trouvent dans le dossier <code>/bin</code> (là où sont stockées les commandes comme ls, cp, etc.).</li>
+<li>Compter les fichiers.</li>
+</ul>
+<!--
+Reponse
+```bash
+ls /bin | wc -l
+```
+-->
+<p><strong>Discussion</strong> : Pourquoi ne pas simplement faire <code>ls /bin</code> et compter à la main ?</p>
+<!--(Réponse : Trop long, risque d'erreur, automatisation impossible).-->
+<hr>
+<h1 id="laboratoire">Laboratoire<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h1>
+<p>Utiliser le fichier <strong>labo9.docx</strong> pour y mettre vos réponses et captures d&rsquo;écran.<br>
+<span class="btn cstyle button transparent interactive"><a href="/docs/Labos/labo9.docx"><i class="fa-fw fas fa-download"></i> <span class="title">Télécharger le fichier docx</span></a></span></p>
+<p>Vous êtes administrateur système. On vous donne une liste brute d&rsquo;utilisateurs suspects et de tentatives de connexion. Votre but est de nettoyer ces données pour en extraire des statistiques utiles.</p>
+<h3 id="étape-1--création-des-données-setup">Étape 1 : Création des données (Setup)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Créez un fichier sale avec des doublons et des données désordonnées. Copiez/collez ces commandes :</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;Martin&#34;</span> &gt; utilisateurs.txt
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;Julie&#34;</span> &gt;&gt; utilisateurs.txt
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;Martin&#34;</span> &gt;&gt; utilisateurs.txt
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;Alain&#34;</span> &gt;&gt; utilisateurs.txt
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;Julie&#34;</span> &gt;&gt; utilisateurs.txt
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;Zoe&#34;</span> &gt;&gt; utilisateurs.txt
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;Martin&#34;</span> &gt;&gt; utilisateurs.txt</span></span></code></pre></div>
+<h3 id="étape-2--le-nettoyage-sort--uniq">Étape 2 : Le nettoyage (Sort &amp; Uniq)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Si vous faites <code>uniq utilisateurs.txt</code>, cela ne fonctionnera pas parfaitement car <code>uniq</code> ne voit que les doublons qui se touchent.</p>
+<ol>
+<li>Affichez le contenu brut</li>
+<li>Triez le fichier et affichez le résultat à l&rsquo;écran</li>
+<li>Utilisez le pipe pour trier PUIS supprimer les doublons</li>
+</ol>
+<!--
+Reponse
+```bash
+cat utilisateurs.txt | sort | uniq
+```
+-->
+<ol start="4">
+<li><strong>Défi :</strong> Redirigez cette liste propre vers un nouveau fichier nommé <code>utilisateurs_propres.txt</code>.</li>
+</ol>
+<h3 id="étape-3--lenquête-grep--wc">Étape 3 : L&rsquo;enquête (Grep &amp; Wc)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Nous allons simuler un fichier de journal système (log).</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Création du fichier log (copiez tout le bloc)</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;[INFO] Connexion réussie : Martin&#34;</span> &gt; system.log
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;[ERREUR] Échec de connexion : Hacker&#34;</span> &gt;&gt; system.log
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;[INFO] Connexion réussie : Julie&#34;</span> &gt;&gt; system.log
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;[ERREUR] Échec de connexion : Hacker&#34;</span> &gt;&gt; system.log
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;[INFO] Connexion réussie : Alain&#34;</span> &gt;&gt; system.log
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;[ERREUR] Échec de connexion : Hacker&#34;</span> &gt;&gt; system.log</span></span></code></pre></div>
+<ol>
+<li>Utilisez <code>grep</code> pour n&rsquo;afficher que les lignes contenant &ldquo;ERREUR&rdquo;.</li>
+<li>Utilisez un pipe et <code>wc -l</code> pour compter combien de fois le mot &ldquo;ERREUR&rdquo; apparaît.</li>
+</ol>
+<!--**Commande attendue :**
+
+```bash
+cat system.log | grep "ERREUR" | wc -l
+```
+-->
+<h3 id="étape-4--le-grand-final-history">Étape 4 : Le grand final (History)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>L&rsquo;historique de votre terminal garde tout ce que vous avez tapé.</p>
+<ol>
+<li>Utilisez la commande <code>history</code>.</li>
+<li>Utilisez un pipe pour trouver combien de fois vous avez utilisé la commande <code>echo</code> aujourd&rsquo;hui.</li>
+</ol>
+<!--**Solution :** `history | grep "echo" | wc -l` -->
+<!--
+
+### Note pédagogique pour l'enseignant
+
+* **Erreur fréquente :** Les étudiants oublient souvent que `uniq` nécessite un `sort` au préalable. Insistez sur l'analogie : "On ne peut pas empiler les chemises identiques si elles sont éparpillées dans toute la pièce; il faut d'abord les trier par couleur/type."
+* **Le danger du `>` :** Faites leur remarquer que s'ils font `cat fichier | sort > fichier`, ils risquent d'effacer le fichier avant même de le lire (selon le shell). Il vaut mieux rediriger vers un *nouveau* nom (`fichier_trié.txt`).
+-->
+<p>==============================================</p>
+<h1 id="laboratoire-1">LABORATOIRE<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h1>
+<p><strong>Objectif :</strong> Manipuler des logs et extraire de l&rsquo;information précise.</p>
+<h2 id="étape-1--dompter-les-fichiers-redirections">Étape 1 : Dompter les fichiers (Redirections)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p><em>Pas d&rsquo;éditeur de texte autorisé ici !</em></p>
+<ol>
+<li>Utilisez <code>echo</code> et <code>&gt;</code> pour créer un fichier <code>mes_films.txt</code> avec le titre &ldquo;Star Wars&rdquo;.</li>
+<li>Utilisez <code>&gt;&gt;</code> pour ajouter &ldquo;Le Seigneur des Anneaux&rdquo; et &ldquo;Matrix&rdquo; (3 commandes distinctes).</li>
+<li>Vérifiez avec <code>cat</code>.</li>
+<li>Lancez une commande qui plante (ex: <code>ls /root</code> en tant qu&rsquo;étudiant).</li>
+<li>Relancez-la en cachant l&rsquo;erreur : <code>ls /root 2&gt; /dev/null</code>. Le terminal doit rester muet.</li>
+</ol>
+<h2 id="étape-2--laiguille-dans-la-botte-de-foin-grep">Étape 2 : L&rsquo;aiguille dans la botte de foin (<code>grep</code>)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p><em>Le fichier <code>/etc/passwd</code> est parfait pour s&rsquo;exercer.</em></p>
+<ol>
+<li>Affichez le fichier <code>/etc/passwd</code>. C&rsquo;est illisible ?</li>
+<li>Utilisez un Pipe et <code>head</code> pour voir seulement les 5 premiers utilisateurs.</li>
+<li>Utilisez <code>grep</code> pour trouver la ligne correspondant à votre utilisateur (<code>etudiant</code>).</li>
+<li>Utilisez <code>grep</code> pour trouver tous les utilisateurs qui n&rsquo;ont <strong>pas</strong> de shell de connexion (cherchez <code>/usr/sbin/nologin</code>).</li>
+<li><strong>Défi :</strong> Comptez combien il y en a en ajoutant <code>| wc -l</code> à la fin.</li>
+</ol>
+<h2 id="étape-3--le-détective-find">Étape 3 : Le détective (<code>find</code>)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p><em>La commande <code>find</code> est différente, elle cherche des FICHIERS, pas du texte.</em></p>
+<ol>
+<li>Trouvez tous les fichiers qui se terminent par <code>.conf</code> dans <code>/etc</code> :
+<code>find /etc -name &quot;*.conf&quot;</code>
+<em>(Vous aurez plein d&rsquo;erreurs &ldquo;Permission denied&rdquo;. C&rsquo;est normal !)</em></li>
+<li>Refaites la commande en envoyant les erreurs dans le néant pour avoir une liste propre :
+<code>find /etc -name &quot;*.conf&quot; 2&gt; /dev/null</code></li>
+<li>Trouvez tous les fichiers modifiés dans les dernières 24 heures dans votre dossier home :
+<code>find ~ -mtime -1</code></li>
+</ol>
+<h2 id="étape-4--le-csi-linux-problème-complexe-15-min">Étape 4 : Le &ldquo;CSI Linux&rdquo; (Problème complexe) (15 min)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p><em>Scénario :</em> Vous devez lister les 3 derniers utilisateurs créés sur le système, triés par ordre alphabétique.
+<em>Indice : <code>/etc/passwd</code> contient les infos, <code>tail</code> prend la fin, <code>sort</code> trie, <code>cut</code> découpe.</em></p>
+<!--
+*Solution à faire trouver par les étudiants :*
+`tail -n 3 /etc/passwd | cut -d: -f1 | sort`
+-->
+<hr>
+<h3 id="-astuces-de-la-semaine">💡 Astuces de la semaine<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<blockquote>
+<p><strong>Les 3 commandes en or :</strong></p>
+<ul>
+<li><code>grep &quot;mot&quot;</code> : Garde seulement les lignes avec &ldquo;mot&rdquo;.</li>
+<li><code>wc -l</code> : Compte les lignes.</li>
+<li><code>sort</code> : Met en ordre.</li>
+</ul>
+</blockquote>
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+
+<a id="logo" href="https://example.org/">
+  <img src="/images/logo.png" alt="Logo du site" style="height: 100px; width: auto;">
+</a>
+
+
+        <search><form action="/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks default-animation">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-url="/index.html"><a class="padding" href="/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols default-animation">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-main default-animation">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-url="/remises/index.html"><a class="padding" href="/remises/index.html">Protocole de remise des exos et labos<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/regles/index.html"><a class="padding" href="/regles/index.html">Règles de survie au cours<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-1/index.html"><input type="checkbox" id="R-section-0b942f9b9b2d065455b2a863f4d7995c" aria-controls="R-subsections-0b942f9b9b2d065455b2a863f4d7995c"><label for="R-section-0b942f9b9b2d065455b2a863f4d7995c"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Fondations &amp; installation</span></label><a class="padding default-animation" href="/bloc-1/index.html">BLOC 1 : Fondations &amp; installation<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-0b942f9b9b2d065455b2a863f4d7995c" class="collapsible-menu">
+            <li class="" data-nav-url="/bloc-1/semaine-1/index.html"><a class="padding" href="/bloc-1/semaine-1/index.html">Semaine 1 : Introduction et installation<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-1/semaine-2/index.html"><a class="padding" href="/bloc-1/semaine-2/index.html">Semaine 2 : Arborescence et navigation<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-1/semaine-3/index.html"><a class="padding" href="/bloc-1/semaine-3/index.html">Semaine 3 : Gestion de paquets et édition de texte<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-1/semaine-4/index.html"><a class="padding" href="/bloc-1/semaine-4/index.html">Semaine 4 : L&#39;expansion d&#39;accolades et Examen 1<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
+            <li class="" data-nav-url="/bloc-2/index.html"><input type="checkbox" id="R-section-bc3591f00126f0242dfd3ada90ba9fa8" aria-controls="R-subsections-bc3591f00126f0242dfd3ada90ba9fa8"><label for="R-section-bc3591f00126f0242dfd3ada90ba9fa8"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Administration système &amp; sécurité</span></label><a class="padding default-animation" href="/bloc-2/index.html">BLOC 2 : Administration système &amp; sécurité<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-bc3591f00126f0242dfd3ada90ba9fa8" class="collapsible-menu">
+            <li class="" data-nav-url="/bloc-2/semaine-5/index.html"><a class="padding" href="/bloc-2/semaine-5/index.html">Semaine 5 : Gestion des Utilisateurs<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-2/semaine-6/index.html"><a class="padding" href="/bloc-2/semaine-6/index.html">Semaine 6 : Permissions &amp; droits d&#39;accès<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-2/semaine-7/index.html"><a class="padding" href="/bloc-2/semaine-7/index.html">Semaine 7 : Gestion des processus<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-2/semaine-8/index.html"><a class="padding" href="/bloc-2/semaine-8/index.html">Semaine 8 : Révision? &amp; Examen #2<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
+            <li class="parent " data-nav-url="/bloc-3/index.html"><input type="checkbox" id="R-section-d0f965f65b76b5a918fb9cc7fc20ea39" aria-controls="R-subsections-d0f965f65b76b5a918fb9cc7fc20ea39" checked><label for="R-section-d0f965f65b76b5a918fb9cc7fc20ea39"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Redirections &amp; filtres, disques et réseau</span></label><a class="padding default-animation" href="/bloc-3/index.html">BLOC 3 : Redirections &amp; filtres, disques et réseau<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-d0f965f65b76b5a918fb9cc7fc20ea39" class="collapsible-menu">
+            <li class="active " data-nav-url="/bloc-3/semaine-9/index.html"><a class="padding" href="/bloc-3/semaine-9/index.html">Semaine 9 : Redirections, Pipes et filtres<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-3/semaine-10/index.html"><a class="padding" href="/bloc-3/semaine-10/index.html">Semaine 10 : Gestion de disques<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-3/semaine-11/index.html"><a class="padding" href="/bloc-3/semaine-11/index.html">Semaine 11 : Réseau et services &amp; Examen #3<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
+            <li class="" data-nav-url="/bloc-4/index.html"><input type="checkbox" id="R-section-c1ebb4b1b8b7a51069075ff54026c0de" aria-controls="R-subsections-c1ebb4b1b8b7a51069075ff54026c0de"><label for="R-section-c1ebb4b1b8b7a51069075ff54026c0de"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Automatisation &amp; scripting</span></label><a class="padding default-animation" href="/bloc-4/index.html">BLOC 4 : Automatisation &amp; scripting<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-c1ebb4b1b8b7a51069075ff54026c0de" class="collapsible-menu">
+            <li class="" data-nav-url="/bloc-4/semaine-12/index.html"><a class="padding" href="/bloc-4/semaine-12/index.html">Semaine 12 : Introduction au Scripting Bash<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-4/semaine-13/index.html"><a class="padding" href="/bloc-4/semaine-13/index.html">Semaine 13 : Logique conditionnelle &amp; tests sur fichiers<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-4/semaine-14/index.html"><a class="padding" href="/bloc-4/semaine-14/index.html">Semaine 14 : Boucles &amp; planification (Cron)<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-4/semaine-15/index.html"><a class="padding" href="/bloc-4/semaine-15/index.html">Semaine 15 : Révision &amp; Examen Final<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts default-animation">
+          <ul class="space collapsible-menu">
+          </ul>
+        </div>
+        <div id="R-footer-margin" class="default-animation"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols default-animation">
+          <ul class="">
+            <li class="R-historyclearer">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-history"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <button>Clear History</button>
+                </div>
+                <div class="clear"></div>
+              </div>
+            </li>
+          </ul>
+        </div>
+<div id="R-footer" class="default-animation"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
+      </div>
+    </aside>
+    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1768146506" defer></script>
+    <script src="/js/theme.min.js?1768146506" defer></script>
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+  </body>
+</html>

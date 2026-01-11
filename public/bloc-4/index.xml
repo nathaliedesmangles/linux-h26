@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Automatisation &amp; scripting :: ZG4-Linux</title>
+    <link>https://example.org/bloc-4/index.html</link>
+    <description>Objectif global À la fin de ce bloc, l’étudiant doit être capable d’écrire des scripts Bash pour automatiser des tâches répétitives (sauvegardes, gestion d’utilisateurs) et de les planifier dans le temps. Contenu des semaines 11 à 15 Semaine 12 : Introduction au scripting Bash Semaine 13 : Logique conditionnelle &amp; tests sur fichiers Semaine 14 : Boucles (for, while) &amp; planification (Cron) Semaine 15 : Examen final (35%)</description>
+    <generator>Hugo</generator>
+    <language>fr-ca</language>
+    <atom:link href="https://example.org/bloc-4/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Introduction au Scripting Bash</title>
+      <link>https://example.org/bloc-4/semaine-12/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://example.org/bloc-4/semaine-12/index.html</guid>
+      <description>Objectif de la semaine Comprendre comment automatiser des tâches simples en transformant des commandes manuelles en un programme exécutable. Fichier pour les exercices (en classe)&#xA;Utiliser le fichier exo-semaine12.docx pour y mettre vos réponses et captures d’écran.&#xA;Télécharger le fichier docx&#xA;Qu’est-ce qu’un script Bash ? Imaginez que Linux est un orchestre rempli d’instruments (les commandes ls, cd, mkdir, etc.).</description>
+    </item>
+    <item>
+      <title>Logique conditionnelle &amp; tests sur fichiers</title>
+      <link>https://example.org/bloc-4/semaine-13/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://example.org/bloc-4/semaine-13/index.html</guid>
+      <description>Objectif la semaine Créer des scripts dynamiques qui s’adaptent aux paramètres donnés et à l’état du système. Fichier pour les exercices (en classe)&#xA;Utiliser le fichier exo-semaine2.docx pour y mettre vos réponses et captures d’écran.&#xA;Télécharger le fichier docx&#xA;Théorie Le flux de contrôle (if/else/fi) Jusqu’à présent, vos scripts étaient comme des robots aveugles : ils exécutaient une liste d’ordres l’un après l’autre, sans se soucier de savoir si l’ordre précédent avait fonctionné.</description>
+    </item>
+    <item>
+      <title>Boucles &amp; planification (Cron)</title>
+      <link>https://example.org/bloc-4/semaine-14/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://example.org/bloc-4/semaine-14/index.html</guid>
+      <description>Objectif de la semaine Traiter des centaines de fichiers en une seconde et programmer des tâches répétitives dans le temps. Fichier pour les exercices (en classe)&#xA;Utiliser le fichier exo-semaine14.docx pour y mettre vos réponses et captures d’écran.&#xA;Télécharger le fichier docx&#xA;L’automatisation et les boucles La paresse est la première qualité de l’administrateur système. Si vous devez répéter une tâche plus de trois fois, ne le faites pas à la main.</description>
+    </item>
+    <item>
+      <title>Révision &amp; Examen Final</title>
+      <link>https://example.org/bloc-4/semaine-15/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://example.org/bloc-4/semaine-15/index.html</guid>
+      <description>Objectif de la semaine Démontrer une autonomie complète sur l’administration, la sécurisation et l’automatisation d’un système Linux. Plan de la séance #1 Il n’y a plus de nouvelle matière. C’est le moment de consolider tout ce qui a été vu depuis 15 semaines et de prouver que vous êtes prêts pour le prochain cours dans vos études.</description>
+    </item>
+  </channel>
+</rss>

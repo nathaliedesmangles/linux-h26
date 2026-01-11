@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="fr-ca" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.152.2">
+    <meta name="generator" content="Relearn 8.3.0+187e41ae8f27979cda87bfe489e34e07e5b6cbcd">
+    <meta name="description" content="Objectif de la semaine Traiter des centaines de fichiers en une seconde et programmer des tâches répétitives dans le temps. Fichier pour les exercices (en classe)
+Utiliser le fichier exo-semaine14.docx pour y mettre vos réponses et captures d’écran.
+Télécharger le fichier docx
+L’automatisation et les boucles La paresse est la première qualité de l’administrateur système. Si vous devez répéter une tâche plus de trois fois, ne le faites pas à la main.">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Boucles & planification (Cron) :: ZG4-Linux">
+    <meta name="twitter:description" content="Objectif de la semaine Traiter des centaines de fichiers en une seconde et programmer des tâches répétitives dans le temps. Fichier pour les exercices (en classe)
+Utiliser le fichier exo-semaine14.docx pour y mettre vos réponses et captures d’écran.
+Télécharger le fichier docx
+L’automatisation et les boucles La paresse est la première qualité de l’administrateur système. Si vous devez répéter une tâche plus de trois fois, ne le faites pas à la main.">
+    <meta property="og:url" content="https://example.org/bloc-4/semaine-14/index.html">
+    <meta property="og:site_name" content="ZG4-Linux">
+    <meta property="og:title" content="Boucles & planification (Cron) :: ZG4-Linux">
+    <meta property="og:description" content="Objectif de la semaine Traiter des centaines de fichiers en une seconde et programmer des tâches répétitives dans le temps. Fichier pour les exercices (en classe)
+Utiliser le fichier exo-semaine14.docx pour y mettre vos réponses et captures d’écran.
+Télécharger le fichier docx
+L’automatisation et les boucles La paresse est la première qualité de l’administrateur système. Si vous devez répéter une tâche plus de trois fois, ne le faites pas à la main.">
+    <meta property="og:locale" content="fr_ca">
+    <meta property="og:type" content="article">
+    <meta property="article:section" content="Automatisation & scripting">
+    <meta itemprop="name" content="Boucles & planification (Cron) :: ZG4-Linux">
+    <meta itemprop="description" content="Objectif de la semaine Traiter des centaines de fichiers en une seconde et programmer des tâches répétitives dans le temps. Fichier pour les exercices (en classe)
+Utiliser le fichier exo-semaine14.docx pour y mettre vos réponses et captures d’écran.
+Télécharger le fichier docx
+L’automatisation et les boucles La paresse est la première qualité de l’administrateur système. Si vous devez répéter une tâche plus de trois fois, ne le faites pas à la main.">
+    <meta itemprop="wordCount" content="2030">
+    <title>Boucles &amp; planification (Cron) :: ZG4-Linux</title>
+    <link href="/images/logo.png?1768146506" rel="icon" type="image/png">
+    <link href="/css/auto-complete/auto-complete.min.css?1768146506" rel="stylesheet">
+    <script src="/js/auto-complete/auto-complete.min.js?1768146506" defer></script>
+    <script src="/js/search-lunr.min.js?1768146506" defer></script>
+    <script src="/js/search.min.js?1768146506" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="/searchindex.en.js?1768146506";
+    </script>
+    <script src="/js/lunr/lunr.min.js?1768146506" defer></script>
+    <script src="/js/lunr/lunr.stemmer.support.min.js?1768146506" defer></script>
+    <script src="/js/lunr/lunr.multi.min.js?1768146506" defer></script>
+    <script src="/js/lunr/lunr.fr.min.js?1768146506" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['fr'];
+    </script>
+    <link href="/fonts/fontawesome/css/fontawesome-all.min.css?1768146506" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/fontawesome-all.min.css?1768146506" rel="stylesheet"></noscript>
+    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1768146506" rel="stylesheet">
+    <link href="/css/theme.min.css?1768146506" rel="stylesheet">
+    <link href="/css/format-html.min.css?1768146506" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = `.min`;
+      window.relearn.path='\/bloc-4\/semaine-14\/index.html';
+      window.relearn.relBasePath='..\/..';
+      window.relearn.relBaseUri='..\/..';
+      window.relearn.absBaseUri='https:\/\/example.org';
+      window.relearn.disableInlineCopyToClipboard=false;
+      window.relearn.enableBlockCodeWrap=true;
+      // legal
+      window.relearn.getItem = (s,n) => {return s.getItem(n)};
+      window.relearn.setItem = (s,n,v) => {return s.setItem(n,v)};
+      window.relearn.removeItem = (s,n) => {return s.removeItem(n)};
+      // translations
+      window.T_Copy_to_clipboard = `Copy text to clipboard`;
+      window.T_Copied_to_clipboard = `Text copied to clipboard!`;
+      window.T_Link_copied_to_clipboard = `Link copied to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+      window.T_Browser_unsupported_feature = `This browser doesn't support this feature`;
+      // variant stuff
+      window.relearn.themevariants = [ 'auto' ];
+      window.relearn.customvariantprefix = "my-custom-";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant") ?? "";
+        if( !variant ||
+            (!variant.startsWith(window.relearn.customvariantprefix) && !window.relearn.themevariants.includes(variant)) ||
+            (variant.startsWith(window.relearn.customvariantprefix) && !window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variantstylesheet-" + variant)) ){
+          variant = window.relearn.themevariants[0];
+          window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script>
+    <link href="/css/custom.css?1768146506" rel="stylesheet">
+  </head>
+  <body class="mobile-support html" data-url="/bloc-4/semaine-14/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar" class="default-animation">
+        <div class="topbar-wrapper default-animation">
+          <div class="topbar-sidebar-divider default-animation"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar default-animation" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
+            </div>
+            <div class="topbar-button topbar-button-toc default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#objectif-de-la-semaine">Objectif de la semaine</a></li>
+    <li><a href="#lautomatisation-et-les-boucles">L&rsquo;automatisation et les boucles</a>
+      <ul>
+        <li><a href="#1-la-boucle-for">1. La boucle <code>for</code></a></li>
+        <li><a href="#-exercice-1-en-classe">🟢 Exercice 1 (En classe)</a></li>
+        <li><a href="#2-la-boucle-while">2. La boucle <code>while</code></a></li>
+        <li><a href="#-exercice-2-en-classe">🟢 Exercice 2 (En classe)</a></li>
+        <li><a href="#3-la-boucle-infinie">3. La boucle infinie</a></li>
+        <li><a href="#-exercice-3-en-classe">🟢 Exercice 3 (En classe)</a></li>
+      </ul>
+    </li>
+    <li><a href="#planification-de-tâches-cron">Planification de tâches (Cron)</a>
+      <ul>
+        <li><a href="#1-lédition-de-votre-agenda-crontab">1. L’édition de votre agenda (<code>crontab</code>)</a></li>
+        <li><a href="#2-la-syntaxe-des-5-étoiles">2. La syntaxe des 5 étoiles</a></li>
+        <li><a href="#3-exemples-traduits-en-langage-humain">3. Exemples traduits en langage humain</a></li>
+        <li><a href="#4-les-chemins-absolus">4. Les chemins absolus</a></li>
+        <li><a href="#5-où-va-la-sortie--les-logs">5. Où va la sortie ? (Les Logs)</a></li>
+        <li><a href="#-exercice-1-en-classe-1">🟢 Exercice 1 (En classe)</a></li>
+        <li><a href="#-exercice-2-en-classe-1">🟢 Exercice 2 (En classe)</a></li>
+        <li><a href="#-exercice-3-en-classe-1">🟢 Exercice 3 (En classe)</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#partie-0--mise-en-place-de-lenvironnement">Partie 0 : Mise en place de l&rsquo;environnement</a></li>
+    <li><a href="#partie-1--archivage-avec-la-boucle-for">Partie 1 : Archivage avec la boucle <code>for</code></a></li>
+    <li><a href="#partie-2--surveillance-avec-la-boucle-while-30-min">Partie 2 : Surveillance avec la boucle <code>while</code> (30 min)</a></li>
+    <li><a href="#partie-3--automatisation-avec-cron-20-min">Partie 3 : Automatisation avec Cron (20 min)</a></li>
+    <li><a href="#partie-4--nettoyage">Partie 4 : Nettoyage</a></li>
+    <li><a href="#corrigé-du-laboratoire">Corrigé du laboratoire</a></li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/index.html"><span itemprop="name">Accueil du cours</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/bloc-4/index.html"><span itemprop="name">Automatisation &amp; scripting</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Boucles &amp; planification (Cron)</span><meta itemprop="position" content="3"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-prev default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/bloc-4/semaine-13/index.html" title="Logique conditionnelle & tests sur fichiers (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-next default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/bloc-4/semaine-15/index.html" title="Révision & Examen Final (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-more default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable bloc-4" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="boucles--planification-cron">Boucles &amp; planification (Cron)</h1>
+
+<h2 id="objectif-de-la-semaine">Objectif de la semaine<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<ul>
+<li>Traiter des centaines de fichiers en une seconde et programmer des tâches répétitives dans le temps.</li>
+</ul>
+<p><strong>Fichier pour les exercices (en classe)</strong><br>
+Utiliser le fichier <strong>exo-semaine14.docx</strong> pour y mettre vos réponses et captures d&rsquo;écran.<br>
+<span class="btn cstyle button transparent interactive"><a href="/docs/Exercices/exo-semaine14.docx"><i class="fa-fw fas fa-download"></i> <span class="title">Télécharger le fichier docx</span></a></span></p>
+<hr>
+<h2 id="lautomatisation-et-les-boucles">L&rsquo;automatisation et les boucles<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>La paresse est la première qualité de l&rsquo;administrateur système. Si vous devez répéter une tâche plus de trois fois, <strong>ne le faites pas à la main</strong>.</p>
+<p>L&rsquo;automatisation repose sur le concept de <strong>Boucle</strong> (Loop). Une boucle permet de répéter un bloc de commandes sans avoir à les réécrire.</p>
+<h3 id="1-la-boucle-for">1. La boucle <code>for</code><span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>La boucle <code>for</code> est idéale quand <strong>vous connaissez à l&rsquo;avance</strong> la liste des éléments à traiter (une liste de fichiers, une liste de prénoms, une séquence de nombres).</p>
+<h4 id="syntaxe-et-fonctionnement">Syntaxe et fonctionnement<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> VARIABLE in LISTE ...; <span style="color:#66d9ef">do</span> COMMANDES; <span style="color:#66d9ef">done</span></span></span></code></pre></div>
+<p>La structure se lit : <em>&ldquo;Pour chaque <code>VARIABLE</code> trouvée dans la <code>LISTE</code>, faire les <code>COMMANDES</code> suivantes.&rdquo;</em></p>
+<p><strong>Exemple</strong> :</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#  1. variable 2. Liste</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#       ↓          ↓</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> fichier in *.txt
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 3. L&#39;action (qui utilise le contenant)</span>
+</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;Je traite le fichier : </span>$fichier<span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span></span></span></code></pre></div>
+<p><strong>Ce qui se passe sous le capot :</strong></p>
+<ol>
+<li>Bash regarde la liste (tous les fichiers <code>.txt</code>).</li>
+<li>Il prend le <strong>premier</strong> fichier et met son nom dans la variable <code>$fichier</code>.</li>
+<li>Il exécute les commandes entre <code>do</code> et <code>done</code>.</li>
+<li>Il remonte, prend le <strong>deuxième</strong> fichier, met son nom dans <code>$fichier</code> (l&rsquo;ancien est oublié).</li>
+<li>Il recommence jusqu&rsquo;à ce que la liste soit vide.</li>
+</ol>
+<h3 id="-exercice-1-en-classe">🟢 Exercice 1 (En classe)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Objectif :</strong> Créer plusieurs dossiers d&rsquo;un seul coup sans taper <code>mkdir</code> 3 fois.</p>
+<ol>
+<li>Ouvrez votre terminal.</li>
+<li>Écrivez (ou copiez) la commande suivante et validez :</li>
+</ol>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> dossier in Projet_A Projet_B Projet_C
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;Création du dossier </span>$dossier<span style="color:#e6db74">...&#34;</span>
+</span></span><span style="display:flex;"><span>    mkdir <span style="color:#e6db74">&#34;</span>$dossier<span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span></span></span></code></pre></div>
+<ol start="3">
+<li>Vérifiez le résultat avec la commande <code>ls</code>. Vous devriez voir vos trois dossiers créés.</li>
+</ol>
+<h3 id="2-la-boucle-while">2. La boucle <code>while</code><span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>La boucle <code>while</code> (Tant que) est utilisée quand <strong>on ne sait pas combien de temps</strong> cela va durer. Elle continue tant qu&rsquo;une condition précise reste <strong>VRAIE</strong>.</p>
+<h4 id="syntaxe-et-fonctionnement-1">Syntaxe et fonctionnement<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Tant que la condition entre crochets est VRAIE</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> <span style="color:#f92672">[</span> condition <span style="color:#f92672">]</span>; <span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Exécuter ces commandes</span>
+</span></span><span style="display:flex;"><span>    commande_1
+</span></span><span style="display:flex;"><span>    commande_2
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span></span></span></code></pre></div>
+<h4 id="exemple--le-compte-à-rebours">Exemple : Le compte à rebours<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p>Pour qu&rsquo;une boucle <code>while</code> s&rsquo;arrête, il faut absolument que quelque chose change à l&rsquo;intérieur de la boucle (sinon, la condition restera toujours vraie !).</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>compteur<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> <span style="color:#f92672">[</span> $compteur -gt <span style="color:#ae81ff">0</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">do</span>     <span style="color:#75715e"># Tant que compteur &gt; 0</span>
+</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;Explosion dans </span>$compteur<span style="color:#e6db74">...&#34;</span>
+</span></span><span style="display:flex;"><span>    sleep <span style="color:#ae81ff">1</span>                       <span style="color:#75715e"># Attendre 1 seconde</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">((</span>compteur--<span style="color:#f92672">))</span>                <span style="color:#75715e"># Enlever 1 au compteur</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;BOUM !&#34;</span></span></span></code></pre></div>
+
+<details open class="box cstyle notices primary">
+  <summary class="box-label a11y-only" tabindex="-1">
+    <span class="a11y-only">Details</span>
+  </summary>
+  <div class="box-content">
+<p><em><strong>Note</strong> : <code>((...))</code> est une syntaxe spéciale pour faire des calculs mathématiques rapides en Bash.</em></p>
+  </div>
+</details>
+<h3 id="-exercice-2-en-classe">🟢 Exercice 2 (En classe)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Objectif :</strong> Créer un script interactif qui</p>
+<ol>
+<li>Créez un petit script nommé <code>voyage.sh</code> (avec <code>vim voyage.sh</code>).</li>
+<li>Le script doit  :
+<ul>
+<li>demander à l&rsquo;utilisateur de répondre à la question &ldquo;Sommes nous arrivés ?&rdquo;, tant qu&rsquo;il n&rsquo;entre pas &ldquo;oui&rdquo;.</li>
+</ul>
+</li>
+<li>Lancez le script.</li>
+<li>Testez le avec les réponses: &ldquo;non&rdquo;, &ldquo;bientôt&rdquo;, &ldquo;jamais&rdquo;. Le script devrait s&rsquo;arrêter que si vous tapez &ldquo;oui&rdquo;.</li>
+</ol>
+<!--
+SOLUTION
+
+```bash
+#!/bin/bash
+reponse="non"
+
+# Tant que la réponse n'est pas "oui" (!= signifie "n'est pas égal à")
+while [ "$reponse" != "oui" ]; do
+    echo "Sommes nous arrivés ?"
+    read reponse
+done
+
+echo "Enfin ! On est arrivés."
+```
+-->
+<h3 id="3-la-boucle-infinie">3. La boucle infinie<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Que se passe-t-il si la condition reste toujours <strong>VRAIE</strong> ? Le script ne s&rsquo;arrêtera jamais. Le processeur va continuer à travailler indéfiniment.</p>
+<p>C&rsquo;est souvent une erreur de programmation (oublier de modifier la variable), mais c&rsquo;est parfois voulu (pour un serveur web qui doit écouter 24h/24).</p>
+
+<details open class="box cstyle notices warning">
+  <summary class="box-label" tabindex="-1">
+    <i class="fa-fw fas fa-exclamation-triangle"></i> 
+    Warning
+  </summary>
+</details>
+<blockquote>
+<p>Ne lancez pas ce script sans lire la suite !</p>
+</blockquote>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Exemple de boucle infinie </span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> true; <span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;Je tourne en rond...&#34;</span>
+</span></span><span style="display:flex;"><span>    sleep <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span></span></span></code></pre></div>
+
+<details open class="box cstyle notices primary">
+  <summary class="box-label a11y-only" tabindex="-1">
+    <span class="a11y-only">Details</span>
+  </summary>
+  <div class="box-content">
+<p><strong>KIT DE SURVIE</strong> (À mémoriser)
+Si vous lancez un script et qu&rsquo;il part en boucle infinie (il défile sans s&rsquo;arrêter) :
+Appuyez simultanément sur : **<code>Ctrl</code> + <code>C**</code>
+Cette combinaison envoie le signal <code>SIGINT</code> (Signal Interrupt) qui ordonne au programme de s&rsquo;arrêter immédiatement.</p>
+  </div>
+</details>
+<h3 id="-exercice-3-en-classe">🟢 Exercice 3 (En classe)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Objectif :</strong> Apprendre à tuer un processus fou.</p>
+<ol>
+<li>Dans le terminal, tapez cette commande qui ne s&rsquo;arrêtera jamais :</li>
+</ol>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#66d9ef">while</span> true; <span style="color:#66d9ef">do</span> echo <span style="color:#e6db74">&#34;Au secours !&#34;</span>; sleep 1; <span style="color:#66d9ef">done</span></span></span></code></pre></div>
+<ol start="2">
+<li>Regardez le texte défiler pendant quelques secondes.</li>
+<li>Exécutez la combinaison de touches **<code>Ctrl</code> + <code>C**</code> pour reprendre le contrôle de votre terminal.</li>
+</ol>
+<h2 id="planification-de-tâches-cron">Planification de tâches (Cron)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Imaginez que vous ayez un assistant personnel virtuel capable d&rsquo;effectuer des tâches répétitives pour vous, même lorsque vous dormez. Sous Linux, cet assistant s&rsquo;appelle le démon <strong>Cron</strong>.</p>
+<p><strong>À quoi ça sert ?</strong></p>
+<ul>
+<li>Lancer des sauvegardes (backups) la nuit.</li>
+<li>Envoyer des rapports par courriel tous les lundis matin.</li>
+<li>Vider les fichiers temporaires toutes les heures.</li>
+</ul>
+<h3 id="1-lédition-de-votre-agenda-crontab">1. L&rsquo;édition de votre agenda (<code>crontab</code>)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Chaque utilisateur possède son propre fichier de planification, appelé la « crontab » (Cron Table).</p>
+<p>Pour modifier votre agenda, utilisez la commande suivante :</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>crontab -e</span></span></code></pre></div>
+<p><em>(Le <code>e</code> signifie &ldquo;edit&rdquo;).</em></p>
+<blockquote>
+<p><strong>Note importante :</strong> Si c&rsquo;est la première fois, Linux vous demandera de choisir un éditeur de texte. Choisissez <strong>Vim</strong>.</p>
+</blockquote>
+<h3 id="2-la-syntaxe-des-5-étoiles">2. La syntaxe des 5 étoiles<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>C&rsquo;est le cœur du système. Une tâche Cron est définie par une ligne unique composée de <strong>5 champs temporels</strong> suivis de la <strong>commande</strong>.</p>
+<p>Il faut lire la ligne de gauche à droite. Pour qu&rsquo;une commande se lance, <strong>toutes</strong> les conditions de temps doivent être validées.</p>
+<table>
+  <thead>
+      <tr>
+          <th>Position</th>
+          <th>Champ</th>
+          <th>Valeurs possibles</th>
+          <th>Ce que ça signifie</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>1</strong></td>
+          <td>Minutes</td>
+          <td><code>0</code> - <code>59</code></td>
+          <td>À quelle minute ?</td>
+      </tr>
+      <tr>
+          <td><strong>2</strong></td>
+          <td>Heures</td>
+          <td><code>0</code> - <code>23</code></td>
+          <td>À quelle heure ?</td>
+      </tr>
+      <tr>
+          <td><strong>3</strong></td>
+          <td>Jour du mois</td>
+          <td><code>1</code> - <code>31</code></td>
+          <td>Le combien du mois ?</td>
+      </tr>
+      <tr>
+          <td><strong>4</strong></td>
+          <td>Mois</td>
+          <td><code>1</code> - <code>12</code></td>
+          <td>En quel mois ?</td>
+      </tr>
+      <tr>
+          <td><strong>5</strong></td>
+          <td>Jour semaine</td>
+          <td><code>0</code> - <code>6</code></td>
+          <td>Quel jour ? (0 = Dimanche)</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="les-caractères-spéciaux-à-connaître">Les caractères spéciaux à connaître<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<ul>
+<li><code>*</code> (L&rsquo;astérisque) : Signifie <strong>&ldquo;TOUS&rdquo;</strong> (ex: toutes les heures, tous les jours).</li>
+<li><code>/</code> (Le slash) : Signifie <strong>&ldquo;CHAQUE&rdquo;</strong> (ex: <code>*/5</code> dans les minutes = toutes les 5 minutes).</li>
+<li><code>,</code> (La virgule) : Pour faire une liste (ex: <code>1,15</code> = le 1er et le 15 du mois).</li>
+</ul>
+<h3 id="3-exemples-traduits-en-langage-humain">3. Exemples traduits en langage humain<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Analysons ensemble ces exemples pour comprendre la logique :</p>
+<ul>
+<li><strong>L&rsquo;événement quotidien :</strong></li>
+</ul>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#ae81ff">0</span> <span style="color:#ae81ff">3</span> * * * /home/etudiant/backup.sh</span></span></code></pre></div>
+<blockquote>
+<p><em>« À la minute 0, de la 3ème heure, peu importe le jour du mois, peu importe le mois, peu importe le jour de la semaine. »</em>
+➡ <strong>Tous les jours à 03h00 du matin.</strong></p>
+</blockquote>
+<ul>
+<li><strong>Le début de semaine :</strong></li>
+</ul>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#ae81ff">0</span> <span style="color:#ae81ff">8</span> * * <span style="color:#ae81ff">1</span> /home/etudiant/script.sh</span></span></code></pre></div>
+<blockquote>
+<p><em>« À 08h00 pile, n&rsquo;importe quel jour du mois, mais OBLIGATOIREMENT si c&rsquo;est le jour 1 (Lundi). »</em>
+➡ <strong>Tous les lundis à 08h00.</strong></p>
+</blockquote>
+<ul>
+<li><strong>La répétition fréquente :</strong></li>
+</ul>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>*/5 * * * * /home/etudiant/check_ping.sh</span></span></code></pre></div>
+<blockquote>
+<p><em>« Toutes les tranches de 5 minutes, à toutes les heures&hellip; »</em>
+➡ <strong>Toutes les 5 minutes (00:05, 00:10, 00:15, etc.).</strong></p>
+</blockquote>
+<h3 id="4-les-chemins-absolus">4. Les chemins absolus<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>C&rsquo;est l&rsquo;erreur qui fait échouer 99% des scripts débutants.</p>
+<p>Lorsque Cron lance votre script, il ne connaît pas votre dossier actuel, ni vos raccourcis. Il est &ldquo;aveugle&rdquo;.</p>
+<ul>
+<li>❌ <code>python script.py</code> (Cron ne sait pas où est <code>script.py</code> ni où est <code>python</code>).</li>
+<li>✅ <code>/usr/bin/python3 /home/etudiant/projets/script.py</code> (<strong>Chemins absolus</strong>).</li>
+</ul>
+<blockquote>
+<p><strong>Règle d&rsquo;or :</strong> Utilisez toujours le chemin complet, depuis la racine <code>/</code>. Aidez-vous de la commande <code>pwd</code> pour connaître le chemin de vos fichiers.</p>
+</blockquote>
+<h3 id="5-où-va-la-sortie--les-logs">5. Où va la sortie ? (Les Logs)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Si votre script affiche un message (<code>print</code> ou <code>echo</code>), vous ne le verrez jamais car le script tourne en arrière-plan. Pour garder une trace (&ldquo;Log&rdquo;), on utilise les redirections.</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Syntaxe complète recommandée</span>
+</span></span><span style="display:flex;"><span>* * * * * /home/user/mon_script.sh &gt;&gt; /home/user/journal.log 2&gt;&amp;<span style="color:#ae81ff">1</span></span></span></code></pre></div>
+<ul>
+<li><code>&gt;&gt;</code> : Ajoute le résultat à la fin du fichier <code>journal.log</code> sans l&rsquo;écraser.</li>
+<li><code>2&gt;&amp;1</code> : Redirige aussi les <strong>messages d&rsquo;erreurs</strong> (2) vers la même sortie standard (1). Très utile pour comprendre pourquoi un script a planté !</li>
+</ul>
+<h3 id="-exercice-1-en-classe-1">🟢 Exercice 1 (En classe)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Sans utiliser le terminal pour l&rsquo;instant, écrivez la ligne Cron correspondant aux demandes suivantes :</p>
+<ol>
+<li>Exécuter <code>script.sh</code> tous les mercredis à 14h30.</li>
+<li>Exécuter <code>backup.sh</code> le 1er de chaque mois à minuit.</li>
+<li>Exécuter <code>ping.sh</code> toutes les 15 minutes.</li>
+</ol>
+<!--
+*(Correction rapide avec le professeur).* -->
+<h3 id="-exercice-2-en-classe-1">🟢 Exercice 2 (En classe)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Nous allons créer une tâche qui laisse une trace chaque minute.</p>
+<ol>
+<li>Ouvrez votre crontab : <code>crontab -e</code></li>
+<li>Ajoutez la ligne suivante à la fin du fichier (attention aux chemins !) :</li>
+</ol>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>* * * * * echo <span style="color:#e6db74">&#34;Cron fonctionne : </span><span style="color:#66d9ef">$(</span>date<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span> &gt;&gt; /home/votre_nom/cron_test.txt</span></span></code></pre></div>
+<p><em>(Remplacez <code>votre_nom</code> par votre vrai dossier utilisateur).</em>
+3. Sauvegardez et quittez (Ctrl+X, Y, Enter).
+4. Attendez une minute, puis vérifiez si le fichier se crée :</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cat /home/votre_nom/cron_test.txt</span></span></code></pre></div>
+<h3 id="-exercice-3-en-classe-1">🟢 Exercice 3 (En classe)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ol>
+<li>Créez un petit script <code>bonjour.sh</code> dans votre dossier personnel :</li>
+</ol>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>echo <span style="color:#e6db74">&#34;Bonjour, je suis un script !&#34;</span></span></span></code></pre></div>
+<ol start="2">
+<li>Rendez-le exécutable (<code>chmod +x bonjour.sh</code>).</li>
+<li>Programmez-le dans Cron pour qu&rsquo;il s&rsquo;exécute dans 2 minutes (regardez l&rsquo;heure actuelle avec <code>date</code>).</li>
+<li>Redirigez la sortie vers un fichier <code>resultat.log</code>.</li>
+<li><strong>Le piège :</strong> Si le fichier <code>resultat.log</code> est vide ou n&rsquo;existe pas, c&rsquo;est probablement un problème de chemin. Déboguez !</li>
+</ol>
+<!--
+SOLUTION
+
+Voici le corrigé détaillé des exercices, accompagné de quelques **notes pédagogiques** pour vous aider à anticiper les questions ou les erreurs des étudiants.
+
+
+### 🟢 Corrigé Exercice 1 : Le traducteur
+
+L'objectif est de vérifier la compréhension de l'ordre des champs.
+
+**1. Exécuter `script.sh` tous les mercredis à 14h30.**
+`30 14 * * 3 /chemin/script.sh`
+
+> **Note :** Rappelez-leur que Dimanche = 0, donc Lundi = 1, Mardi = 2, Mercredi = 3.
+
+**2. Exécuter `backup.sh` le 1er de chaque mois à minuit.**
+`0 0 1 * * /chemin/backup.sh`
+
+> **Erreur fréquente :** Mettre des `*` partout. Insistez sur le fait que "Minuit" s'écrit `0 0` (0 minute, 0 heure).
+
+**3. Exécuter `ping.sh` toutes les 15 minutes.**
+`*/15 * * * * /chemin/ping.sh`
+
+> **Alternative acceptée :** `0,15,30,45 * * * *` (C'est correct, mais plus long à écrire).
+> **Erreur fréquente :** Écrire `15 * * * *`. Expliquez que cela signifie "À la 15ème minute de chaque heure" (donc une fois par heure), et non "toutes les 15 minutes".
+
+---
+
+### 🟡 Corrigé Exercice 2 : "Hello World" automatisé
+
+Ici, il n'y a pas de "réponse" unique, mais un résultat attendu.
+
+**Vérification de la réussite :**
+L'étudiant a réussi si, après une minute, il tape la commande `ls -l` et voit le fichier `cron_test.txt` apparaître.
+Ensuite, `cat cron_test.txt` doit afficher quelque chose comme :
+
+```text
+Cron fonctionne : Mer  7 jan 2026 10:15:01 EST
+```
+
+**Si ça ne marche pas :**
+
+1. Le démon cron ne tourne pas (rare sous Linux Mint, mais possible).
+2. L'étudiant a fait une faute de frappe dans le chemin du fichier de sortie (`>>`).
+3. Il a oublié les astérisques `* * * * *` au début.
+
+
+
+### 🔴 Corrigé Exercice 3 : Le défi du chemin absolu
+
+C'est l'exercice qui discrimine ceux qui ont compris le concept de chemin absolu.
+
+Supposons que l'étudiant s'appelle `martin` et que son script est dans `/home/martin/`.
+
+**1. Le script `bonjour.sh**`
+
+```bash
+#!/bin/bash
+echo "Bonjour, je suis un script !"
+
+```
+
+**2. Les permissions**
+L'étudiant **DOIT** avoir fait :
+
+```bash
+chmod +x /home/martin/bonjour.sh
+
+```
+
+*Sans cela, Cron aura une erreur "Permission denied".*
+
+**3. La ligne Crontab correcte**
+Si il est 10h00, il programme pour 10h02 :
+
+```bash
+2 10 * * * /home/martin/bonjour.sh >> /home/martin/resultat.log 2>&1
+
+```
+
+**Les points de vigilance (pour la correction) :**
+
+* ❌ `/home/martin/bonjour.sh > resultat.log` : **Erreur.** Cron ne sait pas où mettre `resultat.log`. Il va essayer de le mettre à la racine ou dans le dossier home de root, et échouer. Il faut le chemin complet pour le log aussi.
+* ❌ `bonjour.sh` (sans `/home/...`) : **Erreur.** Cron ne trouvera pas le fichier.
+
+-->
+<!--
+
+### 🟢 **Exercice (en classe)** : "Le décodeur cron"
+
+*Au tableau, écrivez ces lignes et demandez quand elles s'exécutent :*
+
+1. `30 8 * * *` -> Tous les jours à 8h30.
+2. `0 0 1 * *` -> Le 1er de chaque mois à minuit.
+3. `*/10 * * * *` -> Toutes les 10 minutes (0, 10, 20...).
+4. `0 17 * * 5` -> Tous les vendredis à 17h00 (Le "Happy Hour" script).
+-->
+<hr>
+<h1 id="laboratoire">Laboratoire<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h1>
+<p><strong>Objectifs</strong> :</p>
+<ol>
+<li>Utiliser la boucle <strong><code>for</code></strong> pour traiter des fichiers en lot.</li>
+<li>Utiliser la boucle <strong><code>while</code></strong> pour créer un script de surveillance continue.</li>
+<li>Planifier l&rsquo;exécution automatique de scripts avec <strong>Cron</strong>.</li>
+</ol>
+<p>Utiliser le fichier <strong>labo14.docx</strong> pour y mettre vos réponses et captures d&rsquo;écran.<br>
+<span class="btn cstyle button transparent interactive"><a href="/docs/Labos/labo14.docx"><i class="fa-fw fas fa-download"></i> <span class="title">Télécharger le fichier docx</span></a></span></p>
+<h2 id="partie-0--mise-en-place-de-lenvironnement">Partie 0 : Mise en place de l&rsquo;environnement<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Avant de commencer l&rsquo;automatisation, nous devons créer un environnement de travail qui simule des fichiers de logs (journaux) générés par une application.</p>
+<ol>
+<li>Ouvrez votre terminal.</li>
+<li>Créez un dossier nommé <code>labo_automation</code> dans votre dossier personnel.</li>
+<li>À l&rsquo;intérieur, créez deux sous-dossiers : <code>logs</code> et <code>archives</code>.</li>
+<li>Dans le dossier <code>logs</code>, créez 5 fichiers vides nommés <code>app1.log</code>, <code>app2.log</code>, <code>app3.log</code>, <code>system.log</code>, <code>error.log</code>.</li>
+</ol>
+<ul>
+<li><strong>Astuce</strong> : Utilisez une commande unique avec <code>touch</code> et les accolades <code>{}</code>.*</li>
+</ul>
+<h2 id="partie-1--archivage-avec-la-boucle-for">Partie 1 : Archivage avec la boucle <code>for</code><span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Les fichiers de logs s&rsquo;accumulent. Votre responsable vous demande un script pour les déplacer vers le dossier d&rsquo;archives en leur ajoutant la date du jour, afin de libérer le dossier de logs actifs.</p>
+<ol>
+<li>Créez un script nommé <code>archiveur.sh</code> à la racine de <code>labo_automation</code>.</li>
+<li>N&rsquo;oubliez pas le <strong>Shebang</strong> (<code>#!/bin/bash</code>) au début.</li>
+<li>Le script doit :
+<ul>
+<li>Afficher le message &ldquo;Début de l&rsquo;archivage&hellip;&rdquo;.</li>
+<li>Utiliser une boucle <strong><code>for</code></strong> pour parcourir tous les fichiers finissant par <code>.log</code> dans le dossier <code>logs/</code>.</li>
+<li>Pour chaque fichier trouvé :</li>
+<li>Déterminer le nom de base du fichier (ex: <code>app1.log</code>).</li>
+<li>Déplacer ce fichier vers le dossier <code>archives/</code> en le renommant avec le format : <code>nom_original-DATE.bak</code>.</li>
+<li><em>Format de la date :</em> Utilisez <code>$(date +%F)</code> (Année-Mois-Jour).</li>
+<li>Afficher un message : &ldquo;Archivage de [fichier] terminé.&rdquo;</li>
+</ul>
+</li>
+<li>Rendez le script exécutable.</li>
+<li>Testez le script. Vérifiez que le dossier <code>logs</code> est vide et que <code>archives</code> contient les fichiers renommés.</li>
+</ol>
+<h2 id="partie-2--surveillance-avec-la-boucle-while-30-min">Partie 2 : Surveillance avec la boucle <code>while</code> (30 min)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Vous devez surveiller la création de nouveaux fichiers dans le dossier <code>logs</code> en temps réel pendant une intervention de maintenance.</p>
+<ol>
+<li>Créez un script nommé <code>moniteur.sh</code>.</li>
+<li>Ce script doit utiliser une boucle <strong><code>while</code></strong> infinie (<code>true</code>).</li>
+<li>À l&rsquo;intérieur de la boucle :
+<ul>
+<li>Comptez le nombre de fichiers présents dans le dossier <code>logs</code>.</li>
+<li>Affichez : &ldquo;Surveillance active : X fichiers présents dans logs&rdquo; (où X est le nombre).</li>
+<li>Si le nombre de fichiers est égal à 0, affichez &ldquo;Tout est propre.&rdquo;.</li>
+<li>Si le nombre est supérieur à 0, affichez &ldquo;Attention : Nouveaux logs détectés !&rdquo;.</li>
+<li>Mettez le script en pause pendant <strong>5 secondes</strong> avant de recommencer la boucle (commande <code>sleep</code>).</li>
+</ul>
+</li>
+<li>Lancez ce script dans un terminal.</li>
+<li><strong>Test :</strong> Ouvrez un <em>deuxième terminal</em>. Créez un nouveau fichier dans <code>logs</code> (<code>touch logs/test.log</code>) et observez la réaction de votre script <code>moniteur.sh</code>.</li>
+<li>Arrêtez le script avec <code>Ctrl + C</code>.</li>
+</ol>
+<h2 id="partie-3--automatisation-avec-cron-20-min">Partie 3 : Automatisation avec Cron (20 min)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Votre script d&rsquo;archivage fonctionne bien, mais vous ne voulez pas le lancer manuellement tous les jours. Vous allez le planifier.</p>
+<ol>
+<li>Assurez-vous d&rsquo;avoir remis quelques fichiers <code>.log</code> dans le dossier <code>logs</code> pour le test.</li>
+<li>Ouvrez l&rsquo;éditeur de tâches cron (<code>crontab -e</code>).</li>
+<li>Ajoutez une tâche planifiée qui exécute votre script <code>archiveur.sh</code> <strong>toutes les minutes</strong>.
+<ul>
+<li><em>Note importante :</em> Cron ne voit pas votre écran. Pour vérifier que cela fonctionne, vous devez rediriger la sortie du script vers un fichier journal, par exemple : <code>&gt;&gt; /home/votre_user/labo_automation/cron_history.txt 2&gt;&amp;1</code>.</li>
+</ul>
+</li>
+<li>Sauvegardez et quittez.</li>
+<li>Attendez 2 minutes.</li>
+<li>Vérifiez :
+<ul>
+<li>Si les fichiers dans <code>logs</code> ont disparu.</li>
+<li>Si le fichier <code>cron_history.txt</code> contient bien les messages &ldquo;Début de l&rsquo;archivage&hellip;&rdquo;.</li>
+</ul>
+</li>
+</ol>
+<h2 id="partie-4--nettoyage">Partie 4 : Nettoyage<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Après avoir pris <strong>toutes</strong> vos captures d&rsquo;écran :</p>
+<ol>
+<li>Modifiez le <code>crontab</code> pour supprimer la tâche planifiée (pour éviter de remplir votre disque dur inutilement après le cours !).</li>
+<li>Modifiez le script <code>archiveur.sh</code> pour qu&rsquo;il vérifie d&rsquo;abord si le dossier <code>logs</code> est vide. S&rsquo;il est vide, il doit afficher &ldquo;Rien à archiver&rdquo; et s&rsquo;arrêter.</li>
+</ol>
+<h2 id="corrigé-du-laboratoire">Corrigé du laboratoire<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<blockquote>
+<p>À venir (samedi ou dimanche)</p>
+</blockquote>
+<!--
+
+# Solution 
+
+Voici les commandes et scripts attendus pour la correction.
+
+### Partie 0 : Mise en place
+
+```bash
+mkdir -p ~/labo_automation/logs ~/labo_automation/archives
+cd ~/labo_automation
+touch logs/{app1,app2,app3,system,error}.log
+```
+
+### Partie 1 : Le script `archiveur.sh`
+
+```bash
+#!/bin/bash
+
+# Définition des dossiers (Chemin absolu recommandé pour cron, mais relatif ok pour test)
+# On utilise $HOME pour que cela fonctionne peu importe l'utilisateur
+SOURCE="$HOME/labo_automation/logs"
+DEST="$HOME/labo_automation/archives"
+DATE_JOUR=$(date +%F-%H%M) # Ajout heure/minute pour bien voir les différences en test
+
+echo "--- Début de l'archivage : $(date) ---"
+
+# Vérification si des fichiers existent (Bonus Partie 4 inclus ici pour robustesse)
+# On regarde si ls trouve des fichiers .log
+if ! ls $SOURCE/*.log >/dev/null 2>&1; then
+    echo "Aucun fichier .log trouvé dans $SOURCE."
+    exit 0
+fi
+
+# La boucle FOR
+for fichier in "$SOURCE"/*.log; do
+    # Extraction du nom de fichier sans le chemin
+    nom_base=$(basename "$fichier")
+    
+    # Déplacement et renommage
+    mv "$fichier" "$DEST/$nom_base-$DATE_JOUR.bak"
+    
+    echo "Archivage de $nom_base terminé."
+done
+
+echo "Opération terminée."
+```
+
+**Pour tester :**
+
+```bash
+chmod +x archiveur.sh
+./archiveur.sh
+ls archives/
+```
+
+### Partie 2 : Le script `moniteur.sh`
+
+```bash
+#!/bin/bash
+
+DOSSIER="$HOME/labo_automation/logs"
+
+echo "Démarrage de la surveillance sur $DOSSIER..."
+echo "Appuyez sur Ctrl+C pour arrêter."
+
+# La boucle WHILE infinie
+while true; do
+    # Compter les fichiers (ls | wc -l)
+    # On vérifie si le dossier existe pour éviter les erreurs
+    if [ -d "$DOSSIER" ]; then
+        nombre=$(ls -1 "$DOSSIER" | wc -l)
+        
+        echo "---------------------------------"
+        echo "Heure : $(date +%H:%M:%S)"
+        echo "Surveillance active : $nombre fichiers présents."
+        
+        if [ "$nombre" -eq 0 ]; then
+            echo "Statut : Tout est propre."
+        else
+            echo "ALERTE : Nouveaux logs détectés !"
+        fi
+    else
+        echo "Erreur : Le dossier $DOSSIER n'existe pas."
+    fi
+
+    # Pause de 5 secondes
+    sleep 5
+done
+```
+
+**Pour tester :**
+
+```bash
+chmod +x moniteur.sh
+./moniteur.sh
+# Dans un autre terminal : touch ~/labo_automation/logs/test.log
+```
+
+### Partie 3 : La planification Cron
+
+Commande pour éditer :
+
+```bash
+crontab -e
+```
+
+Ligne à ajouter (remplacez `votre_user` par votre vrai nom d'utilisateur, ex: `etudiant`) :
+
+```cron
+# M h  dom mon dow   command
+* * * * * /home/votre_user/labo_automation/archiveur.sh >> /home/votre_user/labo_automation/cron_history.txt 2>&1
+
+```
+
+*Explication de la syntaxe :* `* * * * *` signifie "Chaque minute".
+*Explication de la redirection :* `>>` ajoute la sortie à la fin du fichier texte. `2>&1` redirige aussi les erreurs vers ce même fichier.
+
+### Nettoyage final
+
+Pour arrêter le cron, tapez `crontab -e` et supprimez la ligne ou ajoutez un `#` au début pour la commenter.
+
+```bash
+# * * * * * /home/... (Ligne désactivée)
+```
+-->
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+
+<a id="logo" href="https://example.org/">
+  <img src="/images/logo.png" alt="Logo du site" style="height: 100px; width: auto;">
+</a>
+
+
+        <search><form action="/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks default-animation">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-url="/index.html"><a class="padding" href="/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols default-animation">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-main default-animation">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-url="/remises/index.html"><a class="padding" href="/remises/index.html">Protocole de remise des exos et labos<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/regles/index.html"><a class="padding" href="/regles/index.html">Règles de survie au cours<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-1/index.html"><input type="checkbox" id="R-section-0b942f9b9b2d065455b2a863f4d7995c" aria-controls="R-subsections-0b942f9b9b2d065455b2a863f4d7995c"><label for="R-section-0b942f9b9b2d065455b2a863f4d7995c"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Fondations &amp; installation</span></label><a class="padding default-animation" href="/bloc-1/index.html">BLOC 1 : Fondations &amp; installation<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-0b942f9b9b2d065455b2a863f4d7995c" class="collapsible-menu">
+            <li class="" data-nav-url="/bloc-1/semaine-1/index.html"><a class="padding" href="/bloc-1/semaine-1/index.html">Semaine 1 : Introduction et installation<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-1/semaine-2/index.html"><a class="padding" href="/bloc-1/semaine-2/index.html">Semaine 2 : Arborescence et navigation<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-1/semaine-3/index.html"><a class="padding" href="/bloc-1/semaine-3/index.html">Semaine 3 : Gestion de paquets et édition de texte<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-1/semaine-4/index.html"><a class="padding" href="/bloc-1/semaine-4/index.html">Semaine 4 : L&#39;expansion d&#39;accolades et Examen 1<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
+            <li class="" data-nav-url="/bloc-2/index.html"><input type="checkbox" id="R-section-bc3591f00126f0242dfd3ada90ba9fa8" aria-controls="R-subsections-bc3591f00126f0242dfd3ada90ba9fa8"><label for="R-section-bc3591f00126f0242dfd3ada90ba9fa8"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Administration système &amp; sécurité</span></label><a class="padding default-animation" href="/bloc-2/index.html">BLOC 2 : Administration système &amp; sécurité<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-bc3591f00126f0242dfd3ada90ba9fa8" class="collapsible-menu">
+            <li class="" data-nav-url="/bloc-2/semaine-5/index.html"><a class="padding" href="/bloc-2/semaine-5/index.html">Semaine 5 : Gestion des Utilisateurs<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-2/semaine-6/index.html"><a class="padding" href="/bloc-2/semaine-6/index.html">Semaine 6 : Permissions &amp; droits d&#39;accès<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-2/semaine-7/index.html"><a class="padding" href="/bloc-2/semaine-7/index.html">Semaine 7 : Gestion des processus<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-2/semaine-8/index.html"><a class="padding" href="/bloc-2/semaine-8/index.html">Semaine 8 : Révision? &amp; Examen #2<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
+            <li class="" data-nav-url="/bloc-3/index.html"><input type="checkbox" id="R-section-d0f965f65b76b5a918fb9cc7fc20ea39" aria-controls="R-subsections-d0f965f65b76b5a918fb9cc7fc20ea39"><label for="R-section-d0f965f65b76b5a918fb9cc7fc20ea39"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Redirections &amp; filtres, disques et réseau</span></label><a class="padding default-animation" href="/bloc-3/index.html">BLOC 3 : Redirections &amp; filtres, disques et réseau<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-d0f965f65b76b5a918fb9cc7fc20ea39" class="collapsible-menu">
+            <li class="" data-nav-url="/bloc-3/semaine-9/index.html"><a class="padding" href="/bloc-3/semaine-9/index.html">Semaine 9 : Redirections, Pipes et filtres<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-3/semaine-10/index.html"><a class="padding" href="/bloc-3/semaine-10/index.html">Semaine 10 : Gestion de disques<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-3/semaine-11/index.html"><a class="padding" href="/bloc-3/semaine-11/index.html">Semaine 11 : Réseau et services &amp; Examen #3<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
+            <li class="parent " data-nav-url="/bloc-4/index.html"><input type="checkbox" id="R-section-c1ebb4b1b8b7a51069075ff54026c0de" aria-controls="R-subsections-c1ebb4b1b8b7a51069075ff54026c0de" checked><label for="R-section-c1ebb4b1b8b7a51069075ff54026c0de"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Automatisation &amp; scripting</span></label><a class="padding default-animation" href="/bloc-4/index.html">BLOC 4 : Automatisation &amp; scripting<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-c1ebb4b1b8b7a51069075ff54026c0de" class="collapsible-menu">
+            <li class="" data-nav-url="/bloc-4/semaine-12/index.html"><a class="padding" href="/bloc-4/semaine-12/index.html">Semaine 12 : Introduction au Scripting Bash<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-4/semaine-13/index.html"><a class="padding" href="/bloc-4/semaine-13/index.html">Semaine 13 : Logique conditionnelle &amp; tests sur fichiers<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="active " data-nav-url="/bloc-4/semaine-14/index.html"><a class="padding" href="/bloc-4/semaine-14/index.html">Semaine 14 : Boucles &amp; planification (Cron)<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-4/semaine-15/index.html"><a class="padding" href="/bloc-4/semaine-15/index.html">Semaine 15 : Révision &amp; Examen Final<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts default-animation">
+          <ul class="space collapsible-menu">
+          </ul>
+        </div>
+        <div id="R-footer-margin" class="default-animation"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols default-animation">
+          <ul class="">
+            <li class="R-historyclearer">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-history"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <button>Clear History</button>
+                </div>
+                <div class="clear"></div>
+              </div>
+            </li>
+          </ul>
+        </div>
+<div id="R-footer" class="default-animation"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
+      </div>
+    </aside>
+    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1768146506" defer></script>
+    <script src="/js/theme.min.js?1768146506" defer></script>
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+  </body>
+</html>

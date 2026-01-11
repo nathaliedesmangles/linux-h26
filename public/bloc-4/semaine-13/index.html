@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="fr-ca" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.152.2">
+    <meta name="generator" content="Relearn 8.3.0+187e41ae8f27979cda87bfe489e34e07e5b6cbcd">
+    <meta name="description" content="Objectif la semaine Créer des scripts dynamiques qui s’adaptent aux paramètres donnés et à l’état du système. Fichier pour les exercices (en classe)
+Utiliser le fichier exo-semaine2.docx pour y mettre vos réponses et captures d’écran.
+Télécharger le fichier docx
+Théorie Le flux de contrôle (if/else/fi) Jusqu’à présent, vos scripts étaient comme des robots aveugles : ils exécutaient une liste d’ordres l’un après l’autre, sans se soucier de savoir si l’ordre précédent avait fonctionné.">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Logique conditionnelle & tests sur fichiers :: ZG4-Linux">
+    <meta name="twitter:description" content="Objectif la semaine Créer des scripts dynamiques qui s’adaptent aux paramètres donnés et à l’état du système. Fichier pour les exercices (en classe)
+Utiliser le fichier exo-semaine2.docx pour y mettre vos réponses et captures d’écran.
+Télécharger le fichier docx
+Théorie Le flux de contrôle (if/else/fi) Jusqu’à présent, vos scripts étaient comme des robots aveugles : ils exécutaient une liste d’ordres l’un après l’autre, sans se soucier de savoir si l’ordre précédent avait fonctionné.">
+    <meta property="og:url" content="https://example.org/bloc-4/semaine-13/index.html">
+    <meta property="og:site_name" content="ZG4-Linux">
+    <meta property="og:title" content="Logique conditionnelle & tests sur fichiers :: ZG4-Linux">
+    <meta property="og:description" content="Objectif la semaine Créer des scripts dynamiques qui s’adaptent aux paramètres donnés et à l’état du système. Fichier pour les exercices (en classe)
+Utiliser le fichier exo-semaine2.docx pour y mettre vos réponses et captures d’écran.
+Télécharger le fichier docx
+Théorie Le flux de contrôle (if/else/fi) Jusqu’à présent, vos scripts étaient comme des robots aveugles : ils exécutaient une liste d’ordres l’un après l’autre, sans se soucier de savoir si l’ordre précédent avait fonctionné.">
+    <meta property="og:locale" content="fr_ca">
+    <meta property="og:type" content="article">
+    <meta property="article:section" content="Automatisation & scripting">
+    <meta itemprop="name" content="Logique conditionnelle & tests sur fichiers :: ZG4-Linux">
+    <meta itemprop="description" content="Objectif la semaine Créer des scripts dynamiques qui s’adaptent aux paramètres donnés et à l’état du système. Fichier pour les exercices (en classe)
+Utiliser le fichier exo-semaine2.docx pour y mettre vos réponses et captures d’écran.
+Télécharger le fichier docx
+Théorie Le flux de contrôle (if/else/fi) Jusqu’à présent, vos scripts étaient comme des robots aveugles : ils exécutaient une liste d’ordres l’un après l’autre, sans se soucier de savoir si l’ordre précédent avait fonctionné.">
+    <meta itemprop="wordCount" content="1089">
+    <title>Logique conditionnelle &amp; tests sur fichiers :: ZG4-Linux</title>
+    <link href="/images/logo.png?1768146506" rel="icon" type="image/png">
+    <link href="/css/auto-complete/auto-complete.min.css?1768146506" rel="stylesheet">
+    <script src="/js/auto-complete/auto-complete.min.js?1768146506" defer></script>
+    <script src="/js/search-lunr.min.js?1768146506" defer></script>
+    <script src="/js/search.min.js?1768146506" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="/searchindex.en.js?1768146506";
+    </script>
+    <script src="/js/lunr/lunr.min.js?1768146506" defer></script>
+    <script src="/js/lunr/lunr.stemmer.support.min.js?1768146506" defer></script>
+    <script src="/js/lunr/lunr.multi.min.js?1768146506" defer></script>
+    <script src="/js/lunr/lunr.fr.min.js?1768146506" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['fr'];
+    </script>
+    <link href="/fonts/fontawesome/css/fontawesome-all.min.css?1768146506" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/fontawesome-all.min.css?1768146506" rel="stylesheet"></noscript>
+    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1768146506" rel="stylesheet">
+    <link href="/css/theme.min.css?1768146506" rel="stylesheet">
+    <link href="/css/format-html.min.css?1768146506" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = `.min`;
+      window.relearn.path='\/bloc-4\/semaine-13\/index.html';
+      window.relearn.relBasePath='..\/..';
+      window.relearn.relBaseUri='..\/..';
+      window.relearn.absBaseUri='https:\/\/example.org';
+      window.relearn.disableInlineCopyToClipboard=false;
+      window.relearn.enableBlockCodeWrap=true;
+      // legal
+      window.relearn.getItem = (s,n) => {return s.getItem(n)};
+      window.relearn.setItem = (s,n,v) => {return s.setItem(n,v)};
+      window.relearn.removeItem = (s,n) => {return s.removeItem(n)};
+      // translations
+      window.T_Copy_to_clipboard = `Copy text to clipboard`;
+      window.T_Copied_to_clipboard = `Text copied to clipboard!`;
+      window.T_Link_copied_to_clipboard = `Link copied to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+      window.T_Browser_unsupported_feature = `This browser doesn't support this feature`;
+      // variant stuff
+      window.relearn.themevariants = [ 'auto' ];
+      window.relearn.customvariantprefix = "my-custom-";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant") ?? "";
+        if( !variant ||
+            (!variant.startsWith(window.relearn.customvariantprefix) && !window.relearn.themevariants.includes(variant)) ||
+            (variant.startsWith(window.relearn.customvariantprefix) && !window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variantstylesheet-" + variant)) ){
+          variant = window.relearn.themevariants[0];
+          window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script>
+    <link href="/css/custom.css?1768146506" rel="stylesheet">
+  </head>
+  <body class="mobile-support html" data-url="/bloc-4/semaine-13/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar" class="default-animation">
+        <div class="topbar-wrapper default-animation">
+          <div class="topbar-sidebar-divider default-animation"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar default-animation" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
+            </div>
+            <div class="topbar-button topbar-button-toc default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#objectif-la-semaine">Objectif la semaine</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#le-flux-de-contrôle-ifelsefi">Le flux de contrôle (<code>if/else/fi</code>)</a>
+      <ul>
+        <li><a href="#1-le-code-de-retour--et-exit">1. Le code de retour (<code>$?</code>) et <code>exit</code></a></li>
+        <li><a href="#2-les-opérateurs-de-combinaison---">2. Les opérateurs de combinaison (<code>&amp;&amp;</code>, <code>||</code>, <code>;</code>)</a></li>
+        <li><a href="#3-la-structure-if-then--else--fi">3. La structure IF-THEN / ELSE / FI</a></li>
+        <li><a href="#4-les-tests">4. Les tests</a></li>
+        <li><a href="#-exercice-1-en-classe">🟢 Exercice 1 (en classe)</a></li>
+        <li><a href="#-exercice-2-en-classe">🟢 Exercice 2 (en classe)</a></li>
+        <li><a href="#-exercice-3-en-classe">🟢 Exercice 3 (en classe)</a></li>
+        <li><a href="#-exercice-4-en-classe">🟢 Exercice 4 (en classe)</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#étape-1--les-arguments">Étape 1 : Les arguments</a></li>
+        <li><a href="#étape-2--conditions-fichiers">Étape 2 : Conditions fichiers</a></li>
+        <li><a href="#étape-3--uid-et-exit">Étape 3 : UID et Exit</a></li>
+        <li><a href="#étape-4--synthèse">Étape 4 : Synthèse</a></li>
+      </ul>
+    </li>
+    <li><a href="#corrigé-du-laboratoire">Corrigé du laboratoire</a></li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/index.html"><span itemprop="name">Accueil du cours</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/bloc-4/index.html"><span itemprop="name">Automatisation &amp; scripting</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Logique conditionnelle &amp; tests sur fichiers</span><meta itemprop="position" content="3"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-prev default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/bloc-4/semaine-12/index.html" title="Introduction au Scripting Bash (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-next default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/bloc-4/semaine-14/index.html" title="Boucles & planification (Cron) (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-more default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable bloc-4" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="logique-conditionnelle--tests-sur-fichiers">Logique conditionnelle &amp; tests sur fichiers</h1>
+
+<h2 id="objectif-la-semaine">Objectif la semaine<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<ul>
+<li>Créer des scripts dynamiques qui s&rsquo;adaptent aux paramètres donnés et à l&rsquo;état du système.</li>
+</ul>
+<p><strong>Fichier pour les exercices (en classe)</strong><br>
+Utiliser le fichier <strong>exo-semaine2.docx</strong> pour y mettre vos réponses et captures d&rsquo;écran.<br>
+<span class="btn cstyle button transparent interactive"><a href="/docs/Exercices/exo-semaine2.docx"><i class="fa-fw fas fa-download"></i> <span class="title">Télécharger le fichier docx</span></a></span></p>
+<hr>
+<h1 id="théorie">Théorie<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h1>
+<h2 id="le-flux-de-contrôle-ifelsefi">Le flux de contrôle (<code>if/else/fi</code>)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Jusqu&rsquo;à présent, vos scripts étaient comme des <strong>robots aveugles</strong> : ils exécutaient une liste d&rsquo;ordres l&rsquo;un après l&rsquo;autre, sans se soucier de savoir si l&rsquo;ordre précédent avait fonctionné.</p>
+<p>Avec le flux de contrôle, nous allons leur donner une <strong>intelligence</strong>. Ils pourront dire : <em>&ldquo;Si la copie échoue, je m&rsquo;arrête&rdquo;</em> ou <em>&ldquo;Si le dossier n&rsquo;existe pas, je le crée&rdquo;</em>.</p>
+<h3 id="1-le-code-de-retour--et-exit">1. Le code de retour (<code>$?</code>) et <code>exit</code><span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Comment le script sait-il si une commande a réussi ? Grâce à un petit numéro invisible qu&rsquo;on appelle le <strong>Code de Retour</strong> (Exit Code).</p>
+<p>Chaque fois qu&rsquo;une commande se termine, elle laisse un message au système, stocké dans la variable spéciale <code>$?</code>.</p>
+
+<details open class="box cstyle notices primary">
+  <summary class="box-label a11y-only" tabindex="-1">
+    <span class="a11y-only">Details</span>
+  </summary>
+  <div class="box-content">
+<p><strong>LA LOGIQUE INVERSÉE DE LINUX</strong><br>
+Oubliez la logique scolaire où 100% ou 1 est le meilleur score. En informatique système :</p>
+<ul>
+<li><strong>0 (Zéro) = SUCCÈS</strong> (&ldquo;Zéro erreur&rdquo;, tout s&rsquo;est bien passé).</li>
+<li><strong>1 à 255 = ÉCHEC</strong> (Il y a eu un problème).</li>
+</ul>
+  </div>
+</details>
+<p><strong>Exemples :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ls /home
+</span></span><span style="display:flex;"><span>echo $?   
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Affiche 0 (Succès : le dossier existe)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ls /dossier_qui_n_existe_pas
+</span></span><span style="display:flex;"><span>echo $?   
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Affiche 2 (ou autre chiffre &gt; 0 : Échec)</span></span></span></code></pre></div>
+
+<details open class="box cstyle notices primary">
+  <summary class="box-label a11y-only" tabindex="-1">
+    <span class="a11y-only">Details</span>
+  </summary>
+  <div class="box-content">
+<ul>
+<li><strong>Arrêter le script :</strong> <code>exit 1</code> (Arrêt d&rsquo;urgence avec code d&rsquo;erreur).</li>
+</ul>
+  </div>
+</details>
+<h3 id="2-les-opérateurs-de-combinaison---">2. Les opérateurs de combinaison (<code>&amp;&amp;</code>, <code>||</code>, <code>;</code>)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>On peut enchaîner des commandes &ldquo;à la suite&rdquo; sur une seule ligne. Le choix du symbole dicte le comportement du script.</p>
+<table>
+  <thead>
+      <tr>
+          <th>Opérateur</th>
+          <th>Nom</th>
+          <th>Logique (Le &ldquo;Si&rdquo;)</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong><code>;</code></strong></td>
+          <td>Point-virgule</td>
+          <td><strong>Fais A puis fais B</strong> (Peu importe si A explose)</td>
+      </tr>
+      <tr>
+          <td><strong><code>&amp;&amp;</code></strong></td>
+          <td><strong>ET</strong> (AND)</td>
+          <td><strong>Si A réussit, fais B</strong> (Arrêt immédiat si A échoue)</td>
+      </tr>
+      <tr>
+          <td><code>||</code></td>
+          <td><strong>OU</strong> (OR)</td>
+          <td><strong>Si A échoue, fais B</strong> (Arrêt immédiat si A réussit)</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Exemple concret :</strong></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Créer un dossier ET entrer dedans immédiatement (si la création a marché)</span>
+</span></span><span style="display:flex;"><span>mkdir projet <span style="color:#f92672">&amp;&amp;</span> cd projet
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Tenter une copie, OU afficher une alerte si elle rate</span>
+</span></span><span style="display:flex;"><span>cp rapport.txt /backup/ <span style="color:#f92672">||</span> echo <span style="color:#e6db74">&#34; Erreur : Sauvegarde échouée !&#34;</span></span></span></code></pre></div>
+<h3 id="3-la-structure-if-then--else--fi">3. La structure IF-THEN / ELSE / FI<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Les opérateurs <code>&amp;&amp;</code> et <code>||</code> sont parfaits pour des actions courtes. Mais pour des scénarios complexes, on utilise le bloc <code>if</code>.</p>
+<p><strong>La syntaxe</strong>
+La structure commence par <code>if</code> (si) et se termine obligatoirement par <code>fi</code> (if à l&rsquo;envers).</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> condition <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Commandes exécutées si c&#39;est VRAI (Code de retour 0)</span>
+</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;C&#39;est vrai !&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Commandes exécutées si c&#39;est FAUX (Code de retour &gt; 0)</span>
+</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;C&#39;est faux !&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span></span></span></code></pre></div>
+
+<details open class="box cstyle notices primary">
+  <summary class="box-label a11y-only" tabindex="-1">
+    <span class="a11y-only">Details</span>
+  </summary>
+  <div class="box-content">
+<p><strong>LE PIÈGE MORTEL DES ESPACES</strong><br>
+En Bash, le crochet <code>[</code> n&rsquo;est pas une simple décoration. C&rsquo;est une <strong>commande</strong> (un alias de la commande <code>test</code>). Comme toute commande, elle a besoin d&rsquo;espaces autour d&rsquo;elle.</p>
+<ul>
+<li>❌ <code>if [$a=&quot;non&quot;]</code> : <strong>ERREUR</strong> (Bash cherche une commande nommée <code>[$a=&quot;non&quot;]</code> qui n&rsquo;existe pas).</li>
+<li>✅ <code>if [ &quot;$a&quot; = &quot;non&quot; ]</code> : <strong>SUCCÈS</strong> (Il y a un espace après <code>[</code> et avant <code>]</code>).</li>
+</ul>
+  </div>
+</details>
+<h3 id="4-les-tests">4. Les tests<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Bash ne teste pas un fichier comme il teste un nombre. Il faut utiliser les bons &ldquo;drapeaux&rdquo; (flags).</p>
+<h4 id="pour-les-fichiers">Pour les FICHIERS<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<ul>
+<li><code>-e</code> : <strong>E</strong>xiste (que ce soit un fichier ou un dossier).</li>
+<li><code>-f</code> : Est un <strong>F</strong>ichier (File) standard.</li>
+<li><code>-d</code> : Est un <strong>D</strong>ossier (Directory).</li>
+</ul>
+<h4 id="pour-les-nombres-entiers">Pour les NOMBRES (Entiers)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<ul>
+<li><code>-eq</code> : <strong>Eq</strong>ual (Égal à).</li>
+<li><code>-gt</code> : <strong>G</strong>reater <strong>T</strong>han (Plus grand que).</li>
+<li><code>-lt</code> : <strong>L</strong>ess <strong>T</strong>han (Plus petit que).</li>
+<li><code>-ne</code> : <strong>N</strong>ot <strong>E</strong>qual (Différent de).</li>
+</ul>
+<h4 id="pour-le-texte-chaînes-de-caractères">Pour le TEXTE (Chaînes de caractères)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<ul>
+<li><code>=</code> : Est identique à.</li>
+<li><code>!=</code> : Est différent de.</li>
+<li><code>-z</code> : La chaîne est vide (Zero length).</li>
+</ul>
+<p><strong>L&rsquo;astuce de l&rsquo;inverse (!)</strong>
+On peut inverser n&rsquo;importe quel test avec le point d&rsquo;exclamation (le &ldquo;NOT&rdquo;).
+<code>if [ ! -d &quot;/tmp&quot; ]</code> signifie &ldquo;Si le dossier /tmp <strong>N&rsquo;EXISTE PAS</strong>&rdquo;.</p>
+<p>Voici des petits exercices pour tester votre compréhension immédiate.</p>
+<h3 id="-exercice-1-en-classe">🟢 Exercice 1 (en classe)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><em>Qu&rsquo;est-ce qui va s&rsquo;afficher si on lance <code>./script.sh 5</code>.</em></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>VALEUR<span style="color:#f92672">=</span>$1
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> $VALEUR -gt <span style="color:#ae81ff">10</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;Grand&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;Petit&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span></span></span></code></pre></div>
+<!--
+**Réponse :** "Petit". (Car 5 n'est pas plus grand que 10).
+-->
+<h3 id="-exercice-2-en-classe">🟢 Exercice 2 (en classe)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Sans utiliser <code>if</code>, écrivez une seule ligne de commande qui :</p>
+<ol>
+<li>Crée un dossier nommé <code>Archives</code>.</li>
+<li><strong>Si</strong> la création réussit, affiche le message &ldquo;Dossier créé&rdquo;.</li>
+<li><strong>Si</strong> la création échoue (car il existe déjà), affiche &ldquo;Le dossier existe déjà&rdquo;.</li>
+</ol>
+<blockquote>
+<p><em><strong>Indice</strong> : Utilisez <code>mkdir</code>, <code>&amp;&amp;</code> et <code>||</code>.</em></p>
+</blockquote>
+<h3 id="-exercice-3-en-classe">🟢 Exercice 3 (en classe)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Le script suivant contient <strong>3 erreurs</strong> qui l&rsquo;empêchent de fonctionner. Trouvez-les et corrigez-les.</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>NOM<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Batman&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span>$NOM <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Batman&#34;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;Je suis la nuit.&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;Tu n&#39;es pas le héros.&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span></span></span></code></pre></div>
+<h3 id="-exercice-4-en-classe">🟢 Exercice 4 (en classe)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Créez un script nommé <code>verif_age.sh</code>.</p>
+<ol>
+<li>Déclarez une variable <code>AGE=15</code>.</li>
+<li>Utilisez un <code>if</code> pour vérifier si l&rsquo;âge est plus grand ou égal (<code>-ge</code>) à 18.</li>
+<li>Si oui, affichez &ldquo;Majeur&rdquo;. Sinon, affichez &ldquo;Mineur&rdquo;.</li>
+</ol>
+<!--
+
+Solutions (Pour le professeur)
+
+**Solution Ex 1 :**
+
+```bash
+mkdir Archives && echo "Dossier créé" || echo "Le dossier existe déjà"
+
+```
+
+**Solution Ex 2 :**
+
+1. Manque d'espace après `[` et avant `]`.
+2. Manque le `;` après le crochet fermant (ou retour à la ligne avant `then`).
+3. Manque le mot-clé `then`.
+
+*Correction :*
+
+```bash
+if [ "$NOM" = "Batman" ]; then
+```
+
+**Solution Ex 3 :**
+
+```bash
+#!/bin/bash
+AGE=15
+if [ "$AGE" -ge 18 ]; then
+    echo "Majeur"
+else
+    echo "Mineur"
+fi
+```
+-->
+<hr>
+<h1 id="laboratoire">LABORATOIRE<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h1>
+<p><strong>Objectif :</strong> Créer des outils d&rsquo;administration robustes qui ne plantent pas à la moindre erreur.</p>
+<p>Utiliser le fichier <strong>labo13.docx</strong> pour y mettre vos réponses et captures d&rsquo;écran.<br>
+<span class="btn cstyle button transparent interactive"><a href="/docs/Labos/labo13.docx"><i class="fa-fw fas fa-download"></i> <span class="title">Télécharger le fichier docx</span></a></span></p>
+<h3 id="étape-1--les-arguments">Étape 1 : Les arguments<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><em>Comprendre <code>$1</code>, <code>$2</code> etc.</em></p>
+<ol>
+<li>
+<p>Créez <code>analyse.sh</code>.</p>
+</li>
+<li>
+<p>Il doit afficher :</p>
+<ul>
+<li>&ldquo;Le nom du script est : [nom]&rdquo;</li>
+<li>&ldquo;Tu m&rsquo;as donné [nombre] arguments.&rdquo;</li>
+<li>&ldquo;Le premier est : [arg1]&rdquo;</li>
+<li>&ldquo;Le deuxième est : [arg2]&rdquo;</li>
+</ul>
+</li>
+<li>
+<p>Testez avec : <code>./analyse.sh banane pomme</code> et <code>./analyse.sh</code>.</p>
+</li>
+</ol>
+<h3 id="étape-2--conditions-fichiers">Étape 2 : Conditions fichiers<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><em><strong>Scénario</strong> : Créer un dossier de projet, mais afficher un message informant l&rsquo;utilisateur s&rsquo;il existe déjà.</em></p>
+<ol>
+<li>Créez <code>creer_projet.sh</code>.</li>
+<li>Il prend un nom de dossier en argument (<code>$1</code>).</li>
+<li><strong>Logique :</strong>
+<ul>
+<li>Vérifier si <code>$1</code> est vide (sécurité).</li>
+<li>Vérifier si le dossier existe déjà (<code>if [ -d &quot;$1&quot; ]</code>).</li>
+<li><strong>SI OUI :</strong> Afficher &ldquo;Erreur : Le projet $1 existe déjà !&rdquo; et quitter (<code>exit 1</code>).</li>
+<li><strong>SI NON :</strong> Le créer (<code>mkdir &quot;$1&quot;</code>) et afficher &ldquo;Projet $1 créé avec succès.&rdquo;.</li>
+</ul>
+</li>
+</ol>
+<h3 id="étape-3--uid-et-exit">Étape 3 : UID et Exit<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><em><strong>Scénario</strong> : Un script de maintenance qui DOIT être lancé en root.</em></p>
+<ol>
+<li>Créez <code>maintenance.sh</code>.</li>
+<li>Le script doit vérifier qui le lance.
+<ul>
+<li><strong>Astuce</strong> : La variable <code>$UID</code> vaut 0 pour root.</li>
+</ul>
+</li>
+<li><strong>Logique :</strong>
+<ul>
+<li><code>if [ &quot;$UID&quot; -ne 0 ]; then</code></li>
+<li>Afficher &ldquo;STOP ! Vous devez être root (sudo) pour lancer ce script.&rdquo;</li>
+<li><code>exit 1</code></li>
+<li><code>fi</code></li>
+<li>Afficher &ldquo;Lancement de la mise à jour&hellip;&rdquo; (et faire un faux <code>sleep 2</code>).</li>
+</ul>
+</li>
+<li>Testez-le en tant qu&rsquo;étudiant (Échec) et avec <code>sudo</code> (Succès).</li>
+</ol>
+<h3 id="étape-4--synthèse">Étape 4 : Synthèse<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><em>Combiner <code>grep</code>, variables, arguments et conditions.</em></p>
+<ol>
+<li>Créez <code>check_user.sh</code>.</li>
+<li>Il prend un nom d&rsquo;utilisateur en argument.</li>
+<li>Il cherche cet utilisateur dans <code>/etc/passwd</code> (utilisez <code>grep -q</code> pour le mode silencieux).</li>
+<li>Si <code>grep</code> trouve (code retour <code>$?</code> égal à 0) : Affichez &ldquo;L&rsquo;utilisateur existe.&rdquo;</li>
+<li>Sinon : Affichez &ldquo;Utilisateur inconnu.&rdquo;</li>
+</ol>
+<h2 id="corrigé-du-laboratoire">Corrigé du laboratoire<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<blockquote>
+<p>À venir (samedi ou dimanche)</p>
+</blockquote>
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+
+<a id="logo" href="https://example.org/">
+  <img src="/images/logo.png" alt="Logo du site" style="height: 100px; width: auto;">
+</a>
+
+
+        <search><form action="/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks default-animation">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-url="/index.html"><a class="padding" href="/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols default-animation">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-main default-animation">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-url="/remises/index.html"><a class="padding" href="/remises/index.html">Protocole de remise des exos et labos<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/regles/index.html"><a class="padding" href="/regles/index.html">Règles de survie au cours<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-1/index.html"><input type="checkbox" id="R-section-0b942f9b9b2d065455b2a863f4d7995c" aria-controls="R-subsections-0b942f9b9b2d065455b2a863f4d7995c"><label for="R-section-0b942f9b9b2d065455b2a863f4d7995c"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Fondations &amp; installation</span></label><a class="padding default-animation" href="/bloc-1/index.html">BLOC 1 : Fondations &amp; installation<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-0b942f9b9b2d065455b2a863f4d7995c" class="collapsible-menu">
+            <li class="" data-nav-url="/bloc-1/semaine-1/index.html"><a class="padding" href="/bloc-1/semaine-1/index.html">Semaine 1 : Introduction et installation<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-1/semaine-2/index.html"><a class="padding" href="/bloc-1/semaine-2/index.html">Semaine 2 : Arborescence et navigation<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-1/semaine-3/index.html"><a class="padding" href="/bloc-1/semaine-3/index.html">Semaine 3 : Gestion de paquets et édition de texte<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-1/semaine-4/index.html"><a class="padding" href="/bloc-1/semaine-4/index.html">Semaine 4 : L&#39;expansion d&#39;accolades et Examen 1<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
+            <li class="" data-nav-url="/bloc-2/index.html"><input type="checkbox" id="R-section-bc3591f00126f0242dfd3ada90ba9fa8" aria-controls="R-subsections-bc3591f00126f0242dfd3ada90ba9fa8"><label for="R-section-bc3591f00126f0242dfd3ada90ba9fa8"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Administration système &amp; sécurité</span></label><a class="padding default-animation" href="/bloc-2/index.html">BLOC 2 : Administration système &amp; sécurité<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-bc3591f00126f0242dfd3ada90ba9fa8" class="collapsible-menu">
+            <li class="" data-nav-url="/bloc-2/semaine-5/index.html"><a class="padding" href="/bloc-2/semaine-5/index.html">Semaine 5 : Gestion des Utilisateurs<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-2/semaine-6/index.html"><a class="padding" href="/bloc-2/semaine-6/index.html">Semaine 6 : Permissions &amp; droits d&#39;accès<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-2/semaine-7/index.html"><a class="padding" href="/bloc-2/semaine-7/index.html">Semaine 7 : Gestion des processus<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-2/semaine-8/index.html"><a class="padding" href="/bloc-2/semaine-8/index.html">Semaine 8 : Révision? &amp; Examen #2<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
+            <li class="" data-nav-url="/bloc-3/index.html"><input type="checkbox" id="R-section-d0f965f65b76b5a918fb9cc7fc20ea39" aria-controls="R-subsections-d0f965f65b76b5a918fb9cc7fc20ea39"><label for="R-section-d0f965f65b76b5a918fb9cc7fc20ea39"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Redirections &amp; filtres, disques et réseau</span></label><a class="padding default-animation" href="/bloc-3/index.html">BLOC 3 : Redirections &amp; filtres, disques et réseau<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-d0f965f65b76b5a918fb9cc7fc20ea39" class="collapsible-menu">
+            <li class="" data-nav-url="/bloc-3/semaine-9/index.html"><a class="padding" href="/bloc-3/semaine-9/index.html">Semaine 9 : Redirections, Pipes et filtres<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-3/semaine-10/index.html"><a class="padding" href="/bloc-3/semaine-10/index.html">Semaine 10 : Gestion de disques<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-3/semaine-11/index.html"><a class="padding" href="/bloc-3/semaine-11/index.html">Semaine 11 : Réseau et services &amp; Examen #3<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
+            <li class="parent " data-nav-url="/bloc-4/index.html"><input type="checkbox" id="R-section-c1ebb4b1b8b7a51069075ff54026c0de" aria-controls="R-subsections-c1ebb4b1b8b7a51069075ff54026c0de" checked><label for="R-section-c1ebb4b1b8b7a51069075ff54026c0de"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Automatisation &amp; scripting</span></label><a class="padding default-animation" href="/bloc-4/index.html">BLOC 4 : Automatisation &amp; scripting<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-c1ebb4b1b8b7a51069075ff54026c0de" class="collapsible-menu">
+            <li class="" data-nav-url="/bloc-4/semaine-12/index.html"><a class="padding" href="/bloc-4/semaine-12/index.html">Semaine 12 : Introduction au Scripting Bash<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="active " data-nav-url="/bloc-4/semaine-13/index.html"><a class="padding" href="/bloc-4/semaine-13/index.html">Semaine 13 : Logique conditionnelle &amp; tests sur fichiers<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-4/semaine-14/index.html"><a class="padding" href="/bloc-4/semaine-14/index.html">Semaine 14 : Boucles &amp; planification (Cron)<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-4/semaine-15/index.html"><a class="padding" href="/bloc-4/semaine-15/index.html">Semaine 15 : Révision &amp; Examen Final<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts default-animation">
+          <ul class="space collapsible-menu">
+          </ul>
+        </div>
+        <div id="R-footer-margin" class="default-animation"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols default-animation">
+          <ul class="">
+            <li class="R-historyclearer">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-history"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <button>Clear History</button>
+                </div>
+                <div class="clear"></div>
+              </div>
+            </li>
+          </ul>
+        </div>
+<div id="R-footer" class="default-animation"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
+      </div>
+    </aside>
+    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1768146506" defer></script>
+    <script src="/js/theme.min.js?1768146506" defer></script>
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+  </body>
+</html>

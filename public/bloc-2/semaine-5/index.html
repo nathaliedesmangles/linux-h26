@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="fr-ca" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.152.2">
+    <meta name="generator" content="Relearn 8.3.0+187e41ae8f27979cda87bfe489e34e07e5b6cbcd">
+    <meta name="description" content="Objectifs de la semaine Comprendre l’identité numérique sous Linux (UID, GID) et le concept de groupe primaire vs secondaire. Auditer les fichiers système (/etc/passwd, /etc/shadow et /etc/group). Gérer le cycle de vie des comptes (création, modification, suppression, verrouillage). Fichier pour les exercices (en classe) Utiliser le fichier exo-semaine5.docx pour y mettre vos réponses et captures d’écran.
+Télécharger le fichier docx">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Gestion des Utilisateurs :: ZG4-Linux">
+    <meta name="twitter:description" content="Objectifs de la semaine Comprendre l’identité numérique sous Linux (UID, GID) et le concept de groupe primaire vs secondaire. Auditer les fichiers système (/etc/passwd, /etc/shadow et /etc/group). Gérer le cycle de vie des comptes (création, modification, suppression, verrouillage). Fichier pour les exercices (en classe) Utiliser le fichier exo-semaine5.docx pour y mettre vos réponses et captures d’écran.
+Télécharger le fichier docx">
+    <meta property="og:url" content="https://example.org/bloc-2/semaine-5/index.html">
+    <meta property="og:site_name" content="ZG4-Linux">
+    <meta property="og:title" content="Gestion des Utilisateurs :: ZG4-Linux">
+    <meta property="og:description" content="Objectifs de la semaine Comprendre l’identité numérique sous Linux (UID, GID) et le concept de groupe primaire vs secondaire. Auditer les fichiers système (/etc/passwd, /etc/shadow et /etc/group). Gérer le cycle de vie des comptes (création, modification, suppression, verrouillage). Fichier pour les exercices (en classe) Utiliser le fichier exo-semaine5.docx pour y mettre vos réponses et captures d’écran.
+Télécharger le fichier docx">
+    <meta property="og:locale" content="fr_ca">
+    <meta property="og:type" content="article">
+    <meta property="article:section" content="Administration système & sécurité">
+    <meta itemprop="name" content="Gestion des Utilisateurs :: ZG4-Linux">
+    <meta itemprop="description" content="Objectifs de la semaine Comprendre l’identité numérique sous Linux (UID, GID) et le concept de groupe primaire vs secondaire. Auditer les fichiers système (/etc/passwd, /etc/shadow et /etc/group). Gérer le cycle de vie des comptes (création, modification, suppression, verrouillage). Fichier pour les exercices (en classe) Utiliser le fichier exo-semaine5.docx pour y mettre vos réponses et captures d’écran.
+Télécharger le fichier docx">
+    <meta itemprop="wordCount" content="1052">
+    <title>Gestion des Utilisateurs :: ZG4-Linux</title>
+    <link href="/images/logo.png?1768146506" rel="icon" type="image/png">
+    <link href="/css/auto-complete/auto-complete.min.css?1768146506" rel="stylesheet">
+    <script src="/js/auto-complete/auto-complete.min.js?1768146506" defer></script>
+    <script src="/js/search-lunr.min.js?1768146506" defer></script>
+    <script src="/js/search.min.js?1768146506" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="/searchindex.en.js?1768146506";
+    </script>
+    <script src="/js/lunr/lunr.min.js?1768146506" defer></script>
+    <script src="/js/lunr/lunr.stemmer.support.min.js?1768146506" defer></script>
+    <script src="/js/lunr/lunr.multi.min.js?1768146506" defer></script>
+    <script src="/js/lunr/lunr.fr.min.js?1768146506" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['fr'];
+    </script>
+    <link href="/fonts/fontawesome/css/fontawesome-all.min.css?1768146506" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/fontawesome-all.min.css?1768146506" rel="stylesheet"></noscript>
+    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1768146506" rel="stylesheet">
+    <link href="/css/theme.min.css?1768146506" rel="stylesheet">
+    <link href="/css/format-html.min.css?1768146506" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = `.min`;
+      window.relearn.path='\/bloc-2\/semaine-5\/index.html';
+      window.relearn.relBasePath='..\/..';
+      window.relearn.relBaseUri='..\/..';
+      window.relearn.absBaseUri='https:\/\/example.org';
+      window.relearn.disableInlineCopyToClipboard=false;
+      window.relearn.enableBlockCodeWrap=true;
+      // legal
+      window.relearn.getItem = (s,n) => {return s.getItem(n)};
+      window.relearn.setItem = (s,n,v) => {return s.setItem(n,v)};
+      window.relearn.removeItem = (s,n) => {return s.removeItem(n)};
+      // translations
+      window.T_Copy_to_clipboard = `Copy text to clipboard`;
+      window.T_Copied_to_clipboard = `Text copied to clipboard!`;
+      window.T_Link_copied_to_clipboard = `Link copied to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+      window.T_Browser_unsupported_feature = `This browser doesn't support this feature`;
+      // variant stuff
+      window.relearn.themevariants = [ 'auto' ];
+      window.relearn.customvariantprefix = "my-custom-";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant") ?? "";
+        if( !variant ||
+            (!variant.startsWith(window.relearn.customvariantprefix) && !window.relearn.themevariants.includes(variant)) ||
+            (variant.startsWith(window.relearn.customvariantprefix) && !window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variantstylesheet-" + variant)) ){
+          variant = window.relearn.themevariants[0];
+          window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script>
+    <link href="/css/custom.css?1768146506" rel="stylesheet">
+  </head>
+  <body class="mobile-support html" data-url="/bloc-2/semaine-5/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar" class="default-animation">
+        <div class="topbar-wrapper default-animation">
+          <div class="topbar-sidebar-divider default-animation"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar default-animation" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
+            </div>
+            <div class="topbar-button topbar-button-toc default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#objectifs-de-la-semaine">Objectifs de la semaine</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#les-identifiants-uid--gid">Les identifiants (UID &amp; GID)</a></li>
+    <li><a href="#groupes-primaires-vs-secondaires">Groupes primaires vs secondaires</a>
+      <ul>
+        <li><a href="#1-le-groupe-primaire-identité-de-base">1. Le groupe primaire (Identité de base)</a></li>
+        <li><a href="#2-les-groupes-secondaires-les-permissions">2. Les groupes secondaires (Les permissions)</a></li>
+      </ul>
+    </li>
+    <li><a href="#les-fichiers-de-configuration">Les fichiers de configuration</a>
+      <ul>
+        <li><a href="#1-le-fichier-etcpasswd-lannuaire">1. Le fichier <em><strong>/etc/passwd</strong></em> (L’annuaire)</a></li>
+        <li><a href="#2-le-fichier-etcshadow-les-secrets">2. Le fichier <em><strong>/etc/shadow</strong></em> (Les secrets)</a></li>
+        <li><a href="#3-le-fichier-etcgroup-les-clubs">3. Le fichier <em><strong>/etc/group</strong></em> (Les clubs)</a></li>
+      </ul>
+    </li>
+    <li><a href="#les-commandes-de-gestion">Les commandes de gestion</a>
+      <ul>
+        <li><a href="#1-création-useradd">1. Création (<code>useradd</code>)</a></li>
+        <li><a href="#2-modification-usermod">2. Modification (<code>usermod</code>)</a></li>
+        <li><a href="#3-vérification-id-et-groups">3. Vérification (<code>id</code> et <code>groups</code>)</a></li>
+        <li><a href="#-exercice-en-classe">🟢 Exercice (en classe)</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-verrouillage-et-suppression">4. Verrouillage et suppression</a>
+      <ul>
+        <li><a href="#1-le-piège-du-shell-vide">1. Le piège du Shell vide</a></li>
+        <li><a href="#2-verrouiller-sans-supprimer">2. Verrouiller sans supprimer</a></li>
+        <li><a href="#3-suppression-propre">3. Suppression propre</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#étape-1--audit">Étape 1 : Audit</a></li>
+        <li><a href="#étape-2--recrutement-massif">Étape 2 : Recrutement massif</a></li>
+        <li><a href="#étape-3--gestion-des-groupes">Étape 3 : Gestion des groupes</a></li>
+      </ul>
+    </li>
+    <li><a href="#corrigé-du-laboratoire">Corrigé du laboratoire</a></li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/index.html"><span itemprop="name">Accueil du cours</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/bloc-2/index.html"><span itemprop="name">Administration système &amp; sécurité</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Gestion des Utilisateurs</span><meta itemprop="position" content="3"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-prev default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/bloc-2/index.html" title="Administration système & sécurité (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-next default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/bloc-2/semaine-6/index.html" title="Permissions & droits d'accès (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-more default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable bloc-2" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="gestion-des-utilisateurs">Gestion des Utilisateurs</h1>
+
+<h2 id="objectifs-de-la-semaine">Objectifs de la semaine<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<ul>
+<li><strong>Comprendre</strong> l&rsquo;identité numérique sous Linux (UID, GID) et le concept de groupe primaire vs secondaire.</li>
+<li><strong>Auditer</strong> les fichiers système (<code>/etc/passwd</code>, <code>/etc/shadow</code> et <code>/etc/group</code>).</li>
+<li><strong>Gérer</strong> le cycle de vie des comptes (création, modification, suppression, verrouillage).</li>
+</ul>
+<p><strong>Fichier pour les exercices (en classe)</strong>
+Utiliser le fichier <strong>exo-semaine5.docx</strong> pour y mettre vos réponses et captures d&rsquo;écran.<br>
+<span class="btn cstyle button transparent interactive"><a href="/docs/Exercices/exo-semaine5.docx"><i class="fa-fw fas fa-download"></i> <span class="title">Télécharger le fichier docx</span></a></span></p>
+<hr>
+<h1 id="théorie">Théorie<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h1>
+<p>Linux est un système multi-utilisateurs strict. Pour le noyau, vous n&rsquo;êtes pas un nom, mais une série de numéros.</p>
+<h2 id="les-identifiants-uid--gid">Les identifiants (UID &amp; GID)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Chaque utilisateur possède un <strong>UID</strong> (<em>User ID</em>) et appartient à un groupe principal identifié par un <strong>GID</strong> (<em>Group ID</em>).</p>
+<table>
+  <thead>
+      <tr>
+          <th>Plage d&rsquo;UID</th>
+          <th>Rôle</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>0</strong></td>
+          <td><strong>Root</strong></td>
+          <td>L&rsquo;administrateur suprême. Accès total et illimité.</td>
+      </tr>
+      <tr>
+          <td><strong>1 à 999</strong></td>
+          <td><strong>Système</strong></td>
+          <td>Comptes pour les services (ex: <code>www-data</code> pour le web). Pas de connexion humaine.</td>
+      </tr>
+      <tr>
+          <td><strong>1000+</strong></td>
+          <td><strong>Humains</strong></td>
+          <td>Utilisateurs réels. Le premier compte créé reçoit souvent l&rsquo;UID 1000.</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="groupes-primaires-vs-secondaires">Groupes primaires vs secondaires<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>C&rsquo;est une distinction cruciale pour la gestion des droits sous Linux.</p>
+<h3 id="1-le-groupe-primaire-identité-de-base">1. Le groupe primaire (Identité de base)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ul>
+<li><strong>Définition :</strong> C&rsquo;est le groupe inscrit directement dans le fichier <code>/etc/passwd</code>.</li>
+<li><strong>Rôle :</strong> Lorsqu&rsquo;un utilisateur crée un fichier, ce fichier appartient automatiquement à son groupe primaire.</li>
+<li><strong>Règle :</strong> Un utilisateur a <strong>exactement un seul</strong> groupe primaire.</li>
+<li><strong>Usage :</strong> Sous les distributions modernes (Ubuntu, Debian, CentOS), Linux crée par défaut un groupe portant le même nom que l&rsquo;utilisateur (ex: l&rsquo;utilisateur <code>albert</code> a pour groupe primaire <code>albert</code>).</li>
+</ul>
+<h3 id="2-les-groupes-secondaires-les-permissions">2. Les groupes secondaires (Les permissions)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ul>
+<li><strong>Définition :</strong> Ce sont tous les autres groupes auxquels appartient l&rsquo;utilisateur (définis dans <code>/etc/group</code>).</li>
+<li><strong>Rôle :</strong> Ils servent à donner des accès supplémentaires (ex: accès au groupe <code>sudo</code> pour administrer, <code>docker</code> pour gérer des conteneurs, ou <code>comptabilite</code> pour lire des rapports).</li>
+<li><strong>Règle :</strong> Un utilisateur peut appartenir à <strong>une infinité</strong> de groupes secondaires (ou aucun).</li>
+</ul>
+
+<details open class="box cstyle notices primary">
+  <summary class="box-label a11y-only" tabindex="-1">
+    <span class="a11y-only">Details</span>
+  </summary>
+  <div class="box-content">
+<p>Les groupes peuvent être spécifiés par leur <strong>GID</strong> ou leur <strong>nom</strong>.</p>
+  </div>
+</details>
+<h4 id="le-groupe-wheel">Le groupe <em>wheel</em><span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<ul>
+<li>Le groupe wheel permet à ses membres d’utiliser des commandes avec des privilèges administratifs grâce à <code>sudo</code>.</li>
+</ul>
+<h2 id="les-fichiers-de-configuration">Les fichiers de configuration<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Linux utilise trois fichiers texte simples pour gérer la sécurité :</p>
+<h3 id="1-le-fichier-etcpasswd-lannuaire">1. Le fichier <em><strong>/etc/passwd</strong></em> (L&rsquo;annuaire)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Tout le monde peut le lire. Il définit les comptes.</p>
+<ul>
+<li><strong>Format :</strong> <code>nom:x:UID:GID:Commentaire:Home:Shell</code></li>
+<li><strong>Exemple :</strong> <code>etudiant:x:1000:1000:Etudiant,,,:/home/etudiant:/bin/bash</code></li>
+<li><em>Le 4ème champ (<code>1000</code>) est le GID du groupe primaire.</em></li>
+</ul>
+<h3 id="2-le-fichier-etcshadow-les-secrets">2. Le fichier <em><strong>/etc/shadow</strong></em> (Les secrets)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Contient les mots de passe chiffrés (<em>hashs</em>). Seul <strong>root</strong> peut y accéder.</p>
+
+<details open class="box cstyle notices primary">
+  <summary class="box-label a11y-only" tabindex="-1">
+    <span class="a11y-only">Details</span>
+  </summary>
+  <div class="box-content">
+<p>Si vous voyez <code>!</code> ou <code>*</code> à la place du hash, le compte est verrouillé.</p>
+  </div>
+</details>
+<h3 id="3-le-fichier-etcgroup-les-clubs">3. Le fichier <em><strong>/etc/group</strong></em> (Les clubs)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Définit les noms des groupes et liste les membres <strong>secondaires</strong>.</p>
+<ul>
+<li><strong>Format :</strong> <code>nom_groupe:x:GID:liste_membres_secondaires</code></li>
+<li><strong>Exemple :</strong> <code>sudo:x:27:albert,nancy</code> (Albert et Nancy sont membres secondaires du groupe sudo).</li>
+</ul>
+<h2 id="les-commandes-de-gestion">Les commandes de gestion<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<h3 id="1-création-useradd">1. Création (<code>useradd</code>)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>La syntaxe <code>useradd [options] [nom_utilisateur]</code></p>
+<p>La commande <code>useradd</code> est précise mais minimaliste. On doit alors l&rsquo;utiliser avec des <strong>options</strong>. Voici les plus courantes.</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># -u : Spécifie un UID.</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># -c : Ajoute un commentaire pour les archives.</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># -m : Crée le dossier personnel.</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># -g : Définit le groupe PRIMAIRE (par nom ou GID)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># -G : Définit les groupes SECONDAIRES (séparés par des virgules)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># -s : Définit le Shell par défaut (ex: `/bin/bash`)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># -e : Définit une date d&#39;expiration.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sudo useradd -m -g users -G sudo,devs -s /bin/bash alfred</span></span></code></pre></div>
+
+<details open class="box cstyle notices primary">
+  <summary class="box-label a11y-only" tabindex="-1">
+    <span class="a11y-only">Details</span>
+  </summary>
+  <div class="box-content">
+<p>L&rsquo;utilisateur sera ajouté à la <strong>dernière ligne</strong> du fichier <code>etc/passwd</code>. Vous pouvez ensuite vérifier l’utilisateur ajouté dans le fichier:</p>
+  </div>
+</details>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>tail -1 /etc/passwd</span></span></code></pre></div>
+
+<details open class="box cstyle notices primary">
+  <summary class="box-label a11y-only" tabindex="-1">
+    <span class="a11y-only">Details</span>
+  </summary>
+  <div class="box-content">
+<p><strong>Création d&rsquo;un utilisateur avec <code>adduser</code></strong><br>
+En réalité, <code>adduser</code> est l&rsquo;implémentation standard sur les systèmes Debian et Ubuntu qui agit comme un &ldquo;wrapper&rdquo; (emballage) autour de l&rsquo;outil de bas niveau <code>useradd</code> pour offrir cette interface interactive et simplifiée.</p>
+  </div>
+</details>
+<h3 id="2-modification-usermod">2. Modification (<code>usermod</code>)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>C&rsquo;est ici que l&rsquo;on gère les promotions ou changements de service.</p>
+
+<details open class="box cstyle notices primary">
+  <summary class="box-label a11y-only" tabindex="-1">
+    <span class="a11y-only">Details</span>
+  </summary>
+  <div class="box-content">
+<p><strong>Le piège classique :</strong> Si vous faites <code>usermod -G projet_a alfred</code>, vous <strong>écrasez</strong> tous ses anciens groupes secondaires. S&rsquo;il était admin, il ne l&rsquo;est plus !<br>
+<strong>La règle d&rsquo;or :</strong> Toujours utiliser <code>-a</code> (Append) avec <code>-G</code>.</p>
+  </div>
+</details>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># ✅ BONNE PRATIQUE : Ajoute le groupe sans supprimer les anciens</span>
+</span></span><span style="display:flex;"><span>sudo usermod -aG comptabilite alfred
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Modifier le groupe primaire (rarement utilisé)</span>
+</span></span><span style="display:flex;"><span>sudo usermod -g nouveaux_membres alfred</span></span></code></pre></div>
+<h3 id="3-vérification-id-et-groups">3. Vérification (<code>id</code> et <code>groups</code>)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Pour savoir qui appartient à quoi :</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>id alfred
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Affiche : uid=1001(alfred) gid=100(users) groupes=100(users),27(sudo),1005(comptabilite)</span></span></span></code></pre></div>
+<h3 id="-exercice-en-classe">🟢 Exercice (en classe)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ol>
+<li>Créer un groupe nommé <code>direction</code>.</li>
+<li>Créer un utilisateur <code>pdg</code> avec <code>/bin/bash</code> et son dossier personnel.</li>
+<li>Assigner <code>pdg</code> au groupe <code>direction</code> en tant que <strong>groupe primaire</strong> (utilisez <code>-g</code>).</li>
+<li>Ajouter <code>pdg</code> au groupe <code>sudo</code> en tant que <strong>groupe secondaire</strong> (utilisez <code>-aG</code>).</li>
+<li>Vérifier avec <code>id pdg</code>. Que remarquez-vous sur la position du groupe <code>direction</code> ?</li>
+</ol>
+<!--
+SOLUTION
+
+```bash
+# 1. Création du groupe direction
+sudo groupadd direction
+
+# 2 & 3. Création de l'utilisateur avec son groupe primaire (-g)
+# Note : On combine la création du home (-m) et du shell (-s)
+sudo useradd -m -s /bin/bash -g direction pdg
+
+# 4. Ajout au groupe secondaire sudo (-aG)
+sudo usermod -aG sudo pdg
+
+# 5. Vérification de l'identité
+id pdg
+```
+
+### Analyse du résultat de la commande `id`
+
+Le résultat devrait ressembler à ceci :
+`uid=1001(pdg) gid=1002(direction) groupes=1002(direction),27(sudo)`
+
+**Ce que l'on remarque sur la position du groupe `direction` :**
+
+1. **Champ `gid=` :** Le groupe `direction` apparaît en premier juste après l'UID. C'est ici qu'est défini le **groupe primaire**. Tous les fichiers créés par le PDG appartiendront par défaut à ce groupe.
+2. **Champ `groupes=` :** On remarque que `direction` est listé à nouveau dans la liste globale des groupes, suivi de `sudo`.
+3. **Absence du groupe "pdg" :** Contrairement à une création standard, Linux n'a pas créé de groupe nommé `pdg` car nous avons explicitement forcé l'utilisation de `direction` comme groupe principal avec l'option `-g`.
+
+-->
+<h2 id="4-verrouillage-et-suppression">4. Verrouillage et suppression<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<h3 id="1-le-piège-du-shell-vide">1. Le piège du Shell vide<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Si votre utilisateur voit un <code>$</code> au lieu de <code>utilisateur@machine:~$</code> et que les flèches du clavier ne fonctionnent pas, c&rsquo;est qu&rsquo;il est sur le shell <code>sh</code> (basique).<br>
+<strong>Correction :</strong> <code>sudo usermod -s /bin/bash nom_utilisateur</code></p>
+<h3 id="2-verrouiller-sans-supprimer">2. Verrouiller sans supprimer<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>En cas de départ temporaire ou enquête :</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo passwd -l alfred  <span style="color:#75715e"># Lock (verrouille)</span>
+</span></span><span style="display:flex;"><span>sudo passwd -u alfred  <span style="color:#75715e"># Unlock (déverrouille)</span></span></span></code></pre></div>
+<h3 id="3-suppression-propre">3. Suppression propre<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo userdel -r alfred <span style="color:#75715e"># -r supprime aussi le dossier /home/alfred</span></span></span></code></pre></div>
+<hr>
+<h1 id="laboratoire">Laboratoire<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h1>
+<p><strong>Objectif :</strong> Simuler l&rsquo;arrivée de nouveaux employés dans une entreprise.</p>
+<p>Utiliser le fichier <strong>labo5.docx</strong> pour y mettre vos réponses et captures d&rsquo;écran.<br>
+<span class="btn cstyle button transparent interactive"><a href="/docs/Labos/labo5.docx"><i class="fa-fw fas fa-download"></i> <span class="title">Télécharger le fichier docx</span></a></span></p>
+<p>Vous êtes administrateur système pour la start-up &ldquo;Momo420&rdquo;.</p>
+<ol>
+<li><strong>Embauche :</strong> Créer les comptes pour les nouveaux développeurs (avec dossier home).</li>
+<li><strong>Sécurité :</strong> Forcer le changement de mot de passe à la première connexion.</li>
+<li><strong>Groupes :</strong> Créer un groupe <code>devs</code> et y ajouter les utilisateurs.</li>
+<li><strong>Départ :</strong> Un stagiaire quitte l&rsquo;entreprise. Verrouillez son compte sans supprimer ses fichiers.</li>
+</ol>
+<h3 id="étape-1--audit">Étape 1 : Audit<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ol>
+<li>Utilisez <code>grep</code> pour trouver votre utilisateur dans <code>/etc/passwd</code>.</li>
+<li>Essayez de lire <code>/etc/shadow</code>. Que se passe-t-il ?.</li>
+<li>Utilisez <code>sudo cat /etc/shadow</code> pour voir la différence.</li>
+</ol>
+<h3 id="étape-2--recrutement-massif">Étape 2 : Recrutement massif<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><em>Vous êtes l&rsquo;admin système.</em></p>
+<ol>
+<li>
+<p>Créez deux groupes:</p>
+<ul>
+<li><code>comptabilite</code></li>
+<li><code>informatique</code></li>
+</ul>
+</li>
+<li>
+<p>Créez 3 utilisateurs (avec <code>useradd</code> ou <code>adduser</code>):</p>
+<ul>
+<li><code>andre</code> (dans le groupe <code>comptabilite</code>).</li>
+<li><code>sylvie</code> (dans le groupe <code>informatique</code>).</li>
+<li><code>charles</code> (dans le groupe <code>informatique</code> aussi).</li>
+</ul>
+</li>
+<li>
+<p>Assignez leur le mot de passe : <code>Cegep</code>.</p>
+</li>
+</ol>
+<h3 id="étape-3--gestion-des-groupes">Étape 3 : Gestion des groupes<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ol>
+<li><code>andre</code> a obtenu une promotion. Ajoutez-le au groupe <code>sudo</code> (ou <code>wheel</code>) pour qu&rsquo;il devienne administrateur.</li>
+</ol>
+<p><strong>Commande</strong> : <code>usermod -aG sudo andre</code> (Attention au <code>-a</code> pour Append, sinon on écrase ses autres groupes !).</p>
+<ol start="2">
+<li>Vérifiez les groupes de Andre avec la commande <code>groups andre</code>.</li>
+</ol>
+<h2 id="corrigé-du-laboratoire">Corrigé du laboratoire<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<blockquote>
+<p>À venir (samedi ou dimanche)</p>
+</blockquote>
+<!--
+
+## Solution du laboratoire
+
+### Étape 1 : Audit
+
+1. **Trouver son utilisateur :**
+```bash
+grep "$USER" /etc/passwd
+```
+
+
+2. **Lire `/etc/shadow` sans privilèges :**
+* *Résultat :* "Permission non accordée". C'est normal, ce fichier contient les empreintes des mots de passe et seul l'utilisateur **root** y a accès pour garantir la sécurité du système.
+
+
+3. **Lire avec `sudo` :**
+```bash
+sudo cat /etc/shadow
+```
+
+
+* *Observation :* Vous voyez maintenant les hashs (caractères cryptiques entre les `:`).
+
+
+### Étape 2 : Recrutement massif
+
+**1. Création des groupes :**
+
+```bash
+sudo groupadd comptabilite
+sudo groupadd informatique
+```
+
+**2. Création des utilisateurs :**
+Ici, nous utilisons `useradd` avec les options nécessaires pour que les comptes soient fonctionnels immédiatement.
+
+```bash
+# André (Comptabilité)
+sudo useradd -m -s /bin/bash -g comptabilite andre
+
+# Sylvie (Informatique)
+sudo useradd -m -s /bin/bash -g informatique sylvie
+
+# Charles (Informatique)
+sudo useradd -m -s /bin/bash -g informatique charles
+```
+
+**3. Assignation des mots de passe :**
+
+```bash
+echo "andre:Cegep" | sudo passwd andre
+echo "sylvie:Cegep" | sudo passwd sylvie
+echo "charles:Cegep" | sudo passwd charles
+```
+
+*(Note : `chpasswd` est plus rapide pour les créations en lot, mais `sudo passwd andre` fonctionne aussi individuellement).*
+
+
+
+### Étape 3 : Gestion des groupes et Sécurité
+
+**1. Promotion d'André :**
+André garde son groupe primaire `comptabilite` mais reçoit les pouvoirs d'administration en devenant membre secondaire de `sudo`.
+
+```bash
+sudo usermod -aG sudo andre
+```
+
+**2. Vérification :**
+
+```bash
+groups andre
+# Sortie attendue : andre : comptabilite sudo
+```
+
+**3. Sécurité : Forcer le changement de mot de passe**
+Pour l'objectif de sécurité mentionné en début de labo, on utilise la commande `chage` (Change Age) :
+
+```bash
+# Force le changement à la prochaine connexion pour tous
+sudo chage -d 0 andre
+sudo chage -d 0 sylvie
+sudo chage -d 0 charles
+```
+
+
+
+### Étape 4 : Départ (Gestion du cycle de vie)
+
+Un stagiaire (appelons-le `stagiaire1`) quitte l'entreprise. On veut empêcher toute connexion sans supprimer ses données pour pouvoir les auditer plus tard.
+
+```bash
+# Verrouiller le mot de passe (met un ! devant le hash dans /etc/shadow)
+sudo passwd -l stagiaire1
+
+# Alternative : Expire le compte complètement
+sudo usermod -e 1 stagiaire1
+```
+
+---
+
+### 💡 Synthèse pour l'examen
+
+| Action | Commande clé | Pourquoi ? |
+| --- | --- | --- |
+| **Créer** | `useradd -m -g [G_PRIMAIRE]` | Le `-m` crée la maison de l'utilisateur. |
+| **Ajouter un droit** | `usermod -aG [G_SECONDAIRE]` | Le `-a` évite de supprimer les autres accès. |
+| **Vérifier** | `id [USER]` | Donne l'UID et TOUS les groupes d'un coup. |
+| **Désactiver** | `passwd -l [USER]` | Sécurise le départ d'un employé sans perte de données. |
+
+-->
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+
+<a id="logo" href="https://example.org/">
+  <img src="/images/logo.png" alt="Logo du site" style="height: 100px; width: auto;">
+</a>
+
+
+        <search><form action="/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks default-animation">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-url="/index.html"><a class="padding" href="/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols default-animation">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-main default-animation">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-url="/remises/index.html"><a class="padding" href="/remises/index.html">Protocole de remise des exos et labos<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/regles/index.html"><a class="padding" href="/regles/index.html">Règles de survie au cours<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-1/index.html"><input type="checkbox" id="R-section-0b942f9b9b2d065455b2a863f4d7995c" aria-controls="R-subsections-0b942f9b9b2d065455b2a863f4d7995c"><label for="R-section-0b942f9b9b2d065455b2a863f4d7995c"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Fondations &amp; installation</span></label><a class="padding default-animation" href="/bloc-1/index.html">BLOC 1 : Fondations &amp; installation<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-0b942f9b9b2d065455b2a863f4d7995c" class="collapsible-menu">
+            <li class="" data-nav-url="/bloc-1/semaine-1/index.html"><a class="padding" href="/bloc-1/semaine-1/index.html">Semaine 1 : Introduction et installation<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-1/semaine-2/index.html"><a class="padding" href="/bloc-1/semaine-2/index.html">Semaine 2 : Arborescence et navigation<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-1/semaine-3/index.html"><a class="padding" href="/bloc-1/semaine-3/index.html">Semaine 3 : Gestion de paquets et édition de texte<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-1/semaine-4/index.html"><a class="padding" href="/bloc-1/semaine-4/index.html">Semaine 4 : L&#39;expansion d&#39;accolades et Examen 1<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
+            <li class="parent " data-nav-url="/bloc-2/index.html"><input type="checkbox" id="R-section-bc3591f00126f0242dfd3ada90ba9fa8" aria-controls="R-subsections-bc3591f00126f0242dfd3ada90ba9fa8" checked><label for="R-section-bc3591f00126f0242dfd3ada90ba9fa8"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Administration système &amp; sécurité</span></label><a class="padding default-animation" href="/bloc-2/index.html">BLOC 2 : Administration système &amp; sécurité<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-bc3591f00126f0242dfd3ada90ba9fa8" class="collapsible-menu">
+            <li class="active " data-nav-url="/bloc-2/semaine-5/index.html"><a class="padding" href="/bloc-2/semaine-5/index.html">Semaine 5 : Gestion des Utilisateurs<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-2/semaine-6/index.html"><a class="padding" href="/bloc-2/semaine-6/index.html">Semaine 6 : Permissions &amp; droits d&#39;accès<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-2/semaine-7/index.html"><a class="padding" href="/bloc-2/semaine-7/index.html">Semaine 7 : Gestion des processus<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-2/semaine-8/index.html"><a class="padding" href="/bloc-2/semaine-8/index.html">Semaine 8 : Révision? &amp; Examen #2<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
+            <li class="" data-nav-url="/bloc-3/index.html"><input type="checkbox" id="R-section-d0f965f65b76b5a918fb9cc7fc20ea39" aria-controls="R-subsections-d0f965f65b76b5a918fb9cc7fc20ea39"><label for="R-section-d0f965f65b76b5a918fb9cc7fc20ea39"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Redirections &amp; filtres, disques et réseau</span></label><a class="padding default-animation" href="/bloc-3/index.html">BLOC 3 : Redirections &amp; filtres, disques et réseau<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-d0f965f65b76b5a918fb9cc7fc20ea39" class="collapsible-menu">
+            <li class="" data-nav-url="/bloc-3/semaine-9/index.html"><a class="padding" href="/bloc-3/semaine-9/index.html">Semaine 9 : Redirections, Pipes et filtres<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-3/semaine-10/index.html"><a class="padding" href="/bloc-3/semaine-10/index.html">Semaine 10 : Gestion de disques<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-3/semaine-11/index.html"><a class="padding" href="/bloc-3/semaine-11/index.html">Semaine 11 : Réseau et services &amp; Examen #3<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
+            <li class="" data-nav-url="/bloc-4/index.html"><input type="checkbox" id="R-section-c1ebb4b1b8b7a51069075ff54026c0de" aria-controls="R-subsections-c1ebb4b1b8b7a51069075ff54026c0de"><label for="R-section-c1ebb4b1b8b7a51069075ff54026c0de"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Automatisation &amp; scripting</span></label><a class="padding default-animation" href="/bloc-4/index.html">BLOC 4 : Automatisation &amp; scripting<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-c1ebb4b1b8b7a51069075ff54026c0de" class="collapsible-menu">
+            <li class="" data-nav-url="/bloc-4/semaine-12/index.html"><a class="padding" href="/bloc-4/semaine-12/index.html">Semaine 12 : Introduction au Scripting Bash<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-4/semaine-13/index.html"><a class="padding" href="/bloc-4/semaine-13/index.html">Semaine 13 : Logique conditionnelle &amp; tests sur fichiers<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-4/semaine-14/index.html"><a class="padding" href="/bloc-4/semaine-14/index.html">Semaine 14 : Boucles &amp; planification (Cron)<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-4/semaine-15/index.html"><a class="padding" href="/bloc-4/semaine-15/index.html">Semaine 15 : Révision &amp; Examen Final<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts default-animation">
+          <ul class="space collapsible-menu">
+          </ul>
+        </div>
+        <div id="R-footer-margin" class="default-animation"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols default-animation">
+          <ul class="">
+            <li class="R-historyclearer">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-history"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <button>Clear History</button>
+                </div>
+                <div class="clear"></div>
+              </div>
+            </li>
+          </ul>
+        </div>
+<div id="R-footer" class="default-animation"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
+      </div>
+    </aside>
+    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1768146506" defer></script>
+    <script src="/js/theme.min.js?1768146506" defer></script>
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+  </body>
+</html>

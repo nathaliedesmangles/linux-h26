@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="fr-ca" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.152.2">
+    <meta name="generator" content="Relearn 8.3.0+187e41ae8f27979cda87bfe489e34e07e5b6cbcd">
+    <meta name="description" content="Objectif de la semaine Comprendre comment une machine Linux communique, comment gérer les programmes qui tournent en arrière-plan (services) et comment sécuriser ces échanges. Fichier pour les exercices (en classe) Utiliser le fichier exo-semaine11.docx pour y mettre vos réponses et captures d’écran.
+Télécharger le fichier docx
+Warning Cette semaine est critique : on touche à l’infrastructure physique. C’est l’une des rares opérations où une erreur de frappe peut détruire des données de manière irréversible. Le ton doit être méthodique.">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Réseau et services & Examen #3 :: ZG4-Linux">
+    <meta name="twitter:description" content="Objectif de la semaine Comprendre comment une machine Linux communique, comment gérer les programmes qui tournent en arrière-plan (services) et comment sécuriser ces échanges. Fichier pour les exercices (en classe) Utiliser le fichier exo-semaine11.docx pour y mettre vos réponses et captures d’écran.
+Télécharger le fichier docx
+Warning Cette semaine est critique : on touche à l’infrastructure physique. C’est l’une des rares opérations où une erreur de frappe peut détruire des données de manière irréversible. Le ton doit être méthodique.">
+    <meta property="og:url" content="https://example.org/bloc-3/semaine-11/index.html">
+    <meta property="og:site_name" content="ZG4-Linux">
+    <meta property="og:title" content="Réseau et services & Examen #3 :: ZG4-Linux">
+    <meta property="og:description" content="Objectif de la semaine Comprendre comment une machine Linux communique, comment gérer les programmes qui tournent en arrière-plan (services) et comment sécuriser ces échanges. Fichier pour les exercices (en classe) Utiliser le fichier exo-semaine11.docx pour y mettre vos réponses et captures d’écran.
+Télécharger le fichier docx
+Warning Cette semaine est critique : on touche à l’infrastructure physique. C’est l’une des rares opérations où une erreur de frappe peut détruire des données de manière irréversible. Le ton doit être méthodique.">
+    <meta property="og:locale" content="fr_ca">
+    <meta property="og:type" content="article">
+    <meta property="article:section" content="Redirections & filtres, disques et réseau">
+    <meta itemprop="name" content="Réseau et services & Examen #3 :: ZG4-Linux">
+    <meta itemprop="description" content="Objectif de la semaine Comprendre comment une machine Linux communique, comment gérer les programmes qui tournent en arrière-plan (services) et comment sécuriser ces échanges. Fichier pour les exercices (en classe) Utiliser le fichier exo-semaine11.docx pour y mettre vos réponses et captures d’écran.
+Télécharger le fichier docx
+Warning Cette semaine est critique : on touche à l’infrastructure physique. C’est l’une des rares opérations où une erreur de frappe peut détruire des données de manière irréversible. Le ton doit être méthodique.">
+    <meta itemprop="wordCount" content="988">
+    <title>Réseau et services &amp; Examen #3 :: ZG4-Linux</title>
+    <link href="/images/logo.png?1768146506" rel="icon" type="image/png">
+    <link href="/css/auto-complete/auto-complete.min.css?1768146506" rel="stylesheet">
+    <script src="/js/auto-complete/auto-complete.min.js?1768146506" defer></script>
+    <script src="/js/search-lunr.min.js?1768146506" defer></script>
+    <script src="/js/search.min.js?1768146506" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="/searchindex.en.js?1768146506";
+    </script>
+    <script src="/js/lunr/lunr.min.js?1768146506" defer></script>
+    <script src="/js/lunr/lunr.stemmer.support.min.js?1768146506" defer></script>
+    <script src="/js/lunr/lunr.multi.min.js?1768146506" defer></script>
+    <script src="/js/lunr/lunr.fr.min.js?1768146506" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['fr'];
+    </script>
+    <link href="/fonts/fontawesome/css/fontawesome-all.min.css?1768146506" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/fontawesome-all.min.css?1768146506" rel="stylesheet"></noscript>
+    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1768146506" rel="stylesheet">
+    <link href="/css/theme.min.css?1768146506" rel="stylesheet">
+    <link href="/css/format-html.min.css?1768146506" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = `.min`;
+      window.relearn.path='\/bloc-3\/semaine-11\/index.html';
+      window.relearn.relBasePath='..\/..';
+      window.relearn.relBaseUri='..\/..';
+      window.relearn.absBaseUri='https:\/\/example.org';
+      window.relearn.disableInlineCopyToClipboard=false;
+      window.relearn.enableBlockCodeWrap=true;
+      // legal
+      window.relearn.getItem = (s,n) => {return s.getItem(n)};
+      window.relearn.setItem = (s,n,v) => {return s.setItem(n,v)};
+      window.relearn.removeItem = (s,n) => {return s.removeItem(n)};
+      // translations
+      window.T_Copy_to_clipboard = `Copy text to clipboard`;
+      window.T_Copied_to_clipboard = `Text copied to clipboard!`;
+      window.T_Link_copied_to_clipboard = `Link copied to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+      window.T_Browser_unsupported_feature = `This browser doesn't support this feature`;
+      // variant stuff
+      window.relearn.themevariants = [ 'auto' ];
+      window.relearn.customvariantprefix = "my-custom-";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant") ?? "";
+        if( !variant ||
+            (!variant.startsWith(window.relearn.customvariantprefix) && !window.relearn.themevariants.includes(variant)) ||
+            (variant.startsWith(window.relearn.customvariantprefix) && !window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variantstylesheet-" + variant)) ){
+          variant = window.relearn.themevariants[0];
+          window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script>
+    <link href="/css/custom.css?1768146506" rel="stylesheet">
+  </head>
+  <body class="mobile-support html" data-url="/bloc-3/semaine-11/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar" class="default-animation">
+        <div class="topbar-wrapper default-animation">
+          <div class="topbar-sidebar-divider default-animation"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar default-animation" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
+            </div>
+            <div class="topbar-button topbar-button-toc default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#objectif-de-la-semaine">Objectif de la semaine</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#interfaces-et-connexions">Interfaces et connexions</a>
+      <ul>
+        <li><a href="#1-identifier-ses-cartes-le-matériel">1. Identifier ses cartes (Le matériel)</a></li>
+        <li><a href="#2-voir-les-adresses-lidentité">2. Voir les adresses (L&rsquo;identité)</a></li>
+        <li><a href="#3-éteindre-et-allumer">3. Éteindre et allumer</a></li>
+        <li><a href="#-exercice-1-en-classe">🟢 Exercice #1 (En classe)</a></li>
+      </ul>
+    </li>
+    <li><a href="#le-carnet-dadresses--dns-et-hosts">Le carnet d&rsquo;adresses : DNS et Hosts</a>
+      <ul>
+        <li><a href="#1-etchosts--le-post-it-local">1. <code>/etc/hosts</code> : Le post-it local</a></li>
+        <li><a href="#2-etcresolvconf--lannuaire-dns">2. <code>/etc/resolv.conf</code> : L’annuaire (DNS)</a></li>
+      </ul>
+    </li>
+    <li><a href="#le-gestionnaire--networkmanager">Le gestionnaire : NetworkManager</a></li>
+    <li><a href="#le-chef-dorchestre--systemd">Le chef d&rsquo;orchestre : Systemd</a>
+      <ul>
+        <li><a href="#-exercice-2-en-classe">🟢 Exercice #2 (En classe)</a></li>
+      </ul>
+    </li>
+    <li><a href="#sécurité--ssh-et-pare-feu-ufw">Sécurité : SSH et Pare-feu (UFW)</a>
+      <ul>
+        <li><a href="#1-ssh-secure-shell">1. SSH (Secure Shell)</a></li>
+        <li><a href="#2-ufw-uncomplicated-firewall">2. UFW (Uncomplicated Firewall)</a></li>
+        <li><a href="#-exercice-3-en-classe">🟢 Exercice #3 (En classe)</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#étape-1--reconnaissance-réseau">Étape 1 : Reconnaissance réseau</a></li>
+        <li><a href="#étape-2--manipulation-de-lannuaire-local">Étape 2 : Manipulation de l&rsquo;annuaire local</a></li>
+        <li><a href="#étape-3--gestion-du-service-web">Étape 3 : Gestion du service Web</a></li>
+        <li><a href="#étape-4--sécurisation">Étape 4 : Sécurisation</a></li>
+        <li><a href="#validation">Validation</a></li>
+      </ul>
+    </li>
+    <li><a href="#corrigé-du-laboratoire">Corrigé du laboratoire</a></li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/index.html"><span itemprop="name">Accueil du cours</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/bloc-3/index.html"><span itemprop="name">Redirections &amp; filtres, disques et réseau</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Réseau et services &amp; Examen #3</span><meta itemprop="position" content="3"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-prev default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/bloc-3/semaine-10/index.html" title="Gestion de disques (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-next default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/bloc-4/index.html" title="Automatisation & scripting (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-more default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable bloc-3" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="réseau-et-services--examen-3">Réseau et services &amp; Examen #3</h1>
+
+<h2 id="objectif-de-la-semaine">Objectif de la semaine<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<ul>
+<li>Comprendre comment une machine Linux communique, comment gérer les programmes qui tournent en arrière-plan (services) et comment sécuriser ces échanges.</li>
+</ul>
+<p><strong>Fichier pour les exercices (en classe)</strong>
+Utiliser le fichier <strong>exo-semaine11.docx</strong> pour y mettre vos réponses et captures d&rsquo;écran.<br>
+<span class="btn cstyle button transparent interactive"><a href="/docs/Exercices/exo-semaine11.docx"><i class="fa-fw fas fa-download"></i> <span class="title">Télécharger le fichier docx</span></a></span></p>
+<hr>
+
+<details open class="box cstyle notices warning">
+  <summary class="box-label" tabindex="-1">
+    <i class="fa-fw fas fa-exclamation-triangle"></i> 
+    Warning
+  </summary>
+</details>
+<blockquote>
+<p><strong>Cette semaine est critique</strong> : on touche à l&rsquo;infrastructure physique. C&rsquo;est l&rsquo;une des rares opérations où une erreur de frappe peut détruire des données de manière irréversible. Le ton doit être méthodique.</p>
+</blockquote>
+<hr>
+<h1 id="théorie">Théorie<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h1>
+<h2 id="interfaces-et-connexions">Interfaces et connexions<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p><strong>Analogie</strong> : Avant de passer un appel, il faut vérifier si le téléphone est branché et connaître son propre numéro.</p>
+<p>La commande <code>ifconfig</code> est obsolète. Aujourd&rsquo;hui, nous utilisons la suite <strong>iproute2</strong> (commandes commençant par <code>ip</code>).</p>
+<h3 id="1-identifier-ses-cartes-le-matériel">1. Identifier ses cartes (Le matériel)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Chaque carte réseau possède un nom unique.
+Commande : <code>ip link show</code></p>
+<ul>
+<li><strong><code>lo</code> (Loopback) :</strong> L&rsquo;adresse de bouclage (127.0.0.1). C&rsquo;est l&rsquo;ordinateur qui se parle à lui-même. <em>Règle d&rsquo;or : On ne touche jamais à <code>lo</code>.</em></li>
+<li><strong><code>eth0</code> / <code>enp3s0</code> :</strong> La carte Ethernet (câble).</li>
+<li><strong><code>wlan0</code> / <code>wlp2s0</code> :</strong> La carte Wi-Fi.</li>
+</ul>
+<h3 id="2-voir-les-adresses-lidentité">2. Voir les adresses (L&rsquo;identité)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Pour savoir &ldquo;qui&rdquo; vous êtes sur le réseau.
+Commande : <code>ip addr show</code></p>
+<ul>
+<li>Cherchez la ligne <code>inet</code> pour voir votre IPv4 (ex: <code>192.168.1.50</code>).</li>
+<li>Cherchez le mot <code>UP</code> dans la première ligne pour savoir si la carte est active.</li>
+</ul>
+<h3 id="3-éteindre-et-allumer">3. Éteindre et allumer<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Parfois, pour relancer une connexion buggée, il faut virtuellement &ldquo;débrancher le câble&rdquo;.</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo ip link set enp3s0 down  <span style="color:#75715e"># Éteindre</span>
+</span></span><span style="display:flex;"><span>sudo ip link set enp3s0 up    <span style="color:#75715e"># Rallumer</span></span></span></code></pre></div>
+<h3 id="-exercice-1-en-classe">🟢 Exercice #1 (En classe)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ol>
+<li>Lancez <code>ip addr show</code>.</li>
+<li>Quelle est votre adresse IP (inet) ?</li>
+<li>Quel est le nom de votre interface principale (eth0, enp&hellip;, wlan&hellip;) ?</li>
+<li>Votre interface est-elle marquée comme <code>UP</code> ou <code>DOWN</code> ?</li>
+</ol>
+<h2 id="le-carnet-dadresses--dns-et-hosts">Le carnet d&rsquo;adresses : DNS et Hosts<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Les ordinateurs préfèrent les chiffres (IP), les humains préfèrent les noms (google.com).</p>
+<h3 id="1-etchosts--le-post-it-local">1. <code>/etc/hosts</code> : Le post-it local<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>C&rsquo;est un fichier texte simple qui force une correspondance Nom &lt;-&gt; IP. Linux regarde ce fichier <strong>avant</strong> de demander à Internet.</p>
+<ul>
+<li><em>Utilité :</em> Bloquer des sites ou nommer vos propres serveurs locaux.</li>
+</ul>
+<h3 id="2-etcresolvconf--lannuaire-dns">2. <code>/etc/resolv.conf</code> : L&rsquo;annuaire (DNS)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>C&rsquo;est ici que votre ordinateur sait à qui demander le chemin quand il ne connaît pas une adresse. Il contient les adresses des serveurs DNS (ex: <code>8.8.8.8</code> pour Google).</p>
+<h2 id="le-gestionnaire--networkmanager">Le gestionnaire : NetworkManager<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Sur les distributions modernes (comme Mint ou Ubuntu), on ne configure plus tout à la main. On utilise un &ldquo;chef de chantier&rdquo; : <strong>NetworkManager</strong>.</p>
+<ul>
+<li>
+<p><strong>L&rsquo;outil en ligne de commande :</strong> <code>nmcli</code></p>
+<ul>
+<li><code>nmcli general status</code> : Tout va bien ?</li>
+<li><code>nmcli connection show</code> : Quelles sont mes connexions ?</li>
+</ul>
+</li>
+<li>
+<p><strong>L&rsquo;outil visuel :</strong> <code>nmtui</code></p>
+<ul>
+<li>Tapez <code>nmtui</code> dans le terminal.</li>
+<li>Vous obtenez une interface graphique&hellip; en texte ! Idéal pour configurer le Wi-Fi sans souris.</li>
+</ul>
+</li>
+</ul>
+<h2 id="le-chef-dorchestre--systemd">Le chef d&rsquo;orchestre : Systemd<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Un serveur Web (Apache) ou SSH tourne en arrière-plan sans fenêtre ouverte. On appelle cela un <strong>Service</strong> (ou Démon). Le programme qui les gère s&rsquo;appelle <strong>systemd</strong>.</p>
+<p><strong>Analogie : Le concierge d&rsquo;hôtel</strong>
+Vous ne parlez pas aux employés, vous donnez vos ordres au concierge (Systemd).</p>
+<ol>
+<li><strong>Immédiat (&ldquo;Fais-le maintenant&rdquo;) :</strong><br>
+<code>sudo systemctl start apache2</code> (Démarre le service)<br>
+<code>sudo systemctl stop apache2</code> (Arrête le service)</li>
+<li><strong>Futur (&ldquo;Fais-le à chaque démarrage&rdquo;) :</strong><br>
+<code>sudo systemctl enable apache2</code> (Lance le service automatiquement au boot)<br>
+<code>sudo systemctl disable apache2</code> (Empêche le lancement automatique)</li>
+<li><strong>L&rsquo;inspection :</strong><br>
+<code>sudo systemctl status apache2</code> (Le service est-il actif ? A-t-il planté ?)</li>
+</ol>
+<h3 id="-exercice-2-en-classe">🟢 Exercice #2 (En classe)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Le service <code>cron</code> gère les tâches planifiées et est présent sur tous les Linux.</p>
+<ol>
+<li>Vérifiez le statut de cron : <code>systemctl status cron</code>.</li>
+<li>Est-il <code>active (running)</code> ?</li>
+<li>Regardez la ligne &ldquo;Loaded&rdquo; : est-il <code>enabled</code> (activé au démarrage) ?</li>
+</ol>
+<h2 id="sécurité--ssh-et-pare-feu-ufw">Sécurité : SSH et Pare-feu (UFW)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<h3 id="1-ssh-secure-shell">1. SSH (Secure Shell)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Le cordon ombilical pour administrer un serveur à distance.
+<code>ssh utilisateur@192.168.1.50</code></p>
+<h3 id="2-ufw-uncomplicated-firewall">2. UFW (Uncomplicated Firewall)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Le pare-feu est votre portier. Par défaut, il devrait refuser tout le monde, sauf ceux qui sont sur la liste d&rsquo;invités.</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo ufw status verbose <span style="color:#75715e"># Voir l&#39;état</span>
+</span></span><span style="display:flex;"><span>sudo ufw enable         <span style="color:#75715e"># Activer le douanier</span>
+</span></span><span style="display:flex;"><span>sudo ufw allow ssh      <span style="color:#75715e"># Ouvrir le port 22 (IMPORTANT sinon vous êtes bloqué dehors !)</span>
+</span></span><span style="display:flex;"><span>sudo ufw allow http     <span style="color:#75715e"># Ouvrir le port 80 (Web)</span></span></span></code></pre></div>
+<h3 id="-exercice-3-en-classe">🟢 Exercice #3 (En classe)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ol>
+<li>Tapez <code>sudo ufw status</code>.</li>
+<li>Si c&rsquo;est &ldquo;inactif&rdquo;, ne l&rsquo;activez pas encore.</li>
+<li>Listez les applications connues par le pare-feu avec : <code>sudo ufw app list</code>. Voyez-vous OpenSSH ?</li>
+</ol>
+<hr>
+<h1 id="laboratoire">Laboratoire<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h1>
+<p>Utiliser le fichier <strong>labo11.docx</strong> pour y mettre vos réponses et captures d&rsquo;écran.<br>
+<span class="btn cstyle button transparent interactive"><a href="/docs/Labos/labo11.docx"><i class="fa-fw fas fa-download"></i> <span class="title">Télécharger le fichier docx</span></a></span></p>
+<p>Vous êtes administrateur système. On vous demande de préparer un petit serveur web qui doit démarrer automatiquement et être protégé par un pare-feu.</p>
+<h3 id="étape-1--reconnaissance-réseau">Étape 1 : Reconnaissance réseau<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ol>
+<li>Identifiez l&rsquo;adresse IP de votre machine. Notez-la.</li>
+<li>Utilisez <code>ping</code> pour vérifier que vous avez accès à internet (ex: <code>ping -c 3 google.com</code>).</li>
+</ol>
+<h3 id="étape-2--manipulation-de-lannuaire-local">Étape 2 : Manipulation de l&rsquo;annuaire local<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ol>
+<li>Ouvrez le fichier <code>/etc/hosts</code> avec <code>nano</code> (en sudo).</li>
+<li>Ajoutez une ligne à la fin : <code>127.0.0.1 monsite.local</code>.</li>
+<li>Enregistrez et quittez.</li>
+<li>Testez avec la commande <code>ping -c 3 monsite.local</code>. (Cela doit répondre depuis 127.0.0.1).</li>
+</ol>
+<h3 id="étape-3--gestion-du-service-web">Étape 3 : Gestion du service Web<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>*Note : Si Apache n&rsquo;est pas installé, installez-le : <code>sudo apt install apache2 -y*</code></p>
+<ol>
+<li>Demandez au &ldquo;Concierge&rdquo; (<code>systemctl</code>) si Apache est démarré.</li>
+<li>S&rsquo;il est éteint, démarrez-le.</li>
+<li>Assurez-vous qu&rsquo;il redémarrera automatiquement si on reboote le serveur (<code>enable</code>).</li>
+<li>Vérifiez que le serveur fonctionne : ouvrez votre navigateur et tapez votre adresse IP (trouvée à l&rsquo;étape 1) ou <code>localhost</code>. Vous devriez voir la page &ldquo;It Works!&rdquo;.</li>
+</ol>
+<h3 id="étape-4--sécurisation">Étape 4 : Sécurisation<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ol>
+<li>Vérifiez le statut actuel de UFW.</li>
+<li>Ajoutez une règle pour autoriser le trafic Web (Port 80 ou &ldquo;Apache&rdquo;).</li>
+<li>Ajoutez une règle pour autoriser le SSH (Port 22 ou &ldquo;OpenSSH&rdquo;) <em>très important</em>.</li>
+<li>Activez le pare-feu (<code>enable</code>).</li>
+<li>Affichez le statut final numéroté (<code>sudo ufw status numbered</code>).</li>
+</ol>
+<h3 id="validation">Validation<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Appelez le professeur pour montrer :</p>
+<ol>
+<li>Votre page web qui s&rsquo;affiche.</li>
+<li>Le résultat de la commande <code>systemctl status apache2</code>.</li>
+<li>Le résultat de <code>sudo ufw status</code> montrant que le pare-feu est actif et filtre les ports.</li>
+</ol>
+<hr>
+<h2 id="corrigé-du-laboratoire">Corrigé du laboratoire<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<blockquote>
+<p>À venir (samedi ou dimanche)</p>
+</blockquote>
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+
+<a id="logo" href="https://example.org/">
+  <img src="/images/logo.png" alt="Logo du site" style="height: 100px; width: auto;">
+</a>
+
+
+        <search><form action="/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks default-animation">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-url="/index.html"><a class="padding" href="/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols default-animation">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-main default-animation">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-url="/remises/index.html"><a class="padding" href="/remises/index.html">Protocole de remise des exos et labos<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/regles/index.html"><a class="padding" href="/regles/index.html">Règles de survie au cours<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-1/index.html"><input type="checkbox" id="R-section-0b942f9b9b2d065455b2a863f4d7995c" aria-controls="R-subsections-0b942f9b9b2d065455b2a863f4d7995c"><label for="R-section-0b942f9b9b2d065455b2a863f4d7995c"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Fondations &amp; installation</span></label><a class="padding default-animation" href="/bloc-1/index.html">BLOC 1 : Fondations &amp; installation<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-0b942f9b9b2d065455b2a863f4d7995c" class="collapsible-menu">
+            <li class="" data-nav-url="/bloc-1/semaine-1/index.html"><a class="padding" href="/bloc-1/semaine-1/index.html">Semaine 1 : Introduction et installation<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-1/semaine-2/index.html"><a class="padding" href="/bloc-1/semaine-2/index.html">Semaine 2 : Arborescence et navigation<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-1/semaine-3/index.html"><a class="padding" href="/bloc-1/semaine-3/index.html">Semaine 3 : Gestion de paquets et édition de texte<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-1/semaine-4/index.html"><a class="padding" href="/bloc-1/semaine-4/index.html">Semaine 4 : L&#39;expansion d&#39;accolades et Examen 1<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
+            <li class="" data-nav-url="/bloc-2/index.html"><input type="checkbox" id="R-section-bc3591f00126f0242dfd3ada90ba9fa8" aria-controls="R-subsections-bc3591f00126f0242dfd3ada90ba9fa8"><label for="R-section-bc3591f00126f0242dfd3ada90ba9fa8"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Administration système &amp; sécurité</span></label><a class="padding default-animation" href="/bloc-2/index.html">BLOC 2 : Administration système &amp; sécurité<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-bc3591f00126f0242dfd3ada90ba9fa8" class="collapsible-menu">
+            <li class="" data-nav-url="/bloc-2/semaine-5/index.html"><a class="padding" href="/bloc-2/semaine-5/index.html">Semaine 5 : Gestion des Utilisateurs<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-2/semaine-6/index.html"><a class="padding" href="/bloc-2/semaine-6/index.html">Semaine 6 : Permissions &amp; droits d&#39;accès<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-2/semaine-7/index.html"><a class="padding" href="/bloc-2/semaine-7/index.html">Semaine 7 : Gestion des processus<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-2/semaine-8/index.html"><a class="padding" href="/bloc-2/semaine-8/index.html">Semaine 8 : Révision? &amp; Examen #2<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
+            <li class="parent " data-nav-url="/bloc-3/index.html"><input type="checkbox" id="R-section-d0f965f65b76b5a918fb9cc7fc20ea39" aria-controls="R-subsections-d0f965f65b76b5a918fb9cc7fc20ea39" checked><label for="R-section-d0f965f65b76b5a918fb9cc7fc20ea39"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Redirections &amp; filtres, disques et réseau</span></label><a class="padding default-animation" href="/bloc-3/index.html">BLOC 3 : Redirections &amp; filtres, disques et réseau<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-d0f965f65b76b5a918fb9cc7fc20ea39" class="collapsible-menu">
+            <li class="" data-nav-url="/bloc-3/semaine-9/index.html"><a class="padding" href="/bloc-3/semaine-9/index.html">Semaine 9 : Redirections, Pipes et filtres<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-3/semaine-10/index.html"><a class="padding" href="/bloc-3/semaine-10/index.html">Semaine 10 : Gestion de disques<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="active " data-nav-url="/bloc-3/semaine-11/index.html"><a class="padding" href="/bloc-3/semaine-11/index.html">Semaine 11 : Réseau et services &amp; Examen #3<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
+            <li class="" data-nav-url="/bloc-4/index.html"><input type="checkbox" id="R-section-c1ebb4b1b8b7a51069075ff54026c0de" aria-controls="R-subsections-c1ebb4b1b8b7a51069075ff54026c0de"><label for="R-section-c1ebb4b1b8b7a51069075ff54026c0de"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Automatisation &amp; scripting</span></label><a class="padding default-animation" href="/bloc-4/index.html">BLOC 4 : Automatisation &amp; scripting<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-c1ebb4b1b8b7a51069075ff54026c0de" class="collapsible-menu">
+            <li class="" data-nav-url="/bloc-4/semaine-12/index.html"><a class="padding" href="/bloc-4/semaine-12/index.html">Semaine 12 : Introduction au Scripting Bash<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-4/semaine-13/index.html"><a class="padding" href="/bloc-4/semaine-13/index.html">Semaine 13 : Logique conditionnelle &amp; tests sur fichiers<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-4/semaine-14/index.html"><a class="padding" href="/bloc-4/semaine-14/index.html">Semaine 14 : Boucles &amp; planification (Cron)<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-4/semaine-15/index.html"><a class="padding" href="/bloc-4/semaine-15/index.html">Semaine 15 : Révision &amp; Examen Final<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts default-animation">
+          <ul class="space collapsible-menu">
+          </ul>
+        </div>
+        <div id="R-footer-margin" class="default-animation"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols default-animation">
+          <ul class="">
+            <li class="R-historyclearer">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-history"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <button>Clear History</button>
+                </div>
+                <div class="clear"></div>
+              </div>
+            </li>
+          </ul>
+        </div>
+<div id="R-footer" class="default-animation"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
+      </div>
+    </aside>
+    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1768146506" defer></script>
+    <script src="/js/theme.min.js?1768146506" defer></script>
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+  </body>
+</html>

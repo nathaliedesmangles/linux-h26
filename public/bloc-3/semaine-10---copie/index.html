@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="fr-ca" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.152.2">
+    <meta name="generator" content="Relearn 8.3.0+187e41ae8f27979cda87bfe489e34e07e5b6cbcd">
+    <meta name="description" content="Important Cette semaine est critique : on touche à l’infrastructure physique. C’est l’une des rares opérations où une erreur de frappe peut détruire des données de manière irréversible. Le ton doit être méthodique.
+Objectif Ajouter un nouveau disque dur, le préparer et l’intégrer au système de fichiers de manière permanente. Plan de la séance #1 Le matériel sous Linux : Tout est fichier (30 min) Le cycle de vie : Partitionner, formater, monter (45 min) La persistance (/etc/fstab) (45 min) Plan de la séance #2 Laboratoire : Ajouter un disque de 5 Go à la VM pour simuler un disque de sauvegarde THÉORIE « Aujourd’hui, on agrandit la maison. On ne va pas juste copier des fichiers, on va construire l’étagère sur laquelle ils seront posés. »">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Gestion de disques :: ZG4-Linux">
+    <meta name="twitter:description" content="Important Cette semaine est critique : on touche à l’infrastructure physique. C’est l’une des rares opérations où une erreur de frappe peut détruire des données de manière irréversible. Le ton doit être méthodique.
+Objectif Ajouter un nouveau disque dur, le préparer et l’intégrer au système de fichiers de manière permanente. Plan de la séance #1 Le matériel sous Linux : Tout est fichier (30 min) Le cycle de vie : Partitionner, formater, monter (45 min) La persistance (/etc/fstab) (45 min) Plan de la séance #2 Laboratoire : Ajouter un disque de 5 Go à la VM pour simuler un disque de sauvegarde THÉORIE « Aujourd’hui, on agrandit la maison. On ne va pas juste copier des fichiers, on va construire l’étagère sur laquelle ils seront posés. »">
+    <meta property="og:url" content="http://localhost:1313/bloc-3/semaine-10---copie/index.html">
+    <meta property="og:site_name" content="ZG4-Linux">
+    <meta property="og:title" content="Gestion de disques :: ZG4-Linux">
+    <meta property="og:description" content="Important Cette semaine est critique : on touche à l’infrastructure physique. C’est l’une des rares opérations où une erreur de frappe peut détruire des données de manière irréversible. Le ton doit être méthodique.
+Objectif Ajouter un nouveau disque dur, le préparer et l’intégrer au système de fichiers de manière permanente. Plan de la séance #1 Le matériel sous Linux : Tout est fichier (30 min) Le cycle de vie : Partitionner, formater, monter (45 min) La persistance (/etc/fstab) (45 min) Plan de la séance #2 Laboratoire : Ajouter un disque de 5 Go à la VM pour simuler un disque de sauvegarde THÉORIE « Aujourd’hui, on agrandit la maison. On ne va pas juste copier des fichiers, on va construire l’étagère sur laquelle ils seront posés. »">
+    <meta property="og:locale" content="fr_ca">
+    <meta property="og:type" content="article">
+    <meta property="article:section" content="Gestion avancée (Flux & Disques)">
+    <meta itemprop="name" content="Gestion de disques :: ZG4-Linux">
+    <meta itemprop="description" content="Important Cette semaine est critique : on touche à l’infrastructure physique. C’est l’une des rares opérations où une erreur de frappe peut détruire des données de manière irréversible. Le ton doit être méthodique.
+Objectif Ajouter un nouveau disque dur, le préparer et l’intégrer au système de fichiers de manière permanente. Plan de la séance #1 Le matériel sous Linux : Tout est fichier (30 min) Le cycle de vie : Partitionner, formater, monter (45 min) La persistance (/etc/fstab) (45 min) Plan de la séance #2 Laboratoire : Ajouter un disque de 5 Go à la VM pour simuler un disque de sauvegarde THÉORIE « Aujourd’hui, on agrandit la maison. On ne va pas juste copier des fichiers, on va construire l’étagère sur laquelle ils seront posés. »">
+    <meta itemprop="wordCount" content="951">
+    <title>Gestion de disques :: ZG4-Linux</title>
+    <link href="/images/logo.png?1766888580" rel="icon" type="image/png">
+    <link href="/css/auto-complete/auto-complete.min.css?1766888580" rel="stylesheet">
+    <script src="/js/auto-complete/auto-complete.min.js?1766888580" defer></script>
+    <script src="/js/search-lunr.js?1766888580" defer></script>
+    <script src="/js/search.js?1766888580" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="/searchindex.en.js?1766888580";
+    </script>
+    <script src="/js/lunr/lunr.min.js?1766888580" defer></script>
+    <script src="/js/lunr/lunr.stemmer.support.min.js?1766888580" defer></script>
+    <script src="/js/lunr/lunr.multi.min.js?1766888580" defer></script>
+    <script src="/js/lunr/lunr.fr.min.js?1766888580" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['fr'];
+    </script>
+    <link href="/fonts/fontawesome/css/fontawesome-all.min.css?1766888580" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/fontawesome-all.min.css?1766888580" rel="stylesheet"></noscript>
+    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1766888580" rel="stylesheet">
+    <link href="/css/theme.css?1766888580" rel="stylesheet">
+    <link href="/css/format-html.css?1766888580" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = ``;
+      window.relearn.path='\/bloc-3\/semaine-10---copie\/index.html';
+      window.relearn.relBasePath='..\/..';
+      window.relearn.relBaseUri='..\/..';
+      window.relearn.absBaseUri='http:\/\/localhost:1313';
+      window.relearn.disableInlineCopyToClipboard=false;
+      window.relearn.enableBlockCodeWrap=true;
+      // legal
+      window.relearn.getItem = (s,n) => {return s.getItem(n)};
+      window.relearn.setItem = (s,n,v) => {return s.setItem(n,v)};
+      window.relearn.removeItem = (s,n) => {return s.removeItem(n)};
+      // translations
+      window.T_Copy_to_clipboard = `Copy text to clipboard`;
+      window.T_Copied_to_clipboard = `Text copied to clipboard!`;
+      window.T_Link_copied_to_clipboard = `Link copied to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+      window.T_Browser_unsupported_feature = `This browser doesn't support this feature`;
+      // variant stuff
+      window.relearn.themevariants = [ 'auto' ];
+      window.relearn.customvariantprefix = "my-custom-";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant") ?? "";
+        if( !variant ||
+            (!variant.startsWith(window.relearn.customvariantprefix) && !window.relearn.themevariants.includes(variant)) ||
+            (variant.startsWith(window.relearn.customvariantprefix) && !window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variantstylesheet-" + variant)) ){
+          variant = window.relearn.themevariants[0];
+          window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script>
+    <link href="/css/custom.css?1766888580" rel="stylesheet">
+  </head>
+  <body class="mobile-support html" data-url="/bloc-3/semaine-10---copie/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar" class="default-animation">
+        <div class="topbar-wrapper default-animation">
+          <div class="topbar-sidebar-divider default-animation"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar default-animation" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
+            </div>
+            <div class="topbar-button topbar-button-toc default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#objectif">Objectif</a></li>
+        <li><a href="#plan-de-la-séance-1">Plan de la séance #1</a></li>
+        <li><a href="#plan-de-la-séance-2">Plan de la séance #2</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#101-le-matériel-sous-linux--tout-est-fichier">10.1 Le matériel sous Linux : Tout est fichier</a></li>
+        <li><a href="#102-le-cycle-de-vie--partitionner-formater-monter">10.2 Le cycle de vie : Partitionner, formater, monter</a></li>
+        <li><a href="#103-la-persistance-etcfstab">10.3 La persistance (<code>/etc/fstab</code>)</a></li>
+        <li><a href="#-micro-exo--chirurgie-virtuelle-10-min">🛑 MICRO-EXO : &ldquo;Chirurgie Virtuelle&rdquo; (10 min)</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#étape-0--ajout-du-matériel-hors-linux-15-min">Étape 0 : Ajout du matériel (Hors Linux) (15 min)</a></li>
+        <li><a href="#étape-1--identification-et-partitionnement-30-min">Étape 1 : Identification et partitionnement (30 min)</a></li>
+        <li><a href="#étape-2--formatage-construction-du-système-de-fichiers-30-min">Étape 2 : Formatage (Construction du système de fichiers) (30 min)</a></li>
+        <li><a href="#étape-3--montage-manuel-test-15-min">Étape 3 : Montage manuel (Test) (15 min)</a></li>
+        <li><a href="#étape-4--automatisation-persistance-30-min">Étape 4 : Automatisation (Persistance) (30 min)</a></li>
+        <li><a href="#étape-5--le-redémarrage-15-min">Étape 5 : Le redémarrage (15 min)</a></li>
+        <li><a href="#-astuces-de-la-semaine">💡 Astuces de la semaine</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/index.html"><span itemprop="name">Accueil du cours</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/bloc-3/index.html"><span itemprop="name">Gestion avancée (Flux &amp; Disques)</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Gestion de disques</span><meta itemprop="position" content="3"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-prev default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/bloc-3/semaine-9/index.html" title="Redirections, tubes (Pipes) et filtres (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-next default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/bloc-3/semaine-10/index.html" title="Gestion de disques (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-more default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable bloc-3" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="gestion-de-disques">Gestion de disques</h1>
+
+
+<details open class="box cstyle notices important">
+  <summary class="box-label" tabindex="-1">
+    <i class="fa-fw fas fa-bolt"></i> 
+    Important
+  </summary>
+  <div class="box-content">
+<p><strong>Cette semaine est critique</strong> : on touche à l&rsquo;infrastructure physique. C&rsquo;est l&rsquo;une des rares opérations où une erreur de frappe peut détruire des données de manière irréversible. Le ton doit être méthodique.</p>
+  </div>
+</details>
+<h3 id="objectif">Objectif<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ul>
+<li>Ajouter un nouveau disque dur, le préparer et l&rsquo;intégrer au système de fichiers de manière permanente.</li>
+</ul>
+<h3 id="plan-de-la-séance-1">Plan de la séance #1<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ol>
+<li>Le matériel sous Linux : Tout est fichier (30 min)</li>
+<li>Le cycle de vie : Partitionner, formater, monter (45 min)</li>
+<li>La persistance (<code>/etc/fstab</code>) (45 min)</li>
+</ol>
+<h3 id="plan-de-la-séance-2">Plan de la séance #2<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ul>
+<li><strong>Laboratoire</strong> : Ajouter un disque de 5 Go à la VM pour simuler un disque de sauvegarde</li>
+</ul>
+<hr>
+<h1 id="théorie">THÉORIE<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h1>
+<p><em>« Aujourd&rsquo;hui, on agrandit la maison. On ne va pas juste copier des fichiers, on va construire l&rsquo;étagère sur laquelle ils seront posés. »</em></p>
+<h3 id="101-le-matériel-sous-linux--tout-est-fichier">10.1 Le matériel sous Linux : Tout est fichier<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Contrairement à Windows, il n&rsquo;y a pas de &ldquo;Poste de travail&rdquo; avec des icônes de disques. Les périphériques sont des fichiers dans le dossier <code>/dev</code> (Devices) .</p>
+<ul>
+<li>
+<p><strong>Nomenclature SATA/SCSI (La norme actuelle) :</strong></p>
+</li>
+<li>
+<p><code>/dev/sda</code> : <strong>S</strong>CSI <strong>D</strong>isk <strong>A</strong> (1er disque physique).</p>
+</li>
+<li>
+<p><code>/dev/sdb</code> : <strong>S</strong>CSI <strong>D</strong>isk <strong>B</strong> (2e disque physique).</p>
+</li>
+<li>
+<p><strong>Les partitions (Les tranches du gâteau) :</strong></p>
+</li>
+<li>
+<p><code>/dev/sda1</code> : 1ère partition du 1er disque.</p>
+</li>
+<li>
+<p><code>/dev/sdb1</code> : 1ère partition du 2e disque.</p>
+</li>
+<li>
+<p><strong>La commande de visualisation :</strong></p>
+</li>
+<li>
+<p><code>lsblk</code> (<em>LiSt BLock devices</em>) : Affiche l&rsquo;arbre des disques. C&rsquo;est votre meilleur ami pour ne pas formater le mauvais disque.</p>
+</li>
+</ul>
+<h3 id="102-le-cycle-de-vie--partitionner-formater-monter">10.2 Le cycle de vie : Partitionner, formater, monter<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Pour qu&rsquo;un disque neuf soit utilisable, il faut obligatoirement passer par 3 étapes :</p>
+<ol>
+<li><strong>Partitionner (<code>fdisk</code> ou <code>gdisk</code>) :</strong></li>
+</ol>
+<ul>
+<li>C&rsquo;est tracer les frontières.</li>
+<li><strong>MBR (Master Boot Record) :</strong> L&rsquo;ancien standard (max 2 To, max 4 partitions primaires). Utilisé par <code>fdisk</code>.</li>
+<li><strong>GPT (GUID Partition Table) :</strong> Le standard moderne (Disques immenses, illimité). Utilisé par <code>gdisk</code>.</li>
+</ul>
+<ol start="2">
+<li><strong>Formater (<code>mkfs</code>) :</strong></li>
+</ol>
+<ul>
+<li>C&rsquo;est peindre les cases pour que l&rsquo;OS puisse écrire dedans. On crée le <strong>Système de Fichiers</strong> (Filesystem) .</li>
+<li><strong>ext4 :</strong> Le standard Linux (robuste, journalisé).</li>
+<li><strong>xfs :</strong> Très performant pour les gros serveurs (RedHat).</li>
+<li><strong>swap :</strong> Mémoire virtuelle (RAM de secours sur disque).</li>
+</ul>
+<ol start="3">
+<li><strong>Monter (<code>mount</code>) :</strong></li>
+</ol>
+<ul>
+<li>C&rsquo;est accrocher le disque à l&rsquo;arborescence.</li>
+<li>On crée un dossier vide (ex: <code>/mnt/data</code>) et on &ldquo;colle&rdquo; le disque dessus.</li>
+</ul>
+<h3 id="103-la-persistance-etcfstab">10.3 La persistance (<code>/etc/fstab</code>)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>La commande <code>mount</code> est temporaire. Au redémarrage, Linux &ldquo;oublie&rdquo; tout ce qui n&rsquo;est pas écrit dans le fichier de configuration <code>/etc/fstab</code> (File System TABle).</p>
+<ul>
+<li><strong>Le danger des noms (<code>/dev/sdb</code>) :</strong> Si vous changez les câbles, <code>sdb</code> peut devenir <code>sdc</code>. Le système ne démarrera plus.</li>
+<li><strong>La solution UUID (Universally Unique IDentifier) :</strong> Une empreinte digitale unique pour chaque partition (ex: <code>a1b2-c3d4...</code>). C&rsquo;est ce qu&rsquo;on utilise dans <code>fstab</code> pour être sûr.</li>
+</ul>
+<hr>
+<h3 id="-micro-exo--chirurgie-virtuelle-10-min">🛑 MICRO-EXO : &ldquo;Chirurgie Virtuelle&rdquo; (10 min)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><em>Au tableau/projecteur. Montrez une capture d&rsquo;écran de <code>lsblk</code> avec un disque de 100 Go (<code>sda</code>) et un disque de 5 Go (<code>sdb</code>).</em></p>
+<p><strong>Question :</strong> &ldquo;Je veux formater le nouveau petit disque. J&rsquo;écris <code>mkfs.ext4 /dev/sda1</code>. Qu&rsquo;est-ce qui se passe ?&rdquo;
+<strong>Réponse attendue :</strong> &ldquo;Vous effacez votre système d&rsquo;exploitation (Windows/Linux) et vous perdez tout.&rdquo;
+<strong>Morale :</strong> Toujours vérifier 3 fois : est-ce <code>sda</code> ou <code>sdb</code> ?</p>
+<hr>
+<h1 id="laboratoire">LABORATOIRE<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h1>
+<p><strong>Objectif :</strong> Ajouter un disque de 5 Go à la VM pour simuler un disque de sauvegarde.</p>
+<h3 id="étape-0--ajout-du-matériel-hors-linux-15-min">Étape 0 : Ajout du matériel (Hors Linux) (15 min)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ol>
+<li><strong>Éteignez</strong> proprement votre VM (<code>poweroff</code>).</li>
+<li>Dans VirtualBox : Configuration -&gt; Stockage -&gt; Contrôleur SATA -&gt; Icône &ldquo;Ajouter un disque dur&rdquo;.</li>
+<li>Créer -&gt; VDI -&gt; Dynamique -&gt; Taille : <strong>5,00 Go</strong>.</li>
+<li>Rallumez la VM.</li>
+</ol>
+<h3 id="étape-1--identification-et-partitionnement-30-min">Étape 1 : Identification et partitionnement (30 min)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ol>
+<li>Ouvrez un terminal et tapez <code>lsblk</code>. Repérez le disque de 5 Go (probablement <code>sdb</code>).</li>
+<li>Lancez l&rsquo;outil de partitionnement : <code>sudo fdisk /dev/sdb</code> (Attention à la lettre !).</li>
+<li>Dans l&rsquo;interface interactive de fdisk :</li>
+</ol>
+<ul>
+<li>Tapez <code>n</code> (New partition).</li>
+<li>Tapez <code>p</code> (Primary).</li>
+<li>Tapez <code>1</code> (Numéro 1).</li>
+<li>Entrée (Premier secteur par défaut).</li>
+<li>Entrée (Dernier secteur par défaut = tout le disque).</li>
+<li>Tapez <code>w</code> (Write) pour sauvegarder et quitter.</li>
+</ul>
+<ol start="4">
+<li>Refaites <code>lsblk</code>. Vous devriez voir <code>sdb1</code> apparaître sous <code>sdb</code>.</li>
+</ol>
+<h3 id="étape-2--formatage-construction-du-système-de-fichiers-30-min">Étape 2 : Formatage (Construction du système de fichiers) (30 min)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ol>
+<li>Appliquez le système de fichiers ext4 sur la partition :
+<code>sudo mkfs.ext4 /dev/sdb1</code>
+<em>(Cela prend quelques secondes).</em></li>
+</ol>
+<h3 id="étape-3--montage-manuel-test-15-min">Étape 3 : Montage manuel (Test) (15 min)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ol>
+<li>Créez le point d&rsquo;ancrage (le dossier) :
+<code>sudo mkdir /mnt/backup</code></li>
+<li>Montez le disque :
+<code>sudo mount /dev/sdb1 /mnt/backup</code></li>
+<li>Vérifiez l&rsquo;espace disque disponible :
+<code>df -h</code>
+<em>(Vous devez voir une ligne <code>/dev/sdb1</code> avec une taille d&rsquo;environ 4.9G).</em></li>
+<li>Testez l&rsquo;écriture :
+<code>sudo touch /mnt/backup/test.txt</code></li>
+</ol>
+<h3 id="étape-4--automatisation-persistance-30-min">Étape 4 : Automatisation (Persistance) (30 min)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><em>Le moment de vérité.</em></p>
+<ol>
+<li>Trouvez l&rsquo;UUID de votre nouvelle partition :
+<code>sudo blkid</code>
+<em>(Copiez la longue chaîne de caractères sans les guillemets pour <code>/dev/sdb1</code>).</em></li>
+<li>Éditez le fichier fstab :
+<code>sudo nano /etc/fstab</code></li>
+<li>Ajoutez une ligne à la fin (Attention à la syntaxe !) :
+<code>UUID=votre-uuid-ici   /mnt/backup   ext4   defaults   0   2</code></li>
+<li>Sauvegardez (<code>Ctrl+X</code>, <code>Y</code>).</li>
+<li><strong>TEST DE SÉCURITÉ :</strong> Tapez <code>sudo mount -a</code>.</li>
+</ol>
+<ul>
+<li>Si rien ne s&rsquo;affiche : C&rsquo;est parfait, pas d&rsquo;erreurs.</li>
+<li>Si un message d&rsquo;erreur s&rsquo;affiche : <strong>CORRIGEZ TOUT DE SUITE.</strong> Si vous redémarrez avec une erreur dans fstab, la VM ne démarrera plus (Mode Urgence).</li>
+</ul>
+<h3 id="étape-5--le-redémarrage-15-min">Étape 5 : Le redémarrage (15 min)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ol>
+<li>Redémarrez la VM (<code>reboot</code>).</li>
+<li>Une fois revenu, tapez <code>df -h</code>.</li>
+<li>Si <code>/mnt/backup</code> est là, félicitations : vous êtes un admin système capable de gérer le stockage.</li>
+</ol>
+<hr>
+<h3 id="-astuces-de-la-semaine">💡 Astuces de la semaine<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<blockquote>
+<p><strong>⚠️ ATTENTION : La zone de danger FSTAB</strong>
+Le fichier <code>/etc/fstab</code> est lu au démarrage du noyau. S&rsquo;il contient une faute de frappe, le démarrage échoue.
+<strong>La Règle d&rsquo;Or :</strong>
+Après avoir modifié ce fichier, lancez <strong>toujours</strong> la commande <code>sudo mount -a</code> avant d&rsquo;éteindre l&rsquo;ordinateur.</p>
+<ul>
+<li>Pas de nouvelle = Bonne nouvelle (Tout va bien).</li>
+<li>Message d&rsquo;erreur = Ne redémarrez pas ! Rouvrez le fichier et corrigez.</li>
+</ul>
+<p><strong>Structure de la ligne fstab :</strong>
+<code>QUOI</code> (UUID) <code>OÙ</code> (/dossier) <code>COMMENT</code> (ext4) <code>OPTIONS</code> (defaults) <code>DUMP</code> (0) <code>PASS</code> (2)</p>
+</blockquote>
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+        <a id="R-logo" class="R-default direction-row" href="/index.html">
+          <span class="logo-title default-animation">ZG4-Linux</span>
+        </a>
+        <search><form action="/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks default-animation">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-url="/index.html"><a class="padding" href="/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols default-animation">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-main default-animation">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-url="/regles/index.html"><a class="padding" href="/regles/index.html">Règles de survie au cours<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-1/index.html"><input type="checkbox" id="R-section-0b942f9b9b2d065455b2a863f4d7995c" aria-controls="R-subsections-0b942f9b9b2d065455b2a863f4d7995c"><label for="R-section-0b942f9b9b2d065455b2a863f4d7995c"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Installation &amp; généralités</span></label><a class="padding default-animation" href="/bloc-1/index.html">BLOC 1 : Installation &amp; généralités<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-0b942f9b9b2d065455b2a863f4d7995c" class="collapsible-menu">
+            <li class="" data-nav-url="/bloc-1/semaine-1/index.html"><a class="padding" href="/bloc-1/semaine-1/index.html">Semaine 1 : Introduction &amp; installations<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-1/semaine-2/index.html"><a class="padding" href="/bloc-1/semaine-2/index.html">Semaine 2 : Arborescence et navigation<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-1/semaine-3/index.html"><a class="padding" href="/bloc-1/semaine-3/index.html">Semaine 3 : Éditeur de texte<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-1/semaine-4/index.html"><a class="padding" href="/bloc-1/semaine-4/index.html">Semaine 4 : Synthèse &amp; Évaluation 1<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
+            <li class="" data-nav-url="/bloc-2/index.html"><input type="checkbox" id="R-section-bc3591f00126f0242dfd3ada90ba9fa8" aria-controls="R-subsections-bc3591f00126f0242dfd3ada90ba9fa8"><label for="R-section-bc3591f00126f0242dfd3ada90ba9fa8"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Administration système et sécurité</span></label><a class="padding default-animation" href="/bloc-2/index.html">BLOC 2 : Administration système et sécurité<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-bc3591f00126f0242dfd3ada90ba9fa8" class="collapsible-menu">
+            <li class="" data-nav-url="/bloc-2/semaine-5/index.html"><a class="padding" href="/bloc-2/semaine-5/index.html">Semaine 5 : Gestion des utilisateurs et groupes<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-2/semaine-6/index.html"><a class="padding" href="/bloc-2/semaine-6/index.html">Semaine 6 : Permissions et droits d&#39;accès<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-2/semaine-7/index.html"><a class="padding" href="/bloc-2/semaine-7/index.html">Semaine 7 : Gestion des processus<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-2/semaine-8/index.html"><a class="padding" href="/bloc-2/semaine-8/index.html">Semaine 8 : Synthèse et Évaluation 2<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
+            <li class="parent " data-nav-url="/bloc-3/index.html"><input type="checkbox" id="R-section-d0f965f65b76b5a918fb9cc7fc20ea39" aria-controls="R-subsections-d0f965f65b76b5a918fb9cc7fc20ea39" checked><label for="R-section-d0f965f65b76b5a918fb9cc7fc20ea39"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Gestion avancée (Flux &amp; Disques)</span></label><a class="padding default-animation" href="/bloc-3/index.html">BLOC 3 : Gestion avancée (Flux &amp; Disques)<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-d0f965f65b76b5a918fb9cc7fc20ea39" class="collapsible-menu">
+            <li class="" data-nav-url="/bloc-3/semaine-9/index.html"><a class="padding" href="/bloc-3/semaine-9/index.html">Semaine 9 : Redirections, tubes (Pipes) et filtres<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="active " data-nav-url="/bloc-3/semaine-10---copie/index.html"><a class="padding" href="/bloc-3/semaine-10---copie/index.html">Semaine 10 : Gestion de disques<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-3/semaine-10/index.html"><a class="padding" href="/bloc-3/semaine-10/index.html">Semaine 10 : Gestion de disques<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
+            <li class="" data-nav-url="/bloc-4/index.html"><input type="checkbox" id="R-section-c1ebb4b1b8b7a51069075ff54026c0de" aria-controls="R-subsections-c1ebb4b1b8b7a51069075ff54026c0de"><label for="R-section-c1ebb4b1b8b7a51069075ff54026c0de"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Automatisation et scripting</span></label><a class="padding default-animation" href="/bloc-4/index.html">BLOC 4 : Automatisation et scripting<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-c1ebb4b1b8b7a51069075ff54026c0de" class="collapsible-menu">
+            <li class="" data-nav-url="/bloc-4/semaine-11/index.html"><a class="padding" href="/bloc-4/semaine-11/index.html">Semaine 11 : Introduction au Scripting Bash<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-4/semaine-12/index.html"><a class="padding" href="/bloc-4/semaine-12/index.html">Semaine 12 : Logique, conditions et arguments<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-4/semaine-13/index.html"><a class="padding" href="/bloc-4/semaine-13/index.html">Semaine 13 : Boucles et planification (Cron)<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-4/semaine-14/index.html"><a class="padding" href="/bloc-4/semaine-14/index.html">Semaine 14 : Archivage &amp; compression<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-4/semaine-15/index.html"><a class="padding" href="/bloc-4/semaine-15/index.html">Semaine 15 : Révision &amp; Examen Final<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts default-animation">
+          <ul class="space collapsible-menu">
+          </ul>
+        </div>
+        <div id="R-footer-margin" class="default-animation"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols default-animation">
+          <ul class="">
+            <li class="R-historyclearer">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-history"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <button>Clear History</button>
+                </div>
+                <div class="clear"></div>
+              </div>
+            </li>
+          </ul>
+        </div>
+<div id="R-footer" class="default-animation"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
+      </div>
+    </aside>
+    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1766888580" defer></script>
+    <script src="/js/theme.js?1766888580" defer></script>
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+  </body>
+</html>

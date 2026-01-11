@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="fr-ca" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.152.2">
+    <meta name="generator" content="Relearn 8.3.0+187e41ae8f27979cda87bfe489e34e07e5b6cbcd">
+    <meta name="description" content="Objectif de la semaine Démontrer une autonomie complète sur l’administration, la sécurisation et l’automatisation d’un système Linux. Plan de la séance #1 Il n’y a plus de nouvelle matière. C’est le moment de consolider tout ce qui a été vu depuis 15 semaines et de prouver que vous êtes prêts pour le prochain cours dans vos études.">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Révision & Examen Final :: ZG4-Linux">
+    <meta name="twitter:description" content="Objectif de la semaine Démontrer une autonomie complète sur l’administration, la sécurisation et l’automatisation d’un système Linux. Plan de la séance #1 Il n’y a plus de nouvelle matière. C’est le moment de consolider tout ce qui a été vu depuis 15 semaines et de prouver que vous êtes prêts pour le prochain cours dans vos études.">
+    <meta property="og:url" content="https://example.org/bloc-4/semaine-15/index.html">
+    <meta property="og:site_name" content="ZG4-Linux">
+    <meta property="og:title" content="Révision & Examen Final :: ZG4-Linux">
+    <meta property="og:description" content="Objectif de la semaine Démontrer une autonomie complète sur l’administration, la sécurisation et l’automatisation d’un système Linux. Plan de la séance #1 Il n’y a plus de nouvelle matière. C’est le moment de consolider tout ce qui a été vu depuis 15 semaines et de prouver que vous êtes prêts pour le prochain cours dans vos études.">
+    <meta property="og:locale" content="fr_ca">
+    <meta property="og:type" content="article">
+    <meta property="article:section" content="Automatisation & scripting">
+    <meta itemprop="name" content="Révision & Examen Final :: ZG4-Linux">
+    <meta itemprop="description" content="Objectif de la semaine Démontrer une autonomie complète sur l’administration, la sécurisation et l’automatisation d’un système Linux. Plan de la séance #1 Il n’y a plus de nouvelle matière. C’est le moment de consolider tout ce qui a été vu depuis 15 semaines et de prouver que vous êtes prêts pour le prochain cours dans vos études.">
+    <meta itemprop="wordCount" content="1865">
+    <title>Révision &amp; Examen Final :: ZG4-Linux</title>
+    <link href="/images/logo.png?1768146506" rel="icon" type="image/png">
+    <link href="/css/auto-complete/auto-complete.min.css?1768146506" rel="stylesheet">
+    <script src="/js/auto-complete/auto-complete.min.js?1768146506" defer></script>
+    <script src="/js/search-lunr.min.js?1768146506" defer></script>
+    <script src="/js/search.min.js?1768146506" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="/searchindex.en.js?1768146506";
+    </script>
+    <script src="/js/lunr/lunr.min.js?1768146506" defer></script>
+    <script src="/js/lunr/lunr.stemmer.support.min.js?1768146506" defer></script>
+    <script src="/js/lunr/lunr.multi.min.js?1768146506" defer></script>
+    <script src="/js/lunr/lunr.fr.min.js?1768146506" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['fr'];
+    </script>
+    <link href="/fonts/fontawesome/css/fontawesome-all.min.css?1768146506" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/fontawesome-all.min.css?1768146506" rel="stylesheet"></noscript>
+    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1768146506" rel="stylesheet">
+    <link href="/css/theme.min.css?1768146506" rel="stylesheet">
+    <link href="/css/format-html.min.css?1768146506" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = `.min`;
+      window.relearn.path='\/bloc-4\/semaine-15\/index.html';
+      window.relearn.relBasePath='..\/..';
+      window.relearn.relBaseUri='..\/..';
+      window.relearn.absBaseUri='https:\/\/example.org';
+      window.relearn.disableInlineCopyToClipboard=false;
+      window.relearn.enableBlockCodeWrap=true;
+      // legal
+      window.relearn.getItem = (s,n) => {return s.getItem(n)};
+      window.relearn.setItem = (s,n,v) => {return s.setItem(n,v)};
+      window.relearn.removeItem = (s,n) => {return s.removeItem(n)};
+      // translations
+      window.T_Copy_to_clipboard = `Copy text to clipboard`;
+      window.T_Copied_to_clipboard = `Text copied to clipboard!`;
+      window.T_Link_copied_to_clipboard = `Link copied to clipboard!`;
+      window.T_Reset_view = `Reset view`;
+      window.T_View_reset = `View reset!`;
+      window.T_No_results_found = `No results found for "{0}"`;
+      window.T_N_results_found = `{1} results found for "{0}"`;
+      window.T_Browser_unsupported_feature = `This browser doesn't support this feature`;
+      // variant stuff
+      window.relearn.themevariants = [ 'auto' ];
+      window.relearn.customvariantprefix = "my-custom-";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variant") ?? "";
+        if( !variant ||
+            (!variant.startsWith(window.relearn.customvariantprefix) && !window.relearn.themevariants.includes(variant)) ||
+            (variant.startsWith(window.relearn.customvariantprefix) && !window.relearn.getItem(window.localStorage, window.relearn.absBaseUri + "/variantstylesheet-" + variant)) ){
+          variant = window.relearn.themevariants[0];
+          window.relearn.setItem(window.localStorage, window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script>
+    <link href="/css/custom.css?1768146506" rel="stylesheet">
+  </head>
+  <body class="mobile-support html" data-url="/bloc-4/semaine-15/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar" class="default-animation">
+        <div class="topbar-wrapper default-animation">
+          <div class="topbar-sidebar-divider default-animation"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar default-animation" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
+            </div>
+            <div class="topbar-button topbar-button-toc default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Table of Contents (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-list-alt"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#objectif-de-la-semaine">Objectif de la semaine</a></li>
+        <li><a href="#plan-de-la-séance-1">Plan de la séance #1</a></li>
+        <li><a href="#plan-de-la-séance-2">Plan de la séance #2</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#151-la-big-picture-vue-densemble">15.1 La &ldquo;Big Picture&rdquo; (Vue d&rsquo;ensemble)</a></li>
+        <li><a href="#152-les-5-pièges-de-lexamen">15.2 Les 5 pièges de l&rsquo;examen</a></li>
+        <li><a href="#153-faq-et-dépannage">15.3 FAQ et dépannage</a></li>
+        <li><a href="#154-préparation-mentale">15.4 Préparation mentale</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#-feuille-dexamen">📄 FEUILLE D&rsquo;EXAMEN</a></li>
+        <li><a href="#-grille-de-correction-total-35">📝 GRILLE DE CORRECTION (Total /35)</a></li>
+        <li><a href="#-astuces-de-survie">💡 Astuces de survie</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#partie-1--infrastructure-et-stockage-questions-1-à-4">PARTIE 1 : Infrastructure et Stockage (Questions 1 à 4)</a></li>
+        <li><a href="#partie-2--utilisateurs-et-sécurité-questions-5-à-8">PARTIE 2 : Utilisateurs et Sécurité (Questions 5 à 8)</a></li>
+        <li><a href="#partie-3--scripting-et-automatisation-questions-9-à-13">PARTIE 3 : Scripting et Automatisation (Questions 9 à 13)</a></li>
+        <li><a href="#résumé-de-la-distribution">Résumé de la distribution</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/index.html"><span itemprop="name">Accueil du cours</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/bloc-4/index.html"><span itemprop="name">Automatisation &amp; scripting</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Révision &amp; Examen Final</span><meta itemprop="position" content="3"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-prev default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/bloc-4/semaine-14/index.html" title="Boucles & planification (Cron) (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-next default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle"><span><i class="fa-fw fas fa-chevron-right"></i></span></span>
+            </div>
+            <div class="topbar-button topbar-button-more default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable bloc-4" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="révision--examen-final">Révision &amp; Examen Final</h1>
+
+<h3 id="objectif-de-la-semaine">Objectif de la semaine<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ul>
+<li>Démontrer une autonomie complète sur l&rsquo;administration, la sécurisation et l&rsquo;automatisation d&rsquo;un système Linux.</li>
+</ul>
+<h3 id="plan-de-la-séance-1">Plan de la séance #1<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Il n&rsquo;y a plus de nouvelle matière. C&rsquo;est le moment de consolider tout ce qui a été vu depuis 15 semaines et de prouver que vous êtes prêts pour le prochain cours dans vos études.</p>
+<ol>
+<li>La &ldquo;Big Picture&rdquo; (Vue d&rsquo;ensemble) (30 min)</li>
+<li>Les 5 pièges de l&rsquo;examen (30 min)</li>
+<li>FAQ et dépannage (45 min)</li>
+<li>Préparation mentale (15 min)</li>
+</ol>
+<h3 id="plan-de-la-séance-2">Plan de la séance #2<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<hr>
+<h1 id="révision--clôture">RÉVISION &amp; CLÔTURE<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h1>
+<p><em>« Aujourd&rsquo;hui, c&rsquo;est le <em>&ldquo;Boss Battle&rdquo;</em>. Vous avez tous les outils en main. On va juste s&rsquo;assurer qu&rsquo;ils sont bien acquis. »</em></p>
+<h3 id="151-la-big-picture-vue-densemble">15.1 La &ldquo;Big Picture&rdquo; (Vue d&rsquo;ensemble)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>On retrace le chemin parcouru pour connecter les points :</p>
+<ol>
+<li><strong>Le Matériel (Sem 10) :</strong> On a ajouté des disques (<code>/dev/sdb</code>).</li>
+<li><strong>Le Système (Sem 1-4) :</strong> On a installé l&rsquo;OS et appris à bouger dedans.</li>
+<li><strong>Les Humains (Sem 5-8) :</strong> On a créé des portes (<code>rwx</code>) et des clés (<code>utilisateurs</code>).</li>
+<li><strong>L&rsquo;Intelligence (Sem 11-14) :</strong> On a créé des robots (<code>scripts</code>) pour gérer tout ça à notre place.</li>
+</ol>
+<h3 id="152-les-5-pièges-de-lexamen">15.2 Les 5 pièges de l&rsquo;examen<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Rappel des erreurs qui coûtent 0/100 à une question :</p>
+<ol>
+<li><strong>Le FSTAB brisé :</strong> Oublier de faire <code>mount -a</code> après avoir édité <code>/etc/fstab</code>. Résultat : La VM ne redémarre pas.</li>
+<li><strong>L&rsquo;espace fatal :</strong> Écrire <code>NOM = Toto</code> dans un script. (Pas d&rsquo;espaces autour du égal !).</li>
+<li><strong>Le script muet :</strong> Oublier <code>chmod +x script.sh</code>. Le Cron ne pourra jamais le lancer.</li>
+<li><strong>La mauvaise partition :</strong> Formater <code>sda1</code> (le système) au lieu de <code>sdb1</code> (le nouveau disque).</li>
+<li><strong>Le <em>Slash</em> de trop :</strong> <code>mv /dossier</code> vs <code>mv dossier</code>. (Absolu vs Relatif).</li>
+</ol>
+<h3 id="153-faq-et-dépannage">15.3 FAQ et dépannage<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ul>
+<li>Atelier libre.</li>
+<li>Les étudiants testent leurs scripts de sauvegarde une dernière fois.</li>
+<li>Le prof passe voir ceux qui ont encore des problèmes avec les boucles <code>for</code>.</li>
+</ul>
+<h3 id="154-préparation-mentale">15.4 Préparation mentale<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ul>
+<li>Nettoyage des VM (ou déploiement d&rsquo;une VM d&rsquo;examen fraîche).</li>
+<li>Consigne : &ldquo;À l&rsquo;examen, lisez TOUT l&rsquo;énoncé avant de taper la première commande.&rdquo;</li>
+</ul>
+<hr>
+<h1 id="examen-final-1h30">EXAMEN FINAL (1h30)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h1>
+<p><strong>Mise en situation :</strong>
+Vous êtes l&rsquo;administrateur système junior de la compagnie &ldquo;TechCégep&rdquo;. Votre superviseur est absent et vous laisse une liste de tâches critiques à effectuer sur le serveur. Vous devez livrer un système fonctionnel, sécurisé et automatisé.</p>
+<hr>
+<h3 id="-feuille-dexamen">📄 FEUILLE D&rsquo;EXAMEN<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Consignes :</strong></p>
+<ul>
+<li>Connectez-vous en tant que <code>etudiant</code>.</li>
+<li>Toutes les tâches doivent être vérifiables.</li>
+<li>L&rsquo;accès à vos notes de cours (PDF/Blackbook) est permis. Internet est interdit.</li>
+</ul>
+<h4 id="section-a--infrastructure--stockage-10-points">SECTION A : Infrastructure &amp; stockage (10 points)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p><em>Votre serveur manque d&rsquo;espace. Vous devez ajouter un disque dédié aux archives.</em></p>
+<ol>
+<li>Ajoutez un disque dur virtuel de <strong>2 Go</strong> à votre VM.</li>
+<li>Partitionnez ce disque pour utiliser tout l&rsquo;espace disponible (Une seule partition primaire).</li>
+<li>Formatez cette partition en <strong>ext4</strong>.</li>
+<li>Créez le répertoire de montage <code>/mnt/archives</code>.</li>
+<li>Montez la partition de manière <strong>permanente</strong> (via <code>/etc/fstab</code>) dans <code>/mnt/archives</code>.</li>
+<li><strong>Preuve :</strong> Redémarrez la VM. Si elle remonte avec le disque accessible, vous avez les points.</li>
+</ol>
+<h4 id="section-b--gestion-utilisateurs--sécurité-10-points">SECTION B : Gestion Utilisateurs &amp; Sécurité (10 points)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p><em>Vous devez configurer l&rsquo;environnement pour l&rsquo;équipe de développement.</em></p>
+<ol>
+<li>Créez un groupe nommé <code>developpeurs</code>.</li>
+<li>Créez deux utilisateurs : <code>dave</code> et <code>anna</code>.</li>
+<li>Ajoutez <code>dave</code> et <code>anna</code> au groupe <code>developpeurs</code>.</li>
+<li>Créez un dossier <code>/mnt/archives/projet_web</code>.</li>
+<li>Configurez les permissions de ce dossier pour que :</li>
+</ol>
+<ul>
+<li><code>dave</code> et <code>anna</code> puissent lire et écrire dedans.</li>
+<li>Les autres utilisateurs (non-membres du groupe) n&rsquo;aient <strong>aucun accès</strong>.</li>
+<li><em>(Indice : Pensez au <code>chown</code> et au <code>chmod</code> en octal).</em></li>
+</ul>
+<h4 id="section-c--scripting--automatisation-15-points">SECTION C : Scripting &amp; Automatisation (15 points)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p><em>La compagnie a besoin d&rsquo;une sauvegarde automatique des configurations.</em></p>
+<ol>
+<li>Créez un script nommé <code>backup_config.sh</code> dans <code>/home/etudiant/Scripts</code>.</li>
+<li><strong>Le script doit :</strong>
+<ul>
+<li>Vérifier si l&rsquo;utilisateur qui lance le script est <strong>root</strong>. Sinon, afficher une erreur et quitter.</li>
+<li>Définir une variable <code>DATE</code> au format <code>AAAA-MM-JJ</code>.</li>
+<li>Créer une archive compressée (<code>.tar.gz</code>) du dossier <code>/etc</code>.</li>
+<li>Nommer l&rsquo;archive : <code>config_backup_$DATE.tar.gz</code>.</li>
+<li>Enregistrer l&rsquo;archive dans <code>/mnt/archives</code>.</li>
+<li>Si l&rsquo;archivage réussit, écrire &ldquo;Succès : Sauvegarde du $DATE&rdquo; dans un fichier <code>/var/log/backup.log</code>.</li>
+</ul>
+</li>
+<li>Rendez ce script exécutable.</li>
+<li>Programmez ce script (via Cron) pour qu&rsquo;il s&rsquo;exécute <strong>tous les jours à 23h30</strong>.</li>
+</ol>
+<hr>
+<h3 id="-grille-de-correction-total-35">📝 GRILLE DE CORRECTION (Total /35)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<table>
+  <thead>
+      <tr>
+          <th>Section A : Stockage (10 pts)</th>
+          <th>Points</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Partitionnement correct (<code>fdisk</code>)</td>
+          <td>3</td>
+      </tr>
+      <tr>
+          <td>Formatage <code>ext4</code> réussi</td>
+          <td>2</td>
+      </tr>
+      <tr>
+          <td>Montage manuel fonctionnel</td>
+          <td>2</td>
+      </tr>
+      <tr>
+          <td>Persistance <code>fstab</code> (Le système redémarre sans erreur et le disque est là)</td>
+          <td>3</td>
+      </tr>
+  </tbody>
+</table>
+<table>
+  <thead>
+      <tr>
+          <th>Section B : Sécurité (10 pts)</th>
+          <th>Points</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Utilisateurs et Groupe créés correctement</td>
+          <td>3</td>
+      </tr>
+      <tr>
+          <td>Dossier créé au bon endroit</td>
+          <td>1</td>
+      </tr>
+      <tr>
+          <td>Propriétaire Groupe changé (<code>chown :developpeurs</code>)</td>
+          <td>3</td>
+      </tr>
+      <tr>
+          <td>Permissions restrictives (<code>770</code> ou <code>2770</code>)</td>
+          <td>3</td>
+      </tr>
+  </tbody>
+</table>
+<table>
+  <thead>
+      <tr>
+          <th>Section C : Scripting (15 pts)</th>
+          <th>Points</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Shebang et syntaxe de base corrects</td>
+          <td>2</td>
+      </tr>
+      <tr>
+          <td>Vérification Root (<code>if [ $UID -ne 0 ]</code>)</td>
+          <td>3</td>
+      </tr>
+      <tr>
+          <td>Variable Date correcte</td>
+          <td>2</td>
+      </tr>
+      <tr>
+          <td>Commande <code>tar</code> fonctionnelle (compression)</td>
+          <td>3</td>
+      </tr>
+      <tr>
+          <td>Logique de succès (vérification ou suite logique) et Log</td>
+          <td>2</td>
+      </tr>
+      <tr>
+          <td>Tâche Cron correctement configurée (Syntaxe <code>30 23 * * *</code>)</td>
+          <td>3</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h3 id="-astuces-de-survie">💡 Astuces de survie<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<blockquote>
+<p><strong>Rappelez-vous toujours :</strong></p>
+<ol>
+<li><strong>Backup :</strong> On ne pleure pas des données perdues, on restaure un backup.</li>
+<li><strong>Logs :</strong> La réponse à &ldquo;Pourquoi ça marche pas ?&rdquo; est toujours dans <code>/var/log</code>.</li>
+<li><strong>Root :</strong> Un grand pouvoir implique de grandes responsabilités. Ne restez pas en root pour rien.</li>
+<li><strong>Veille d&rsquo;examen :</strong> On se repose. Les études scientifiques montrent qu&rsquo;étudier à la dernière minute crée un faux sentiment de compétence (on croit apprendre, mais en fait on ne fait que bourrer son cerveau, ce qui le rend moins efficace)</li>
+</ol>
+<p>Bonne chance pour la suite de votre technique !
+<em>- Votre prof d&rsquo;info.</em></p>
+</blockquote>
+<p>==========================</p>
+<p>Voici une proposition de conversion de l&rsquo;examen final en <strong>Test Moodle</strong>.</p>
+<p>J&rsquo;ai structuré l&rsquo;examen pour respecter votre ratio de difficulté :</p>
+<ul>
+<li><strong>75% Intermédiaire/Standard :</strong> Questions de syntaxe, ordre des opérations, commandes courantes (QCM et Réponses courtes).</li>
+<li><strong>25% Difficile/Expert :</strong> Scénarios complexes, débogage de script et syntaxe précise (Composition et Réponses courtes strictes).</li>
+</ul>
+<hr>
+<h1 id="test-moodle--examen-final---administration-linux-35">Test Moodle : Examen Final - Administration Linux (35%)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h1>
+<p><strong>Consignes pour l&rsquo;étudiant :</strong></p>
+<blockquote>
+<ul>
+<li>Ce test évalue l&rsquo;ensemble des compétences acquises durant les 15 semaines.</li>
+<li>Soyez précis sur la syntaxe (espaces, casse).</li>
+<li>Aucune documentation externe n&rsquo;est autorisée.</li>
+</ul>
+</blockquote>
+<hr>
+<h3 id="partie-1--infrastructure-et-stockage-questions-1-à-4">PARTIE 1 : Infrastructure et Stockage (Questions 1 à 4)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><em>Cette section vérifie la compréhension du cycle de vie des disques durs.</em></p>
+<p><strong>Question 1 (QCM - Intermédiaire)</strong>
+<strong>Énoncé :</strong> Vous venez de brancher un nouveau disque dur physique dans le serveur. Quelle est l&rsquo;ordre chronologique <strong>obligatoire</strong> des opérations pour le rendre utilisable pour stocker des fichiers ?</p>
+<ol>
+<li>Formater -&gt; Partitionner -&gt; Monter</li>
+<li>Partitionner -&gt; Monter -&gt; Formater</li>
+<li>Partitionner -&gt; Formater -&gt; Monter  <strong>(Bonne réponse)</strong></li>
+<li>Monter -&gt; Partitionner -&gt; Formater</li>
+</ol>
+<p><strong>Question 2 (Réponse Courte - Facile)</strong>
+<strong>Énoncé :</strong> Vous tapez la commande <code>lsblk</code>. Vous voyez votre disque système sur <code>sda</code>. Quel sera le nom du fichier de périphérique (device file) correspondant au <strong>deuxième</strong> disque physique SATA branché sur la machine ? (Répondez uniquement par le chemin absolu, ex: <code>/dev/xyz</code>).</p>
+<ul>
+<li><strong>Réponse :</strong> <code>/dev/sdb</code></li>
+</ul>
+<p><strong>Question 3 (Réponse Courte - Intermédiaire)</strong>
+<strong>Énoncé :</strong> Vous avez créé une partition <code>/dev/sdb1</code>. Écrivez la commande exacte pour la formater avec le système de fichiers standard de Linux (<strong>ext4</strong>).</p>
+<ul>
+<li><strong>Réponse :</strong> <code>mkfs.ext4 /dev/sdb1</code> (Accepter aussi <code>sudo mkfs.ext4 /dev/sdb1</code>)</li>
+</ul>
+<p><strong>Question 4 (Composition - Difficile/Expert)</strong>
+<strong>Énoncé :</strong> Vous devez rendre le montage permanent. Voici les informations :</p>
+<ul>
+<li>Partition : <code>/dev/sdb1</code></li>
+<li>Point de montage : <code>/mnt/archives</code></li>
+<li>Système de fichiers : <code>ext4</code></li>
+<li>Options : par défaut</li>
+<li>UUID : <code>550e8400-e29b</code>
+<strong>Rédigez la ligne exacte</strong> que vous devez ajouter dans le fichier <code>/etc/fstab</code>. Utilisez l&rsquo;UUID pour identifier le disque.</li>
+<li><strong>Correction suggérée :</strong> <code>UUID=550e8400-e29b /mnt/archives ext4 defaults 0 2</code></li>
+<li><em>Note au prof : Cette question sépare ceux qui comprennent la syntaxe fstab de ceux qui improvisent.</em></li>
+</ul>
+<hr>
+<h3 id="partie-2--utilisateurs-et-sécurité-questions-5-à-8">PARTIE 2 : Utilisateurs et Sécurité (Questions 5 à 8)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><em>Cette section vérifie la gestion des droits selon le principe du moindre privilège.</em></p>
+<p><strong>Question 5 (QCM - Intermédiaire)</strong>
+<strong>Énoncé :</strong> Vous devez ajouter l&rsquo;utilisateur existant <code>dave</code> au groupe <code>developpeurs</code> sans lui retirer ses autres groupes actuels. Quelle commande est correcte ?</p>
+<ol>
+<li><code>usermod -G developpeurs dave</code> (Piège : ça écrase les autres groupes)</li>
+<li><code>usermod -aG developpeurs dave</code> <strong>(Bonne réponse)</strong></li>
+<li><code>groupadd dave developpeurs</code></li>
+<li><code>chown dave:developpeurs</code></li>
+</ol>
+<p><strong>Question 6 (Réponse Courte - Intermédiaire)</strong>
+<strong>Énoncé :</strong> Traduisez les permissions symboliques <code>rwxr-x---</code> en <strong>notation octale</strong> (chiffre).</p>
+<ul>
+<li><strong>Réponse :</strong> <code>750</code></li>
+</ul>
+<p><strong>Question 7 (Composition - Difficile/Expert)</strong>
+<strong>Énoncé :</strong> Mise en situation : Vous avez un dossier <code>/projets/web</code>.</p>
+<ul>
+<li>Le propriétaire doit être <code>anna</code>.</li>
+<li>Le groupe propriétaire doit être <code>developpeurs</code>.</li>
+<li>Anna doit pouvoir tout faire.</li>
+<li>Les membres du groupe <code>developpeurs</code> doivent pouvoir lire et modifier les fichiers, mais pas les supprimer (pas d&rsquo;exécution non plus).</li>
+<li>Les autres ne doivent rien voir.
+<strong>Écrivez les deux commandes nécessaires pour appliquer cette configuration.</strong></li>
+<li><strong>Correction suggérée :</strong></li>
+</ul>
+<ol>
+<li><code>chown anna:developpeurs /projets/web</code></li>
+<li><code>chmod 760 /projets/web</code></li>
+</ol>
+<p><strong>Question 8 (QCM - Intermédiaire)</strong>
+<strong>Énoncé :</strong> Un utilisateur ne peut pas accéder à un dossier alors que les permissions semblent correctes (<code>777</code>). Quel fichier de configuration devriez-vous vérifier pour voir si son compte est verrouillé ou s&rsquo;il n&rsquo;a pas le bon shell ?</p>
+<ol>
+<li><code>/etc/group</code></li>
+<li><code>/etc/shadow</code></li>
+<li><code>/etc/passwd</code> <strong>(Bonne réponse)</strong></li>
+<li><code>/etc/fstab</code></li>
+</ol>
+<hr>
+<h3 id="partie-3--scripting-et-automatisation-questions-9-à-13">PARTIE 3 : Scripting et Automatisation (Questions 9 à 13)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><em>Cette section est la plus technique et discrimine les étudiants avancés.</em></p>
+<p><strong>Question 9 (Réponse Courte - Facile)</strong>
+<strong>Énoncé :</strong> Quelle est la toute première ligne obligatoire d&rsquo;un script Bash (le Shebang) ?</p>
+<ul>
+<li><strong>Réponse :</strong> <code>#!/bin/bash</code></li>
+</ul>
+<p><strong>Question 10 (QCM - Intermédiaire)</strong>
+<strong>Énoncé :</strong> Dans un script, quelle condition <code>if</code> permet de vérifier correctement si le dossier <code>/mnt/backup</code> existe ?</p>
+<ol>
+<li><code>if [ -f &quot;/mnt/backup&quot; ]; then</code></li>
+<li><code>if [ -d &quot;/mnt/backup&quot; ]; then</code> <strong>(Bonne réponse)</strong></li>
+<li><code>if [ exist &quot;/mnt/backup&quot; ]; then</code></li>
+<li><code>if [ -e &quot;/mnt/backup&quot; ]; then</code> (Accepte aussi, mais -d est plus précis pour un dossier. Moodle permet de mettre 100% à la réponse 2 et 80% à la réponse 4 si désiré).</li>
+</ol>
+<p><strong>Question 11 (Réponse Courte - Intermédiaire)</strong>
+<strong>Énoncé :</strong> Vous voulez créer une archive compressée du dossier <code>/etc</code>. Complétez la commande <code>tar</code> avec les bons drapeaux (flags) pour créer une archive <strong>gzippée</strong>.
+Commande : <code>tar _____ backup.tar.gz /etc</code></p>
+<ul>
+<li><strong>Réponse :</strong> <code>-czf</code> (ou <code>-zcf</code>, <code>-fcz</code> tant que &lsquo;f&rsquo; est suivi du nom).</li>
+</ul>
+<p><strong>Question 12 (Réponse Courte - Difficile/Expert)</strong>
+<strong>Énoncé :</strong> Vous devez programmer une tâche Cron pour qu&rsquo;elle s&rsquo;exécute <strong>tous les jours à 23h30</strong>. Écrivez uniquement les 5 champs de temps (ne mettez pas la commande).</p>
+<ul>
+<li><strong>Réponse :</strong> <code>30 23 * * *</code></li>
+</ul>
+<p><strong>Question 13 (Composition - Difficile/Expert)</strong>
+<strong>Énoncé :</strong> <strong>Analyse de script.</strong>
+Le script ci-dessous a pour but de vérifier si l&rsquo;utilisateur est <code>root</code> avant de continuer. S&rsquo;il n&rsquo;est pas root, il doit s&rsquo;arrêter avec un code d&rsquo;erreur.
+Cependant, ce script contient <strong>2 erreurs fatales</strong> qui l&rsquo;empêchent de fonctionner.
+Identifiez les erreurs et réécrivez le bloc de code corrigé.</p>
+<p><em>Script buggé :</em></p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> $UID -ne <span style="color:#ae81ff">0</span> <span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;Erreur : Il faut être root&#34;</span>
+</span></span><span style="display:flex;"><span>    exit
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span></span></span></code></pre></div>
+<ul>
+<li><strong>Correction attendue :</strong></li>
+</ul>
+<ol>
+<li>Erreur 1 : Manque le <code>;</code> après le crochet ou le retour à la ligne avant <code>then</code> (souvent toléré par bash moderne mais mauvaise pratique), mais surtout <strong>manque d&rsquo;espaces</strong> si l&rsquo;étudiant le mentionne.</li>
+<li>Erreur 2 (Critique) : <code>exit</code> tout seul renvoie le code 0 (succès). Il faut <code>exit 1</code> pour signaler une erreur.
+<em>Réponse idéale :</em></li>
+</ol>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> <span style="color:#e6db74">&#34;</span>$UID<span style="color:#e6db74">&#34;</span> -ne <span style="color:#ae81ff">0</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;Erreur : Il faut être root&#34;</span>
+</span></span><span style="display:flex;"><span>    exit <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span></span></span></code></pre></div>
+<hr>
+<h3 id="résumé-de-la-distribution">Résumé de la distribution<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ul>
+<li>
+<p><strong>Facile / Intermédiaire (~75%) :</strong></p>
+</li>
+<li>
+<p>Q1 (Ordre partition)</p>
+</li>
+<li>
+<p>Q2 (Nom du disque sdb)</p>
+</li>
+<li>
+<p>Q3 (Formatage mkfs)</p>
+</li>
+<li>
+<p>Q5 (Ajout groupe)</p>
+</li>
+<li>
+<p>Q6 (Conversion Octale)</p>
+</li>
+<li>
+<p>Q8 (Fichier passwd)</p>
+</li>
+<li>
+<p>Q9 (Shebang)</p>
+</li>
+<li>
+<p>Q10 (Condition If -d)</p>
+</li>
+<li>
+<p>Q11 (Tar flags)</p>
+</li>
+<li>
+<p><strong>Difficile / Expert (~25%) :</strong></p>
+</li>
+<li>
+<p>Q4 (Syntaxe FSTAB complète)</p>
+</li>
+<li>
+<p>Q7 (Scénario double Chown/Chmod)</p>
+</li>
+<li>
+<p>Q12 (Syntaxe Cron précise)</p>
+</li>
+<li>
+<p>Q13 (Logique de script et code d&rsquo;erreur)</p>
+</li>
+</ul>
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation">
+
+<a id="logo" href="https://example.org/">
+  <img src="/images/logo.png" alt="Logo du site" style="height: 100px; width: auto;">
+</a>
+
+
+        <search><form action="/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Search (CTRL+ALT+f)"><i class="fas fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Search</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Search...">
+            <button class="search-clear" type="button" data-search-clear="" title="Clear search"><i class="fas fa-times" title="Clear search"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks default-animation">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-url="/index.html"><a class="padding" href="/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols default-animation">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-main default-animation">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-url="/remises/index.html"><a class="padding" href="/remises/index.html">Protocole de remise des exos et labos<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/regles/index.html"><a class="padding" href="/regles/index.html">Règles de survie au cours<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-1/index.html"><input type="checkbox" id="R-section-0b942f9b9b2d065455b2a863f4d7995c" aria-controls="R-subsections-0b942f9b9b2d065455b2a863f4d7995c"><label for="R-section-0b942f9b9b2d065455b2a863f4d7995c"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Fondations &amp; installation</span></label><a class="padding default-animation" href="/bloc-1/index.html">BLOC 1 : Fondations &amp; installation<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-0b942f9b9b2d065455b2a863f4d7995c" class="collapsible-menu">
+            <li class="" data-nav-url="/bloc-1/semaine-1/index.html"><a class="padding" href="/bloc-1/semaine-1/index.html">Semaine 1 : Introduction et installation<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-1/semaine-2/index.html"><a class="padding" href="/bloc-1/semaine-2/index.html">Semaine 2 : Arborescence et navigation<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-1/semaine-3/index.html"><a class="padding" href="/bloc-1/semaine-3/index.html">Semaine 3 : Gestion de paquets et édition de texte<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-1/semaine-4/index.html"><a class="padding" href="/bloc-1/semaine-4/index.html">Semaine 4 : L&#39;expansion d&#39;accolades et Examen 1<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
+            <li class="" data-nav-url="/bloc-2/index.html"><input type="checkbox" id="R-section-bc3591f00126f0242dfd3ada90ba9fa8" aria-controls="R-subsections-bc3591f00126f0242dfd3ada90ba9fa8"><label for="R-section-bc3591f00126f0242dfd3ada90ba9fa8"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Administration système &amp; sécurité</span></label><a class="padding default-animation" href="/bloc-2/index.html">BLOC 2 : Administration système &amp; sécurité<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-bc3591f00126f0242dfd3ada90ba9fa8" class="collapsible-menu">
+            <li class="" data-nav-url="/bloc-2/semaine-5/index.html"><a class="padding" href="/bloc-2/semaine-5/index.html">Semaine 5 : Gestion des Utilisateurs<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-2/semaine-6/index.html"><a class="padding" href="/bloc-2/semaine-6/index.html">Semaine 6 : Permissions &amp; droits d&#39;accès<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-2/semaine-7/index.html"><a class="padding" href="/bloc-2/semaine-7/index.html">Semaine 7 : Gestion des processus<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-2/semaine-8/index.html"><a class="padding" href="/bloc-2/semaine-8/index.html">Semaine 8 : Révision? &amp; Examen #2<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
+            <li class="" data-nav-url="/bloc-3/index.html"><input type="checkbox" id="R-section-d0f965f65b76b5a918fb9cc7fc20ea39" aria-controls="R-subsections-d0f965f65b76b5a918fb9cc7fc20ea39"><label for="R-section-d0f965f65b76b5a918fb9cc7fc20ea39"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Redirections &amp; filtres, disques et réseau</span></label><a class="padding default-animation" href="/bloc-3/index.html">BLOC 3 : Redirections &amp; filtres, disques et réseau<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-d0f965f65b76b5a918fb9cc7fc20ea39" class="collapsible-menu">
+            <li class="" data-nav-url="/bloc-3/semaine-9/index.html"><a class="padding" href="/bloc-3/semaine-9/index.html">Semaine 9 : Redirections, Pipes et filtres<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-3/semaine-10/index.html"><a class="padding" href="/bloc-3/semaine-10/index.html">Semaine 10 : Gestion de disques<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-3/semaine-11/index.html"><a class="padding" href="/bloc-3/semaine-11/index.html">Semaine 11 : Réseau et services &amp; Examen #3<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
+            <li class="parent " data-nav-url="/bloc-4/index.html"><input type="checkbox" id="R-section-c1ebb4b1b8b7a51069075ff54026c0de" aria-controls="R-subsections-c1ebb4b1b8b7a51069075ff54026c0de" checked><label for="R-section-c1ebb4b1b8b7a51069075ff54026c0de"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Automatisation &amp; scripting</span></label><a class="padding default-animation" href="/bloc-4/index.html">BLOC 4 : Automatisation &amp; scripting<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-c1ebb4b1b8b7a51069075ff54026c0de" class="collapsible-menu">
+            <li class="" data-nav-url="/bloc-4/semaine-12/index.html"><a class="padding" href="/bloc-4/semaine-12/index.html">Semaine 12 : Introduction au Scripting Bash<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-4/semaine-13/index.html"><a class="padding" href="/bloc-4/semaine-13/index.html">Semaine 13 : Logique conditionnelle &amp; tests sur fichiers<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-4/semaine-14/index.html"><a class="padding" href="/bloc-4/semaine-14/index.html">Semaine 14 : Boucles &amp; planification (Cron)<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="active " data-nav-url="/bloc-4/semaine-15/index.html"><a class="padding" href="/bloc-4/semaine-15/index.html">Semaine 15 : Révision &amp; Examen Final<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts default-animation">
+          <ul class="space collapsible-menu">
+          </ul>
+        </div>
+        <div id="R-footer-margin" class="default-animation"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols default-animation">
+          <ul class="">
+            <li class="R-historyclearer">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-history"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <button>Clear History</button>
+                </div>
+                <div class="clear"></div>
+              </div>
+            </li>
+          </ul>
+        </div>
+<div id="R-footer" class="default-animation"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
+      </div>
+    </aside>
+    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1768146506" defer></script>
+    <script src="/js/theme.min.js?1768146506" defer></script>
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+  </body>
+</html>
