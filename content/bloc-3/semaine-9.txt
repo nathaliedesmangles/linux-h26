@@ -1,6 +1,6 @@
 +++
 pre = 'Semaine 9 : '
-title = 'Redirections, Pipes et filtres'
+title = 'Recherches et filtres'
 weight = 90
 +++
 
@@ -15,72 +15,14 @@ Utiliser le fichier **exo-semaine9.docx** pour y mettre vos réponses et capture
 
 ---
 
-## Théorie
-
-Imaginez qu'une commande Linux est une **machine industrielle**. Elle a besoin de matières premières pour fonctionner et elle produit quelque chose en sortie.
-
-Il existe trois "tuyaux" connectés par défaut à chaque commande :
-
-| Canal | Nom technique | ID | Description | Direction par défaut |
-| --- | --- | --- | --- | --- |
-| **Entrée** | `stdin` | 0 | Les données brutes | Votre **Clavier** |
-| **Sortie** | `stdout` | 1 | Le bon résultat | Votre **Écran** |
-| **Erreur** | `stderr` | 2 | Les messages de panne | Votre **Écran** |
-
-> **Analogie :** C'est comme une créature qui **mange** (stdin), **parle** (stdout) et parfois **crie** quand elle a mal (stderr).
+# Théorie
 
 
-## Les redirections
-
-Par défaut, la "rivière" de données coule vers l'écran. Nous pouvons utiliser des chevrons pour détourner ce flux vers un **fichier**.
-
-### 1. Le destructeur (`>`)
-
-Le chevron simple redirige la sortie vers un fichier.
-
-* **Attention :** Si le fichier existe, il est **écrasé** (vidé et remplacé).
-* **Moyen mnémotechnique :** Le fichier est remis à zéro.
-
-```bash
-echo "Liste de courses" > courses.txt
-# Le fichier courses.txt contient maintenant uniquement : Liste de courses
-```
-
-### 2. Le constructeur (`>>`)
-
-Le double chevron ajoute les données à la **fin** du fichier existant.
-
-* **Sécurité :** Il ne détruit pas l'ancien contenu.
-
-```bash
-echo "- Pommes" >> courses.txt
-echo "- Bananes" >> courses.txt
-# Le fichier contient maintenant le titre ET les fruits.
-```
-
-### 🟢 Exercice #1 (En classe)
-
-**Objectif :** Visualiser la différence entre écraser et ajouter.
-
-1. Demandez aux étudiants de taper : `echo "Bonjour" > test.txt`
-2. Puis : `echo "Monde" > test.txt`
-3. Vérifiez le contenu (`cat test.txt`). Que s'est-il passé ? (Réponse : "Bonjour" a disparu).
-4. Corrigez le tir : `echo "Bonjour" >> test.txt` (Pour avoir Monde et Bonjour).
-
-
-
-## Le Tube (Pipe `|`) : L'Assemblage
-
-C'est le super-pouvoir de Linux. Le caractère `|` (Alt Gr + 6) connecte la sortie de la commande de gauche à l'entrée de la commande de droite.
-
-**La règle d'or :** Pas de fichier intermédiaire. Tout se passe en mémoire vive (RAM).
-
-> **Analogie de l'usine :**
-> `Machine A (Fabrique le biscuit)` **|** `Machine B (Met le chocolat)` **|** `Machine C (Emballe)`
-
-### 1. Les filtres indispensables
+## Les filtres indispensables
 
 Le Pipe sert à envoyer des données vers des filtres. Voici les plus utilisés :
+
+***FIND, WC -w -m -c***
 
 * **`sort`** : Trie les lignes par ordre alphabétique ou numérique.
 * **`uniq`** : Supprime les doublons **adjacents** (il faut souvent trier avant !).
@@ -89,7 +31,7 @@ Le Pipe sert à envoyer des données vers des filtres. Voici les plus utilisés 
 * **`head` / `tail**` : Affiche les premières ou dernières lignes.
 
 
-### 🟢 Exercice #2 (En classe)
+### 🟢 Exercice #1 (En classe)
 
 * Le dossier `/etc` contient des centaines de fichiers de configuration.
 * Afficher uniquement les fichiers contenant "conf" dans leur nom, et les trier à l'envers.
@@ -103,7 +45,7 @@ ls /etc | grep "conf" | sort -r
 
 *Discussion : Que se passe si on enlève le `grep`?*
 
-### 🟢 Exercice #3 (En classe)
+### 🟢 Exercice #2 (En classe)
 
 * On veut savoir combien d'objets se trouvent dans le dossier `/bin` (là où sont stockées les commandes comme ls, cp, etc.).
 * Compter les fichiers.

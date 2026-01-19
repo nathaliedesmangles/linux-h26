@@ -1,39 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Administration système &amp; sécurité :: ZG4-Linux</title>
-    <link>https://example.org/bloc-2/index.html</link>
-    <description>Objectif global Ce bloc est crucial car il touche à la sécurité et à la gestion multi-utilisateurs.&#xA;À la fin de ce bloc, vous devez savoir gérer les comptes utilisateurs, sécuriser l’accès aux fichiers via les permissions et contrôler les programmes en cours d’exécution.&#xA;Contenu des semaines 5 à 8 Semaine 5 : Gestion des utilisateurs (useradd, /etc/passwd) Semaine 6 : Permissions &amp; droits (chmod, chown, notation octale) Semaine 7 : Gestion des processus (ps, kill) et surveillance (top). Semaine 8 : Révision &amp; Test #2 (25%)</description>
+    <title>Redirections, Pipe, recherche &amp; filtres :: ZG4-Linux</title>
+    <link>http://localhost:1313/bloc-2/index.html</link>
+    <description>Objectif global À la fin de ce bloc, vous devez savoir contrôler les programmes en cours d’exécution et manipuler les entrées/sorties des commandes pour créer des chaînes de traitement complexes.&#xA;Contenu des semaines 5 à 8 Semaine 5 : Processus de démarrage (systemctl) &amp; boucle for Labo 4: Processus de démarrage &amp; boucle for Semaine 6 : Redirections (&gt;, &gt;&gt;, 2&gt;) &amp; Pipe (|) Labo 5: Redirections &amp; Pipe Semaine 7 : Recherche &amp; filtres/tri &amp; boucle while (grep, sed, cut, find,wc, sort) Labo 6: Recherche &amp; filtres/tri &amp; boucle while Semaine 8 : Test #2 (12,5%) Gestion des processus (ps, pid, top, kill, &amp;, etc.)</description>
     <generator>Hugo</generator>
     <language>fr-ca</language>
-    <atom:link href="https://example.org/bloc-2/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Gestion des Utilisateurs</title>
-      <link>https://example.org/bloc-2/semaine-5/index.html</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://example.org/bloc-2/semaine-5/index.html</guid>
-      <description>Objectifs de la semaine Comprendre l’identité numérique sous Linux (UID, GID) et le concept de groupe primaire vs secondaire. Auditer les fichiers système (/etc/passwd, /etc/shadow et /etc/group). Gérer le cycle de vie des comptes (création, modification, suppression, verrouillage). Fichier pour les exercices (en classe) Utiliser le fichier exo-semaine5.docx pour y mettre vos réponses et captures d’écran.&#xA;Télécharger le fichier docx</description>
-    </item>
-    <item>
-      <title>Permissions &amp; droits d&#39;accès</title>
-      <link>https://example.org/bloc-2/semaine-6/index.html</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://example.org/bloc-2/semaine-6/index.html</guid>
-      <description>Objectifs de la semaine Déchiffrer la ligne cryptique drwxr-xr-x commande ls -l. Comprendre la différence entre les droits sur un fichier et sur un dossier. Manipuler les permissions avec chmod (Mode Symbolique et Octal). Gérer les propriétaires avec chown, les groupes avec chgrp. Fichier pour les exercices (en classe) Utiliser le fichier exo-semaine6.docx pour y mettre vos réponses et captures d’écran.&#xA;Télécharger le fichier docx</description>
-    </item>
-    <item>
-      <title>Gestion des processus</title>
-      <link>https://example.org/bloc-2/semaine-7/index.html</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://example.org/bloc-2/semaine-7/index.html</guid>
-      <description>Objectif de la semaine Comprendre comment Linux gère les programmes, apprendre à les surveiller, les mettre en pause, et les arrêter proprement (ou brutalement) Fichier pour les exercices (en classe) Utiliser le fichier exo-semaine7.docx pour y mettre vos réponses et captures d’écran.&#xA;Télécharger le fichier docx&#xA;Théorie Qu’est-ce qu’un processus ? Imaginez un livre de cuisine.</description>
-    </item>
-    <item>
-      <title>Révision? &amp; Examen #2</title>
-      <link>https://example.org/bloc-2/semaine-8/index.html</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://example.org/bloc-2/semaine-8/index.html</guid>
-      <description>Révision Aujourd’hui, on n’apprend rien de nouveau. On va juste apprendre à ne pas se tirer dans le pied le jour de l’examen.&#xA;Module 1 : Gestion des Utilisateurs (Le piège du -G) L’erreur fatale ici est la suppression accidentelle des groupes secondaires (comme sudo).</description>
-    </item>
+    <atom:link href="http://localhost:1313/bloc-2/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

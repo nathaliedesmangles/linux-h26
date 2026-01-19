@@ -1,13 +1,6 @@
-Mise en forme
 
-- Arborescence
-- Chemins absolu vs relatif
-- Permissions
-- Gestion disques
-- Scripting
-- Tests sur les fichiers et Comparaison nombres
-- Planification Cron
-- Footer
+Semaine 9 : Recherche Filtres et RegExp?
+EXAMEN 3 S11 ou 12?
 
 
 0) Revérifier que le contenu est complet (RegExp?)

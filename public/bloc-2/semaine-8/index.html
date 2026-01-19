@@ -1,59 +1,67 @@
 <!DOCTYPE html>
 <html lang="fr-ca" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
-  <head>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta name="generator" content="Hugo 0.152.2">
     <meta name="generator" content="Relearn 8.3.0+187e41ae8f27979cda87bfe489e34e07e5b6cbcd">
-    <meta name="description" content="Révision Aujourd’hui, on n’apprend rien de nouveau. On va juste apprendre à ne pas se tirer dans le pied le jour de l’examen.
-Module 1 : Gestion des Utilisateurs (Le piège du -G) L’erreur fatale ici est la suppression accidentelle des groupes secondaires (comme sudo).">
+    <meta name="description" content="Objectif de la semaine Comprendre comment manipuler les flux de données pour combiner des commandes simples et réaliser des tâches complexes.
+Fichier pour les exercices (en classe) Utiliser le fichier exo-semaine8.docx pour y mettre vos réponses et captures d’écran.
+Télécharger le fichier docx
+Théorie Imaginez qu’une commande Linux est une machine industrielle. Elle a besoin de matières premières pour fonctionner et elle produit quelque chose en sortie.">
     <meta name="author" content="">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Révision? & Examen #2 :: ZG4-Linux">
-    <meta name="twitter:description" content="Révision Aujourd’hui, on n’apprend rien de nouveau. On va juste apprendre à ne pas se tirer dans le pied le jour de l’examen.
-Module 1 : Gestion des Utilisateurs (Le piège du -G) L’erreur fatale ici est la suppression accidentelle des groupes secondaires (comme sudo).">
-    <meta property="og:url" content="https://example.org/bloc-2/semaine-8/index.html">
+    <meta name="twitter:title" content="Redirections, Pipe & Examen #2 :: ZG4-Linux">
+    <meta name="twitter:description" content="Objectif de la semaine Comprendre comment manipuler les flux de données pour combiner des commandes simples et réaliser des tâches complexes.
+Fichier pour les exercices (en classe) Utiliser le fichier exo-semaine8.docx pour y mettre vos réponses et captures d’écran.
+Télécharger le fichier docx
+Théorie Imaginez qu’une commande Linux est une machine industrielle. Elle a besoin de matières premières pour fonctionner et elle produit quelque chose en sortie.">
+    <meta property="og:url" content="http://localhost:1313/bloc-2/semaine-8/index.html">
     <meta property="og:site_name" content="ZG4-Linux">
-    <meta property="og:title" content="Révision? & Examen #2 :: ZG4-Linux">
-    <meta property="og:description" content="Révision Aujourd’hui, on n’apprend rien de nouveau. On va juste apprendre à ne pas se tirer dans le pied le jour de l’examen.
-Module 1 : Gestion des Utilisateurs (Le piège du -G) L’erreur fatale ici est la suppression accidentelle des groupes secondaires (comme sudo).">
+    <meta property="og:title" content="Redirections, Pipe & Examen #2 :: ZG4-Linux">
+    <meta property="og:description" content="Objectif de la semaine Comprendre comment manipuler les flux de données pour combiner des commandes simples et réaliser des tâches complexes.
+Fichier pour les exercices (en classe) Utiliser le fichier exo-semaine8.docx pour y mettre vos réponses et captures d’écran.
+Télécharger le fichier docx
+Théorie Imaginez qu’une commande Linux est une machine industrielle. Elle a besoin de matières premières pour fonctionner et elle produit quelque chose en sortie.">
     <meta property="og:locale" content="fr_ca">
     <meta property="og:type" content="article">
-    <meta property="article:section" content="Administration système & sécurité">
-    <meta itemprop="name" content="Révision? & Examen #2 :: ZG4-Linux">
-    <meta itemprop="description" content="Révision Aujourd’hui, on n’apprend rien de nouveau. On va juste apprendre à ne pas se tirer dans le pied le jour de l’examen.
-Module 1 : Gestion des Utilisateurs (Le piège du -G) L’erreur fatale ici est la suppression accidentelle des groupes secondaires (comme sudo).">
-    <meta itemprop="wordCount" content="2558">
-    <title>Révision? &amp; Examen #2 :: ZG4-Linux</title>
-    <link href="/images/logo.png?1768146506" rel="icon" type="image/png">
-    <link href="/css/auto-complete/auto-complete.min.css?1768146506" rel="stylesheet">
-    <script src="/js/auto-complete/auto-complete.min.js?1768146506" defer></script>
-    <script src="/js/search-lunr.min.js?1768146506" defer></script>
-    <script src="/js/search.min.js?1768146506" defer></script>
+    <meta property="article:section" content="Redirections, Pipe, recherche & filtres">
+    <meta itemprop="name" content="Redirections, Pipe & Examen #2 :: ZG4-Linux">
+    <meta itemprop="description" content="Objectif de la semaine Comprendre comment manipuler les flux de données pour combiner des commandes simples et réaliser des tâches complexes.
+Fichier pour les exercices (en classe) Utiliser le fichier exo-semaine8.docx pour y mettre vos réponses et captures d’écran.
+Télécharger le fichier docx
+Théorie Imaginez qu’une commande Linux est une machine industrielle. Elle a besoin de matières premières pour fonctionner et elle produit quelque chose en sortie.">
+    <meta itemprop="wordCount" content="2222">
+    <title>Redirections, Pipe &amp; Examen #2 :: ZG4-Linux</title>
+    <link href="/images/logo.png?1768789450" rel="icon" type="image/png">
+    <link href="/css/auto-complete/auto-complete.min.css?1768789450" rel="stylesheet">
+    <script src="/js/auto-complete/auto-complete.min.js?1768789450" defer></script>
+    <script src="/js/search-lunr.js?1768789450" defer></script>
+    <script src="/js/search.js?1768789450" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="/searchindex.en.js?1768146506";
+      window.relearn.index_js_url="/searchindex.en.js?1768789450";
     </script>
-    <script src="/js/lunr/lunr.min.js?1768146506" defer></script>
-    <script src="/js/lunr/lunr.stemmer.support.min.js?1768146506" defer></script>
-    <script src="/js/lunr/lunr.multi.min.js?1768146506" defer></script>
-    <script src="/js/lunr/lunr.fr.min.js?1768146506" defer></script>
+    <script src="/js/lunr/lunr.min.js?1768789450" defer></script>
+    <script src="/js/lunr/lunr.stemmer.support.min.js?1768789450" defer></script>
+    <script src="/js/lunr/lunr.multi.min.js?1768789450" defer></script>
+    <script src="/js/lunr/lunr.fr.min.js?1768789450" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['fr'];
     </script>
-    <link href="/fonts/fontawesome/css/fontawesome-all.min.css?1768146506" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/fontawesome-all.min.css?1768146506" rel="stylesheet"></noscript>
-    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1768146506" rel="stylesheet">
-    <link href="/css/theme.min.css?1768146506" rel="stylesheet">
-    <link href="/css/format-html.min.css?1768146506" rel="stylesheet" id="R-format-style">
+    <link href="/fonts/fontawesome/css/fontawesome-all.min.css?1768789450" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/fontawesome-all.min.css?1768789450" rel="stylesheet"></noscript>
+    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1768789450" rel="stylesheet">
+    <link href="/css/theme.css?1768789450" rel="stylesheet">
+    <link href="/css/format-html.css?1768789450" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
-      window.relearn.min = `.min`;
+      window.relearn.min = ``;
       window.relearn.path='\/bloc-2\/semaine-8\/index.html';
       window.relearn.relBasePath='..\/..';
       window.relearn.relBaseUri='..\/..';
-      window.relearn.absBaseUri='https:\/\/example.org';
+      window.relearn.absBaseUri='http:\/\/localhost:1313';
       window.relearn.disableInlineCopyToClipboard=false;
       window.relearn.enableBlockCodeWrap=true;
       // legal
@@ -98,7 +106,7 @@ Module 1 : Gestion des Utilisateurs (Le piège du -G) L’erreur fatale ici est 
       window.relearn.initVariant();
       window.relearn.markVariant();
     </script>
-    <link href="/css/custom.css?1768146506" rel="stylesheet">
+    <link href="/css/custom.css?1768789450" rel="stylesheet">
   </head>
   <body class="mobile-support html" data-url="/bloc-2/semaine-8/index.html">
     <div id="R-body" class="default-animation">
@@ -116,31 +124,18 @@ Module 1 : Gestion des Utilisateurs (Le piège du -G) L’erreur fatale ici est 
                 <div class="topbar-content-wrapper">
 <nav class="TableOfContents">
   <ul>
-    <li><a href="#module-1--gestion-des-utilisateurs-le-piège-du--g">Module 1 : Gestion des Utilisateurs (Le piège du <code>-G</code>)</a>
+    <li><a href="#objectif-de-la-semaine">Objectif de la semaine</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#les-redirections">Les redirections</a>
       <ul>
-        <li><a href="#-lerreur-classique">🛑 L&rsquo;erreur classique</a></li>
-        <li><a href="#-la-correction">✅ La Correction</a></li>
-        <li><a href="#-quiz-rapide-main-levée">⚡ Quiz Rapide (Main levée)</a></li>
+        <li><a href="#1-le-destructeur-">1. Le destructeur (<code>&gt;</code>)</a></li>
+        <li><a href="#2-le-constructeur-">2. Le constructeur (<code>&gt;&gt;</code>)</a></li>
+        <li><a href="#-exercice-1-en-classe">🟢 Exercice #1 (En classe)</a></li>
       </ul>
     </li>
-    <li><a href="#module-2--permissions-le-paradoxe-du-x">Module 2 : Permissions (Le paradoxe du &lsquo;x&rsquo;)</a>
-      <ul>
-        <li><a href="#-lerreur-classique-1">🛑 L&rsquo;erreur classique</a></li>
-        <li><a href="#-le-test-de-compréhension-tableau">🔍 Le test de compréhension (Tableau)</a></li>
-        <li><a href="#-la-règle-dor-du-chmod--r">✅ La Règle d’or du <code>chmod -R</code></a></li>
-      </ul>
-    </li>
-    <li><a href="#module-3--processus-le-tueur-en-série">Module 3 : Processus (Le tueur en série)</a>
-      <ul>
-        <li><a href="#-lerreur-classique-2">🛑 L&rsquo;erreur classique</a></li>
-        <li><a href="#-labus-du-kill--9">🛑 L’abus du <code>kill -9</code></a></li>
-      </ul>
-    </li>
-    <li><a href="#activité-finale--le-jeu-du-sabotage-15-min">Activité Finale : &ldquo;Le Jeu du Sabotage&rdquo; (15 min)</a>
-      <ul>
-        <li><a href="#liste-de-vérification-ultime-pour-lexamen-à-distribuer">Liste de vérification ultime pour l&rsquo;examen (à distribuer)</a></li>
-      </ul>
-    </li>
+    <li><a href="#le-tube-pipe-">Le Tube (Pipe <code>|</code>)</a></li>
   </ul>
 
   <ul>
@@ -168,14 +163,14 @@ Module 1 : Gestion des Utilisateurs (Le piège du -G) L’erreur fatale ici est 
               </div>
             </div>
           </div>
-          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/index.html"><span itemprop="name">Accueil du cours</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/bloc-2/index.html"><span itemprop="name">Administration système &amp; sécurité</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Révision? &amp; Examen #2</span><meta itemprop="position" content="3"></li>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/index.html"><span itemprop="name">Accueil du cours</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/bloc-2/index.html"><span itemprop="name">Redirections, Pipe, recherche &amp; filtres</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Redirections, Pipe &amp; Examen #2</span><meta itemprop="position" content="3"></li>
           </ol>
           <div class="topbar-area topbar-area-end" data-area="end">
             <div class="topbar-button topbar-button-prev default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
-<span class="btn cstyle button link noborder notitle interactive"><a href="/bloc-2/semaine-7/index.html" title="Gestion des processus (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+<span class="btn cstyle button link noborder notitle interactive"><a href="/bloc-2/index.html" title="Redirections, Pipe, recherche & filtres (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
             </div>
             <div class="topbar-button topbar-button-next default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
-<span class="btn cstyle button link noborder notitle interactive"><a href="/bloc-3/index.html" title="Redirections & filtres, disques et réseau (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+<span class="btn cstyle button link noborder notitle interactive"><a href="/bloc-3/index.html" title="RegExp, VIM & fichiers de configuration (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
             </div>
             <div class="topbar-button topbar-button-more default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
 <span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
@@ -196,92 +191,198 @@ Module 1 : Gestion des Utilisateurs (Le piège du -G) L’erreur fatale ici est 
   <header class="headline">
   </header>
 
-<h1 id="révision--examen-2">Révision? &amp; Examen #2</h1>
+<h1 id="redirections-pipe--examen-2">Redirections, Pipe &amp; Examen #2</h1>
 
-<h1 id="révision">Révision<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h1>
-<p>Aujourd&rsquo;hui, on n&rsquo;apprend rien de nouveau. On va juste apprendre à ne pas se tirer dans le pied le jour de l&rsquo;examen.</p>
-<h2 id="module-1--gestion-des-utilisateurs-le-piège-du--g">Module 1 : Gestion des Utilisateurs (Le piège du <code>-G</code>)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
-<p>L&rsquo;erreur fatale ici est la suppression accidentelle des groupes secondaires (comme <code>sudo</code>).</p>
-<h3 id="-lerreur-classique">🛑 L&rsquo;erreur classique<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
-<p>L&rsquo;étudiant veut ajouter l&rsquo;utilisateur <code>bob</code> au groupe <code>developers</code>.
-Il tape : <code>usermod -G developers bob</code></p>
-<p><strong>Pourquoi c&rsquo;est grave ?</strong>
-Cette commande <strong>remplace</strong> tous les groupes secondaires par <code>developers</code>. Si <code>bob</code> était dans le groupe <code>sudo</code> ou <code>adm</code>, il vient de perdre ses droits d&rsquo;administrateur.</p>
-<h3 id="-la-correction">✅ La Correction<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
-<p>Il faut <strong>A</strong>jouter (Append).
-La commande : <code>usermod -aG developers bob</code></p>
+<h2 id="objectif-de-la-semaine">Objectif de la semaine<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Comprendre comment manipuler les flux de données pour combiner des commandes simples et réaliser des tâches complexes.</p>
+<p><strong>Fichier pour les exercices (en classe)</strong>
+Utiliser le fichier <strong>exo-semaine8.docx</strong> pour y mettre vos réponses et captures d&rsquo;écran.<br>
+<span class="btn cstyle button transparent interactive"><a href="/docs/Exercices/exo-semaine8.docx"><i class="fa-fw fas fa-download"></i> <span class="title">Télécharger le fichier docx</span></a></span></p>
+<hr>
+<h1 id="théorie">Théorie<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h1>
+<p>Imaginez qu&rsquo;une commande Linux est une <strong>machine industrielle</strong>. Elle a besoin de matières premières pour fonctionner et elle produit quelque chose en sortie.</p>
+<p>Il existe trois &ldquo;tuyaux&rdquo; connectés par défaut à chaque commande :</p>
+<table>
+  <thead>
+      <tr>
+          <th>Canal</th>
+          <th>Nom technique</th>
+          <th>ID</th>
+          <th>Description</th>
+          <th>Direction par défaut</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Entrée</strong></td>
+          <td><code>stdin</code></td>
+          <td>0</td>
+          <td>Les données brutes</td>
+          <td>Votre <strong>Clavier</strong></td>
+      </tr>
+      <tr>
+          <td><strong>Sortie</strong></td>
+          <td><code>stdout</code></td>
+          <td>1</td>
+          <td>Le bon résultat</td>
+          <td>Votre <strong>Écran</strong></td>
+      </tr>
+      <tr>
+          <td><strong>Erreur</strong></td>
+          <td><code>stderr</code></td>
+          <td>2</td>
+          <td>Les messages de panne</td>
+          <td>Votre <strong>Écran</strong></td>
+      </tr>
+  </tbody>
+</table>
 <blockquote>
-<p><strong>Moyen mnémotechnique :</strong> &ldquo;Il faut <strong>a</strong>jouter, pas écraser.&rdquo; (Think <strong>A</strong>ppend).</p>
+<p><strong>Analogie :</strong> C&rsquo;est comme une créature qui <strong>mange</strong> (stdin), <strong>parle</strong> (stdout) et parfois <strong>crie</strong> quand elle a mal (stderr).</p>
 </blockquote>
-<h3 id="-quiz-rapide-main-levée">⚡ Quiz Rapide (Main levée)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<h2 id="les-redirections">Les redirections<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Par défaut, la &ldquo;rivière&rdquo; de données coule vers l&rsquo;écran. Nous pouvons utiliser des chevrons pour détourner ce flux vers un <strong>fichier</strong>.</p>
+<h3 id="1-le-destructeur-">1. Le destructeur (<code>&gt;</code>)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Le chevron simple redirige la sortie vers un fichier.</p>
+<ul>
+<li><strong>Attention :</strong> Si le fichier existe, il est <strong>écrasé</strong> (vidé et remplacé).</li>
+<li><strong>Moyen mnémotechnique :</strong> Le fichier est remis à zéro.</li>
+</ul>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;Liste de courses&#34;</span> &gt; courses.txt
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Le fichier courses.txt contient maintenant uniquement : Liste de courses</span></span></span></code></pre></div>
+<h3 id="2-le-constructeur-">2. Le constructeur (<code>&gt;&gt;</code>)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Le double chevron ajoute les données à la <strong>fin</strong> du fichier existant.</p>
+<ul>
+<li><strong>Sécurité :</strong> Il ne détruit pas l&rsquo;ancien contenu.</li>
+</ul>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;- Pommes&#34;</span> &gt;&gt; courses.txt
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;- Bananes&#34;</span> &gt;&gt; courses.txt
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Le fichier contient maintenant le titre ET les fruits.</span></span></span></code></pre></div>
+<h3 id="-exercice-1-en-classe">🟢 Exercice #1 (En classe)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p><strong>Objectif :</strong> Visualiser la différence entre écraser et ajouter.</p>
 <ol>
-<li>Si je tape <code>useradd toto</code> sans options, est-ce que son dossier <code>/home/toto</code> est créé ?</li>
+<li>Demandez aux étudiants de taper : <code>echo &quot;Bonjour&quot; &gt; test.txt</code></li>
+<li>Puis : <code>echo &quot;Monde&quot; &gt; test.txt</code></li>
+<li>Vérifiez le contenu (<code>cat test.txt</code>). Que s&rsquo;est-il passé ? (Réponse : &ldquo;Bonjour&rdquo; a disparu).</li>
+<li>Corrigez le tir : <code>echo &quot;Bonjour&quot; &gt;&gt; test.txt</code> (Pour avoir Monde et Bonjour).</li>
 </ol>
-<ul>
-<li><em>Réponse : Non ! (Sur la plupart des distros brutes). Il faut l&rsquo;option <code>-m</code>.</em></li>
-</ul>
-<ol start="2">
-<li>Si je ne précise pas de shell, quel shell a-t-il par défaut ?</li>
-</ol>
-<ul>
-<li><em>Réponse : Souvent <code>/bin/sh</code> (beurk) et non <code>/bin/bash</code>. Il faut <code>-s /bin/bash</code>.</em></li>
-</ul>
-<hr>
-<h2 id="module-2--permissions-le-paradoxe-du-x">Module 2 : Permissions (Le paradoxe du &lsquo;x&rsquo;)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
-<p>Les étudiants confondent souvent le droit d&rsquo;exécution sur un <em>fichier</em> et sur un <em>dossier</em>.</p>
-<h3 id="-lerreur-classique-1">🛑 L&rsquo;erreur classique<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
-<p>&ldquo;Monsieur, j&rsquo;ai mis <code>chmod 444</code> (lecture seule) sur le dossier, mais je ne peux pas faire un <code>ls</code> dedans ni faire <code>cd</code> !&rdquo;</p>
-<p><strong>Pourquoi c&rsquo;est grave ?</strong>
-Sur un dossier, <strong>Lecture (r)</strong> permet de lister les noms des fichiers, mais <strong>Exécution (x)</strong> permet de &ldquo;traverser&rdquo; le dossier (entrer dedans). Sans le <code>x</code>, le <code>r</code> ne sert presque à rien.</p>
-<h3 id="-le-test-de-compréhension-tableau">🔍 Le test de compréhension (Tableau)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
-<p>Dessinez ceci au tableau et demandez ce qui se passe pour l&rsquo;utilisateur <code>bob</code> (qui n&rsquo;est pas propriétaire) :</p>
-<ul>
-<li><strong>Fichier :</strong> <code>rapport.txt</code> (rw- r&ndash; &mdash;)</li>
-<li><strong>Dossier :</strong> <code>/dossier_secret</code> (rwx rw- &mdash;)</li>
-</ul>
-<p><strong>Question :</strong> <code>bob</code> fait partie du groupe propriétaire. Peut-il supprimer <code>rapport.txt</code> ?</p>
-<ul>
-<li><em>Réponse (Piège) :</em> Ça dépend des droits du <strong>dossier parent</strong> ! Pour supprimer un fichier, on modifie le dossier, pas le fichier. Si Bob a <code>w</code> sur le dossier, il peut supprimer le fichier même s&rsquo;il est en lecture seule (<code>r--</code>) pour lui.</li>
-</ul>
-<h3 id="-la-règle-dor-du-chmod--r">✅ La Règle d&rsquo;or du <code>chmod -R</code><span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
-<p>Ne jamais faire <code>chmod -R 777 /</code>. Jamais.
-Si on veut donner accès au groupe <code>web</code> sur tout un site :
-<code>chown -R :web /var/www</code>
-<code>chmod -R 770 /var/www</code> (Beaucoup plus propre que 777).</p>
-<hr>
-<h2 id="module-3--processus-le-tueur-en-série">Module 3 : Processus (Le tueur en série)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
-<p>L&rsquo;erreur ici est la brutalité inutile et la confusion entre pause et arrêt.</p>
-<h3 id="-lerreur-classique-2">🛑 L&rsquo;erreur classique<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
-<p>&ldquo;Mon programme ne répond pas, je fais <code>Ctrl+Z</code>.&rdquo;</p>
-<p><strong>Pourquoi c&rsquo;est grave ?</strong>
-<code>Ctrl+Z</code> ne tue pas le processus, il le met en <strong>pause</strong> (SIGSTOP). Le processus consomme encore de la RAM, il est juste &ldquo;gelé&rdquo;. Si vous en faites 10, vous saturez la mémoire sans le savoir.</p>
-<ul>
-<li>Il fallait faire <code>Ctrl+C</code> (SIGINT) pour tuer.</li>
-</ul>
-<h3 id="-labus-du-kill--9">🛑 L&rsquo;abus du <code>kill -9</code><span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
-<p>L&rsquo;étudiant tape systématiquement <code>kill -9 1234</code>.</p>
-<p><strong>Pourquoi c&rsquo;est grave ?</strong>
-C&rsquo;est le &ldquo;sniper&rdquo; (SIGKILL). Le processus meurt instantanément sans sauvegarder ses données, sans fermer ses connexions réseau, sans nettoyer ses fichiers temporaires.</p>
-<ul>
-<li><strong>Bonne pratique :</strong> Toujours essayer <code>kill -15</code> (SIGTERM) ou juste <code>kill PID</code> d&rsquo;abord (la demande polie). N&rsquo;utiliser <code>-9</code> qu&rsquo;après 10 secondes si ça résiste.</li>
-</ul>
-<hr>
-<h2 id="activité-finale--le-jeu-du-sabotage-15-min">Activité Finale : &ldquo;Le Jeu du Sabotage&rdquo; (15 min)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
-<p>Pour finir la séance sur une note ludique et active.</p>
-<ol>
-<li><strong>Binômes :</strong> Mettez les étudiants par deux.</li>
-<li><strong>Sabotage (5 min) :</strong> L&rsquo;étudiant A doit créer <strong>une</strong> erreur subtile sur la VM (ex: changer les droits de <code>/tmp</code> pour qu&rsquo;on ne puisse plus écrire, mettre un processus <code>sleep</code> caché, changer le shell de root en <code>/bin/false</code>).</li>
-<li><strong>Débogage (5 min) :</strong> Ils échangent de place. L&rsquo;étudiant B doit trouver pourquoi &ldquo;ça marche pas&rdquo; et réparer.</li>
-<li><strong>Debrief :</strong> On regarde ensemble les sabotages les plus vicieux.</li>
-</ol>
-<h3 id="liste-de-vérification-ultime-pour-lexamen-à-distribuer">Liste de vérification ultime pour l&rsquo;examen (à distribuer)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
-<ul>
-<li><input disabled="" type="checkbox"> <strong>Utilisateurs :</strong> Ai-je vérifié le fichier <code>/etc/passwd</code> après avoir créé un user ?</li>
-<li><input disabled="" type="checkbox"> <strong>Groupes :</strong> Ai-je bien mis <code>-aG</code> et pas <code>-G</code> ?</li>
-<li><input disabled="" type="checkbox"> <strong>Permissions :</strong> Si je crée un dossier partagé, ai-je pensé au <em>Sticky Bit</em> ou au <em>SGID</em> ?</li>
-<li><input disabled="" type="checkbox"> <strong>Processus :</strong> Ai-je vérifié avec <code>jobs</code> que je n&rsquo;ai pas laissé plein de trucs en pause ?</li>
-<li><input disabled="" type="checkbox"> <strong>Sudo :</strong> Est-ce que mes commandes nécessitent <code>sudo</code> ? (Erreur bête : taper la commande, se faire rejeter, retaper).</li>
-</ul>
+<h2 id="le-tube-pipe-">Le Tube (Pipe <code>|</code>)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>C&rsquo;est le super-pouvoir de Linux. Le caractère <code>|</code> (Alt Gr + 6) connecte la sortie de la commande de gauche à l&rsquo;entrée de la commande de droite.</p>
+<p><strong>La règle d&rsquo;or :</strong> Pas de fichier intermédiaire. Tout se passe en mémoire vive (RAM).</p>
+<blockquote>
+<p><strong>Analogie de l&rsquo;usine :</strong>
+<code>Machine A (Fabrique le biscuit)</code> <strong>|</strong> <code>Machine B (Met le chocolat)</code> <strong>|</strong> <code>Machine C (Emballe)</code></p>
+</blockquote>
+<!--
+# Révision
+
+Aujourd'hui, on n'apprend rien de nouveau. On va juste apprendre à ne pas se tirer dans le pied le jour de l'examen.
+
+
+## Module 1 : Gestion des Utilisateurs (Le piège du `-G`)
+
+L'erreur fatale ici est la suppression accidentelle des groupes secondaires (comme `sudo`).
+
+### 🛑 L'erreur classique
+
+L'étudiant veut ajouter l'utilisateur `bob` au groupe `developers`.
+Il tape : `usermod -G developers bob`
+
+**Pourquoi c'est grave ?**
+Cette commande **remplace** tous les groupes secondaires par `developers`. Si `bob` était dans le groupe `sudo` ou `adm`, il vient de perdre ses droits d'administrateur.
+
+### ✅ La Correction
+
+Il faut **A**jouter (Append).
+La commande : `usermod -aG developers bob`
+
+> **Moyen mnémotechnique :** "Il faut **a**jouter, pas écraser." (Think **A**ppend).
+
+### ⚡ Quiz Rapide (Main levée)
+
+1. Si je tape `useradd toto` sans options, est-ce que son dossier `/home/toto` est créé ?
+* *Réponse : Non ! (Sur la plupart des distros brutes). Il faut l'option `-m`.*
+
+
+2. Si je ne précise pas de shell, quel shell a-t-il par défaut ?
+* *Réponse : Souvent `/bin/sh` (beurk) et non `/bin/bash`. Il faut `-s /bin/bash`.*
+
+
+
+---
+
+## Module 2 : Permissions (Le paradoxe du 'x')
+
+Les étudiants confondent souvent le droit d'exécution sur un *fichier* et sur un *dossier*.
+
+### 🛑 L'erreur classique
+
+"Monsieur, j'ai mis `chmod 444` (lecture seule) sur le dossier, mais je ne peux pas faire un `ls` dedans ni faire `cd` !"
+
+**Pourquoi c'est grave ?**
+Sur un dossier, **Lecture (r)** permet de lister les noms des fichiers, mais **Exécution (x)** permet de "traverser" le dossier (entrer dedans). Sans le `x`, le `r` ne sert presque à rien.
+
+### 🔍 Le test de compréhension (Tableau)
+
+Dessinez ceci au tableau et demandez ce qui se passe pour l'utilisateur `bob` (qui n'est pas propriétaire) :
+
+* **Fichier :** `rapport.txt` (rw- r-- ---)
+* **Dossier :** `/dossier_secret` (rwx rw- ---)
+
+**Question :** `bob` fait partie du groupe propriétaire. Peut-il supprimer `rapport.txt` ?
+
+* *Réponse (Piège) :* Ça dépend des droits du **dossier parent** ! Pour supprimer un fichier, on modifie le dossier, pas le fichier. Si Bob a `w` sur le dossier, il peut supprimer le fichier même s'il est en lecture seule (`r--`) pour lui.
+
+### ✅ La Règle d'or du `chmod -R`
+
+Ne jamais faire `chmod -R 777 /`. Jamais.
+Si on veut donner accès au groupe `web` sur tout un site :
+`chown -R :web /var/www`
+`chmod -R 770 /var/www` (Beaucoup plus propre que 777).
+
+---
+
+## Module 3 : Processus (Le tueur en série)
+
+L'erreur ici est la brutalité inutile et la confusion entre pause et arrêt.
+
+### 🛑 L'erreur classique
+
+"Mon programme ne répond pas, je fais `Ctrl+Z`."
+
+**Pourquoi c'est grave ?**
+`Ctrl+Z` ne tue pas le processus, il le met en **pause** (SIGSTOP). Le processus consomme encore de la RAM, il est juste "gelé". Si vous en faites 10, vous saturez la mémoire sans le savoir.
+
+* Il fallait faire `Ctrl+C` (SIGINT) pour tuer.
+
+### 🛑 L'abus du `kill -9`
+
+L'étudiant tape systématiquement `kill -9 1234`.
+
+**Pourquoi c'est grave ?**
+C'est le "sniper" (SIGKILL). Le processus meurt instantanément sans sauvegarder ses données, sans fermer ses connexions réseau, sans nettoyer ses fichiers temporaires.
+
+* **Bonne pratique :** Toujours essayer `kill -15` (SIGTERM) ou juste `kill PID` d'abord (la demande polie). N'utiliser `-9` qu'après 10 secondes si ça résiste.
+
+---
+
+## Activité Finale : "Le Jeu du Sabotage" (15 min)
+
+Pour finir la séance sur une note ludique et active.
+
+1. **Binômes :** Mettez les étudiants par deux.
+2. **Sabotage (5 min) :** L'étudiant A doit créer **une** erreur subtile sur la VM (ex: changer les droits de `/tmp` pour qu'on ne puisse plus écrire, mettre un processus `sleep` caché, changer le shell de root en `/bin/false`).
+3. **Débogage (5 min) :** Ils échangent de place. L'étudiant B doit trouver pourquoi "ça marche pas" et réparer.
+4. **Debrief :** On regarde ensemble les sabotages les plus vicieux.
+
+### Liste de vérification ultime pour l'examen (à distribuer)
+
+* [ ] **Utilisateurs :** Ai-je vérifié le fichier `/etc/passwd` après avoir créé un user ?
+* [ ] **Groupes :** Ai-je bien mis `-aG` et pas `-G` ?
+* [ ] **Permissions :** Si je crée un dossier partagé, ai-je pensé au *Sticky Bit* ou au *SGID* ?
+* [ ] **Processus :** Ai-je vérifié avec `jobs` que je n'ai pas laissé plein de trucs en pause ?
+* [ ] **Sudo :** Est-ce que mes commandes nécessitent `sudo` ? (Erreur bête : taper la commande, se faire rejeter, retaper).
+
+-->
 <hr>
 <h1 id="examen-2">Examen 2<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h1>
 <h3 id="titre-de-lexamen--mission-sysadmin---sauvetage-du-serveur-alpha">Titre de l&rsquo;examen : &ldquo;Mission SysAdmin - Sauvetage du Serveur Alpha&rdquo;<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
@@ -568,7 +669,7 @@ Donnez ce script aux étudiants <strong>en mode &ldquo;audit&rdquo;</strong> (sa
       <div id="R-header-topbar" class="default-animation"></div>
       <div id="R-header-wrapper" class="default-animation">
 
-<a id="logo" href="https://example.org/">
+<a id="logo" href="http://localhost:1313/">
   <img src="/images/logo.png" alt="Logo du site" style="height: 100px; width: auto;">
 </a>
 
@@ -608,20 +709,16 @@ Donnez ce script aux étudiants <strong>en mode &ldquo;audit&rdquo;</strong> (sa
             <li class="" data-nav-url="/remises/index.html"><a class="padding" href="/remises/index.html">Protocole de remise des exos et labos<i class="fa-fw fas fa-check read-icon"></i></a></li>
             <li class="" data-nav-url="/regles/index.html"><a class="padding" href="/regles/index.html">Règles de survie au cours<i class="fa-fw fas fa-check read-icon"></i></a></li>
             <li class="" data-nav-url="/bloc-1/index.html"><input type="checkbox" id="R-section-0b942f9b9b2d065455b2a863f4d7995c" aria-controls="R-subsections-0b942f9b9b2d065455b2a863f4d7995c"><label for="R-section-0b942f9b9b2d065455b2a863f4d7995c"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Fondations &amp; installation</span></label><a class="padding default-animation" href="/bloc-1/index.html">BLOC 1 : Fondations &amp; installation<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-0b942f9b9b2d065455b2a863f4d7995c" class="collapsible-menu">
-            <li class="" data-nav-url="/bloc-1/semaine-1/index.html"><a class="padding" href="/bloc-1/semaine-1/index.html">Semaine 1 : Introduction et installation<i class="fa-fw fas fa-check read-icon"></i></a></li>
-            <li class="" data-nav-url="/bloc-1/semaine-2/index.html"><a class="padding" href="/bloc-1/semaine-2/index.html">Semaine 2 : Arborescence et navigation<i class="fa-fw fas fa-check read-icon"></i></a></li>
-            <li class="" data-nav-url="/bloc-1/semaine-3/index.html"><a class="padding" href="/bloc-1/semaine-3/index.html">Semaine 3 : Gestion de paquets et édition de texte<i class="fa-fw fas fa-check read-icon"></i></a></li>
-            <li class="" data-nav-url="/bloc-1/semaine-4/index.html"><a class="padding" href="/bloc-1/semaine-4/index.html">Semaine 4 : L&#39;expansion d&#39;accolades et Examen 1<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
-            <li class="parent " data-nav-url="/bloc-2/index.html"><input type="checkbox" id="R-section-bc3591f00126f0242dfd3ada90ba9fa8" aria-controls="R-subsections-bc3591f00126f0242dfd3ada90ba9fa8" checked><label for="R-section-bc3591f00126f0242dfd3ada90ba9fa8"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Administration système &amp; sécurité</span></label><a class="padding default-animation" href="/bloc-2/index.html">BLOC 2 : Administration système &amp; sécurité<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-bc3591f00126f0242dfd3ada90ba9fa8" class="collapsible-menu">
-            <li class="" data-nav-url="/bloc-2/semaine-5/index.html"><a class="padding" href="/bloc-2/semaine-5/index.html">Semaine 5 : Gestion des Utilisateurs<i class="fa-fw fas fa-check read-icon"></i></a></li>
-            <li class="" data-nav-url="/bloc-2/semaine-6/index.html"><a class="padding" href="/bloc-2/semaine-6/index.html">Semaine 6 : Permissions &amp; droits d&#39;accès<i class="fa-fw fas fa-check read-icon"></i></a></li>
-            <li class="" data-nav-url="/bloc-2/semaine-7/index.html"><a class="padding" href="/bloc-2/semaine-7/index.html">Semaine 7 : Gestion des processus<i class="fa-fw fas fa-check read-icon"></i></a></li>
-            <li class="active " data-nav-url="/bloc-2/semaine-8/index.html"><a class="padding" href="/bloc-2/semaine-8/index.html">Semaine 8 : Révision? &amp; Examen #2<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
-            <li class="" data-nav-url="/bloc-3/index.html"><input type="checkbox" id="R-section-d0f965f65b76b5a918fb9cc7fc20ea39" aria-controls="R-subsections-d0f965f65b76b5a918fb9cc7fc20ea39"><label for="R-section-d0f965f65b76b5a918fb9cc7fc20ea39"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Redirections &amp; filtres, disques et réseau</span></label><a class="padding default-animation" href="/bloc-3/index.html">BLOC 3 : Redirections &amp; filtres, disques et réseau<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-d0f965f65b76b5a918fb9cc7fc20ea39" class="collapsible-menu">
-            <li class="" data-nav-url="/bloc-3/semaine-9/index.html"><a class="padding" href="/bloc-3/semaine-9/index.html">Semaine 9 : Redirections, Pipes et filtres<i class="fa-fw fas fa-check read-icon"></i></a></li>
-            <li class="" data-nav-url="/bloc-3/semaine-10/index.html"><a class="padding" href="/bloc-3/semaine-10/index.html">Semaine 10 : Gestion de disques<i class="fa-fw fas fa-check read-icon"></i></a></li>
-            <li class="" data-nav-url="/bloc-3/semaine-11/index.html"><a class="padding" href="/bloc-3/semaine-11/index.html">Semaine 11 : Réseau et services &amp; Examen #3<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
-            <li class="" data-nav-url="/bloc-4/index.html"><input type="checkbox" id="R-section-c1ebb4b1b8b7a51069075ff54026c0de" aria-controls="R-subsections-c1ebb4b1b8b7a51069075ff54026c0de"><label for="R-section-c1ebb4b1b8b7a51069075ff54026c0de"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Automatisation &amp; scripting</span></label><a class="padding default-animation" href="/bloc-4/index.html">BLOC 4 : Automatisation &amp; scripting<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-c1ebb4b1b8b7a51069075ff54026c0de" class="collapsible-menu">
+            <li class="" data-nav-url="/bloc-1/semaine-1a/index.html"><a class="padding" href="/bloc-1/semaine-1a/index.html">Semaine 1.1: Présentation du cours et introduction à Linux<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-1/semaine-1b/index.html"><a class="padding" href="/bloc-1/semaine-1b/index.html">Semaine 1.2 : Le système de fichiers de Linux<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-1/semaine-2/index.html"><a class="padding" href="/bloc-1/semaine-2/index.html">Semaine 2 : Laboratoires #1 &amp; #2<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-1/semaine-3a/index.html"><a class="padding" href="/bloc-1/semaine-3a/index.html">Semaine 3.1 : Gestion des Utilisateurs et des groupes<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-1/semaine-3b/index.html"><a class="padding" href="/bloc-1/semaine-3b/index.html">Semaine 3.2 : Permissions &amp; droits d&#39;accès<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-1/semaine-4/index.html"><a class="padding" href="/bloc-1/semaine-4/index.html">Semaine 4 : Laboratoires #3 &amp; Test #1<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
+            <li class="parent " data-nav-url="/bloc-2/index.html"><input type="checkbox" id="R-section-bc3591f00126f0242dfd3ada90ba9fa8" aria-controls="R-subsections-bc3591f00126f0242dfd3ada90ba9fa8" checked><label for="R-section-bc3591f00126f0242dfd3ada90ba9fa8"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Redirections, Pipe, recherche &amp; filtres</span></label><a class="padding default-animation" href="/bloc-2/index.html">BLOC 2 : Redirections, Pipe, recherche &amp; filtres<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-bc3591f00126f0242dfd3ada90ba9fa8" class="collapsible-menu">
+            <li class="active " data-nav-url="/bloc-2/semaine-8/index.html"><a class="padding" href="/bloc-2/semaine-8/index.html">Semaine 8 : Redirections, Pipe &amp; Examen #2<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
+            <li class="" data-nav-url="/bloc-3/index.html"><a class="padding" href="/bloc-3/index.html">BLOC 3 : RegExp, VIM &amp; fichiers de configuration<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-4/index.html"><input type="checkbox" id="R-section-c1ebb4b1b8b7a51069075ff54026c0de" aria-controls="R-subsections-c1ebb4b1b8b7a51069075ff54026c0de"><label for="R-section-c1ebb4b1b8b7a51069075ff54026c0de"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Automatisation, script &amp; réseau</span></label><a class="padding default-animation" href="/bloc-4/index.html">BLOC 4 : Automatisation, script &amp; réseau<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-c1ebb4b1b8b7a51069075ff54026c0de" class="collapsible-menu">
             <li class="" data-nav-url="/bloc-4/semaine-12/index.html"><a class="padding" href="/bloc-4/semaine-12/index.html">Semaine 12 : Introduction au Scripting Bash<i class="fa-fw fas fa-check read-icon"></i></a></li>
             <li class="" data-nav-url="/bloc-4/semaine-13/index.html"><a class="padding" href="/bloc-4/semaine-13/index.html">Semaine 13 : Logique conditionnelle &amp; tests sur fichiers<i class="fa-fw fas fa-check read-icon"></i></a></li>
             <li class="" data-nav-url="/bloc-4/semaine-14/index.html"><a class="padding" href="/bloc-4/semaine-14/index.html">Semaine 14 : Boucles &amp; planification (Cron)<i class="fa-fw fas fa-check read-icon"></i></a></li>
@@ -653,8 +750,8 @@ Donnez ce script aux étudiants <strong>en mode &ldquo;audit&rdquo;</strong> (sa
 <div id="R-footer" class="default-animation"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
       </div>
     </aside>
-    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1768146506" defer></script>
-    <script src="/js/theme.min.js?1768146506" defer></script>
+    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1768789450" defer></script>
+    <script src="/js/theme.js?1768789450" defer></script>
     <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
   </body>
 </html>

@@ -2,38 +2,52 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Fondations &amp; installation :: ZG4-Linux</title>
-    <link>https://example.org/bloc-1/index.html</link>
-    <description>Objectif global À la fin de ce bloc, vous devez avoir un environnement Linux fonctionnel, comprendre où il se trouve dans le système et savoir éditer des fichiers de configuration. Contenu des semaines 1 à 4 Semaine 1 : Introduction et installation Semaine 2 : Arborescence du système (/, /home) et navigation (cd, ls). Semaine 3 : Gestion des paquets (apt) et édition de texte (VI/VIM). Semaine 4 : Expansion d’accolades et Examen #1 (20%)</description>
+    <link>http://localhost:1313/bloc-1/index.html</link>
+    <description>Objectif global À la fin de ce bloc, vous devez savoir installer et administrer les bases d’un système Linux, de la navigation dans l’arborescence jusqu’à la sécurisation des données via la gestion des permissions et des comptes. » Contenu des semaines 1 à 4 Semaine 1 : Présentation du cours et introduction à Linux Le système de fichiers de Linux Semaine 2 : Labo 1: Installation d’une VM Linux (AlmaLinux sur VirtualBox) Labo 2: Les commandes de base (naviguer dans le FHS1 ) Semaine 3 : Gestion des utilisateurs et des groupes Les droits d’accès Semaine 4 : Labo 3: Gestion des utilisateurs, des groupes et les droits d’accès. Test #1 (12,5%) File Hierarchy System ↩︎</description>
     <generator>Hugo</generator>
     <language>fr-ca</language>
-    <atom:link href="https://example.org/bloc-1/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/bloc-1/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Introduction et installation</title>
-      <link>https://example.org/bloc-1/semaine-1/index.html</link>
+      <title>Présentation du cours et introduction à Linux</title>
+      <link>http://localhost:1313/bloc-1/semaine-1a/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://example.org/bloc-1/semaine-1/index.html</guid>
-      <description>Objectif de la semaine Avoir une machine Linux fonctionnelle et comprendre pourquoi on l’utilise. Théorie Qu’est-ce que Linux ? Ce n’est pas juste “un autre Windows”. C’est l’OS qui fait tourner Internet, le Cloud, Android et les supercalculateurs. Votre routeur Wi-Fi, c’est Linux. Si vous voulez travailler en TI, vous ne pouvez pas éviter ce pingouin.</description>
+      <guid>http://localhost:1313/bloc-1/semaine-1a/index.html</guid>
+      <description>Objectif de la séance Connaitre les objectifs du cours et les règlements à respecter. Comprendre ce qu’est Linux et pourquoi on l’utilise. Présentation du cours Details Voir le plan de cours (sur Moodle et/ou ColNet) Voir les règlements ICI Théorie Qu’est-ce que Linux ? Ce n’est pas juste “un autre Windows”. C’est l’OS qui fait tourner Internet, le Cloud, Android et les supercalculateurs. Votre routeur Wi-Fi, c’est Linux. Si vous voulez travailler en TI, vous ne pouvez pas éviter ce pingouin.</description>
     </item>
     <item>
-      <title>Arborescence et navigation</title>
-      <link>https://example.org/bloc-1/semaine-2/index.html</link>
+      <title>Le système de fichiers de Linux</title>
+      <link>http://localhost:1313/bloc-1/semaine-1b/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://example.org/bloc-1/semaine-2/index.html</guid>
-      <description>Objectif de la semaine Connaitre et comprendre la structure des fichiers sous Linux Se déplacer dans le système et manipuler des fichiers sans souris. Warning C’est le cours le plus important pour arriver à s’orienter dans l’architecture de Linux.&#xA;Fichier pour les exercices (en classe)&#xA;Utiliser le fichier exo-semaine2.docx pour y mettre vos réponses et captures d’écran.&#xA;Télécharger le fichier docx</description>
+      <guid>http://localhost:1313/bloc-1/semaine-1b/index.html</guid>
+      <description>Objectif de la séance Connaitre et comprendre la structure des fichiers sous Linux Se déplacer dans le système et manipuler des fichiers à l’aide de la ligne de commande. Warning C’est le cours le plus important pour arriver à s’orienter dans l’architecture de Linux.&#xA;Théorie Windows vs Linux Sous Windows, vous avez des lecteurs physiques : C:\ (Disque système), D:\ (USB), Z:\ (Réseau). Sous Linux, tout est un fichier et tout commence au même endroit .</description>
     </item>
     <item>
-      <title>Gestion de paquets et édition de texte</title>
-      <link>https://example.org/bloc-1/semaine-3/index.html</link>
+      <title>Laboratoires #1 &amp; #2</title>
+      <link>http://localhost:1313/bloc-1/semaine-2/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://example.org/bloc-1/semaine-3/index.html</guid>
-      <description>Objectif de la semaine Comprendre les dépôts, mises à jour (apt update/upgrade) et installation (apt install vim/htop). Être capable de modifier un fichier de configuration sur un serveur distant sans souris. Utiliser le fichier exo-semaine3.docx pour y mettre vos réponses et captures d’écran.&#xA;Télécharger le fichier docx&#xA;Théorie Gestion des paquets 1. La fin des fichiers .exe (Les dépôts) Sous Windows, quand vous voulez un logiciel, vous ouvrez le navigateur, vous cherchez un site (parfois douteux), vous téléchargez un .exe et vous cliquez sur “Suivant, Suivant, Suivant”.</description>
+      <guid>http://localhost:1313/bloc-1/semaine-2/index.html</guid>
+      <description>Cours #1 : Installation d’AlmaLinux Cours #2 : Les commandes de base</description>
     </item>
     <item>
-      <title>L&#39;expansion d&#39;accolades et Examen 1</title>
-      <link>https://example.org/bloc-1/semaine-4/index.html</link>
+      <title>Gestion des Utilisateurs et des groupes</title>
+      <link>http://localhost:1313/bloc-1/semaine-3a/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://example.org/bloc-1/semaine-4/index.html</guid>
-      <description>Objectif de la semaine Passer de la “manipulation fichier par fichier” à la “génération massive d’arguments”. Fichier pour les exercices (en classe)&#xA;Utiliser le fichier exo-semaine4.docx pour y mettre vos réponses et captures d’écran.&#xA;Télécharger le fichier docx&#xA;Pourquoi taper quand on peut générer ? “Jusqu’à présent, si je vous demandais de créer 3 dossiers pour vos projets (projet_A, projet_B, projet_C), vous feriez 3 commandes ou vous taperiez les 3 noms. C’est lent et sujet aux fautes de frappe. Aujourd’hui, on va apprendre à faire travailler le Shell pour nous. On ne va plus écrire les noms de fichiers, on va écrire une règle pour les générer.”</description>
+      <guid>http://localhost:1313/bloc-1/semaine-3a/index.html</guid>
+      <description>Objectifs de la séance Comprendre l’identité numérique sous Linux (UID, GID) et le concept de groupe primaire vs secondaire. Auditer les fichiers système (/etc/passwd, /etc/shadow et /etc/group). Gérer le cycle de vie des comptes (création, modification, suppression, verrouillage). Théorie Linux est un système multi-utilisateurs strict. Pour le noyau, vous n’êtes pas un nom, mais une série de numéros.</description>
+    </item>
+    <item>
+      <title>Permissions &amp; droits d&#39;accès</title>
+      <link>http://localhost:1313/bloc-1/semaine-3b/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/bloc-1/semaine-3b/index.html</guid>
+      <description>Objectifs de la séance Déchiffrer la ligne cryptique drwxr-xr-x commande ls -l. Comprendre la différence entre les droits sur un fichier et sur un dossier. Manipuler les permissions avec chmod (Mode Symbolique et Octal). Gérer les propriétaires avec chown, les groupes avec chgrp. Théorie Qui a le droit ? (Les 3 identités) Sous Linux, chaque fichier appartient à un propriétaire et à un groupe. Quand vous essayez d’ouvrir un fichier, Linux se pose trois questions dans l’ordre :</description>
+    </item>
+    <item>
+      <title>Laboratoires #3 &amp; Test #1</title>
+      <link>http://localhost:1313/bloc-1/semaine-4/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/bloc-1/semaine-4/index.html</guid>
+      <description>Cours #1 : Utilisateurs, groupes et droits d’accès Cours #2 : Test #1 (12,5%)</description>
     </item>
   </channel>
 </rss>

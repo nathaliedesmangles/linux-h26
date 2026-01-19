@@ -1,10 +1,84 @@
 +++
 pre = 'Semaine 8 : '
-title = 'Révision? & Examen #2'
+title = 'Redirections, Pipe & Examen #2'
 weight = 80
 +++
 
 
+## Objectif de la semaine
+
+Comprendre comment manipuler les flux de données pour combiner des commandes simples et réaliser des tâches complexes.
+
+**Fichier pour les exercices (en classe)**
+Utiliser le fichier **exo-semaine8.docx** pour y mettre vos réponses et captures d'écran.  
+{{% button href="/docs/Exercices/exo-semaine8.docx" icon="download" %}}Télécharger le fichier docx{{% /button %}}
+
+---
+
+# Théorie
+
+Imaginez qu'une commande Linux est une **machine industrielle**. Elle a besoin de matières premières pour fonctionner et elle produit quelque chose en sortie.
+
+Il existe trois "tuyaux" connectés par défaut à chaque commande :
+
+| Canal | Nom technique | ID | Description | Direction par défaut |
+| --- | --- | --- | --- | --- |
+| **Entrée** | `stdin` | 0 | Les données brutes | Votre **Clavier** |
+| **Sortie** | `stdout` | 1 | Le bon résultat | Votre **Écran** |
+| **Erreur** | `stderr` | 2 | Les messages de panne | Votre **Écran** |
+
+> **Analogie :** C'est comme une créature qui **mange** (stdin), **parle** (stdout) et parfois **crie** quand elle a mal (stderr).
+
+
+## Les redirections
+
+Par défaut, la "rivière" de données coule vers l'écran. Nous pouvons utiliser des chevrons pour détourner ce flux vers un **fichier**.
+
+### 1. Le destructeur (`>`)
+
+Le chevron simple redirige la sortie vers un fichier.
+
+* **Attention :** Si le fichier existe, il est **écrasé** (vidé et remplacé).
+* **Moyen mnémotechnique :** Le fichier est remis à zéro.
+
+```bash
+echo "Liste de courses" > courses.txt
+# Le fichier courses.txt contient maintenant uniquement : Liste de courses
+```
+
+### 2. Le constructeur (`>>`)
+
+Le double chevron ajoute les données à la **fin** du fichier existant.
+
+* **Sécurité :** Il ne détruit pas l'ancien contenu.
+
+```bash
+echo "- Pommes" >> courses.txt
+echo "- Bananes" >> courses.txt
+# Le fichier contient maintenant le titre ET les fruits.
+```
+
+### 🟢 Exercice #1 (En classe)
+
+**Objectif :** Visualiser la différence entre écraser et ajouter.
+
+1. Demandez aux étudiants de taper : `echo "Bonjour" > test.txt`
+2. Puis : `echo "Monde" > test.txt`
+3. Vérifiez le contenu (`cat test.txt`). Que s'est-il passé ? (Réponse : "Bonjour" a disparu).
+4. Corrigez le tir : `echo "Bonjour" >> test.txt` (Pour avoir Monde et Bonjour).
+
+
+
+## Le Tube (Pipe `|`) 
+
+C'est le super-pouvoir de Linux. Le caractère `|` (Alt Gr + 6) connecte la sortie de la commande de gauche à l'entrée de la commande de droite.
+
+**La règle d'or :** Pas de fichier intermédiaire. Tout se passe en mémoire vive (RAM).
+
+> **Analogie de l'usine :**
+> `Machine A (Fabrique le biscuit)` **|** `Machine B (Met le chocolat)` **|** `Machine C (Emballe)`
+
+<!--
 # Révision
 
 Aujourd'hui, on n'apprend rien de nouveau. On va juste apprendre à ne pas se tirer dans le pied le jour de l'examen.
@@ -114,7 +188,7 @@ Pour finir la séance sur une note ludique et active.
 * [ ] **Processus :** Ai-je vérifié avec `jobs` que je n'ai pas laissé plein de trucs en pause ?
 * [ ] **Sudo :** Est-ce que mes commandes nécessitent `sudo` ? (Erreur bête : taper la commande, se faire rejeter, retaper).
 
-
+-->
 ---
 
 # Examen 2

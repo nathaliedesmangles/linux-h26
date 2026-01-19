@@ -40,7 +40,7 @@ Gérez votre temps. Les règles de la PIÉA (art. 7.4.2) sont strictes :
 **4. Suivi des notes**
 Toute contestation de note doit se faire dans la semaine suivant sa réception. Il est impossible de contester une décision prise en début de session au moment du bilan final.
 
-Bonne session à tous.
+Bonne session à tous et à bientôt.
 
 -->
 

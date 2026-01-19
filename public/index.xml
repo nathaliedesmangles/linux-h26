@@ -2,51 +2,51 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Accueil du cours :: ZG4-Linux</title>
-    <link>https://example.org/index.html</link>
+    <link>http://localhost:1313/index.html</link>
     <description>Administration Linux (Mint) Bienvenue dans le site de référence du cours.&#xA;Facultatif : Ci-dessous, le cahier pour prendre des notes pendant le cours et les laboratoires, ainsi que le livre de référence (25$).&#xA;Info 1. Manuel de cours&#xA;2. Livre de référence :&#xA;5$ de rabais avec le coupon PEGECMO2026&#xA;Objectifs Ce cours de 15 semaines vise à vous rendre autonome sur le terminal Linux.</description>
     <generator>Hugo</generator>
     <language>fr-ca</language>
-    <atom:link href="https://example.org/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Protocole de remise des exos et labos</title>
-      <link>https://example.org/remises/index.html</link>
+      <link>http://localhost:1313/remises/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://example.org/remises/index.html</guid>
+      <guid>http://localhost:1313/remises/index.html</guid>
       <description>Pour valider vos acquis, vous devez soumettre des preuves de votre travail pour tous les exercices effectués, qu’ils soient faits en classe ou durant les laboratoires.&#xA;Warning Bien que les exercices (précédés de 🟢) et les laboratoires ne soient pas sommativement notés, ils servent d’entraînement intensif pour réussir les évaluations sommatives (examens).&#xA;Si vous ne les faites pas pendant les séances dédiées ou si vous ne les remettez pas, cela sera considéré comme une absence au cours et/ou laboratoire.</description>
     </item>
     <item>
       <title>Règles de survie au cours</title>
-      <link>https://example.org/regles/index.html</link>
+      <link>http://localhost:1313/regles/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://example.org/regles/index.html</guid>
+      <guid>http://localhost:1313/regles/index.html</guid>
       <description>Basées sur la PIÉA RÉUSSITE = SAVOIRS + SAVOIR FAIRE + SAVOIR ÊTRE 🛑 ATTITUDE &amp; PRÉSENCE</description>
     </item>
     <item>
       <title>Fondations &amp; installation</title>
-      <link>https://example.org/bloc-1/index.html</link>
+      <link>http://localhost:1313/bloc-1/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://example.org/bloc-1/index.html</guid>
-      <description>Objectif global À la fin de ce bloc, vous devez avoir un environnement Linux fonctionnel, comprendre où il se trouve dans le système et savoir éditer des fichiers de configuration. Contenu des semaines 1 à 4 Semaine 1 : Introduction et installation Semaine 2 : Arborescence du système (/, /home) et navigation (cd, ls). Semaine 3 : Gestion des paquets (apt) et édition de texte (VI/VIM). Semaine 4 : Expansion d’accolades et Examen #1 (20%)</description>
+      <guid>http://localhost:1313/bloc-1/index.html</guid>
+      <description>Objectif global À la fin de ce bloc, vous devez savoir installer et administrer les bases d’un système Linux, de la navigation dans l’arborescence jusqu’à la sécurisation des données via la gestion des permissions et des comptes. » Contenu des semaines 1 à 4 Semaine 1 : Présentation du cours et introduction à Linux Le système de fichiers de Linux Semaine 2 : Labo 1: Installation d’une VM Linux (AlmaLinux sur VirtualBox) Labo 2: Les commandes de base (naviguer dans le FHS1 ) Semaine 3 : Gestion des utilisateurs et des groupes Les droits d’accès Semaine 4 : Labo 3: Gestion des utilisateurs, des groupes et les droits d’accès. Test #1 (12,5%) File Hierarchy System ↩︎</description>
     </item>
     <item>
       <title>Administration système &amp; sécurité</title>
-      <link>https://example.org/bloc-2/index.html</link>
+      <link>http://localhost:1313/bloc-2/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://example.org/bloc-2/index.html</guid>
-      <description>Objectif global Ce bloc est crucial car il touche à la sécurité et à la gestion multi-utilisateurs.&#xA;À la fin de ce bloc, vous devez savoir gérer les comptes utilisateurs, sécuriser l’accès aux fichiers via les permissions et contrôler les programmes en cours d’exécution.&#xA;Contenu des semaines 5 à 8 Semaine 5 : Gestion des utilisateurs (useradd, /etc/passwd) Semaine 6 : Permissions &amp; droits (chmod, chown, notation octale) Semaine 7 : Gestion des processus (ps, kill) et surveillance (top). Semaine 8 : Révision &amp; Test #2 (25%)</description>
+      <guid>http://localhost:1313/bloc-2/index.html</guid>
+      <description>Objectif global Ce bloc est crucial car il touche à la sécurité et à la gestion multi-utilisateurs.&#xA;À la fin de ce bloc, vous devez savoir gérer les comptes utilisateurs, sécuriser l’accès aux fichiers via les permissions et contrôler les programmes en cours d’exécution.&#xA;Contenu des semaines 5 à 8 Semaine 5 : Gestion des utilisateurs (useradd, /etc/passwd) Semaine 6 : Permissions &amp; droits (chmod, chown, notation octale) Semaine 7 : Gestion des processus (ps, kill) et surveillance (top). Semaine 8 : Redirections et pipes (&gt;, Pipes |) &amp; Examen #2 (25%)</description>
     </item>
     <item>
-      <title>Redirections &amp; filtres, disques et réseau</title>
-      <link>https://example.org/bloc-3/index.html</link>
+      <title>Recherche &amp; filtres, disques et réseau</title>
+      <link>http://localhost:1313/bloc-3/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://example.org/bloc-3/index.html</guid>
-      <description>Objectif global À la fin de ce bloc, vous devez savoir manipuler les entrées/sorties des commandes pour créer des chaînes de traitement complexes, être capable d’ajouter, partitionner et monter un nouveau disque dur sur un système Linux et connecter la machine au réseau. Contenu des semaines 9 à 11 Semaine 9 : Redirections et filtres (&gt;, Pipes |, cut, grep, find) Semaine 10 : Disques et partitionnement (fdisk, mkfs, /etc/fstab). Semaine 11 : Réseau (IP, SSH) et services (Systemd).</description>
+      <guid>http://localhost:1313/bloc-3/index.html</guid>
+      <description>Objectif global À la fin de ce bloc, vous devez savoir manipuler les entrées/sorties des commandes pour créer des chaînes de traitement complexes, être capable d’ajouter, partitionner et monter un nouveau disque dur sur un système Linux et connecter la machine au réseau. Contenu des semaines 9 à 11 Semaine 9 : Recherches et filtres (cut, grep, find, wc) Semaine 10 : Disques et partitionnement (fdisk, mkfs, /etc/fstab). Semaine 11 : Réseau (IP, SSH) et services (Systemd).</description>
     </item>
     <item>
       <title>Automatisation &amp; scripting</title>
-      <link>https://example.org/bloc-4/index.html</link>
+      <link>http://localhost:1313/bloc-4/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://example.org/bloc-4/index.html</guid>
+      <guid>http://localhost:1313/bloc-4/index.html</guid>
       <description>Objectif global À la fin de ce bloc, l’étudiant doit être capable d’écrire des scripts Bash pour automatiser des tâches répétitives (sauvegardes, gestion d’utilisateurs) et de les planifier dans le temps. Contenu des semaines 11 à 15 Semaine 12 : Introduction au scripting Bash Semaine 13 : Logique conditionnelle &amp; tests sur fichiers Semaine 14 : Boucles (for, while) &amp; planification (Cron) Semaine 15 : Examen final (35%)</description>
     </item>
   </channel>

@@ -1,63 +1,59 @@
 <!DOCTYPE html>
 <html lang="fr-ca" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
-  <head>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta name="generator" content="Hugo 0.152.2">
     <meta name="generator" content="Relearn 8.3.0+187e41ae8f27979cda87bfe489e34e07e5b6cbcd">
-    <meta name="description" content="Objectif global Ce bloc est crucial car il touche à la sécurité et à la gestion multi-utilisateurs.
-À la fin de ce bloc, vous devez savoir gérer les comptes utilisateurs, sécuriser l’accès aux fichiers via les permissions et contrôler les programmes en cours d’exécution.
-Contenu des semaines 5 à 8 Semaine 5 : Gestion des utilisateurs (useradd, /etc/passwd) Semaine 6 : Permissions &amp; droits (chmod, chown, notation octale) Semaine 7 : Gestion des processus (ps, kill) et surveillance (top). Semaine 8 : Révision &amp; Test #2 (25%)">
+    <meta name="description" content="Objectif global À la fin de ce bloc, vous devez savoir contrôler les programmes en cours d’exécution et manipuler les entrées/sorties des commandes pour créer des chaînes de traitement complexes.
+Contenu des semaines 5 à 8 Semaine 5 : Processus de démarrage (systemctl) &amp; boucle for Labo 4: Processus de démarrage &amp; boucle for Semaine 6 : Redirections (&gt;, &gt;&gt;, 2&gt;) &amp; Pipe (|) Labo 5: Redirections &amp; Pipe Semaine 7 : Recherche &amp; filtres/tri &amp; boucle while (grep, sed, cut, find,wc, sort) Labo 6: Recherche &amp; filtres/tri &amp; boucle while Semaine 8 : Test #2 (12,5%) Gestion des processus (ps, pid, top, kill, &amp;, etc.)">
     <meta name="author" content="">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Administration système & sécurité :: ZG4-Linux">
-    <meta name="twitter:description" content="Objectif global Ce bloc est crucial car il touche à la sécurité et à la gestion multi-utilisateurs.
-À la fin de ce bloc, vous devez savoir gérer les comptes utilisateurs, sécuriser l’accès aux fichiers via les permissions et contrôler les programmes en cours d’exécution.
-Contenu des semaines 5 à 8 Semaine 5 : Gestion des utilisateurs (useradd, /etc/passwd) Semaine 6 : Permissions &amp; droits (chmod, chown, notation octale) Semaine 7 : Gestion des processus (ps, kill) et surveillance (top). Semaine 8 : Révision &amp; Test #2 (25%)">
-    <meta property="og:url" content="https://example.org/bloc-2/index.html">
+    <meta name="twitter:title" content="Redirections, Pipe, recherche & filtres :: ZG4-Linux">
+    <meta name="twitter:description" content="Objectif global À la fin de ce bloc, vous devez savoir contrôler les programmes en cours d’exécution et manipuler les entrées/sorties des commandes pour créer des chaînes de traitement complexes.
+Contenu des semaines 5 à 8 Semaine 5 : Processus de démarrage (systemctl) &amp; boucle for Labo 4: Processus de démarrage &amp; boucle for Semaine 6 : Redirections (&gt;, &gt;&gt;, 2&gt;) &amp; Pipe (|) Labo 5: Redirections &amp; Pipe Semaine 7 : Recherche &amp; filtres/tri &amp; boucle while (grep, sed, cut, find,wc, sort) Labo 6: Recherche &amp; filtres/tri &amp; boucle while Semaine 8 : Test #2 (12,5%) Gestion des processus (ps, pid, top, kill, &amp;, etc.)">
+    <meta property="og:url" content="http://localhost:1313/bloc-2/index.html">
     <meta property="og:site_name" content="ZG4-Linux">
-    <meta property="og:title" content="Administration système & sécurité :: ZG4-Linux">
-    <meta property="og:description" content="Objectif global Ce bloc est crucial car il touche à la sécurité et à la gestion multi-utilisateurs.
-À la fin de ce bloc, vous devez savoir gérer les comptes utilisateurs, sécuriser l’accès aux fichiers via les permissions et contrôler les programmes en cours d’exécution.
-Contenu des semaines 5 à 8 Semaine 5 : Gestion des utilisateurs (useradd, /etc/passwd) Semaine 6 : Permissions &amp; droits (chmod, chown, notation octale) Semaine 7 : Gestion des processus (ps, kill) et surveillance (top). Semaine 8 : Révision &amp; Test #2 (25%)">
+    <meta property="og:title" content="Redirections, Pipe, recherche & filtres :: ZG4-Linux">
+    <meta property="og:description" content="Objectif global À la fin de ce bloc, vous devez savoir contrôler les programmes en cours d’exécution et manipuler les entrées/sorties des commandes pour créer des chaînes de traitement complexes.
+Contenu des semaines 5 à 8 Semaine 5 : Processus de démarrage (systemctl) &amp; boucle for Labo 4: Processus de démarrage &amp; boucle for Semaine 6 : Redirections (&gt;, &gt;&gt;, 2&gt;) &amp; Pipe (|) Labo 5: Redirections &amp; Pipe Semaine 7 : Recherche &amp; filtres/tri &amp; boucle while (grep, sed, cut, find,wc, sort) Labo 6: Recherche &amp; filtres/tri &amp; boucle while Semaine 8 : Test #2 (12,5%) Gestion des processus (ps, pid, top, kill, &amp;, etc.)">
     <meta property="og:locale" content="fr_ca">
     <meta property="og:type" content="website">
-    <meta itemprop="name" content="Administration système & sécurité :: ZG4-Linux">
-    <meta itemprop="description" content="Objectif global Ce bloc est crucial car il touche à la sécurité et à la gestion multi-utilisateurs.
-À la fin de ce bloc, vous devez savoir gérer les comptes utilisateurs, sécuriser l’accès aux fichiers via les permissions et contrôler les programmes en cours d’exécution.
-Contenu des semaines 5 à 8 Semaine 5 : Gestion des utilisateurs (useradd, /etc/passwd) Semaine 6 : Permissions &amp; droits (chmod, chown, notation octale) Semaine 7 : Gestion des processus (ps, kill) et surveillance (top). Semaine 8 : Révision &amp; Test #2 (25%)">
-    <meta itemprop="wordCount" content="87">
-    <title>Administration système &amp; sécurité :: ZG4-Linux</title>
-    <link href="/bloc-2/index.xml" rel="alternate" type="application/rss+xml" title="Administration système &amp; sécurité :: ZG4-Linux">
-    <link href="/images/logo.png?1768146506" rel="icon" type="image/png">
-    <link href="/css/auto-complete/auto-complete.min.css?1768146506" rel="stylesheet">
-    <script src="/js/auto-complete/auto-complete.min.js?1768146506" defer></script>
-    <script src="/js/search-lunr.min.js?1768146506" defer></script>
-    <script src="/js/search.min.js?1768146506" defer></script>
+    <meta itemprop="name" content="Redirections, Pipe, recherche & filtres :: ZG4-Linux">
+    <meta itemprop="description" content="Objectif global À la fin de ce bloc, vous devez savoir contrôler les programmes en cours d’exécution et manipuler les entrées/sorties des commandes pour créer des chaînes de traitement complexes.
+Contenu des semaines 5 à 8 Semaine 5 : Processus de démarrage (systemctl) &amp; boucle for Labo 4: Processus de démarrage &amp; boucle for Semaine 6 : Redirections (&gt;, &gt;&gt;, 2&gt;) &amp; Pipe (|) Labo 5: Redirections &amp; Pipe Semaine 7 : Recherche &amp; filtres/tri &amp; boucle while (grep, sed, cut, find,wc, sort) Labo 6: Recherche &amp; filtres/tri &amp; boucle while Semaine 8 : Test #2 (12,5%) Gestion des processus (ps, pid, top, kill, &amp;, etc.)">
+    <meta itemprop="wordCount" content="106">
+    <title>Redirections, Pipe, recherche &amp; filtres :: ZG4-Linux</title>
+    <link href="/bloc-2/index.xml" rel="alternate" type="application/rss+xml" title="Redirections, Pipe, recherche &amp; filtres :: ZG4-Linux">
+    <link href="/images/logo.png?1768790264" rel="icon" type="image/png">
+    <link href="/css/auto-complete/auto-complete.min.css?1768790264" rel="stylesheet">
+    <script src="/js/auto-complete/auto-complete.min.js?1768790264" defer></script>
+    <script src="/js/search-lunr.js?1768790264" defer></script>
+    <script src="/js/search.js?1768790264" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="/searchindex.en.js?1768146506";
+      window.relearn.index_js_url="/searchindex.en.js?1768790264";
     </script>
-    <script src="/js/lunr/lunr.min.js?1768146506" defer></script>
-    <script src="/js/lunr/lunr.stemmer.support.min.js?1768146506" defer></script>
-    <script src="/js/lunr/lunr.multi.min.js?1768146506" defer></script>
-    <script src="/js/lunr/lunr.fr.min.js?1768146506" defer></script>
+    <script src="/js/lunr/lunr.min.js?1768790264" defer></script>
+    <script src="/js/lunr/lunr.stemmer.support.min.js?1768790264" defer></script>
+    <script src="/js/lunr/lunr.multi.min.js?1768790264" defer></script>
+    <script src="/js/lunr/lunr.fr.min.js?1768790264" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['fr'];
     </script>
-    <link href="/fonts/fontawesome/css/fontawesome-all.min.css?1768146506" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/fontawesome-all.min.css?1768146506" rel="stylesheet"></noscript>
-    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1768146506" rel="stylesheet">
-    <link href="/css/theme.min.css?1768146506" rel="stylesheet">
-    <link href="/css/format-html.min.css?1768146506" rel="stylesheet" id="R-format-style">
+    <link href="/fonts/fontawesome/css/fontawesome-all.min.css?1768790264" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/fontawesome-all.min.css?1768790264" rel="stylesheet"></noscript>
+    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1768790264" rel="stylesheet">
+    <link href="/css/theme.css?1768790264" rel="stylesheet">
+    <link href="/css/format-html.css?1768790264" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
-      window.relearn.min = `.min`;
+      window.relearn.min = ``;
       window.relearn.path='\/bloc-2\/index.html';
       window.relearn.relBasePath='..';
       window.relearn.relBaseUri='..';
-      window.relearn.absBaseUri='https:\/\/example.org';
+      window.relearn.absBaseUri='http:\/\/localhost:1313';
       window.relearn.disableInlineCopyToClipboard=false;
       window.relearn.enableBlockCodeWrap=true;
       // legal
@@ -102,7 +98,7 @@ Contenu des semaines 5 à 8 Semaine 5 : Gestion des utilisateurs (useradd, /etc/
       window.relearn.initVariant();
       window.relearn.markVariant();
     </script>
-    <link href="/css/custom.css?1768146506" rel="stylesheet">
+    <link href="/css/custom.css?1768790264" rel="stylesheet">
   </head>
   <body class="mobile-support html" data-url="/bloc-2/index.html">
     <div id="R-body" class="default-animation">
@@ -132,14 +128,14 @@ Contenu des semaines 5 à 8 Semaine 5 : Gestion des utilisateurs (useradd, /etc/
               </div>
             </div>
           </div>
-          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/index.html"><span itemprop="name">Accueil du cours</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Administration système &amp; sécurité</span><meta itemprop="position" content="2"></li>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/index.html"><span itemprop="name">Accueil du cours</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Redirections, Pipe, recherche &amp; filtres</span><meta itemprop="position" content="2"></li>
           </ol>
           <div class="topbar-area topbar-area-end" data-area="end">
             <div class="topbar-button topbar-button-prev default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
-<span class="btn cstyle button link noborder notitle interactive"><a href="/bloc-1/semaine-4/index.html" title="L'expansion d'accolades et Examen 1 (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+<span class="btn cstyle button link noborder notitle interactive"><a href="/bloc-1/semaine-4/index.html" title="Laboratoires #3 & Test #1 (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
             </div>
             <div class="topbar-button topbar-button-next default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
-<span class="btn cstyle button link noborder notitle interactive"><a href="/bloc-2/semaine-5/index.html" title="Gestion des Utilisateurs (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+<span class="btn cstyle button link noborder notitle interactive"><a href="/bloc-3/index.html" title="RegExp, VIM & fichiers de configuration (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
             </div>
             <div class="topbar-button topbar-button-more default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
 <span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="More"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
@@ -160,17 +156,36 @@ Contenu des semaines 5 à 8 Semaine 5 : Gestion des utilisateurs (useradd, /etc/
   <header class="headline">
   </header>
 
-<h1 id="administration-système--sécurité">Administration système &amp; sécurité</h1>
+<h1 id="redirections-pipe-recherche--filtres">Redirections, Pipe, recherche &amp; filtres</h1>
 
 <h3 id="objectif-global">Objectif global<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
-<p>Ce bloc est crucial car il touche à la sécurité et à la gestion multi-utilisateurs.</p>
-<p>À la fin de ce bloc, vous devez savoir gérer les comptes utilisateurs, sécuriser l&rsquo;accès aux fichiers via les permissions et contrôler les programmes en cours d&rsquo;exécution.</p>
+<p>À la fin de ce bloc, vous devez savoir contrôler les programmes en cours d&rsquo;exécution et manipuler les entrées/sorties des commandes pour créer des chaînes de traitement complexes.</p>
 <h3 id="contenu-des-semaines-5-à-8">Contenu des semaines 5 à 8<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Copy link to clipboard"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
 <ul>
-<li>Semaine 5 : Gestion des utilisateurs  (<code>useradd</code>, <code>/etc/passwd</code>)</li>
-<li>Semaine 6 : Permissions &amp; droits (<code>chmod</code>, <code>chown</code>, notation octale)</li>
-<li>Semaine 7 : Gestion des processus (<code>ps</code>, <code>kill</code>) et surveillance (<code>top</code>).</li>
-<li>Semaine 8 : Révision &amp; Test #2 (25%)</li>
+<li><strong>Semaine 5</strong> :
+<ol>
+<li>Processus de démarrage (<code>systemctl</code>) &amp; boucle <code>for</code></li>
+<li><strong>Labo 4</strong>: Processus de démarrage &amp; boucle <code>for</code></li>
+</ol>
+</li>
+<li><strong>Semaine 6</strong> :
+<ol>
+<li>Redirections (<code>&gt;</code>, <code>&gt;&gt;</code>, <code>2&gt;</code>) &amp; Pipe (<code>|</code>)</li>
+<li><strong>Labo 5</strong>: Redirections &amp; Pipe</li>
+</ol>
+</li>
+<li><strong>Semaine 7</strong> :
+<ol>
+<li>Recherche &amp; filtres/tri &amp; boucle <code>while</code> (<code>grep</code>, <code>sed</code>, <code>cut</code>, <code>find</code>,<code>wc</code>, <code>sort</code>)</li>
+<li><strong>Labo 6</strong>: Recherche &amp; filtres/tri &amp; boucle <code>while</code></li>
+</ol>
+</li>
+<li><strong>Semaine 8</strong> :
+<ol>
+<li><strong>Test #2</strong> (12,5%)</li>
+<li>Gestion des processus (<code>ps</code>, <code>pid</code>, <code>top</code>, <code>kill</code>, <code>&amp;</code>, etc.)</li>
+</ol>
+</li>
 </ul>
 
   <footer class="footline">
@@ -183,7 +198,7 @@ Contenu des semaines 5 à 8 Semaine 5 : Gestion des utilisateurs (useradd, /etc/
       <div id="R-header-topbar" class="default-animation"></div>
       <div id="R-header-wrapper" class="default-animation">
 
-<a id="logo" href="https://example.org/">
+<a id="logo" href="http://localhost:1313/">
   <img src="/images/logo.png" alt="Logo du site" style="height: 100px; width: auto;">
 </a>
 
@@ -223,24 +238,15 @@ Contenu des semaines 5 à 8 Semaine 5 : Gestion des utilisateurs (useradd, /etc/
             <li class="" data-nav-url="/remises/index.html"><a class="padding" href="/remises/index.html">Protocole de remise des exos et labos<i class="fa-fw fas fa-check read-icon"></i></a></li>
             <li class="" data-nav-url="/regles/index.html"><a class="padding" href="/regles/index.html">Règles de survie au cours<i class="fa-fw fas fa-check read-icon"></i></a></li>
             <li class="" data-nav-url="/bloc-1/index.html"><input type="checkbox" id="R-section-0b942f9b9b2d065455b2a863f4d7995c" aria-controls="R-subsections-0b942f9b9b2d065455b2a863f4d7995c"><label for="R-section-0b942f9b9b2d065455b2a863f4d7995c"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Fondations &amp; installation</span></label><a class="padding default-animation" href="/bloc-1/index.html">BLOC 1 : Fondations &amp; installation<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-0b942f9b9b2d065455b2a863f4d7995c" class="collapsible-menu">
-            <li class="" data-nav-url="/bloc-1/semaine-1/index.html"><a class="padding" href="/bloc-1/semaine-1/index.html">Semaine 1 : Introduction et installation<i class="fa-fw fas fa-check read-icon"></i></a></li>
-            <li class="" data-nav-url="/bloc-1/semaine-2/index.html"><a class="padding" href="/bloc-1/semaine-2/index.html">Semaine 2 : Arborescence et navigation<i class="fa-fw fas fa-check read-icon"></i></a></li>
-            <li class="" data-nav-url="/bloc-1/semaine-3/index.html"><a class="padding" href="/bloc-1/semaine-3/index.html">Semaine 3 : Gestion de paquets et édition de texte<i class="fa-fw fas fa-check read-icon"></i></a></li>
-            <li class="" data-nav-url="/bloc-1/semaine-4/index.html"><a class="padding" href="/bloc-1/semaine-4/index.html">Semaine 4 : L&#39;expansion d&#39;accolades et Examen 1<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
-            <li class="active parent " data-nav-url="/bloc-2/index.html"><input type="checkbox" id="R-section-bc3591f00126f0242dfd3ada90ba9fa8" aria-controls="R-subsections-bc3591f00126f0242dfd3ada90ba9fa8" checked><label for="R-section-bc3591f00126f0242dfd3ada90ba9fa8"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Administration système &amp; sécurité</span></label><a class="padding default-animation" href="/bloc-2/index.html">BLOC 2 : Administration système &amp; sécurité<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-bc3591f00126f0242dfd3ada90ba9fa8" class="collapsible-menu">
-            <li class="" data-nav-url="/bloc-2/semaine-5/index.html"><a class="padding" href="/bloc-2/semaine-5/index.html">Semaine 5 : Gestion des Utilisateurs<i class="fa-fw fas fa-check read-icon"></i></a></li>
-            <li class="" data-nav-url="/bloc-2/semaine-6/index.html"><a class="padding" href="/bloc-2/semaine-6/index.html">Semaine 6 : Permissions &amp; droits d&#39;accès<i class="fa-fw fas fa-check read-icon"></i></a></li>
-            <li class="" data-nav-url="/bloc-2/semaine-7/index.html"><a class="padding" href="/bloc-2/semaine-7/index.html">Semaine 7 : Gestion des processus<i class="fa-fw fas fa-check read-icon"></i></a></li>
-            <li class="" data-nav-url="/bloc-2/semaine-8/index.html"><a class="padding" href="/bloc-2/semaine-8/index.html">Semaine 8 : Révision? &amp; Examen #2<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
-            <li class="" data-nav-url="/bloc-3/index.html"><input type="checkbox" id="R-section-d0f965f65b76b5a918fb9cc7fc20ea39" aria-controls="R-subsections-d0f965f65b76b5a918fb9cc7fc20ea39"><label for="R-section-d0f965f65b76b5a918fb9cc7fc20ea39"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Redirections &amp; filtres, disques et réseau</span></label><a class="padding default-animation" href="/bloc-3/index.html">BLOC 3 : Redirections &amp; filtres, disques et réseau<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-d0f965f65b76b5a918fb9cc7fc20ea39" class="collapsible-menu">
-            <li class="" data-nav-url="/bloc-3/semaine-9/index.html"><a class="padding" href="/bloc-3/semaine-9/index.html">Semaine 9 : Redirections, Pipes et filtres<i class="fa-fw fas fa-check read-icon"></i></a></li>
-            <li class="" data-nav-url="/bloc-3/semaine-10/index.html"><a class="padding" href="/bloc-3/semaine-10/index.html">Semaine 10 : Gestion de disques<i class="fa-fw fas fa-check read-icon"></i></a></li>
-            <li class="" data-nav-url="/bloc-3/semaine-11/index.html"><a class="padding" href="/bloc-3/semaine-11/index.html">Semaine 11 : Réseau et services &amp; Examen #3<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
-            <li class="" data-nav-url="/bloc-4/index.html"><input type="checkbox" id="R-section-c1ebb4b1b8b7a51069075ff54026c0de" aria-controls="R-subsections-c1ebb4b1b8b7a51069075ff54026c0de"><label for="R-section-c1ebb4b1b8b7a51069075ff54026c0de"><i class="fa-fw fas fa-chevron-right"></i><span class="a11y-only">Submenu Automatisation &amp; scripting</span></label><a class="padding default-animation" href="/bloc-4/index.html">BLOC 4 : Automatisation &amp; scripting<i class="fa-fw fas fa-check read-icon"></i></a><ul id="R-subsections-c1ebb4b1b8b7a51069075ff54026c0de" class="collapsible-menu">
-            <li class="" data-nav-url="/bloc-4/semaine-12/index.html"><a class="padding" href="/bloc-4/semaine-12/index.html">Semaine 12 : Introduction au Scripting Bash<i class="fa-fw fas fa-check read-icon"></i></a></li>
-            <li class="" data-nav-url="/bloc-4/semaine-13/index.html"><a class="padding" href="/bloc-4/semaine-13/index.html">Semaine 13 : Logique conditionnelle &amp; tests sur fichiers<i class="fa-fw fas fa-check read-icon"></i></a></li>
-            <li class="" data-nav-url="/bloc-4/semaine-14/index.html"><a class="padding" href="/bloc-4/semaine-14/index.html">Semaine 14 : Boucles &amp; planification (Cron)<i class="fa-fw fas fa-check read-icon"></i></a></li>
-            <li class="" data-nav-url="/bloc-4/semaine-15/index.html"><a class="padding" href="/bloc-4/semaine-15/index.html">Semaine 15 : Révision &amp; Examen Final<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
+            <li class="" data-nav-url="/bloc-1/semaine-1a/index.html"><a class="padding" href="/bloc-1/semaine-1a/index.html">Semaine 1.1: Présentation du cours et introduction à Linux<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-1/semaine-1b/index.html"><a class="padding" href="/bloc-1/semaine-1b/index.html">Semaine 1.2 : Le système de fichiers de Linux<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-1/semaine-2/index.html"><a class="padding" href="/bloc-1/semaine-2/index.html">Semaine 2 : Laboratoires #1 &amp; #2<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-1/semaine-3a/index.html"><a class="padding" href="/bloc-1/semaine-3a/index.html">Semaine 3.1 : Gestion des Utilisateurs et des groupes<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-1/semaine-3b/index.html"><a class="padding" href="/bloc-1/semaine-3b/index.html">Semaine 3.2 : Permissions &amp; droits d&#39;accès<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-1/semaine-4/index.html"><a class="padding" href="/bloc-1/semaine-4/index.html">Semaine 4 : Laboratoires #3 &amp; Test #1<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
+            <li class="active " data-nav-url="/bloc-2/index.html"><a class="padding" href="/bloc-2/index.html">BLOC 2 : Redirections, Pipe, recherche &amp; filtres<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-3/index.html"><a class="padding" href="/bloc-3/index.html">BLOC 3 : RegExp, VIM &amp; fichiers de configuration<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-4/index.html"><a class="padding" href="/bloc-4/index.html">BLOC 4 : Automatisation, script &amp; réseau<i class="fa-fw fas fa-check read-icon"></i></a></li>
           </ul>
         </div>
         <div class="R-sidebarmenu R-shortcutmenu-shortcuts default-animation">
@@ -268,8 +274,8 @@ Contenu des semaines 5 à 8 Semaine 5 : Gestion des utilisateurs (useradd, /etc/
 <div id="R-footer" class="default-animation"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
       </div>
     </aside>
-    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1768146506" defer></script>
-    <script src="/js/theme.min.js?1768146506" defer></script>
+    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1768790264" defer></script>
+    <script src="/js/theme.js?1768790264" defer></script>
     <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
   </body>
 </html>

@@ -1,32 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Redirections &amp; filtres, disques et réseau :: ZG4-Linux</title>
-    <link>https://example.org/bloc-3/index.html</link>
-    <description>Objectif global À la fin de ce bloc, vous devez savoir manipuler les entrées/sorties des commandes pour créer des chaînes de traitement complexes, être capable d’ajouter, partitionner et monter un nouveau disque dur sur un système Linux et connecter la machine au réseau. Contenu des semaines 9 à 11 Semaine 9 : Redirections et filtres (&gt;, Pipes |, cut, grep, find) Semaine 10 : Disques et partitionnement (fdisk, mkfs, /etc/fstab). Semaine 11 : Réseau (IP, SSH) et services (Systemd).</description>
+    <title>RegExp, VIM &amp; fichiers de configuration :: ZG4-Linux</title>
+    <link>http://localhost:1313/bloc-3/index.html</link>
+    <description>Objectif global À la fin de ce bloc, vous devez savoir , être capable d’ajouter, partitionner et monter un nouveau disque dur sur un système Linux et connecter la machine au réseau. Contenu des semaines 9 à 11 Semaine 9 : Labo 7: Processus Les expressions régulières (egrep) Semaine 10 : Labo 8: Les expressions régulières Éditeur de texte (VIM) &amp; fichiers de configuration Semaine 11 : Labo 9: VIM &amp; fichiers de configuration Test #3 (12,5%)</description>
     <generator>Hugo</generator>
     <language>fr-ca</language>
-    <atom:link href="https://example.org/bloc-3/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Redirections, Pipes et filtres</title>
-      <link>https://example.org/bloc-3/semaine-9/index.html</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://example.org/bloc-3/semaine-9/index.html</guid>
-      <description>Objectif de la semaine Comprendre comment manipuler les flux de données pour combiner des commandes simples et réaliser des tâches complexes. Fichier pour les exercices (en classe) Utiliser le fichier exo-semaine9.docx pour y mettre vos réponses et captures d’écran.&#xA;Télécharger le fichier docx&#xA;Théorie Imaginez qu’une commande Linux est une machine industrielle. Elle a besoin de matières premières pour fonctionner et elle produit quelque chose en sortie.</description>
-    </item>
-    <item>
-      <title>Gestion de disques</title>
-      <link>https://example.org/bloc-3/semaine-10/index.html</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://example.org/bloc-3/semaine-10/index.html</guid>
-      <description>Warning Cette semaine est critique : on touche à l’infrastructure physique. C’est l’une des rares opérations où une erreur de frappe peut détruire des données de manière irréversible. Le ton doit être méthodique.&#xA;Objectif Ajouter un nouveau disque dur, le préparer et l’intégrer au système de fichiers de manière permanente. Fichier pour les exercices (en classe) Utiliser le fichier exo-semaine10.docx pour y mettre vos réponses et captures d’écran.&#xA;Télécharger le fichier docx</description>
-    </item>
-    <item>
-      <title>Réseau et services &amp; Examen #3</title>
-      <link>https://example.org/bloc-3/semaine-11/index.html</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://example.org/bloc-3/semaine-11/index.html</guid>
-      <description>Objectif de la semaine Comprendre comment une machine Linux communique, comment gérer les programmes qui tournent en arrière-plan (services) et comment sécuriser ces échanges. Fichier pour les exercices (en classe) Utiliser le fichier exo-semaine11.docx pour y mettre vos réponses et captures d’écran.&#xA;Télécharger le fichier docx&#xA;Warning Cette semaine est critique : on touche à l’infrastructure physique. C’est l’une des rares opérations où une erreur de frappe peut détruire des données de manière irréversible. Le ton doit être méthodique.</description>
-    </item>
+    <atom:link href="http://localhost:1313/bloc-3/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
