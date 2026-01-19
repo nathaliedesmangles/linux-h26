@@ -21,27 +21,27 @@
     <meta itemprop="description" content="Objectifs de la séance Comprendre l’identité numérique sous Linux (UID, GID) et le concept de groupe primaire vs secondaire. Auditer les fichiers système (/etc/passwd, /etc/shadow et /etc/group). Gérer le cycle de vie des comptes (création, modification, suppression, verrouillage). Théorie Linux est un système multi-utilisateurs strict. Pour le noyau, vous n’êtes pas un nom, mais une série de numéros.">
     <meta itemprop="wordCount" content="816">
     <title>Gestion des Utilisateurs et des groupes :: ZG4-Linux</title>
-    <link href="/images/logo.png?1768786933" rel="icon" type="image/png">
-    <link href="/css/auto-complete/auto-complete.min.css?1768786933" rel="stylesheet">
-    <script src="/js/auto-complete/auto-complete.min.js?1768786933" defer></script>
-    <script src="/js/search-lunr.js?1768786933" defer></script>
-    <script src="/js/search.js?1768786933" defer></script>
+    <link href="/images/logo.png?1768792296" rel="icon" type="image/png">
+    <link href="/css/auto-complete/auto-complete.min.css?1768792296" rel="stylesheet">
+    <script src="/js/auto-complete/auto-complete.min.js?1768792296" defer></script>
+    <script src="/js/search-lunr.js?1768792296" defer></script>
+    <script src="/js/search.js?1768792296" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="/searchindex.en.js?1768786933";
+      window.relearn.index_js_url="/searchindex.en.js?1768792296";
     </script>
-    <script src="/js/lunr/lunr.min.js?1768786933" defer></script>
-    <script src="/js/lunr/lunr.stemmer.support.min.js?1768786933" defer></script>
-    <script src="/js/lunr/lunr.multi.min.js?1768786933" defer></script>
-    <script src="/js/lunr/lunr.fr.min.js?1768786933" defer></script>
+    <script src="/js/lunr/lunr.min.js?1768792296" defer></script>
+    <script src="/js/lunr/lunr.stemmer.support.min.js?1768792296" defer></script>
+    <script src="/js/lunr/lunr.multi.min.js?1768792296" defer></script>
+    <script src="/js/lunr/lunr.fr.min.js?1768792296" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['fr'];
     </script>
-    <link href="/fonts/fontawesome/css/fontawesome-all.min.css?1768786933" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/fontawesome-all.min.css?1768786933" rel="stylesheet"></noscript>
-    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1768786933" rel="stylesheet">
-    <link href="/css/theme.css?1768786933" rel="stylesheet">
-    <link href="/css/format-html.css?1768786933" rel="stylesheet" id="R-format-style">
+    <link href="/fonts/fontawesome/css/fontawesome-all.min.css?1768792296" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/fontawesome-all.min.css?1768792296" rel="stylesheet"></noscript>
+    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1768792296" rel="stylesheet">
+    <link href="/css/theme.css?1768792296" rel="stylesheet">
+    <link href="/css/format-html.css?1768792296" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
@@ -94,7 +94,7 @@
       window.relearn.initVariant();
       window.relearn.markVariant();
     </script>
-    <link href="/css/custom.css?1768786933" rel="stylesheet">
+    <link href="/css/custom.css?1768792296" rel="stylesheet">
   </head>
   <body class="mobile-support html" data-url="/bloc-1/semaine-3a/index.html">
     <div id="R-body" class="default-animation">
@@ -599,6 +599,9 @@ sudo usermod -e 1 stagiaire1
             <li class="active " data-nav-url="/bloc-1/semaine-3a/index.html"><a class="padding" href="/bloc-1/semaine-3a/index.html">Semaine 3.1 : Gestion des Utilisateurs et des groupes<i class="fa-fw fas fa-check read-icon"></i></a></li>
             <li class="" data-nav-url="/bloc-1/semaine-3b/index.html"><a class="padding" href="/bloc-1/semaine-3b/index.html">Semaine 3.2 : Permissions &amp; droits d&#39;accès<i class="fa-fw fas fa-check read-icon"></i></a></li>
             <li class="" data-nav-url="/bloc-1/semaine-4/index.html"><a class="padding" href="/bloc-1/semaine-4/index.html">Semaine 4 : Laboratoires #3 &amp; Test #1<i class="fa-fw fas fa-check read-icon"></i></a></li></ul></li>
+            <li class="" data-nav-url="/bloc-2/index.html"><a class="padding" href="/bloc-2/index.html">BLOC 2 : Redirections, Pipe, recherche &amp; filtres<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-3/index.html"><a class="padding" href="/bloc-3/index.html">BLOC 3 : RegExp, VIM &amp; fichiers de configuration<i class="fa-fw fas fa-check read-icon"></i></a></li>
+            <li class="" data-nav-url="/bloc-4/index.html"><a class="padding" href="/bloc-4/index.html">BLOC 4 : Automatisation, script &amp; réseau<i class="fa-fw fas fa-check read-icon"></i></a></li>
           </ul>
         </div>
         <div class="R-sidebarmenu R-shortcutmenu-shortcuts default-animation">
@@ -626,8 +629,8 @@ sudo usermod -e 1 stagiaire1
 <div id="R-footer" class="default-animation"><p>Built with <a href="https://github.com/McShelby/hugo-theme-relearn" title="love"><i class="fas fa-heart"></i></a> by <a href="https://gohugo.io/">Hugo</a></p></div>
       </div>
     </aside>
-    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1768786933" defer></script>
-    <script src="/js/theme.js?1768786933" defer></script>
+    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1768792296" defer></script>
+    <script src="/js/theme.js?1768792296" defer></script>
     <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
   </body>
 </html>

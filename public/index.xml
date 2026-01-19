@@ -12,7 +12,7 @@
       <link>http://localhost:1313/remises/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/remises/index.html</guid>
-      <description>Pour valider vos acquis, vous devez soumettre des preuves de votre travail pour tous les exercices effectués, qu’ils soient faits en classe ou durant les laboratoires.&#xA;Warning Bien que les exercices (précédés de 🟢) et les laboratoires ne soient pas sommativement notés, ils servent d’entraînement intensif pour réussir les évaluations sommatives (examens).&#xA;Si vous ne les faites pas pendant les séances dédiées ou si vous ne les remettez pas, cela sera considéré comme une absence au cours et/ou laboratoire.</description>
+      <description>Pour valider vos acquis, vous devez soumettre des preuves de votre travail pour tous les exercices effectués, qu’ils soient faits en classe ou durant les laboratoires.&#xA;Warning Bien que les exercices (précédés de 🟢) ne soient pas sommativement notés, ils servent d’entraînement intensif pour réussir les évaluations sommatives (tests &amp; examen final).&#xA;Si vous ne les faites pas pendant les séances dédiées ou si vous ne les remettez pas, cela sera considéré comme une absence au cours et/ou laboratoire.</description>
     </item>
     <item>
       <title>Règles de survie au cours</title>
@@ -29,25 +29,25 @@
       <description>Objectif global À la fin de ce bloc, vous devez savoir installer et administrer les bases d’un système Linux, de la navigation dans l’arborescence jusqu’à la sécurisation des données via la gestion des permissions et des comptes. » Contenu des semaines 1 à 4 Semaine 1 : Présentation du cours et introduction à Linux Le système de fichiers de Linux Semaine 2 : Labo 1: Installation d’une VM Linux (AlmaLinux sur VirtualBox) Labo 2: Les commandes de base (naviguer dans le FHS1 ) Semaine 3 : Gestion des utilisateurs et des groupes Les droits d’accès Semaine 4 : Labo 3: Gestion des utilisateurs, des groupes et les droits d’accès. Test #1 (12,5%) File Hierarchy System ↩︎</description>
     </item>
     <item>
-      <title>Administration système &amp; sécurité</title>
+      <title>Redirections, Pipe, recherche &amp; filtres</title>
       <link>http://localhost:1313/bloc-2/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/bloc-2/index.html</guid>
-      <description>Objectif global Ce bloc est crucial car il touche à la sécurité et à la gestion multi-utilisateurs.&#xA;À la fin de ce bloc, vous devez savoir gérer les comptes utilisateurs, sécuriser l’accès aux fichiers via les permissions et contrôler les programmes en cours d’exécution.&#xA;Contenu des semaines 5 à 8 Semaine 5 : Gestion des utilisateurs (useradd, /etc/passwd) Semaine 6 : Permissions &amp; droits (chmod, chown, notation octale) Semaine 7 : Gestion des processus (ps, kill) et surveillance (top). Semaine 8 : Redirections et pipes (&gt;, Pipes |) &amp; Examen #2 (25%)</description>
+      <description>Objectif global À la fin de ce bloc, vous devez savoir contrôler les programmes en cours d’exécution et manipuler les entrées/sorties des commandes pour créer des chaînes de traitement complexes.&#xA;Contenu des semaines 5 à 8 Semaine 5 : Processus de démarrage (systemctl) &amp; boucle for Labo 4: Processus de démarrage &amp; boucle for Semaine 6 : Redirections (&gt;, &gt;&gt;, 2&gt;) &amp; Pipe (|) Labo 5: Redirections &amp; Pipe Semaine 7 : Recherche &amp; filtres/tri &amp; boucle while (grep, sed, cut, find,wc, sort) Labo 6: Recherche &amp; filtres/tri &amp; boucle while Semaine 8 : Test #2 (12,5%) Gestion des processus (ps, pid, top, kill, &amp;, etc.)</description>
     </item>
     <item>
-      <title>Recherche &amp; filtres, disques et réseau</title>
+      <title>RegExp, VIM &amp; fichiers de configuration</title>
       <link>http://localhost:1313/bloc-3/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/bloc-3/index.html</guid>
-      <description>Objectif global À la fin de ce bloc, vous devez savoir manipuler les entrées/sorties des commandes pour créer des chaînes de traitement complexes, être capable d’ajouter, partitionner et monter un nouveau disque dur sur un système Linux et connecter la machine au réseau. Contenu des semaines 9 à 11 Semaine 9 : Recherches et filtres (cut, grep, find, wc) Semaine 10 : Disques et partitionnement (fdisk, mkfs, /etc/fstab). Semaine 11 : Réseau (IP, SSH) et services (Systemd).</description>
+      <description>Objectif global À la fin de ce bloc, vous devez savoir , être capable d’ajouter, partitionner et monter un nouveau disque dur sur un système Linux et connecter la machine au réseau. Contenu des semaines 9 à 11 Semaine 9 : Labo 7: Processus Les expressions régulières (egrep) Semaine 10 : Labo 8: Les expressions régulières Éditeur de texte (VIM) &amp; fichiers de configuration Semaine 11 : Labo 9: VIM &amp; fichiers de configuration Test #3 (12,5%)</description>
     </item>
     <item>
-      <title>Automatisation &amp; scripting</title>
+      <title>Automatisation, script &amp; réseau</title>
       <link>http://localhost:1313/bloc-4/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/bloc-4/index.html</guid>
-      <description>Objectif global À la fin de ce bloc, l’étudiant doit être capable d’écrire des scripts Bash pour automatiser des tâches répétitives (sauvegardes, gestion d’utilisateurs) et de les planifier dans le temps. Contenu des semaines 11 à 15 Semaine 12 : Introduction au scripting Bash Semaine 13 : Logique conditionnelle &amp; tests sur fichiers Semaine 14 : Boucles (for, while) &amp; planification (Cron) Semaine 15 : Examen final (35%)</description>
+      <description>Objectif global À la fin de ce bloc, l’étudiant doit être capable d’écrire des scripts Bash pour automatiser des tâches répétitives, installer des logiciels, de planifier les tâches dans le temps et de gérer disques et réseau sous Linux. Contenu des semaines 12 à 15 Semaine 12 : Script (variables, paramètres et tests if) Labo 10: Script Semaine 13 : Gestion de paquets (dnf) et automatisation (cron) Réseau &amp; disque Semaine 14 : Labo 11: Réseau &amp; disque Test #4 (12,5%) Semaine 15 : Révision Examen final (récapitulatif) (30%)</description>
     </item>
   </channel>
 </rss>
