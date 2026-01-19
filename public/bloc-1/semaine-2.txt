@@ -1,6 +1,0 @@
-+++
-pre = 'Semaine 2 (cours 1) : '
-title = 'Labo #1  Installation d'AlmaLinux'
-weight = 21
-draft = false
-+++
